@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sector Strength</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>SECTOR<span>STRENGTH</span></h1>
+      <div id="asof" class="asof">loading…</div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-view="sectors">Sectors (17)</button>
+      <button class="tab" data-view="industries">All Industries</button>
+      <button id="info-icon" class="info-icon hidden" title="EMA and RS here use a synthetic equal-weighted index, since NSE doesn't publish an official index for this level of detail. Industries with too few stocks are left out.">ⓘ</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="empty-state" class="empty-state hidden">
+      <p>No data yet.</p>
+      <p class="muted">Run <code>python fetch_data.py</code> once to pull NSE history, then refresh this page.</p>
+    </div>
+
+    <table id="board" class="board hidden">
+      <thead>
+        <tr>
+          <th class="rank-col">#</th>
+          <th class="sector-col sortable" id="name-col-header" data-sort="name">Sector</th>
+          <th class="sortable" data-sort="score">Score</th>
+          <th class="sortable" data-sort="ema">EMA Stack</th>
+          <th class="sortable" data-sort="breadth">Breadth &gt;10MA</th>
+          <th class="sortable" data-sort="breadthTrend">Breadth Trend</th>
+          <th class="sortable" data-sort="rs">RS vs Nifty</th>
+        </tr>
+      </thead>
+      <tbody id="board-body"></tbody>
+    </table>
+  </main>
+
+  <div id="detail-panel" class="detail-panel hidden">
+    <div class="detail-inner">
+      <button id="close-detail" class="close-btn">&times;</button>
+      <h2 id="detail-title"></h2>
+      <div class="detail-grid" id="detail-grid"></div>
+      <div class="chart-block">
+        <h3>RS ratio vs Nifty (60d)</h3>
+        <canvas id="rs-chart" width="600" height="120"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
