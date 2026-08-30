@@ -6,6 +6,7 @@ let CACHE = { sectors: null, industries: null };
 let CURRENT_DATA = [];
 let SORT_KEY = "score";
 let SORT_DIR = "desc"; // "asc" | "desc"
+let SEARCH_TERM = "";
 
 function scoreClass(score) {
   if (score >= 65) return "score-high";
@@ -83,8 +84,14 @@ function sortValue(row, key) {
   }
 }
 
+function filteredData() {
+  if (!SEARCH_TERM) return CURRENT_DATA.slice();
+  const q = SEARCH_TERM.toLowerCase();
+  return CURRENT_DATA.filter(row => rowName(row).toLowerCase().includes(q));
+}
+
 function sortedData() {
-  const arr = CURRENT_DATA.slice();
+  const arr = filteredData();
   arr.sort((a, b) => {
     const va = sortValue(a, SORT_KEY);
     const vb = sortValue(b, SORT_KEY);
@@ -132,6 +139,13 @@ function renderBoard(data) {
   tbody.innerHTML = "";
   document.getElementById("name-col-header").textContent =
     CURRENT_VIEW === "sectors" ? "Sector" : "Basic Industry";
+
+  if (!data.length && SEARCH_TERM) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td colspan="7" class="no-results">No matches for "${SEARCH_TERM}"</td>`;
+    tbody.appendChild(tr);
+    return;
+  }
 
   data.forEach((row, i) => {
     const breadth = breadthCell(row.breadth);
@@ -252,6 +266,8 @@ function showData(data) {
 
 async function loadView(view) {
   CURRENT_VIEW = view;
+  SEARCH_TERM = "";
+  document.getElementById("search-box").value = "";
   document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.view === view));
 
   const cacheKey = view === "sectors" ? "sectors" : "industries";
@@ -287,6 +303,11 @@ function applyView(view, raw) {
 
 document.querySelectorAll(".tab").forEach(tab => {
   tab.addEventListener("click", () => loadView(tab.dataset.view));
+});
+
+document.getElementById("search-box").addEventListener("input", (e) => {
+  SEARCH_TERM = e.target.value.trim();
+  renderBoard(sortedData());
 });
 
 loadView("sectors");
