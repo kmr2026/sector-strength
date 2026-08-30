@@ -176,6 +176,20 @@ function drawSparkline(canvas, values) {
   ctx.stroke();
 }
 
+function stockChip(stock) {
+  if (!stock.has_data) {
+    return `<div class="stock-chip stock-nodata" title="${stock.name} — no NSE price data available">${stock.symbol}</div>`;
+  }
+  const cls = stock.above_10ma ? "stock-above" : "stock-below";
+  const arrow = stock.above_10ma ? "▲" : "▼";
+  return `<div class="stock-chip ${cls}" title="${stock.name} — ₹${stock.close}">${arrow} ${stock.symbol}</div>`;
+}
+
+function stockGridHtml(stocks) {
+  if (!stocks || !stocks.length) return `<span class="muted">No stock list available</span>`;
+  return stocks.map(stockChip).join("");
+}
+
 function detailItem(label, value) {
   return `<div class="detail-item"><div class="label">${label}</div><div class="value">${value}</div></div>`;
 }
@@ -198,12 +212,17 @@ function openDetail(row) {
     detailItem("RS vs Nifty", rs.available ? (rs.rs_rising_1w ? "Rising" : "Falling") : "n/a"),
   ];
   if (CURRENT_VIEW === "industries") {
-    items.push(detailItem("Total Stocks in Industry", row.n_stocks_total));
+    const withData = b.available ? b.n_stocks : 0;
+    items.push(detailItem("NSE Stocks Used", `${withData} of ${row.n_stocks_total} classified`));
   }
   grid.innerHTML = items.join("");
 
   const canvas = document.getElementById("rs-chart");
   drawSparkline(canvas, rs.available ? rs.history : []);
+
+  const stocks = row.stocks || [];
+  document.getElementById("stock-count").textContent = stocks.length;
+  document.getElementById("stock-grid").innerHTML = stockGridHtml(stocks);
 
   document.getElementById("detail-panel").classList.remove("hidden");
 }

@@ -121,6 +121,63 @@ def rs_block(target_series: pd.Series, bench_series: pd.Series) -> dict:
     }
 
 
+def get_company_names(conn, symbols: list[str]) -> dict:
+    """Best-effort symbol -> company_name lookup from basic_industry_map."""
+    if not symbols:
+        return {}
+    placeholders = ",".join("?" * len(symbols))
+    rows = conn.execute(
+        f"SELECT symbol, company_name FROM basic_industry_map WHERE symbol IN ({placeholders})",
+        symbols,
+    ).fetchall()
+    return {sym: name for sym, name in rows if name}
+
+
+def stock_detail_list(conn, symbols: list[str]) -> list[dict]:
+    """Per-stock breakdown for a sector/industry: whether each symbol has
+    price data, and if so whether it's above its own 10-day MA and its
+    latest close. This is exactly what breadth_block() already counts
+    internally -- surfaced here so the UI can show names instead of a
+    bare total that doesn't match the math underneath it."""
+    if not symbols:
+        return []
+    names = get_company_names(conn, symbols)
+    placeholders = ",".join("?" * len(symbols))
+    df = pd.read_sql_query(
+        f"SELECT symbol, date, close FROM stock_prices WHERE symbol IN ({placeholders}) ORDER BY date",
+        conn, params=symbols,
+    )
+    if df.empty:
+        return [
+            {"symbol": s, "name": names.get(s, s), "has_data": False, "above_10ma": None, "close": None}
+            for s in symbols
+        ]
+
+    df["date"] = pd.to_datetime(df["date"])
+    wide = df.pivot(index="date", columns="symbol", values="close").sort_index()
+    ma10 = wide.rolling(10).mean()
+    above = wide > ma10
+    have_data = set(wide.columns)
+
+    out = []
+    for s in symbols:
+        if s not in have_data:
+            out.append({"symbol": s, "name": names.get(s, s), "has_data": False, "above_10ma": None, "close": None})
+            continue
+        closes = wide[s].dropna()
+        aboves = above[s].dropna()
+        out.append({
+            "symbol": s,
+            "name": names.get(s, s),
+            "has_data": True,
+            "above_10ma": bool(aboves.iloc[-1]) if not aboves.empty else None,
+            "close": round(float(closes.iloc[-1]), 2) if not closes.empty else None,
+        })
+    # stocks with data first (above-10MA ones first within that), no-data stocks last
+    out.sort(key=lambda r: (not r["has_data"], not (r["above_10ma"] or False), r["symbol"]))
+    return out
+
+
 def composite_score(ema: dict, breadth: dict, rs: dict) -> int:
     """Simple, transparent point system -- add up what's true. Max 100."""
     score = 0

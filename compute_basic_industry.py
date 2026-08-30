@@ -18,7 +18,7 @@ the same in the synthetic index, same as breadth already does.
 import pandas as pd
 from config import BENCHMARK, MIN_STOCKS_PER_BASIC_INDUSTRY
 from db import get_conn
-from scoring import series_for, ema_block, breadth_block, rs_block, composite_score
+from scoring import series_for, ema_block, breadth_block, rs_block, composite_score, stock_detail_list
 
 
 def _build_synthetic_index(conn, symbols: list[str]) -> pd.Series:
@@ -87,6 +87,7 @@ def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
                 "ema": ema,
                 "breadth": breadth,
                 "rs": rs,
+                "stocks": stock_detail_list(conn, symbols),
                 "synthetic": True,
                 "last_date": synthetic_series.index[-1].date().isoformat() if not synthetic_series.empty else None,
             })
