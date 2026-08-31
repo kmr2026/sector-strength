@@ -9,6 +9,16 @@
     "above_200": false,
     "bullish_stack": false
   },
+  "regime_midsmall": {
+    "available": true,
+    "state": "Bullish",
+    "subtitle": "Above 21/50/200 EMA -- bullish stack intact -- 21 EMA rising",
+    "price": 21689.8,
+    "above_21": true,
+    "above_50": true,
+    "above_200": true,
+    "bullish_stack": true
+  },
   "sectors": [
     {
       "sector": "Pharma",

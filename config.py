@@ -66,6 +66,12 @@ SECTOR_TO_BROAD_INDUSTRY = {
 
 BENCHMARK = "NIFTY 50"
 
+# Second regime banner -- you trade mostly mid/smallcap, so Nifty 50's
+# large-cap regime alone doesn't tell you the regime of the space you
+# actually trade. Shown alongside Nifty 50, not instead of it -- the
+# divergence between the two is itself informative.
+MIDSMALL_INDEX = "NIFTY MIDSMALLCAP 400"
+
 # How much history to keep
 INDEX_HISTORY_DAYS = 300     # need ~200+ trading days for the 200 EMA
 STOCK_HISTORY_DAYS = 300     # bumped from 60 -- basic-industry synthetic indices

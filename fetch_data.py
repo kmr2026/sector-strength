@@ -19,7 +19,7 @@ import datetime as dt
 import requests
 import pandas as pd
 
-from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL
+from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX
 from db import get_conn, init_db
 
 HEADERS = {
@@ -207,14 +207,31 @@ def update_nifty500_industries():
 def update_index_prices():
     print(f"Fetching index history ({INDEX_HISTORY_DAYS} days)...")
     session = make_session()
-    wanted = {v[0] for v in SECTORS.values()} | {"NIFTY 50"}
+    wanted = {v[0] for v in SECTORS.values()} | {"NIFTY 50", MIDSMALL_INDEX}
     got, missed = 0, 0
     with get_conn() as conn:
-        existing_dates = {
-            row[0] for row in conn.execute(
-                "SELECT DISTINCT date FROM index_prices"
-            ).fetchall()
+        # If any wanted index has zero rows so far (e.g. just added to
+        # config), the normal per-date skip below would mean it only
+        # starts accumulating from today -- ema_block() needs 25+ days
+        # before showing anything, 200+ for the 200 EMA. So: force a full
+        # backfill this run whenever that's the case. INSERT OR REPLACE
+        # makes re-fetching already-stored dates harmless, just slower.
+        rows_per_index = {
+            name: conn.execute(
+                "SELECT COUNT(*) FROM index_prices WHERE sector = ?", (name,)
+            ).fetchone()[0]
+            for name in wanted
         }
+        brand_new = [name for name, n in rows_per_index.items() if n == 0]
+        if brand_new:
+            print(f"  new index(es) with no history yet: {brand_new} -- doing a full backfill this run")
+            existing_dates = set()
+        else:
+            existing_dates = {
+                row[0] for row in conn.execute(
+                    "SELECT DISTINCT date FROM index_prices"
+                ).fetchall()
+            }
         for date in trading_days_back(INDEX_HISTORY_DAYS):
             ds = date.isoformat()
             if ds in existing_dates:

@@ -122,8 +122,21 @@ main {
   padding: 12px 16px;
   border-radius: 6px;
   border: 1px solid var(--border);
+}
+.regime-row {
+  display: flex;
+  gap: 12px;
   margin-bottom: 20px;
 }
+.regime-row .regime-banner {
+  flex: 1;
+  margin-bottom: 0;
+}
+@media (max-width: 700px) {
+  .regime-row { flex-direction: column; }
+}
+
+.score-col { cursor: help; }
 .regime-title { font-weight: 700; font-size: 13px; }
 .regime-subtitle { font-size: 12px; color: var(--muted); }
 .regime-bullish { border-color: rgba(63,185,80,0.4); background: rgba(63,185,80,0.08); }

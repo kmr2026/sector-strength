@@ -9,7 +9,7 @@ right place for it; this tab stays true to "what's actually in the index."
 See scoring.py for the actual EMA/breadth/RS/score math (shared with
 compute_basic_industry.py).
 """
-from config import SECTORS, BENCHMARK
+from config import SECTORS, BENCHMARK, MIDSMALL_INDEX
 from db import get_conn
 from scoring import series_for, ema_block, breadth_block, rs_block, regime_block, composite_score, stock_detail_list, score_delta_block
 
@@ -19,6 +19,8 @@ def compute_all() -> dict:
     with get_conn() as conn:
         bench_series = series_for(conn, "index_prices", "sector", BENCHMARK)
         regime = regime_block(bench_series) if not bench_series.empty else {"available": False}
+        midsmall_series = series_for(conn, "index_prices", "sector", MIDSMALL_INDEX)
+        regime_midsmall = regime_block(midsmall_series) if not midsmall_series.empty else {"available": False}
         for sector_name, (index_name, _) in SECTORS.items():
             sector_series = series_for(conn, "index_prices", "sector", index_name)
             symbols = [
@@ -44,7 +46,7 @@ def compute_all() -> dict:
                 "last_date": last_date,
             })
     results.sort(key=lambda r: r["score"], reverse=True)
-    return {"regime": regime, "sectors": results}
+    return {"regime": regime, "regime_midsmall": regime_midsmall, "sectors": results}
 
 
 if __name__ == "__main__":

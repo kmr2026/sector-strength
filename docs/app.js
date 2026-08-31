@@ -328,8 +328,8 @@ async function loadView(view) {
   }
 }
 
-function renderRegimeBanner(regime) {
-  const el = document.getElementById("regime-banner");
+function renderRegimeBanner(elId, label, regime) {
+  const el = document.getElementById(elId);
   if (!regime || !regime.available) {
     el.classList.add("hidden");
     return;
@@ -339,7 +339,7 @@ function renderRegimeBanner(regime) {
     : "regime-mixed";
   el.className = `regime-banner ${cls}`;
   el.innerHTML = `
-    <div class="regime-title">Nifty 50: ${regime.state}</div>
+    <div class="regime-title">${label}: ${regime.state}</div>
     <div class="regime-subtitle">${regime.subtitle}</div>
   `;
   el.classList.remove("hidden");
@@ -349,14 +349,16 @@ function applyView(view, raw) {
   const infoIcon = document.getElementById("info-icon");
   if (view === "sectors") {
     infoIcon.classList.add("hidden");
-    renderRegimeBanner(raw.regime);
+    renderRegimeBanner("regime-banner-nifty", "Nifty 50", raw.regime);
+    renderRegimeBanner("regime-banner-midsmall", "Mid/Smallcap 400", raw.regime_midsmall);
     showData(raw.sectors || []);
     return;
   }
   // industries view: raw is { classification_source, industries } -- no
-  // regime banner here, the sectors tab already showed it and Nifty's
-  // regime doesn't change between tabs.
-  document.getElementById("regime-banner").classList.add("hidden");
+  // regime banners here, the sectors tab already showed them and the
+  // regimes don't change between tabs.
+  document.getElementById("regime-banner-nifty").classList.add("hidden");
+  document.getElementById("regime-banner-midsmall").classList.add("hidden");
   infoIcon.classList.remove("hidden");
   showData(raw.industries || []);
 }

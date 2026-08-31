@@ -23,7 +23,10 @@
   </header>
 
   <main>
-    <div id="regime-banner" class="regime-banner hidden"></div>
+    <div class="regime-row">
+      <div id="regime-banner-nifty" class="regime-banner hidden"></div>
+      <div id="regime-banner-midsmall" class="regime-banner hidden"></div>
+    </div>
 
     <div id="empty-state" class="empty-state hidden">
       <p>No data yet.</p>
@@ -35,7 +38,7 @@
         <tr>
           <th class="rank-col">#</th>
           <th class="sector-col sortable" id="name-col-header" data-sort="name">Sector</th>
-          <th class="sortable" data-sort="score">Score</th>
+          <th class="sortable score-col" data-sort="score" title="EMA structure (up to 50): above 21/50/200 EMA +10 each, bullish stack +15, 21 EMA rising +5, extended >12% from 21 EMA -10 | Breadth 21MA (up to 25): scaled by % of stocks above 21MA (up to 20) + rising vs 1wk ago +5 | RS vs Nifty (up to 25): RS ratio above its own 21 EMA +15, rising vs 1wk ago +10">Score ⓘ</th>
           <th class="sortable" data-sort="ema">EMA Stack</th>
           <th class="sortable" data-sort="breadth">Breadth &gt;10MA</th>
           <th class="sortable" data-sort="breadthTrend">Breadth Trend</th>
