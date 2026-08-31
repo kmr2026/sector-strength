@@ -255,6 +255,194 @@
       "last_date": "2026-08-31"
     },
     {
+      "sector": "Private Bank",
+      "index_name": "NIFTY PRIVATE BANK",
+      "score": 94,
+      "score_delta": {
+        "available": false
+      },
+      "score_history": [
+        94
+      ],
+      "ema": {
+        "available": true,
+        "price": 28005.75,
+        "ema21": 27590.15,
+        "above_21": true,
+        "ema21_rising": true,
+        "pct_above_21": 1.51,
+        "extended": false,
+        "ema50": 27525.24,
+        "above_50": true,
+        "ema200": 27474.08,
+        "above_200": true,
+        "bullish_stack": true
+      },
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 70.0,
+        "pct_above_10ma_week_ago": 80.0,
+        "breadth_rising": false,
+        "pct_above_21ma": 70.0,
+        "pct_above_21ma_week_ago": 60.0,
+        "breadth_21_rising": true,
+        "overheated": false,
+        "n_stocks": 10,
+        "low_sample": false
+      },
+      "rs": {
+        "available": true,
+        "rs_ratio": 1.163,
+        "rs_above_ema": true,
+        "rs_rising_1w": true,
+        "history": [
+          1.1297,
+          1.1423,
+          1.1519,
+          1.1608,
+          1.1705,
+          1.1659,
+          1.1637,
+          1.1581,
+          1.1599,
+          1.1615,
+          1.1608,
+          1.1653,
+          1.1771,
+          1.1774,
+          1.1714,
+          1.1703,
+          1.1738,
+          1.1671,
+          1.1625,
+          1.1603,
+          1.1601,
+          1.1553,
+          1.1586,
+          1.1602,
+          1.1629,
+          1.1606,
+          1.163,
+          1.1596,
+          1.1715,
+          1.1495,
+          1.1527,
+          1.1457,
+          1.1429,
+          1.1477,
+          1.1416,
+          1.1375,
+          1.1366,
+          1.1315,
+          1.1287,
+          1.132,
+          1.1319,
+          1.1267,
+          1.1236,
+          1.1148,
+          1.12,
+          1.1189,
+          1.1216,
+          1.1174,
+          1.1182,
+          1.1245,
+          1.128,
+          1.13,
+          1.1328,
+          1.1377,
+          1.1355,
+          1.1279,
+          1.1456,
+          1.1522,
+          1.1473,
+          1.163
+        ]
+      },
+      "stocks": [
+        {
+          "symbol": "AXISBANK",
+          "name": "Axis Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 1300.0
+        },
+        {
+          "symbol": "FEDERALBNK",
+          "name": "Federal Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 356.7
+        },
+        {
+          "symbol": "ICICIBANK",
+          "name": "ICICI Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 1454.0
+        },
+        {
+          "symbol": "IDFCFIRSTB",
+          "name": "IDFC First Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 85.97
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "name": "IndusInd Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 1016.6
+        },
+        {
+          "symbol": "KOTAKBANK",
+          "name": "Kotak Mah. Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 419.4
+        },
+        {
+          "symbol": "YESBANK",
+          "name": "Yes Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 22.83
+        },
+        {
+          "symbol": "BANDHANBNK",
+          "name": "Bandhan Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 163.5
+        },
+        {
+          "symbol": "HDFCBANK",
+          "name": "HDFC Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 709.0
+        },
+        {
+          "symbol": "RBLBANK",
+          "name": "RBL Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 380.35
+        }
+      ],
+      "last_date": "2026-08-31"
+    },
+    {
       "sector": "Pharma",
       "index_name": "NIFTY PHARMA",
       "score": 93,

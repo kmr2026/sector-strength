@@ -49,6 +49,13 @@ SECTORS = {
     # the filename) pairs with the plain cap-weighted one, consistent with
     # every other index here using the plain name for the base filename.
     "Defence":             ("NIFTY INDIA DEFENCE",      NEW_INDICES_PATH + "ind_niftyindiadefence_list.csv"),
+    # Verified via find_private_bank_index_v2.py: unlike the other new
+    # sectors, this one lives on the OLDER archives.nseindia.com path (same
+    # as Bank/PSU Bank), with an underscore in an unusual spot in the
+    # filename. Every niftyindices.com guess for this one returned a 200
+    # but was actually the site's generic app shell HTML, not real data --
+    # worth remembering that a 200 status there isn't proof of a real file.
+    "Private Bank":        ("NIFTY PRIVATE BANK",       OLD_INDICES_PATH + "ind_nifty_privatebanklist.csv"),
 }
 
 # Broader breadth via NSE's Nifty Total Market list (~750 stocks, tagged by
