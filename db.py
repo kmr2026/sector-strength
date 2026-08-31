@@ -49,6 +49,13 @@ CREATE TABLE IF NOT EXISTS fetch_log (
     status TEXT,
     detail TEXT
 );
+
+CREATE TABLE IF NOT EXISTS score_history (
+    key TEXT NOT NULL,
+    date TEXT NOT NULL,
+    score INTEGER NOT NULL,
+    PRIMARY KEY (key, date)
+);
 """
 
 

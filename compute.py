@@ -11,7 +11,7 @@ compute_basic_industry.py).
 """
 from config import SECTORS, BENCHMARK
 from db import get_conn
-from scoring import series_for, ema_block, breadth_block, rs_block, regime_block, composite_score, stock_detail_list
+from scoring import series_for, ema_block, breadth_block, rs_block, regime_block, composite_score, stock_detail_list, score_delta_block
 
 
 def compute_all() -> dict:
@@ -30,15 +30,18 @@ def compute_all() -> dict:
             breadth = breadth_block(conn, symbols)
             rs = rs_block(sector_series, bench_series) if not bench_series.empty else {"available": False}
             score = composite_score(ema, breadth, rs)
+            last_date = sector_series.index[-1].date().isoformat() if not sector_series.empty else None
+            delta = score_delta_block(conn, f"sector:{sector_name}", last_date, score)
             results.append({
                 "sector": sector_name,
                 "index_name": index_name,
                 "score": score,
+                "score_delta": delta,
                 "ema": ema,
                 "breadth": breadth,
                 "rs": rs,
                 "stocks": stock_detail_list(conn, symbols),
-                "last_date": sector_series.index[-1].date().isoformat() if not sector_series.empty else None,
+                "last_date": last_date,
             })
     results.sort(key=lambda r: r["score"], reverse=True)
     return {"regime": regime, "sectors": results}

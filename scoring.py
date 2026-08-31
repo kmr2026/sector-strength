@@ -256,8 +256,51 @@ def stock_detail_list(conn, symbols: list[str]) -> list[dict]:
     return out
 
 
+def score_delta_block(conn, key: str, date: str | None, score: int) -> dict:
+    """Reads the most recent PRIOR score for this key (sector/industry) and
+    records today's score for next time. One call does both, so callers
+    just pass in what they already have (key, the data's own last_date --
+    not wall-clock today, so a rerun on the same trading day is a no-op
+    rather than faking a delta -- and the freshly computed score).
+
+    Creates score_history defensively so this works even if db.py's
+    schema was updated after the last fetch_data.py init_db() run.
+    """
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS score_history (
+            key TEXT NOT NULL, date TEXT NOT NULL, score INTEGER NOT NULL,
+            PRIMARY KEY (key, date)
+        )
+    """)
+    if not date:
+        return {"available": False}
+    row = conn.execute(
+        "SELECT date, score FROM score_history WHERE key = ? AND date < ? ORDER BY date DESC LIMIT 1",
+        (key, date),
+    ).fetchone()
+    conn.execute(
+        "INSERT INTO score_history (key, date, score) VALUES (?, ?, ?) "
+        "ON CONFLICT(key, date) DO UPDATE SET score = excluded.score",
+        (key, date, score),
+    )
+    if row is None:
+        return {"available": False}
+    prev_date, prev_score = row
+    return {"available": True, "delta": score - prev_score, "prev_score": prev_score, "prev_date": prev_date}
+
+
 def composite_score(ema: dict, breadth: dict, rs: dict) -> int:
-    """Simple, transparent point system -- add up what's true. Max 100."""
+    """Simple, transparent point system -- add up what's true. Max 100.
+
+    Breadth is scored on the 21-day MA (not 10-day) to match the EMA
+    block's own 21/50/200 lens -- 10MA breadth stays on the dashboard as
+    a faster, unscored early-warning column, but a score built partly on
+    a 10-day window and partly on a 21/50/200-day one was internally
+    inconsistent. RS carries more weight than before (up to 25 vs 15)
+    since it's the most direct "is this actually beating the market"
+    signal -- offset by trimming breadth's ceiling so the total still
+    caps at 100 (EMA 50 + breadth 25 + RS 25).
+    """
     score = 0
     if ema.get("available"):
         if ema.get("above_21"):
@@ -273,13 +316,13 @@ def composite_score(ema: dict, breadth: dict, rs: dict) -> int:
         if ema.get("extended"):
             score -= 10
     if breadth.get("available"):
-        pct = breadth.get("pct_above_10ma") or 0
-        score += round(pct / 100 * 25)
-        if breadth.get("breadth_rising"):
-            score += 10
+        pct = breadth.get("pct_above_21ma") or 0
+        score += round(pct / 100 * 20)
+        if breadth.get("breadth_21_rising"):
+            score += 5
     if rs.get("available"):
         if rs.get("rs_above_ema"):
-            score += 10
+            score += 15
         if rs.get("rs_rising_1w"):
-            score += 5
+            score += 10
     return max(0, min(100, score))

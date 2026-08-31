@@ -14,6 +14,14 @@ function scoreClass(score) {
   return "score-low";
 }
 
+function scoreDeltaHtml(delta) {
+  if (!delta || !delta.available) return "";
+  const d = delta.delta;
+  if (d > 0) return `<span class="score-delta up">▲${d}</span>`;
+  if (d < 0) return `<span class="score-delta down">▼${Math.abs(d)}</span>`;
+  return `<span class="score-delta flat">–</span>`;
+}
+
 function stackLadder(ema) {
   if (!ema.available) return `<span class="muted">n/a</span>`;
   const bars = [
@@ -180,7 +188,7 @@ function renderBoard(data) {
     tr.innerHTML = `
       <td class="rank-col" data-label="#">${i + 1}</td>
       <td class="sector-col" data-label="Name">${nameLabel}</td>
-      <td data-label="Score"><span class="score-badge ${scoreClass(row.score)}">${row.score}</span></td>
+      <td data-label="Score"><span class="score-badge ${scoreClass(row.score)}">${row.score}</span>${scoreDeltaHtml(row.score_delta)}</td>
       <td data-label="EMA Stack">${stackLadder(row.ema)}</td>
       <td data-label="Breadth">${breadth.val}</td>
       <td data-label="Trend">${breadth.trend}</td>
@@ -245,6 +253,9 @@ function openDetail(row) {
   const e = row.ema, b = row.breadth, rs = row.rs;
   const items = [
     detailItem("Composite Score", row.score),
+    detailItem("Score vs Last Session", row.score_delta && row.score_delta.available
+      ? `${row.score_delta.delta > 0 ? "+" : ""}${row.score_delta.delta} (was ${row.score_delta.prev_score} on ${row.score_delta.prev_date})`
+      : "n/a (first session)"),
     detailItem("Last Data Date", row.last_date || "—"),
     detailItem("Price vs 21 EMA", e.available ? `${e.pct_above_21}%` : "n/a"),
     detailItem("Bullish Stack", e.available ? (e.bullish_stack ? "Yes" : "No") : "n/a"),
