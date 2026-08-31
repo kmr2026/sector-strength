@@ -230,9 +230,15 @@ function stockChip(stock) {
   if (!stock.has_data) {
     return `<div class="stock-chip stock-nodata" title="${stock.name} — no NSE price data available">${stock.symbol}</div>`;
   }
-  const cls = stock.above_10ma ? "stock-above" : "stock-below";
-  const arrow = stock.above_10ma ? "▲" : "▼";
-  return `<div class="stock-chip ${cls}" title="${stock.name} — ₹${stock.close}">${arrow} ${stock.symbol}</div>`;
+  let cls, arrow, statusNote;
+  if (stock.above_10ma) {
+    cls = "stock-above"; arrow = "▲"; statusNote = "above 10MA and 21MA";
+  } else if (stock.above_21ma) {
+    cls = "stock-cooling"; arrow = "▼"; statusNote = "below 10MA, still above 21MA";
+  } else {
+    cls = "stock-below"; arrow = "▼"; statusNote = "below 10MA and 21MA";
+  }
+  return `<div class="stock-chip ${cls}" title="${stock.name} — ₹${stock.close} — ${statusNote}">${arrow} ${stock.symbol}</div>`;
 }
 
 function stockGridHtml(stocks) {

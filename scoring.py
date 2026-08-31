@@ -213,10 +213,11 @@ def get_company_names(conn, symbols: list[str]) -> dict:
 
 def stock_detail_list(conn, symbols: list[str]) -> list[dict]:
     """Per-stock breakdown for a sector/industry: whether each symbol has
-    price data, and if so whether it's above its own 10-day MA and its
-    latest close. This is exactly what breadth_block() already counts
-    internally -- surfaced here so the UI can show names instead of a
-    bare total that doesn't match the math underneath it."""
+    price data, and if so whether it's above its own 10-day AND 21-day MA,
+    plus its latest close. The 10-day flag is what breadth_block() counts
+    internally; 21-day is added so the UI can distinguish "cooling off but
+    still above its medium-term trend" from "broken on both timeframes" --
+    not just a flat above/below split."""
     if not symbols:
         return []
     names = get_company_names(conn, symbols)
@@ -227,32 +228,38 @@ def stock_detail_list(conn, symbols: list[str]) -> list[dict]:
     )
     if df.empty:
         return [
-            {"symbol": s, "name": names.get(s, s), "has_data": False, "above_10ma": None, "close": None}
+            {"symbol": s, "name": names.get(s, s), "has_data": False, "above_10ma": None, "above_21ma": None, "close": None}
             for s in symbols
         ]
 
     df["date"] = pd.to_datetime(df["date"])
     wide = df.pivot(index="date", columns="symbol", values="close").sort_index()
     ma10 = wide.rolling(10).mean()
-    above = wide > ma10
+    ma21 = wide.rolling(21).mean()
+    above10 = wide > ma10
+    above21 = wide > ma21
     have_data = set(wide.columns)
 
     out = []
     for s in symbols:
         if s not in have_data:
-            out.append({"symbol": s, "name": names.get(s, s), "has_data": False, "above_10ma": None, "close": None})
+            out.append({"symbol": s, "name": names.get(s, s), "has_data": False, "above_10ma": None, "above_21ma": None, "close": None})
             continue
         closes = wide[s].dropna()
-        aboves = above[s].dropna()
+        aboves10 = above10[s].dropna()
+        aboves21 = above21[s].dropna()
         out.append({
             "symbol": s,
             "name": names.get(s, s),
             "has_data": True,
-            "above_10ma": bool(aboves.iloc[-1]) if not aboves.empty else None,
+            "above_10ma": bool(aboves10.iloc[-1]) if not aboves10.empty else None,
+            "above_21ma": bool(aboves21.iloc[-1]) if not aboves21.empty else None,
             "close": round(float(closes.iloc[-1]), 2) if not closes.empty else None,
         })
-    # stocks with data first (above-10MA ones first within that), no-data stocks last
-    out.sort(key=lambda r: (not r["has_data"], not (r["above_10ma"] or False), r["symbol"]))
+    # priority: has data > above 10MA > above 21MA > symbol, so the
+    # strongest stocks (green) sort first, then the "cooling off" ones
+    # (orange), then broken ones (red), then no-data stocks last
+    out.sort(key=lambda r: (not r["has_data"], not (r["above_10ma"] or False), not (r["above_21ma"] or False), r["symbol"]))
     return out
 
 
