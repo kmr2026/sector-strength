@@ -36,6 +36,19 @@ SECTORS = {
     # "Nifty Telecommunications" (matched here in uppercase, since
     # update_index_prices() uppercases before comparing).
     "Telecom":             ("NIFTY TELECOMMUNICATIONS", NEW_INDICES_PATH + "ind_niftytelecommunications_list.csv"),
+    # Verified via find_new_sector_indices.py:
+    "Cement":              ("NIFTY CEMENT",             NEW_INDICES_PATH + "ind_niftycement_list.csv"),
+    "Capital Goods":       ("NIFTY CAPITAL GOODS",      NEW_INDICES_PATH + "ind_niftycapitalgoods_list.csv"),
+    "Power":               ("NIFTY POWER",              NEW_INDICES_PATH + "ind_niftypower_list.csv"),
+    "NBFC":                ("NIFTY NBFC",               NEW_INDICES_PATH + "ind_niftynbfc_list.csv"),
+    "Insurance":           ("NIFTY INSURANCE",          NEW_INDICES_PATH + "ind_niftyinsurance_list.csv"),
+    # Verified via check_defence_variants.py: the ind_close_all file has TWO
+    # Defence-related indices -- "Nifty India Defence" (cap-weighted) and
+    # "Nifty India Defence Equal Weight" (a separate variant). The working
+    # constituent URL (ind_niftyindiadefence_list.csv, no "equal weight" in
+    # the filename) pairs with the plain cap-weighted one, consistent with
+    # every other index here using the plain name for the base filename.
+    "Defence":             ("NIFTY INDIA DEFENCE",      NEW_INDICES_PATH + "ind_niftyindiadefence_list.csv"),
 }
 
 # Broader breadth via NSE's Nifty Total Market list (~750 stocks, tagged by
@@ -86,14 +99,16 @@ EXTENDED_FROM_21EMA_PCT = 12.0   # flag sector if index > 12% above its 21 EMA
 # classify_industries.py path -- see that file's docstring)
 EQUITY_MASTER_URL = f"{NSE_BASE}/content/equities/EQUITY_L.csv"
 
-# PRIMARY industry classification source: NSE's Nifty 500 constituent list
-# uses an older, much finer-grained "Industry" column (e.g. "FERTILISERS &
-# PESTICIDES", "CEMENT & CEMENT PRODUCTS" -- ~70+ categories) than the
-# 22-category Total Market file. It's a plain CSV, same reliable pattern as
-# everything else in this project -- unlike the per-stock quote API, it's
-# NOT behind Akamai bot protection. Covers ~500 stocks (top 500 by market
-# cap), not the full universe, but with real granularity and zero risk of
-# getting blocked.
+# FALLBACK industry classification source (only used if you skip
+# classify_via_screener.py -- see fetch_data.py's update_nifty500_industries()).
+# CORRECTED: this file's Industry column is NOT the older, finer-grained
+# scheme (things like "FERTILISERS & PESTICIDES") -- live testing showed
+# NSE retired that scheme before Nov 2024, and this file now uses the same
+# coarse ~22-category scheme as the Total Market file (used for sector
+# breadth widening above). It's still a plain CSV, not behind Akamai, so
+# it's a reasonable ~500-stock fallback -- just not genuinely finer detail.
+# The real primary source is classify_via_screener.py (~186 categories,
+# ~2,500 stocks, via screener.in's public pages) -- run that instead.
 NIFTY500_INDUSTRY_URL = OLD_INDICES_PATH + "ind_nifty500list.csv"
 
 # A basic industry needs at least this many stocks with price history to be
