@@ -18,7 +18,7 @@ the same in the synthetic index, same as breadth already does.
 import pandas as pd
 from config import BENCHMARK, MIN_STOCKS_PER_BASIC_INDUSTRY
 from db import get_conn
-from scoring import series_for, ema_block, breadth_block, rs_block, composite_score, stock_detail_list, score_delta_block
+from scoring import series_for, ema_block, breadth_block, rs_block, composite_score, stock_detail_list, score_delta_block, score_history_series
 
 
 def _build_synthetic_index(conn, symbols: list[str]) -> pd.Series:
@@ -81,13 +81,19 @@ def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
                 continue  # too few stocks for this to mean anything
 
             last_date = synthetic_series.index[-1].date().isoformat() if not synthetic_series.empty else None
-            delta = score_delta_block(conn, f"industry:{industry_name}", last_date, score)
+            key = f"industry:{industry_name}"
+            delta = score_delta_block(
+                conn, key, last_date, score,
+                bullish_stack=ema.get("bullish_stack") if ema.get("available") else None,
+                overheated=breadth.get("overheated") if breadth.get("available") else None,
+            )
 
             results.append({
                 "industry": industry_name,
                 "n_stocks_total": len(symbols),
                 "score": score,
                 "score_delta": delta,
+                "score_history": score_history_series(conn, key),
                 "ema": ema,
                 "breadth": breadth,
                 "rs": rs,

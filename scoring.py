@@ -6,6 +6,7 @@ The actual EMA / breadth / RS / composite-score math, shared by:
 Keeping this in one place means both views score things exactly the same
 way -- no drift between the two.
 """
+import sqlite3
 import pandas as pd
 from config import EXTENDED_FROM_21EMA_PCT, LOW_SAMPLE_THRESHOLD, OVERHEATED_BREADTH_PCT
 
@@ -263,15 +264,23 @@ def stock_detail_list(conn, symbols: list[str]) -> list[dict]:
     return out
 
 
-def score_delta_block(conn, key: str, date: str | None, score: int) -> dict:
-    """Reads the most recent PRIOR score for this key (sector/industry) and
-    records today's score for next time. One call does both, so callers
-    just pass in what they already have (key, the data's own last_date --
-    not wall-clock today, so a rerun on the same trading day is a no-op
-    rather than faking a delta -- and the freshly computed score).
+def score_delta_block(conn, key: str, date: str | None, score: int,
+                       bullish_stack: bool | None = None, overheated: bool | None = None) -> dict:
+    """Reads the most recent PRIOR score (and bullish_stack/overheated
+    state) for this key (sector/industry) and records today's for next
+    time. One call does both, so callers just pass in what they already
+    have (key, the data's own last_date -- not wall-clock today, so a
+    rerun on the same trading day is a no-op rather than faking a delta
+    -- the freshly computed score, and the two flip-worth-flagging flags).
 
-    Creates score_history defensively so this works even if db.py's
-    schema was updated after the last fetch_data.py init_db() run.
+    *_changed is True/False only when we actually know the prior value;
+    None means "unknown" (e.g. the very first run after this field was
+    added, when older rows predate it) -- deliberately not reported as a
+    flip just because the column used to be empty.
+
+    Creates score_history defensively (and ALTERs in the two newer
+    columns if missing) so this works even if db.py's schema was updated
+    after the last fetch_data.py init_db() run.
     """
     conn.execute("""
         CREATE TABLE IF NOT EXISTS score_history (
@@ -279,21 +288,85 @@ def score_delta_block(conn, key: str, date: str | None, score: int) -> dict:
             PRIMARY KEY (key, date)
         )
     """)
+    for col in ("bullish_stack", "overheated"):
+        try:
+            conn.execute(f"ALTER TABLE score_history ADD COLUMN {col} INTEGER")
+        except sqlite3.OperationalError:
+            pass  # column already exists
     if not date:
         return {"available": False}
     row = conn.execute(
-        "SELECT date, score FROM score_history WHERE key = ? AND date < ? ORDER BY date DESC LIMIT 1",
+        "SELECT date, score, bullish_stack, overheated FROM score_history "
+        "WHERE key = ? AND date < ? ORDER BY date DESC LIMIT 1",
         (key, date),
     ).fetchone()
     conn.execute(
-        "INSERT INTO score_history (key, date, score) VALUES (?, ?, ?) "
-        "ON CONFLICT(key, date) DO UPDATE SET score = excluded.score",
-        (key, date, score),
+        "INSERT INTO score_history (key, date, score, bullish_stack, overheated) VALUES (?, ?, ?, ?, ?) "
+        "ON CONFLICT(key, date) DO UPDATE SET score = excluded.score, "
+        "bullish_stack = excluded.bullish_stack, overheated = excluded.overheated",
+        (key, date, score, bullish_stack, overheated),
     )
     if row is None:
         return {"available": False}
-    prev_date, prev_score = row
-    return {"available": True, "delta": score - prev_score, "prev_score": prev_score, "prev_date": prev_date}
+    prev_date, prev_score, prev_bullish_stack, prev_overheated = row
+
+    def _changed(new, old):
+        if new is None or old is None:
+            return None
+        return bool(new) != bool(old)
+
+    return {
+        "available": True,
+        "delta": score - prev_score,
+        "prev_score": prev_score,
+        "prev_date": prev_date,
+        "bullish_stack_changed": _changed(bullish_stack, prev_bullish_stack),
+        "overheated_changed": _changed(overheated, prev_overheated),
+    }
+
+
+def regime_delta_block(conn, key: str, date: str | None, state: str | None) -> dict:
+    """Same idea as score_delta_block but for a regime's Bullish/Mixed/
+    Bearish state string (used for the Nifty 50 / MIDSMALL400 banners) --
+    a separate small table since a state string isn't a score.
+
+    Returns 'delta_available' (not 'available') deliberately -- the
+    caller merges this dict into regime_block()'s own output via
+    dict.update(), and regime_block() already uses 'available' to mean
+    something different (whether the regime itself could be computed).
+    Reusing that name would silently overwrite it.
+    """
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS regime_history (
+            key TEXT NOT NULL, date TEXT NOT NULL, state TEXT,
+            PRIMARY KEY (key, date)
+        )
+    """)
+    if not date or not state:
+        return {"delta_available": False}
+    row = conn.execute(
+        "SELECT date, state FROM regime_history WHERE key = ? AND date < ? ORDER BY date DESC LIMIT 1",
+        (key, date),
+    ).fetchone()
+    conn.execute(
+        "INSERT INTO regime_history (key, date, state) VALUES (?, ?, ?) "
+        "ON CONFLICT(key, date) DO UPDATE SET state = excluded.state",
+        (key, date, state),
+    )
+    if row is None:
+        return {"delta_available": False}
+    prev_date, prev_state = row
+    return {"delta_available": True, "changed": state != prev_state, "prev_state": prev_state, "prev_date": prev_date}
+
+
+def score_history_series(conn, key: str, limit: int = 60) -> list[int]:
+    """Chronological list of this key's recent recorded scores, for a
+    sparkline -- same shape as rs_block()'s 'history' list."""
+    rows = conn.execute(
+        "SELECT score FROM score_history WHERE key = ? ORDER BY date DESC LIMIT ?",
+        (key, limit),
+    ).fetchall()
+    return [r[0] for r in reversed(rows)]
 
 
 def composite_score(ema: dict, breadth: dict, rs: dict) -> int:

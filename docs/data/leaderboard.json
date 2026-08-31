@@ -7,7 +7,8 @@
     "above_21": false,
     "above_50": false,
     "above_200": false,
-    "bullish_stack": false
+    "bullish_stack": false,
+    "delta_available": false
   },
   "regime_midsmall": {
     "available": true,
@@ -17,7 +18,8 @@
     "above_21": true,
     "above_50": true,
     "above_200": true,
-    "bullish_stack": true
+    "bullish_stack": true,
+    "delta_available": false
   },
   "sectors": [
     {
@@ -27,6 +29,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        91
+      ],
       "ema": {
         "available": true,
         "price": 26991.85,
@@ -292,6 +297,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        91
+      ],
       "ema": {
         "available": true,
         "price": 40543.45,
@@ -501,6 +509,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        91
+      ],
       "ema": {
         "available": true,
         "price": 16798.5,
@@ -766,6 +777,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        88
+      ],
       "ema": {
         "available": true,
         "price": 13525.35,
@@ -991,6 +1005,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        83
+      ],
       "ema": {
         "available": true,
         "price": 908.85,
@@ -1176,6 +1193,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        82
+      ],
       "ema": {
         "available": true,
         "price": 8604.3,
@@ -1377,6 +1397,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        73
+      ],
       "ema": {
         "available": true,
         "price": 1602.9,
@@ -1562,6 +1585,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        67
+      ],
       "ema": {
         "available": true,
         "price": 31281.7,
@@ -1747,6 +1773,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        63
+      ],
       "ema": {
         "available": true,
         "price": 3812.98,
@@ -1950,6 +1979,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        51
+      ],
       "ema": {
         "available": true,
         "price": 28851.8,
@@ -2175,6 +2207,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        44
+      ],
       "ema": {
         "available": true,
         "price": 57496.3,
@@ -2392,6 +2427,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        43
+      ],
       "ema": {
         "available": true,
         "price": 30190.75,
@@ -2657,6 +2695,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        31
+      ],
       "ema": {
         "available": true,
         "price": 26286.5,
@@ -2922,6 +2963,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        26
+      ],
       "ema": {
         "available": true,
         "price": 11904.2,
@@ -3267,6 +3311,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        14
+      ],
       "ema": {
         "available": true,
         "price": 38003.65,
@@ -3692,6 +3739,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        4
+      ],
       "ema": {
         "available": true,
         "price": 11067.7,
@@ -3917,6 +3967,9 @@
       "score_delta": {
         "available": false
       },
+      "score_history": [
+        1
+      ],
       "ema": {
         "available": true,
         "price": 46815.0,

@@ -11,7 +11,7 @@ compute_basic_industry.py).
 """
 from config import SECTORS, BENCHMARK, MIDSMALL_INDEX
 from db import get_conn
-from scoring import series_for, ema_block, breadth_block, rs_block, regime_block, composite_score, stock_detail_list, score_delta_block
+from scoring import series_for, ema_block, breadth_block, rs_block, regime_block, composite_score, stock_detail_list, score_delta_block, regime_delta_block, score_history_series
 
 
 def compute_all() -> dict:
@@ -21,6 +21,12 @@ def compute_all() -> dict:
         regime = regime_block(bench_series) if not bench_series.empty else {"available": False}
         midsmall_series = series_for(conn, "index_prices", "sector", MIDSMALL_INDEX)
         regime_midsmall = regime_block(midsmall_series) if not midsmall_series.empty else {"available": False}
+
+        nifty_last_date = bench_series.index[-1].date().isoformat() if not bench_series.empty else None
+        regime.update(regime_delta_block(conn, f"regime:{BENCHMARK}", nifty_last_date, regime.get("state")))
+        midsmall_last_date = midsmall_series.index[-1].date().isoformat() if not midsmall_series.empty else None
+        regime_midsmall.update(regime_delta_block(conn, f"regime:{MIDSMALL_INDEX}", midsmall_last_date, regime_midsmall.get("state")))
+
         for sector_name, (index_name, _) in SECTORS.items():
             sector_series = series_for(conn, "index_prices", "sector", index_name)
             symbols = [
@@ -33,12 +39,18 @@ def compute_all() -> dict:
             rs = rs_block(sector_series, bench_series) if not bench_series.empty else {"available": False}
             score = composite_score(ema, breadth, rs)
             last_date = sector_series.index[-1].date().isoformat() if not sector_series.empty else None
-            delta = score_delta_block(conn, f"sector:{sector_name}", last_date, score)
+            key = f"sector:{sector_name}"
+            delta = score_delta_block(
+                conn, key, last_date, score,
+                bullish_stack=ema.get("bullish_stack") if ema.get("available") else None,
+                overheated=breadth.get("overheated") if breadth.get("available") else None,
+            )
             results.append({
                 "sector": sector_name,
                 "index_name": index_name,
                 "score": score,
                 "score_delta": delta,
+                "score_history": score_history_series(conn, key),
                 "ema": ema,
                 "breadth": breadth,
                 "rs": rs,

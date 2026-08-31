@@ -190,6 +190,25 @@ main {
 .rank-col { color: var(--muted); width: 32px; }
 .sector-col { font-weight: 600; }
 
+.change-badge {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 7px;
+  border-radius: 3px;
+  text-transform: none;
+}
+.change-good { background: rgba(63,185,80,0.15); color: var(--green); }
+.change-bad { background: rgba(248,81,73,0.12); color: var(--red); }
+.change-warn { background: rgba(210,153,34,0.15); color: var(--amber); }
+
+.regime-changed {
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
 .score-badge {
   display: inline-block;
   min-width: 34px;

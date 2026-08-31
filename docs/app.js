@@ -167,6 +167,25 @@ document.querySelectorAll("th.sortable").forEach(th => {
 
 // --- Rendering ---------------------------------------------------------
 
+function changedTodayBadge(row) {
+  const delta = row.score_delta;
+  if (!delta || !delta.available) return "";
+  const badges = [];
+  if (delta.bullish_stack_changed === true) {
+    const nowBullish = row.ema && row.ema.bullish_stack;
+    badges.push(nowBullish
+      ? `<span class="change-badge change-good">stack turned bullish</span>`
+      : `<span class="change-badge change-bad">stack turned bearish</span>`);
+  }
+  // Only flag overheating turning ON -- turning off is "back to normal",
+  // not something that needs your attention the way a fresh crowding
+  // signal does.
+  if (delta.overheated_changed === true && row.breadth && row.breadth.overheated) {
+    badges.push(`<span class="change-badge change-warn">overheated</span>`);
+  }
+  return badges.join("");
+}
+
 function renderBoard(data) {
   const tbody = document.getElementById("board-body");
   tbody.innerHTML = "";
@@ -187,7 +206,7 @@ function renderBoard(data) {
     const nameLabel = rowName(row);
     tr.innerHTML = `
       <td class="rank-col" data-label="#">${i + 1}</td>
-      <td class="sector-col" data-label="Name">${nameLabel}</td>
+      <td class="sector-col" data-label="Name">${nameLabel}${changedTodayBadge(row)}</td>
       <td data-label="Score"><span class="score-badge ${scoreClass(row.score)}">${row.score}</span>${scoreDeltaHtml(row.score_delta)}</td>
       <td data-label="EMA Stack">${stackLadder(row.ema)}</td>
       <td data-label="Breadth">${breadth.val}</td>
@@ -279,6 +298,9 @@ function openDetail(row) {
   const canvas = document.getElementById("rs-chart");
   drawSparkline(canvas, rs.available ? rs.history : []);
 
+  const scoreCanvas = document.getElementById("score-chart");
+  drawSparkline(scoreCanvas, row.score_history || []);
+
   const stocks = row.stocks || [];
   document.getElementById("stock-count").textContent = stocks.length;
   document.getElementById("stock-grid").innerHTML = stockGridHtml(stocks);
@@ -344,8 +366,9 @@ function renderRegimeBanner(elId, label, regime) {
     : regime.state === "Bearish" ? "regime-bearish"
     : "regime-mixed";
   el.className = `regime-banner ${cls}`;
+  const changedNote = regime.changed ? ` <span class="regime-changed">(changed today, was ${regime.prev_state})</span>` : "";
   el.innerHTML = `
-    <div class="regime-title">${label}: ${regime.state}</div>
+    <div class="regime-title">${label}: ${regime.state}${changedNote}</div>
     <div class="regime-subtitle">${regime.subtitle}</div>
   `;
   el.classList.remove("hidden");
