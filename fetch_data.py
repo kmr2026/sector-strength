@@ -97,11 +97,26 @@ def fetch_constituents(session: requests.Session, list_url: str) -> list[str]:
     return df[symbol_col].dropna().astype(str).str.strip().tolist()
 
 
-def update_constituents():
+def update_constituents(force: bool = False):
+    """Fetches each sector's constituent list -- but only for sectors that
+    don't already have one, unless force=True. Per-sector check, not a
+    single global 'does the table have any rows' flag: that global-flag
+    version was a real bug (found via live testing) -- once your first
+    sectors populated this table, the whole function stopped running
+    forever, silently starving any NEW sector added to config.py later of
+    its constituent list (breadth/stock-detail then show empty for that
+    sector, even though its index-level price data backfills fine). Same
+    fix pattern as the index_prices brand-new-index backfill above."""
     print("Refreshing sector constituent lists...")
     session = make_session()
     with get_conn() as conn:
         for sector_name, (_, list_url) in SECTORS.items():
+            if not force:
+                existing = conn.execute(
+                    "SELECT COUNT(*) FROM sector_constituents WHERE sector = ?", (sector_name,)
+                ).fetchone()[0]
+                if existing > 0:
+                    continue
             symbols = fetch_constituents(session, list_url)
             if not symbols:
                 continue
@@ -312,14 +327,13 @@ def update_stock_prices():
 def run_daily_update():
     init_db()
     with get_conn() as conn:
-        has_constituents = conn.execute(
-            "SELECT COUNT(*) FROM sector_constituents"
-        ).fetchone()[0] > 0
         has_basic_industry = conn.execute(
             "SELECT COUNT(*) FROM basic_industry_map"
         ).fetchone()[0] > 0
-    if not has_constituents:
-        update_constituents()
+    # Always call this -- it's per-sector idempotent now (skips sectors
+    # that already have data), so it's cheap even when nothing's new, and
+    # it's what catches any newly-added sector automatically going forward.
+    update_constituents()
     if not has_basic_industry:
         update_nifty500_industries()
     update_index_prices()

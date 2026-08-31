@@ -380,7 +380,9 @@ function applyView(view, raw) {
     infoIcon.classList.add("hidden");
     renderRegimeBanner("regime-banner-nifty", "Nifty 50", raw.regime);
     renderRegimeBanner("regime-banner-midsmall", "Mid/Smallcap 400", raw.regime_midsmall);
-    showData(raw.sectors || []);
+    const sectors = raw.sectors || [];
+    document.getElementById("sectors-tab").textContent = `Sectors (${sectors.length})`;
+    showData(sectors);
     return;
   }
   // industries view: raw is { classification_source, industries } -- no
