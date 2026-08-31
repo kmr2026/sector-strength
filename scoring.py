@@ -1,12 +1,16 @@
 """
 The actual EMA / breadth / RS / composite-score math, shared by:
-  - compute.py           (your 16 tracked sectors, real NSE index prices)
-  - compute_basic_industry.py  (197 basic industries, synthetic indices)
+  - compute.py                  (your 17 tracked sectors, real NSE index prices)
+  - compute_basic_industry.py   (basic industries, synthetic indices)
 
 Keeping this in one place means both views score things exactly the same
 way -- no drift between the two.
+
+Table creation for score_history / regime_history lives centrally in
+db.py's init_db() now, not here -- this file just reads/writes to them,
+assuming init_db() has already been run (fetch_data.py does this at the
+start of every run).
 """
-import sqlite3
 import pandas as pd
 from config import EXTENDED_FROM_21EMA_PCT, LOW_SAMPLE_THRESHOLD, OVERHEATED_BREADTH_PCT
 
@@ -81,9 +85,10 @@ def _join_labels(labels: list[str]) -> str:
 
 
 def regime_block(series: pd.Series) -> dict:
-    """Classifies an index (meant for the Nifty 50 benchmark) into a
-    Bullish / Mixed / Bearish regime using the same ema_block() math
-    used everywhere else, so this never drifts from the per-sector logic.
+    """Classifies an index (meant for the Nifty 50 benchmark, or the
+    Mid/Smallcap 400 second regime benchmark) into a Bullish / Mixed /
+    Bearish regime using the same ema_block() math used everywhere else,
+    so this never drifts from the per-sector logic.
 
     Unlike a fixed 3-bucket label, the "Mixed" subtitle is assembled from
     exactly which EMAs are above/below -- "above 21 and 50, below 200" is
@@ -167,6 +172,7 @@ def breadth_block(conn, symbols: list[str]) -> dict:
     week_ago_pct_21 = pct_above(above21, week_ago_idx) if len(wide) >= 21 else None
 
     n_stocks = int(above10.iloc[-1].notna().sum())
+
     return {
         "available": latest_pct is not None,
         "pct_above_10ma": latest_pct,
@@ -278,21 +284,10 @@ def score_delta_block(conn, key: str, date: str | None, score: int,
     added, when older rows predate it) -- deliberately not reported as a
     flip just because the column used to be empty.
 
-    Creates score_history defensively (and ALTERs in the two newer
-    columns if missing) so this works even if db.py's schema was updated
-    after the last fetch_data.py init_db() run.
+    Assumes score_history (with bullish_stack/overheated columns) already
+    exists -- db.py's init_db() guarantees this, including migrating
+    databases created before those columns existed.
     """
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS score_history (
-            key TEXT NOT NULL, date TEXT NOT NULL, score INTEGER NOT NULL,
-            PRIMARY KEY (key, date)
-        )
-    """)
-    for col in ("bullish_stack", "overheated"):
-        try:
-            conn.execute(f"ALTER TABLE score_history ADD COLUMN {col} INTEGER")
-        except sqlite3.OperationalError:
-            pass  # column already exists
     if not date:
         return {"available": False}
     row = conn.execute(
@@ -335,13 +330,10 @@ def regime_delta_block(conn, key: str, date: str | None, state: str | None) -> d
     dict.update(), and regime_block() already uses 'available' to mean
     something different (whether the regime itself could be computed).
     Reusing that name would silently overwrite it.
+
+    Assumes regime_history already exists -- db.py's init_db() guarantees
+    this.
     """
-    conn.execute("""
-        CREATE TABLE IF NOT EXISTS regime_history (
-            key TEXT NOT NULL, date TEXT NOT NULL, state TEXT,
-            PRIMARY KEY (key, date)
-        )
-    """)
     if not date or not state:
         return {"delta_available": False}
     row = conn.execute(

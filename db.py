@@ -54,6 +54,15 @@ CREATE TABLE IF NOT EXISTS score_history (
     key TEXT NOT NULL,
     date TEXT NOT NULL,
     score INTEGER NOT NULL,
+    bullish_stack INTEGER,
+    overheated INTEGER,
+    PRIMARY KEY (key, date)
+);
+
+CREATE TABLE IF NOT EXISTS regime_history (
+    key TEXT NOT NULL,
+    date TEXT NOT NULL,
+    state TEXT,
     PRIMARY KEY (key, date)
 );
 """
@@ -73,6 +82,15 @@ def get_conn():
 def init_db():
     with get_conn() as conn:
         conn.executescript(SCHEMA)
+        # Migration for databases created before bullish_stack/overheated
+        # existed on score_history -- CREATE TABLE IF NOT EXISTS above is a
+        # no-op on an already-existing table, so these columns need adding
+        # separately. Harmless/no-op on a fresh table that already has them.
+        for col in ("bullish_stack", "overheated"):
+            try:
+                conn.execute(f"ALTER TABLE score_history ADD COLUMN {col} INTEGER")
+            except sqlite3.OperationalError:
+                pass  # column already exists
 
 
 if __name__ == "__main__":
