@@ -48,9 +48,9 @@ def trading_days_back(n: int):
     d = dt.date.today()
     days = []
     while len(days) < n:
-        d -= dt.timedelta(days=1)
         if d.weekday() < 5:  # Mon-Fri
             days.append(d)
+        d -= dt.timedelta(days=1)
     return days
 
 
