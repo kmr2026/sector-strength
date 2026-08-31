@@ -33,7 +33,8 @@
         "pct_above_10ma": 73.3,
         "pct_above_10ma_week_ago": 60.0,
         "breadth_rising": true,
-        "n_stocks": 15
+        "n_stocks": 15,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -235,7 +236,8 @@
         "pct_above_10ma": 60.0,
         "pct_above_10ma_week_ago": 35.0,
         "breadth_rising": true,
-        "n_stocks": 20
+        "n_stocks": 20,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -472,7 +474,8 @@
         "pct_above_10ma": 60.0,
         "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": true,
-        "n_stocks": 20
+        "n_stocks": 20,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -709,7 +712,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 16.7,
         "breadth_rising": true,
-        "n_stocks": 12
+        "n_stocks": 12,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -890,7 +894,8 @@
         "pct_above_10ma": 46.2,
         "pct_above_10ma_week_ago": 53.8,
         "breadth_rising": false,
-        "n_stocks": 13
+        "n_stocks": 13,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -1078,7 +1083,8 @@
         "pct_above_10ma": 100.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": true,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -1245,7 +1251,8 @@
         "pct_above_10ma": 30.0,
         "pct_above_10ma_week_ago": 90.0,
         "breadth_rising": false,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -1412,7 +1419,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": false,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -1579,7 +1587,8 @@
         "pct_above_10ma": 61.5,
         "pct_above_10ma_week_ago": 38.5,
         "breadth_rising": true,
-        "n_stocks": 13
+        "n_stocks": 13,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -1761,7 +1770,8 @@
         "pct_above_10ma": 46.7,
         "pct_above_10ma_week_ago": 46.7,
         "breadth_rising": false,
-        "n_stocks": 15
+        "n_stocks": 15,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -1963,7 +1973,8 @@
         "pct_above_10ma": 40.0,
         "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": true,
-        "n_stocks": 20
+        "n_stocks": 20,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -2200,7 +2211,8 @@
         "pct_above_10ma": 28.6,
         "pct_above_10ma_week_ago": 64.3,
         "breadth_rising": false,
-        "n_stocks": 14
+        "n_stocks": 14,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -2395,7 +2407,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": false,
-        "n_stocks": 30
+        "n_stocks": 30,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -2702,7 +2715,8 @@
         "pct_above_10ma": 25.0,
         "pct_above_10ma_week_ago": 15.0,
         "breadth_rising": true,
-        "n_stocks": 40
+        "n_stocks": 40,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -3079,7 +3093,8 @@
         "pct_above_10ma": 35.0,
         "pct_above_10ma_week_ago": 55.0,
         "breadth_rising": false,
-        "n_stocks": 20
+        "n_stocks": 20,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -3316,7 +3331,8 @@
         "pct_above_10ma": 26.7,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": false,
-        "n_stocks": 15
+        "n_stocks": 15,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -3518,7 +3534,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 6.7,
         "breadth_rising": false,
-        "n_stocks": 15
+        "n_stocks": 15,
+        "low_sample": false
       },
       "rs": {
         "available": true,

@@ -212,6 +212,9 @@ main {
 .trend-down { color: var(--red); }
 .trend-flat { color: var(--muted); }
 
+.n-stocks { color: var(--muted); }
+.n-stocks.low-sample { color: var(--amber); font-weight: 700; cursor: help; }
+
 .rs-tag {
   font-size: 11px;
   padding: 2px 7px;

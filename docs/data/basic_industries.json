@@ -24,7 +24,8 @@
         "pct_above_10ma": 100.0,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": true,
-        "n_stocks": 4
+        "n_stocks": 4,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -164,7 +165,8 @@
         "pct_above_10ma": 87.5,
         "pct_above_10ma_week_ago": 37.5,
         "breadth_rising": true,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -325,7 +327,8 @@
         "pct_above_10ma": 83.3,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": true,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -486,7 +489,8 @@
         "pct_above_10ma": 77.8,
         "pct_above_10ma_week_ago": 44.4,
         "breadth_rising": true,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -668,7 +672,8 @@
         "pct_above_10ma": 66.7,
         "pct_above_10ma_week_ago": 55.6,
         "breadth_rising": true,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -885,7 +890,8 @@
         "pct_above_10ma": 69.2,
         "pct_above_10ma_week_ago": 30.8,
         "breadth_rising": true,
-        "n_stocks": 13
+        "n_stocks": 13,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -1081,7 +1087,8 @@
         "pct_above_10ma": 87.5,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": true,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -1256,7 +1263,8 @@
         "pct_above_10ma": 68.4,
         "pct_above_10ma_week_ago": 42.1,
         "breadth_rising": true,
-        "n_stocks": 19
+        "n_stocks": 19,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -1487,7 +1495,8 @@
         "pct_above_10ma": 66.7,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -1627,7 +1636,8 @@
         "pct_above_10ma": 62.5,
         "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": true,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -1781,7 +1791,8 @@
         "pct_above_10ma": 58.3,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": true,
-        "n_stocks": 12
+        "n_stocks": 12,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -2019,7 +2030,8 @@
         "pct_above_10ma": 57.1,
         "pct_above_10ma_week_ago": 14.3,
         "breadth_rising": true,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -2187,7 +2199,8 @@
         "pct_above_10ma": 57.1,
         "pct_above_10ma_week_ago": 28.6,
         "breadth_rising": true,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -2334,7 +2347,8 @@
         "pct_above_10ma": 57.9,
         "pct_above_10ma_week_ago": 26.3,
         "breadth_rising": true,
-        "n_stocks": 38
+        "n_stocks": 38,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -2908,7 +2922,8 @@
         "pct_above_10ma": 57.9,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": true,
-        "n_stocks": 38
+        "n_stocks": 38,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -3335,7 +3350,8 @@
         "pct_above_10ma": 57.1,
         "pct_above_10ma_week_ago": 42.9,
         "breadth_rising": true,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -3482,7 +3498,8 @@
         "pct_above_10ma": 57.1,
         "pct_above_10ma_week_ago": 42.9,
         "breadth_rising": true,
-        "n_stocks": 14
+        "n_stocks": 14,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -3811,7 +3828,8 @@
         "pct_above_10ma": 51.7,
         "pct_above_10ma_week_ago": 27.6,
         "breadth_rising": true,
-        "n_stocks": 29
+        "n_stocks": 29,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -4112,7 +4130,8 @@
         "pct_above_10ma": 52.2,
         "pct_above_10ma_week_ago": 26.1,
         "breadth_rising": true,
-        "n_stocks": 23
+        "n_stocks": 23,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -4406,7 +4425,8 @@
         "pct_above_10ma": 53.0,
         "pct_above_10ma_week_ago": 48.5,
         "breadth_rising": true,
-        "n_stocks": 66
+        "n_stocks": 66,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -5092,7 +5112,8 @@
         "pct_above_10ma": 50.8,
         "pct_above_10ma_week_ago": 35.2,
         "breadth_rising": true,
-        "n_stocks": 128
+        "n_stocks": 128,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -6219,7 +6240,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 41.7,
         "breadth_rising": true,
-        "n_stocks": 12
+        "n_stocks": 12,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -6422,7 +6444,8 @@
         "pct_above_10ma": 47.9,
         "pct_above_10ma_week_ago": 28.8,
         "breadth_rising": true,
-        "n_stocks": 73
+        "n_stocks": 73,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -7129,7 +7152,8 @@
         "pct_above_10ma": 42.9,
         "pct_above_10ma_week_ago": 28.6,
         "breadth_rising": true,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -7276,7 +7300,8 @@
         "pct_above_10ma": 42.5,
         "pct_above_10ma_week_ago": 37.0,
         "breadth_rising": true,
-        "n_stocks": 73
+        "n_stocks": 73,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -7913,7 +7938,8 @@
         "pct_above_10ma": 44.0,
         "pct_above_10ma_week_ago": 36.0,
         "breadth_rising": true,
-        "n_stocks": 25
+        "n_stocks": 25,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -8277,7 +8303,8 @@
         "pct_above_10ma": 43.3,
         "pct_above_10ma_week_ago": 36.7,
         "breadth_rising": true,
-        "n_stocks": 30
+        "n_stocks": 30,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -8627,7 +8654,8 @@
         "pct_above_10ma": 80.0,
         "pct_above_10ma_week_ago": 90.0,
         "breadth_rising": false,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -8823,7 +8851,8 @@
         "pct_above_10ma": 80.0,
         "pct_above_10ma_week_ago": 80.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -9040,7 +9069,8 @@
         "pct_above_10ma": 37.5,
         "pct_above_10ma_week_ago": 31.7,
         "breadth_rising": true,
-        "n_stocks": 104
+        "n_stocks": 104,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -10006,7 +10036,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 3
+        "n_stocks": 3,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -10139,7 +10170,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": true,
-        "n_stocks": 12
+        "n_stocks": 12,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -10356,7 +10388,8 @@
         "pct_above_10ma": 31.6,
         "pct_above_10ma_week_ago": 26.3,
         "breadth_rising": true,
-        "n_stocks": 19
+        "n_stocks": 19,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -10608,7 +10641,8 @@
         "pct_above_10ma": 47.2,
         "pct_above_10ma_week_ago": 27.8,
         "breadth_rising": true,
-        "n_stocks": 36
+        "n_stocks": 36,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -11105,7 +11139,8 @@
         "pct_above_10ma": 28.6,
         "pct_above_10ma_week_ago": 14.3,
         "breadth_rising": true,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -11266,7 +11301,8 @@
         "pct_above_10ma": 28.6,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -11420,7 +11456,8 @@
         "pct_above_10ma": 22.2,
         "pct_above_10ma_week_ago": 11.1,
         "breadth_rising": true,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -11609,7 +11646,8 @@
         "pct_above_10ma": 63.6,
         "pct_above_10ma_week_ago": 63.6,
         "breadth_rising": false,
-        "n_stocks": 11
+        "n_stocks": 11,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -11812,7 +11850,8 @@
         "pct_above_10ma": 39.4,
         "pct_above_10ma_week_ago": 30.3,
         "breadth_rising": true,
-        "n_stocks": 33
+        "n_stocks": 33,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -12274,7 +12313,8 @@
         "pct_above_10ma": 75.0,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": true,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -12428,7 +12468,8 @@
         "pct_above_10ma": 57.9,
         "pct_above_10ma_week_ago": 89.5,
         "breadth_rising": false,
-        "n_stocks": 19
+        "n_stocks": 19,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -12659,7 +12700,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 60.0,
         "breadth_rising": false,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -12827,7 +12869,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": false,
-        "n_stocks": 12
+        "n_stocks": 12,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -13079,7 +13122,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": false,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -13275,7 +13319,8 @@
         "pct_above_10ma": 25.0,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 4
+        "n_stocks": 4,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -13429,7 +13474,8 @@
         "pct_above_10ma": 43.5,
         "pct_above_10ma_week_ago": 47.8,
         "breadth_rising": false,
-        "n_stocks": 23
+        "n_stocks": 23,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -13765,7 +13811,8 @@
         "pct_above_10ma": 60.0,
         "pct_above_10ma_week_ago": 10.0,
         "breadth_rising": true,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -13975,7 +14022,8 @@
         "pct_above_10ma": 38.0,
         "pct_above_10ma_week_ago": 47.9,
         "breadth_rising": false,
-        "n_stocks": 71
+        "n_stocks": 71,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -14717,7 +14765,8 @@
         "pct_above_10ma": 34.6,
         "pct_above_10ma_week_ago": 46.2,
         "breadth_rising": false,
-        "n_stocks": 26
+        "n_stocks": 26,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -15018,7 +15067,8 @@
         "pct_above_10ma": 36.4,
         "pct_above_10ma_week_ago": 36.4,
         "breadth_rising": false,
-        "n_stocks": 11
+        "n_stocks": 11,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -15249,7 +15299,8 @@
         "pct_above_10ma": 37.5,
         "pct_above_10ma_week_ago": 37.5,
         "breadth_rising": false,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -15438,7 +15489,8 @@
         "pct_above_10ma": 53.8,
         "pct_above_10ma_week_ago": 19.2,
         "breadth_rising": true,
-        "n_stocks": 52
+        "n_stocks": 52,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -16005,7 +16057,8 @@
         "pct_above_10ma": 53.8,
         "pct_above_10ma_week_ago": 15.4,
         "breadth_rising": true,
-        "n_stocks": 13
+        "n_stocks": 13,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -16243,7 +16296,8 @@
         "pct_above_10ma": 52.9,
         "pct_above_10ma_week_ago": 17.6,
         "breadth_rising": true,
-        "n_stocks": 17
+        "n_stocks": 17,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -16481,7 +16535,8 @@
         "pct_above_10ma": 52.0,
         "pct_above_10ma_week_ago": 92.0,
         "breadth_rising": false,
-        "n_stocks": 25
+        "n_stocks": 25,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -16782,7 +16837,8 @@
         "pct_above_10ma": 44.1,
         "pct_above_10ma_week_ago": 23.5,
         "breadth_rising": true,
-        "n_stocks": 34
+        "n_stocks": 34,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -17195,7 +17251,8 @@
         "pct_above_10ma": 42.9,
         "pct_above_10ma_week_ago": 57.1,
         "breadth_rising": false,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -17342,7 +17399,8 @@
         "pct_above_10ma": 44.4,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": true,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -17524,7 +17582,8 @@
         "pct_above_10ma": 40.0,
         "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -17657,7 +17716,8 @@
         "pct_above_10ma": 41.8,
         "pct_above_10ma_week_ago": 30.9,
         "breadth_rising": true,
-        "n_stocks": 55
+        "n_stocks": 55,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -18231,7 +18291,8 @@
         "pct_above_10ma": 30.2,
         "pct_above_10ma_week_ago": 37.5,
         "breadth_rising": false,
-        "n_stocks": 96
+        "n_stocks": 96,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -19113,7 +19174,8 @@
         "pct_above_10ma": 30.6,
         "pct_above_10ma_week_ago": 44.4,
         "breadth_rising": false,
-        "n_stocks": 36
+        "n_stocks": 36,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -19561,7 +19623,8 @@
         "pct_above_10ma": 28.6,
         "pct_above_10ma_week_ago": 57.1,
         "breadth_rising": false,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -19715,7 +19778,8 @@
         "pct_above_10ma": 20.0,
         "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -19848,7 +19912,8 @@
         "pct_above_10ma": 20.0,
         "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -20002,7 +20067,8 @@
         "pct_above_10ma": 55.6,
         "pct_above_10ma_week_ago": 22.2,
         "breadth_rising": true,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -20170,7 +20236,8 @@
         "pct_above_10ma": 12.5,
         "pct_above_10ma_week_ago": 12.5,
         "breadth_rising": false,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -20380,7 +20447,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 35.0,
         "breadth_rising": true,
-        "n_stocks": 20
+        "n_stocks": 20,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -20632,7 +20700,8 @@
         "pct_above_10ma": 66.7,
         "pct_above_10ma_week_ago": 16.7,
         "breadth_rising": true,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -20793,7 +20862,8 @@
         "pct_above_10ma": 43.6,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": true,
-        "n_stocks": 39
+        "n_stocks": 39,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -21199,7 +21269,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 55.6,
         "breadth_rising": false,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -21367,7 +21438,8 @@
         "pct_above_10ma": 66.7,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": true,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -21507,7 +21579,8 @@
         "pct_above_10ma": 60.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": true,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -21640,7 +21713,8 @@
         "pct_above_10ma": 66.7,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": true,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -21787,7 +21861,8 @@
         "pct_above_10ma": 42.9,
         "pct_above_10ma_week_ago": 35.7,
         "breadth_rising": true,
-        "n_stocks": 14
+        "n_stocks": 14,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -21983,7 +22058,8 @@
         "pct_above_10ma": 25.0,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 4
+        "n_stocks": 4,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -22116,7 +22192,8 @@
         "pct_above_10ma": 31.0,
         "pct_above_10ma_week_ago": 34.5,
         "breadth_rising": false,
-        "n_stocks": 84
+        "n_stocks": 84,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -22865,7 +22942,8 @@
         "pct_above_10ma": 39.1,
         "pct_above_10ma_week_ago": 17.4,
         "breadth_rising": true,
-        "n_stocks": 23
+        "n_stocks": 23,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -23152,7 +23230,8 @@
         "pct_above_10ma": 42.4,
         "pct_above_10ma_week_ago": 36.4,
         "breadth_rising": true,
-        "n_stocks": 33
+        "n_stocks": 33,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -23530,7 +23609,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 3
+        "n_stocks": 3,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -23663,7 +23743,8 @@
         "pct_above_10ma": 30.4,
         "pct_above_10ma_week_ago": 17.4,
         "breadth_rising": true,
-        "n_stocks": 23
+        "n_stocks": 23,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -23943,7 +24024,8 @@
         "pct_above_10ma": 12.5,
         "pct_above_10ma_week_ago": 37.5,
         "breadth_rising": false,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -24104,7 +24186,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 16.7,
         "breadth_rising": true,
-        "n_stocks": 12
+        "n_stocks": 12,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -24286,7 +24369,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 21.4,
         "breadth_rising": true,
-        "n_stocks": 14
+        "n_stocks": 14,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -24503,7 +24587,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 83.3,
         "breadth_rising": false,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -24643,7 +24728,8 @@
         "pct_above_10ma": 43.8,
         "pct_above_10ma_week_ago": 43.8,
         "breadth_rising": false,
-        "n_stocks": 16
+        "n_stocks": 16,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -24860,7 +24946,8 @@
         "pct_above_10ma": 40.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": true,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -25035,7 +25122,8 @@
         "pct_above_10ma": 40.0,
         "pct_above_10ma_week_ago": 60.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -25189,7 +25277,8 @@
         "pct_above_10ma": 36.4,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": true,
-        "n_stocks": 33
+        "n_stocks": 33,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -25518,7 +25607,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 22.2,
         "breadth_rising": true,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -25721,7 +25811,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 37.5,
         "breadth_rising": true,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -25875,7 +25966,8 @@
         "pct_above_10ma": 60.0,
         "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": true,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -26015,7 +26107,8 @@
         "pct_above_10ma": 40.0,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -26148,7 +26241,8 @@
         "pct_above_10ma": 60.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": true,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -26295,7 +26389,8 @@
         "pct_above_10ma": 20.0,
         "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": false,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -26477,7 +26572,8 @@
         "pct_above_10ma": 14.3,
         "pct_above_10ma_week_ago": 28.6,
         "breadth_rising": false,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -26624,7 +26720,8 @@
         "pct_above_10ma": 53.3,
         "pct_above_10ma_week_ago": 46.7,
         "breadth_rising": true,
-        "n_stocks": 15
+        "n_stocks": 15,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -26827,7 +26924,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 2
+        "n_stocks": 2,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -26967,7 +27065,8 @@
         "pct_above_10ma": 42.9,
         "pct_above_10ma_week_ago": 28.6,
         "breadth_rising": true,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -27142,7 +27241,8 @@
         "pct_above_10ma": 45.8,
         "pct_above_10ma_week_ago": 29.2,
         "breadth_rising": true,
-        "n_stocks": 24
+        "n_stocks": 24,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -27422,7 +27522,8 @@
         "pct_above_10ma": 38.5,
         "pct_above_10ma_week_ago": 28.2,
         "breadth_rising": true,
-        "n_stocks": 39
+        "n_stocks": 39,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -27793,7 +27894,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -27933,7 +28035,8 @@
         "pct_above_10ma": 38.7,
         "pct_above_10ma_week_ago": 54.8,
         "breadth_rising": false,
-        "n_stocks": 31
+        "n_stocks": 31,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -28248,7 +28351,8 @@
         "pct_above_10ma": 37.5,
         "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": true,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -28409,7 +28513,8 @@
         "pct_above_10ma": 32.6,
         "pct_above_10ma_week_ago": 22.1,
         "breadth_rising": true,
-        "n_stocks": 86
+        "n_stocks": 86,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -29382,7 +29487,8 @@
         "pct_above_10ma": 11.1,
         "pct_above_10ma_week_ago": 66.7,
         "breadth_rising": false,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -29543,7 +29649,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 16.7,
         "breadth_rising": true,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -29690,7 +29797,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 16.7,
         "breadth_rising": true,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -29872,7 +29980,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": true,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -30012,7 +30121,8 @@
         "pct_above_10ma": 28.6,
         "pct_above_10ma_week_ago": 28.6,
         "breadth_rising": false,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -30159,7 +30269,8 @@
         "pct_above_10ma": 50.0,
         "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": true,
-        "n_stocks": 4
+        "n_stocks": 4,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -30292,7 +30403,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": false,
-        "n_stocks": 1
+        "n_stocks": 1,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -30425,7 +30537,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 22.2,
         "breadth_rising": true,
-        "n_stocks": 9
+        "n_stocks": 9,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -30649,7 +30762,8 @@
         "pct_above_10ma": 25.0,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 4
+        "n_stocks": 4,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -30782,7 +30896,8 @@
         "pct_above_10ma": 20.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -30929,7 +31044,8 @@
         "pct_above_10ma": 20.0,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": true,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -31069,7 +31185,8 @@
         "pct_above_10ma": 20.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": false,
-        "n_stocks": 10
+        "n_stocks": 10,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -31265,7 +31382,8 @@
         "pct_above_10ma": 35.7,
         "pct_above_10ma_week_ago": 35.7,
         "breadth_rising": false,
-        "n_stocks": 14
+        "n_stocks": 14,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -31468,7 +31586,8 @@
         "pct_above_10ma": 46.2,
         "pct_above_10ma_week_ago": 53.8,
         "breadth_rising": false,
-        "n_stocks": 13
+        "n_stocks": 13,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -31671,7 +31790,8 @@
         "pct_above_10ma": 43.8,
         "pct_above_10ma_week_ago": 43.8,
         "breadth_rising": false,
-        "n_stocks": 16
+        "n_stocks": 16,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -31902,7 +32022,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 33.3,
         "breadth_rising": false,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -32042,7 +32163,8 @@
         "pct_above_10ma": 33.3,
         "pct_above_10ma_week_ago": 50.0,
         "breadth_rising": false,
-        "n_stocks": 6
+        "n_stocks": 6,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -32182,7 +32304,8 @@
         "pct_above_10ma": 30.0,
         "pct_above_10ma_week_ago": 45.0,
         "breadth_rising": false,
-        "n_stocks": 20
+        "n_stocks": 20,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -32434,7 +32557,8 @@
         "pct_above_10ma": 25.0,
         "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": false,
-        "n_stocks": 4
+        "n_stocks": 4,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -32574,7 +32698,8 @@
         "pct_above_10ma": 25.0,
         "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": false,
-        "n_stocks": 4
+        "n_stocks": 4,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -32707,7 +32832,8 @@
         "pct_above_10ma": 21.7,
         "pct_above_10ma_week_ago": 30.4,
         "breadth_rising": false,
-        "n_stocks": 23
+        "n_stocks": 23,
+        "low_sample": false
       },
       "rs": {
         "available": true,
@@ -32987,7 +33113,8 @@
         "pct_above_10ma": 14.3,
         "pct_above_10ma_week_ago": 42.9,
         "breadth_rising": false,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -33141,7 +33268,8 @@
         "pct_above_10ma": 12.5,
         "pct_above_10ma_week_ago": 62.5,
         "breadth_rising": false,
-        "n_stocks": 8
+        "n_stocks": 8,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -33316,7 +33444,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -33512,7 +33641,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 20.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -33645,7 +33775,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 0.0,
         "breadth_rising": false,
-        "n_stocks": 3
+        "n_stocks": 3,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -33778,7 +33909,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": false,
-        "n_stocks": 5
+        "n_stocks": 5,
+        "low_sample": true
       },
       "rs": {
         "available": true,
@@ -33981,7 +34113,8 @@
         "pct_above_10ma": 0.0,
         "pct_above_10ma_week_ago": 42.9,
         "breadth_rising": false,
-        "n_stocks": 7
+        "n_stocks": 7,
+        "low_sample": true
       },
       "rs": {
         "available": true,

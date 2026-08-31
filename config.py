@@ -94,3 +94,10 @@ NIFTY500_INDUSTRY_URL = OLD_INDICES_PATH + "ind_nifty500list.csv"
 # shown at all -- below this, breadth/EMA/RS numbers aren't statistically
 # meaningful (e.g. a "72% breadth" from 2 stocks means almost nothing).
 MIN_STOCKS_PER_BASIC_INDUSTRY = 5
+
+# Separate, higher bar just for the UI's low-sample flag on the breadth
+# stock count. A category can clear MIN_STOCKS_PER_BASIC_INDUSTRY (be shown
+# at all) while still being too thin to fully trust -- this is the line
+# where the stock-count next to breadth gets visually flagged, not where
+# the row disappears.
+LOW_SAMPLE_THRESHOLD = 10

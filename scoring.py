@@ -7,7 +7,7 @@ Keeping this in one place means both views score things exactly the same
 way -- no drift between the two.
 """
 import pandas as pd
-from config import EXTENDED_FROM_21EMA_PCT
+from config import EXTENDED_FROM_21EMA_PCT, LOW_SAMPLE_THRESHOLD
 
 
 def series_for(conn, table: str, key_col: str, key_val: str) -> pd.Series:
@@ -161,12 +161,14 @@ def breadth_block(conn, symbols: list[str]) -> dict:
     week_ago_idx = -6 if len(wide) >= 6 else 0
     week_ago_pct = pct_above(week_ago_idx)
 
+    n_stocks = int(above.iloc[-1].notna().sum())
     return {
         "available": latest_pct is not None,
         "pct_above_10ma": latest_pct,
         "pct_above_10ma_week_ago": week_ago_pct,
         "breadth_rising": bool(latest_pct is not None and week_ago_pct is not None and latest_pct > week_ago_pct),
-        "n_stocks": int(above.iloc[-1].notna().sum()),
+        "n_stocks": n_stocks,
+        "low_sample": bool(n_stocks < LOW_SAMPLE_THRESHOLD),
     }
 
 

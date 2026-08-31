@@ -31,7 +31,9 @@ function stackLadder(ema) {
 
 function breadthCell(breadth) {
   if (!breadth.available) return { val: `<span class="muted">n/a</span>`, trend: "" };
-  const val = `<span class="breadth-val">${breadth.pct_above_10ma}%</span> <span class="muted">(${breadth.n_stocks})</span>`;
+  const countCls = breadth.low_sample ? "n-stocks low-sample" : "n-stocks";
+  const countTitle = breadth.low_sample ? `title="Only ${breadth.n_stocks} stocks -- fewer than usual, read this one with more caution"` : "";
+  const val = `<span class="breadth-val">${breadth.pct_above_10ma}%</span> <span class="${countCls}" ${countTitle}>(${breadth.n_stocks})</span>`;
   let trend = `<span class="trend-flat">flat</span>`;
   if (breadth.pct_above_10ma_week_ago !== null) {
     const diff = breadth.pct_above_10ma - breadth.pct_above_10ma_week_ago;
