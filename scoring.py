@@ -7,7 +7,7 @@ Keeping this in one place means both views score things exactly the same
 way -- no drift between the two.
 """
 import pandas as pd
-from config import EXTENDED_FROM_21EMA_PCT, LOW_SAMPLE_THRESHOLD
+from config import EXTENDED_FROM_21EMA_PCT, LOW_SAMPLE_THRESHOLD, OVERHEATED_BREADTH_PCT
 
 
 def series_for(conn, table: str, key_col: str, key_val: str) -> pd.Series:
@@ -149,24 +149,32 @@ def breadth_block(conn, symbols: list[str]) -> dict:
         return {"available": False}
 
     ma10 = wide.rolling(10).mean()
-    above = (wide > ma10)
+    ma21 = wide.rolling(21).mean()
+    above10 = (wide > ma10)
+    above21 = (wide > ma21)
 
-    def pct_above(row_idx):
-        row = above.iloc[row_idx].dropna()
+    def pct_above(above_df, row_idx):
+        row = above_df.iloc[row_idx].dropna()
         if row.empty:
             return None
         return round(row.mean() * 100, 1)
 
-    latest_pct = pct_above(-1)
+    latest_pct = pct_above(above10, -1)
     week_ago_idx = -6 if len(wide) >= 6 else 0
-    week_ago_pct = pct_above(week_ago_idx)
+    week_ago_pct = pct_above(above10, week_ago_idx)
+    latest_pct_21 = pct_above(above21, -1) if len(wide) >= 21 else None
+    week_ago_pct_21 = pct_above(above21, week_ago_idx) if len(wide) >= 21 else None
 
-    n_stocks = int(above.iloc[-1].notna().sum())
+    n_stocks = int(above10.iloc[-1].notna().sum())
     return {
         "available": latest_pct is not None,
         "pct_above_10ma": latest_pct,
         "pct_above_10ma_week_ago": week_ago_pct,
         "breadth_rising": bool(latest_pct is not None and week_ago_pct is not None and latest_pct > week_ago_pct),
+        "pct_above_21ma": latest_pct_21,
+        "pct_above_21ma_week_ago": week_ago_pct_21,
+        "breadth_21_rising": bool(latest_pct_21 is not None and week_ago_pct_21 is not None and latest_pct_21 > week_ago_pct_21),
+        "overheated": bool(latest_pct_21 is not None and latest_pct_21 >= OVERHEATED_BREADTH_PCT),
         "n_stocks": n_stocks,
         "low_sample": bool(n_stocks < LOW_SAMPLE_THRESHOLD),
     }

@@ -207,6 +207,7 @@ main {
 .breadth-val {
   font-weight: 600;
 }
+.breadth-val.overheated { color: var(--red); cursor: help; }
 
 .trend-up { color: var(--green); }
 .trend-down { color: var(--red); }

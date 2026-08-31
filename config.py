@@ -101,3 +101,9 @@ MIN_STOCKS_PER_BASIC_INDUSTRY = 5
 # where the stock-count next to breadth gets visually flagged, not where
 # the row disappears.
 LOW_SAMPLE_THRESHOLD = 10
+
+# % of stocks above their own 21-day MA at or above which breadth is
+# flagged as "overheated" -- almost the whole group has already moved,
+# which is a crowded/late signal rather than a strength signal. Meant to
+# be rare (like EXTENDED_FROM_21EMA_PCT), not a routine reading.
+OVERHEATED_BREADTH_PCT = 90.0

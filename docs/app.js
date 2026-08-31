@@ -43,6 +43,24 @@ function breadthCell(breadth) {
   return { val, trend };
 }
 
+function breadth21Cell(breadth) {
+  if (!breadth.available || breadth.pct_above_21ma === null || breadth.pct_above_21ma === undefined) {
+    return { val: `<span class="muted">n/a</span>`, trend: "" };
+  }
+  const valCls = breadth.overheated ? "breadth-val overheated" : "breadth-val";
+  const valTitle = breadth.overheated
+    ? `title="${breadth.pct_above_21ma}% of stocks already above their 21MA -- this move may be crowded/late"`
+    : "";
+  const val = `<span class="${valCls}" ${valTitle}>${breadth.pct_above_21ma}%</span> <span class="n-stocks">(${breadth.n_stocks})</span>`;
+  let trend = `<span class="trend-flat">flat</span>`;
+  if (breadth.pct_above_21ma_week_ago !== null && breadth.pct_above_21ma_week_ago !== undefined) {
+    const diff = breadth.pct_above_21ma - breadth.pct_above_21ma_week_ago;
+    if (diff > 1) trend = `<span class="trend-up">▲ ${diff.toFixed(1)}pt</span>`;
+    else if (diff < -1) trend = `<span class="trend-down">▼ ${Math.abs(diff).toFixed(1)}pt</span>`;
+  }
+  return { val, trend };
+}
+
 function rsCell(rs) {
   if (!rs.available) return `<span class="rs-na">n/a</span>`;
   const good = rs.rs_above_ema && rs.rs_rising_1w;
@@ -75,6 +93,11 @@ function sortValue(row, key) {
     case "breadthTrend":
       if (!b.available || b.pct_above_10ma_week_ago === null) return -999;
       return b.pct_above_10ma - b.pct_above_10ma_week_ago;
+    case "breadth21":
+      return (b.available && b.pct_above_21ma !== null && b.pct_above_21ma !== undefined) ? b.pct_above_21ma : -1;
+    case "breadth21Trend":
+      if (!b.available || b.pct_above_21ma_week_ago === null || b.pct_above_21ma_week_ago === undefined) return -999;
+      return b.pct_above_21ma - b.pct_above_21ma_week_ago;
     case "rs": {
       if (!rs.available) return -1;
       if (rs.rs_above_ema && rs.rs_rising_1w) return 2;
@@ -144,13 +167,14 @@ function renderBoard(data) {
 
   if (!data.length && SEARCH_TERM) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="7" class="no-results">No matches for "${SEARCH_TERM}"</td>`;
+    tr.innerHTML = `<td colspan="9" class="no-results">No matches for "${SEARCH_TERM}"</td>`;
     tbody.appendChild(tr);
     return;
   }
 
   data.forEach((row, i) => {
     const breadth = breadthCell(row.breadth);
+    const breadth21 = breadth21Cell(row.breadth);
     const tr = document.createElement("tr");
     const nameLabel = rowName(row);
     tr.innerHTML = `
@@ -160,6 +184,8 @@ function renderBoard(data) {
       <td data-label="EMA Stack">${stackLadder(row.ema)}</td>
       <td data-label="Breadth">${breadth.val}</td>
       <td data-label="Trend">${breadth.trend}</td>
+      <td data-label="Breadth 21">${breadth21.val}</td>
+      <td data-label="Trend 21">${breadth21.trend}</td>
       <td data-label="RS">${rsCell(row.rs)}</td>
     `;
     tr.addEventListener("click", () => openDetail(row));
