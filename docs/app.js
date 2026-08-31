@@ -289,14 +289,35 @@ async function loadView(view) {
   }
 }
 
+function renderRegimeBanner(regime) {
+  const el = document.getElementById("regime-banner");
+  if (!regime || !regime.available) {
+    el.classList.add("hidden");
+    return;
+  }
+  const cls = regime.state === "Bullish" ? "regime-bullish"
+    : regime.state === "Bearish" ? "regime-bearish"
+    : "regime-mixed";
+  el.className = `regime-banner ${cls}`;
+  el.innerHTML = `
+    <div class="regime-title">Nifty 50: ${regime.state}</div>
+    <div class="regime-subtitle">${regime.subtitle}</div>
+  `;
+  el.classList.remove("hidden");
+}
+
 function applyView(view, raw) {
   const infoIcon = document.getElementById("info-icon");
   if (view === "sectors") {
     infoIcon.classList.add("hidden");
-    showData(raw);
+    renderRegimeBanner(raw.regime);
+    showData(raw.sectors || []);
     return;
   }
-  // industries view: raw is { classification_source, industries }
+  // industries view: raw is { classification_source, industries } -- no
+  // regime banner here, the sectors tab already showed it and Nifty's
+  // regime doesn't change between tabs.
+  document.getElementById("regime-banner").classList.add("hidden");
   infoIcon.classList.remove("hidden");
   showData(raw.industries || []);
 }

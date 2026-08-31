@@ -11,13 +11,14 @@ compute_basic_industry.py).
 """
 from config import SECTORS, BENCHMARK
 from db import get_conn
-from scoring import series_for, ema_block, breadth_block, rs_block, composite_score, stock_detail_list
+from scoring import series_for, ema_block, breadth_block, rs_block, regime_block, composite_score, stock_detail_list
 
 
-def compute_all() -> list[dict]:
+def compute_all() -> dict:
     results = []
     with get_conn() as conn:
         bench_series = series_for(conn, "index_prices", "sector", BENCHMARK)
+        regime = regime_block(bench_series) if not bench_series.empty else {"available": False}
         for sector_name, (index_name, _) in SECTORS.items():
             sector_series = series_for(conn, "index_prices", "sector", index_name)
             symbols = [
@@ -40,7 +41,7 @@ def compute_all() -> list[dict]:
                 "last_date": sector_series.index[-1].date().isoformat() if not sector_series.empty else None,
             })
     results.sort(key=lambda r: r["score"], reverse=True)
-    return results
+    return {"regime": regime, "sectors": results}
 
 
 if __name__ == "__main__":

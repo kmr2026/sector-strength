@@ -28,9 +28,10 @@ DATA_DIR = Path(__file__).parent / "docs" / "data"
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    sectors = compute_sectors()
-    (DATA_DIR / "leaderboard.json").write_text(json.dumps(sectors, indent=2, default=str))
-    print(f"Wrote {len(sectors)} sectors to leaderboard.json")
+    leaderboard = compute_sectors()
+    (DATA_DIR / "leaderboard.json").write_text(json.dumps(leaderboard, indent=2, default=str))
+    print(f"Wrote {len(leaderboard['sectors'])} sectors to leaderboard.json "
+          f"(regime: {leaderboard['regime'].get('state', 'n/a')})")
 
     industries_result = compute_all_with_meta()
     (DATA_DIR / "basic_industries.json").write_text(json.dumps(industries_result, indent=2, default=str))

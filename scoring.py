@@ -65,6 +65,74 @@ def ema_block(series: pd.Series) -> dict:
     return out
 
 
+_MIXED_NOTES = {
+    ("21", "50"): "early recovery -- long-term trend not yet reclaimed",
+    ("21",): "choppy -- short-term bounce inside a longer downtrend",
+}
+
+
+def _join_labels(labels: list[str]) -> str:
+    if len(labels) == 1:
+        return labels[0]
+    if len(labels) == 2:
+        return f"{labels[0]} and {labels[1]}"
+    return f"{', '.join(labels[:-1])}, and {labels[-1]}"
+
+
+def regime_block(series: pd.Series) -> dict:
+    """Classifies an index (meant for the Nifty 50 benchmark) into a
+    Bullish / Mixed / Bearish regime using the same ema_block() math
+    used everywhere else, so this never drifts from the per-sector logic.
+
+    Unlike a fixed 3-bucket label, the "Mixed" subtitle is assembled from
+    exactly which EMAs are above/below -- "above 21 and 50, below 200" is
+    a materially different situation from "above 21 only, below 50 and
+    200", and collapsing both into one generic "Mixed" string would hide
+    that difference.
+    """
+    ema = ema_block(series)
+    if not ema.get("available"):
+        return {"available": False}
+
+    above, below = [], []
+    for label, key in [("21", "above_21"), ("50", "above_50"), ("200", "above_200")]:
+        val = ema.get(key)
+        if val is None:
+            continue
+        (above if val else below).append(label)
+
+    if not above and not below:
+        return {"available": False}
+
+    if not below:
+        state = "Bullish"
+        stack_note = "bullish stack intact" if ema.get("bullish_stack") else "stack not fully aligned"
+        rising_note = "21 EMA rising" if ema.get("ema21_rising") else "21 EMA flattening"
+        subtitle = f"Above 21/50/200 EMA -- {stack_note} -- {rising_note}"
+    elif not above:
+        state = "Bearish"
+        subtitle = "Below 21/50/200 EMA"
+    else:
+        state = "Mixed"
+        above_txt = f"above {_join_labels(above)} EMA"
+        below_txt = f"below {_join_labels(below)} EMA"
+        subtitle = f"{above_txt}, {below_txt}"
+        note = _MIXED_NOTES.get(tuple(above))
+        if note:
+            subtitle += f" ({note})"
+
+    return {
+        "available": True,
+        "state": state,
+        "subtitle": subtitle,
+        "price": ema.get("price"),
+        "above_21": ema.get("above_21"),
+        "above_50": ema.get("above_50"),
+        "above_200": ema.get("above_200"),
+        "bullish_stack": ema.get("bullish_stack"),
+    }
+
+
 def breadth_block(conn, symbols: list[str]) -> dict:
     if not symbols:
         return {"available": False}
