@@ -232,10 +232,9 @@ function buildTradingViewText(mode) {
     return selected.map(s => `NSE:${s.symbol}`).join(",");
   }
 
-  // Industry-wise: one continuous comma-separated line, with each
-  // group's header token "###IndustryName(count)" inline alongside the
-  // symbols -- not on its own line -- e.g.
-  // ###Auto Ancilaries(1),NSE:SSWL,###Jewellery(1),NSE:RBZJEWEL,...
+  // Industry-wise, matching ChartsMaze's actual copy format: industry
+  // name on its own line, its symbols comma-separated on the next line,
+  // repeating per group -- no count, no single continuous line.
   const groups = new Map(); // industry -> [symbol,...]
   selected.forEach(s => {
     const key = s.basic_industry || "Unclassified";
@@ -243,13 +242,7 @@ function buildTradingViewText(mode) {
     groups.get(key).push(`NSE:${s.symbol}`);
   });
   const sortedKeys = [...groups.keys()].sort();
-  const parts = [];
-  sortedKeys.forEach(k => {
-    const syms = groups.get(k);
-    parts.push(`###${k}(${syms.length})`);
-    parts.push(...syms);
-  });
-  return parts.join(",");
+  return sortedKeys.map(k => `###${k}\n${groups.get(k).join(",")}`).join("\n");
 }
 
 document.getElementById("copy-tv").addEventListener("click", async () => {
