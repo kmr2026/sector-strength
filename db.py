@@ -65,6 +65,18 @@ CREATE TABLE IF NOT EXISTS regime_history (
     state TEXT,
     PRIMARY KEY (key, date)
 );
+
+-- Generic day-keyed metric tracker, shared by any numeric per-sector/
+-- per-industry metric that wants a delta badge (RS Rating, % within
+-- 52-week high, and future ones) without needing a dedicated table per
+-- metric. 'metric' distinguishes which one a row belongs to.
+CREATE TABLE IF NOT EXISTS metric_history (
+    metric TEXT NOT NULL,
+    key TEXT NOT NULL,
+    date TEXT NOT NULL,
+    value REAL,
+    PRIMARY KEY (metric, key, date)
+);
 """
 
 

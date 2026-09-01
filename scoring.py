@@ -361,6 +361,161 @@ def score_history_series(conn, key: str, limit: int = 60) -> list[int]:
     return [r[0] for r in reversed(rows)]
 
 
+def stock_raw_rs_score(series: pd.Series) -> float | None:
+    """Weighted price-performance score behind an RS Rating, in the style
+    widely used to approximate MarketSmith/IBD's methodology (not
+    officially published by them): 40% * 3-month return + 20% * 6-month +
+    20% * 9-month + 20% * 12-month, so the most recent quarter counts
+    double each of the other three. Each period is approximated as
+    N*21 trading days back. Returns None without a full ~12 months
+    (252 trading days) of history -- a partial score would silently
+    understate a young listing's momentum rather than being absent.
+    """
+    if len(series) < 253:
+        return None
+    last = series.iloc[-1]
+
+    def pct(days_back: int) -> float | None:
+        idx = -1 - days_back
+        if -idx > len(series):
+            return None
+        base = series.iloc[idx]
+        if not base:
+            return None
+        return (last - base) / base * 100
+
+    p3, p6, p9, p12 = pct(63), pct(126), pct(189), pct(252)
+    if None in (p3, p6, p9, p12):
+        return None
+    return 0.4 * p3 + 0.2 * p6 + 0.2 * p9 + 0.2 * p12
+
+
+def universe_raw_rs_scores(conn) -> dict:
+    """Raw RS score for every symbol in stock_prices with enough history,
+    computed once per run and shared across every sector/industry group
+    rather than re-querying per group -- this is the single most
+    expensive step RS Rating adds, so it only happens once."""
+    df = pd.read_sql_query("SELECT symbol, date, close FROM stock_prices ORDER BY date", conn)
+    if df.empty:
+        return {}
+    df["date"] = pd.to_datetime(df["date"])
+    scores = {}
+    for symbol, g in df.groupby("symbol"):
+        s = g.set_index("date")["close"].sort_index()
+        raw = stock_raw_rs_score(s)
+        if raw is not None:
+            scores[symbol] = raw
+    return scores
+
+
+def group_raw_rs_score(universe_scores: dict, symbols: list[str]) -> float | None:
+    """A group's (sector/industry) raw RS score: the average of its
+    constituent stocks' raw scores (only ones with a computable score).
+    Averaging RAW scores here -- and percentile-ranking once at the group
+    level via rs_ratings_from_raw() -- avoids the distortion of averaging
+    already-percentile-ranked numbers."""
+    vals = [universe_scores[s] for s in symbols if s in universe_scores]
+    if not vals:
+        return None
+    return sum(vals) / len(vals)
+
+
+def rs_ratings_from_raw(raw_by_key: dict) -> dict:
+    """Percentile-ranks a {key: raw_group_score} dict onto MarketSmith's
+    1-99 scale (99 = best), ranking each group against every other group
+    passed in -- so sectors are ranked against sectors, and basic
+    industries against basic industries, as two separate universes,
+    matching how compute.py/compute_basic_industry.py already keep those
+    two views separate everywhere else."""
+    keys = [k for k, v in raw_by_key.items() if v is not None]
+    n = len(keys)
+    if n == 0:
+        return {}
+    sorted_vals = sorted(raw_by_key[k] for k in keys)
+    ratings = {}
+    for k in keys:
+        v = raw_by_key[k]
+        below = sum(1 for x in sorted_vals if x < v)
+        pct = below / n
+        ratings[k] = max(1, min(99, round(pct * 98) + 1))
+    return ratings
+
+
+def pct_within_52wk_high_block(conn, symbols: list[str], band_pct: float = 5.0) -> dict:
+    """% of the group's stocks currently trading within band_pct% of
+    their own trailing 52-week (252 trading day) high. Distinct from the
+    10MA/21MA breadth columns -- a stock can be above its 21MA in a clean
+    uptrend while still being well off its 52wk high, so this isolates
+    the narrower set actually pushing into new-high territory, which is
+    a more direct leadership/EP-breakout signal."""
+    if not symbols:
+        return {"available": False}
+    placeholders = ",".join("?" * len(symbols))
+    df = pd.read_sql_query(
+        f"SELECT symbol, date, close FROM stock_prices WHERE symbol IN ({placeholders}) ORDER BY date",
+        conn, params=symbols,
+    )
+    if df.empty:
+        return {"available": False}
+    df["date"] = pd.to_datetime(df["date"])
+    wide = df.pivot(index="date", columns="symbol", values="close").sort_index()
+    if len(wide) < 10:
+        return {"available": False}
+    window = wide.tail(min(len(wide), 252))
+    high_52wk = window.max()
+    latest = wide.iloc[-1]
+    within = {}
+    for s in wide.columns:
+        h, c = high_52wk.get(s), latest.get(s)
+        if pd.isna(h) or pd.isna(c) or not h:
+            continue
+        within[s] = bool((h - c) / h * 100 <= band_pct)
+    n_stocks = len(within)
+    if n_stocks == 0:
+        return {"available": False}
+    pct = round(sum(within.values()) / n_stocks * 100, 1)
+    return {"available": True, "pct_within_52wk_high": pct, "n_stocks": n_stocks, "band_pct": band_pct}
+
+
+def metric_delta_block(conn, metric: str, key: str, date: str | None, value, min_days_back: int = 0) -> dict:
+    """Generic day-over-day / N-day-back delta tracker for any numeric
+    per-key metric, backed by the shared metric_history table -- one row
+    per (metric, key, date) -- so RS Rating and % within 52wk high don't
+    each need their own dedicated table. Mirrors score_delta_block()'s
+    'read the prior value, then record today's' pattern.
+
+    min_days_back=0 compares to whatever the immediately prior run
+    recorded -- effectively "yesterday", since this pipeline runs once a
+    day. A larger value (e.g. 6) skips same-week noise for a real
+    week-ago comparison, matching how breadth's own week-ago columns
+    already work.
+    """
+    if date is None or value is None:
+        return {"available": False}
+    import datetime as _dt
+    cutoff = (_dt.date.fromisoformat(date) - _dt.timedelta(days=min_days_back)).isoformat()
+    row = conn.execute(
+        "SELECT date, value FROM metric_history WHERE metric = ? AND key = ? AND date <= ? ORDER BY date DESC LIMIT 1",
+        (metric, key, cutoff),
+    ).fetchone()
+    conn.execute(
+        "INSERT INTO metric_history (metric, key, date, value) VALUES (?, ?, ?, ?) "
+        "ON CONFLICT(metric, key, date) DO UPDATE SET value = excluded.value",
+        (metric, key, date, value),
+    )
+    if row is None:
+        return {"available": False}
+    prev_date, prev_value = row
+    diff = round(value - prev_value, 2)
+    return {
+        "available": True,
+        "delta": diff,
+        "prev_value": prev_value,
+        "prev_date": prev_date,
+        "direction": "up" if diff > 0 else ("down" if diff < 0 else "flat"),
+    }
+
+
 def composite_score(ema: dict, breadth: dict, rs: dict) -> int:
     """Simple, transparent point system -- add up what's true. Max 100.
 

@@ -69,6 +69,25 @@ function breadth21Cell(breadth) {
   return { val, trend };
 }
 
+function metricDeltaHtml(delta) {
+  if (!delta || !delta.available) return "";
+  const d = delta.delta;
+  if (d > 0) return `<span class="score-delta up">▲${d}</span>`;
+  if (d < 0) return `<span class="score-delta down">▼${Math.abs(d)}</span>`;
+  return `<span class="score-delta flat">–</span>`;
+}
+
+function high52Cell(high52) {
+  if (!high52 || !high52.available) return `<span class="muted">n/a</span>`;
+  return `<span class="breadth-val">${high52.pct_within_52wk_high}%</span> <span class="n-stocks">(${high52.n_stocks})</span>`;
+}
+
+function rsRatingCell(rating) {
+  if (rating === null || rating === undefined) return `<span class="muted">n/a</span>`;
+  const cls = rating >= 80 ? "score-high" : rating >= 50 ? "score-mid" : "score-low";
+  return `<span class="score-badge ${cls}">${rating}</span>`;
+}
+
 function rsCell(rs) {
   if (!rs.available) return `<span class="rs-na">n/a</span>`;
   const good = rs.rs_above_ema && rs.rs_rising_1w;
@@ -106,6 +125,10 @@ function sortValue(row, key) {
     case "breadth21Trend":
       if (!b.available || b.pct_above_21ma_week_ago === null || b.pct_above_21ma_week_ago === undefined) return -999;
       return b.pct_above_21ma - b.pct_above_21ma_week_ago;
+    case "high52":
+      return (row.high52 && row.high52.available) ? row.high52.pct_within_52wk_high : -1;
+    case "rsRating":
+      return (row.rs_rating !== null && row.rs_rating !== undefined) ? row.rs_rating : -1;
     case "rs": {
       if (!rs.available) return -1;
       if (rs.rs_above_ema && rs.rs_rising_1w) return 2;
@@ -194,7 +217,7 @@ function renderBoard(data) {
 
   if (!data.length && SEARCH_TERM) {
     const tr = document.createElement("tr");
-    tr.innerHTML = `<td colspan="9" class="no-results">No matches for "${SEARCH_TERM}"</td>`;
+    tr.innerHTML = `<td colspan="11" class="no-results">No matches for "${SEARCH_TERM}"</td>`;
     tbody.appendChild(tr);
     return;
   }
@@ -213,7 +236,9 @@ function renderBoard(data) {
       <td data-label="Trend">${breadth.trend}</td>
       <td data-label="Breadth 21">${breadth21.val}</td>
       <td data-label="Trend 21">${breadth21.trend}</td>
-      <td data-label="RS">${rsCell(row.rs)}</td>
+      <td data-label="% Near 52wk High">${high52Cell(row.high52)}${metricDeltaHtml(row.high52_delta)}</td>
+      <td data-label="RS Rating">${rsRatingCell(row.rs_rating)}${metricDeltaHtml(row.rs_rating_delta)}</td>
+      <td data-label="RS vs Nifty">${rsCell(row.rs)}</td>
     `;
     tr.addEventListener("click", () => openDetail(row));
     tbody.appendChild(tr);
@@ -288,6 +313,12 @@ function openDetail(row) {
     detailItem("Breadth 1wk ago", b.available && b.pct_above_10ma_week_ago !== null ? `${b.pct_above_10ma_week_ago}%` : "n/a"),
     detailItem("RS Ratio", rs.available ? rs.rs_ratio : "n/a"),
     detailItem("RS vs Nifty", rs.available ? (rs.rs_rising_1w ? "Rising" : "Falling") : "n/a"),
+    detailItem("RS Rating (1-99)", (row.rs_rating !== null && row.rs_rating !== undefined)
+      ? `${row.rs_rating}${row.rs_rating_delta && row.rs_rating_delta.available ? ` (was ${row.rs_rating_delta.prev_value} on ${row.rs_rating_delta.prev_date})` : ""}`
+      : "n/a"),
+    detailItem("% Near 52wk High (within 5%)", row.high52 && row.high52.available
+      ? `${row.high52.pct_within_52wk_high}% of ${row.high52.n_stocks}${row.high52_delta && row.high52_delta.available ? ` (was ${row.high52_delta.prev_value}% on ${row.high52_delta.prev_date})` : ""}`
+      : "n/a"),
   ];
   if (CURRENT_VIEW === "industries") {
     const withData = b.available ? b.n_stocks : 0;

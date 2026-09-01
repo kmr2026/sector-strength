@@ -1,6 +1,6 @@
 """
-Same scoring framework as compute.py, but for NSE's 197 "Basic Industry"
-classification instead of your 16 tracked sectors.
+Same scoring framework as compute.py, but for NSE's Basic Industry
+classification instead of your 17 tracked sectors.
 
 The key difference: NSE doesn't publish an official index price series for
 each basic industry (unlike Nifty Auto, Nifty Bank, etc.), so there's
@@ -14,11 +14,20 @@ synthetic.
 Equal weighting (not market-cap weighting) is used because we don't have
 free per-stock market-cap data -- every stock in the basic industry counts
 the same in the synthetic index, same as breadth already does.
+
+RS Rating (1-99) and % within 52-week-high here are ranked ONLY against
+the other basic industries in this file -- a separate universe from the
+sectors in compute.py, same split the rest of this file already keeps.
 """
 import pandas as pd
 from config import BENCHMARK, MIN_STOCKS_PER_BASIC_INDUSTRY
 from db import get_conn
-from scoring import series_for, ema_block, breadth_block, rs_block, composite_score, stock_detail_list, score_delta_block, score_history_series
+from scoring import (
+    series_for, ema_block, breadth_block, rs_block, composite_score,
+    stock_detail_list, score_delta_block, score_history_series,
+    universe_raw_rs_scores, group_raw_rs_score, rs_ratings_from_raw,
+    pct_within_52wk_high_block, metric_delta_block,
+)
 
 
 def _build_synthetic_index(conn, symbols: list[str]) -> pd.Series:
@@ -54,7 +63,6 @@ def get_classification_source(conn) -> str:
 
 
 def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
-    results = []
     with get_conn() as conn:
         bench_series = series_for(conn, "index_prices", "sector", BENCHMARK)
 
@@ -65,6 +73,11 @@ def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
         if groups.empty:
             return []
 
+        universe_scores = universe_raw_rs_scores(conn)
+
+        # Pass 1: everything except RS Rating (needs every qualifying
+        # industry's raw score gathered first).
+        prelim = []
         for industry_name, group_df in groups.groupby("basic_industry"):
             symbols = group_df["symbol"].tolist()
             synthetic_series = _build_synthetic_index(conn, symbols)
@@ -81,25 +94,48 @@ def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
                 continue  # too few stocks for this to mean anything
 
             last_date = synthetic_series.index[-1].date().isoformat() if not synthetic_series.empty else None
-            key = f"industry:{industry_name}"
-            delta = score_delta_block(
-                conn, key, last_date, score,
-                bullish_stack=ema.get("bullish_stack") if ema.get("available") else None,
-                overheated=breadth.get("overheated") if breadth.get("available") else None,
-            )
+            high52 = pct_within_52wk_high_block(conn, symbols)
+            raw_rs = group_raw_rs_score(universe_scores, symbols)
+            prelim.append({
+                "industry": industry_name, "n_stocks_total": len(symbols), "score": score,
+                "ema": ema, "breadth": breadth, "rs": rs, "symbols": symbols,
+                "last_date": last_date, "high52": high52, "raw_rs": raw_rs,
+            })
 
+        ratings = rs_ratings_from_raw({r["industry"]: r["raw_rs"] for r in prelim})
+
+        # Pass 2: assemble final results now RS Rating is known.
+        results = []
+        for r in prelim:
+            key = f"industry:{r['industry']}"
+            delta = score_delta_block(
+                conn, key, r["last_date"], r["score"],
+                bullish_stack=r["ema"].get("bullish_stack") if r["ema"].get("available") else None,
+                overheated=r["breadth"].get("overheated") if r["breadth"].get("available") else None,
+            )
+            rating = ratings.get(r["industry"])
+            rs_rating_delta = metric_delta_block(conn, "rs_rating", key, r["last_date"], rating, min_days_back=6)
+            high52_delta = {"available": False}
+            if r["high52"].get("available"):
+                high52_delta = metric_delta_block(
+                    conn, "pct_52wk_high", key, r["last_date"], r["high52"]["pct_within_52wk_high"], min_days_back=0
+                )
             results.append({
-                "industry": industry_name,
-                "n_stocks_total": len(symbols),
-                "score": score,
+                "industry": r["industry"],
+                "n_stocks_total": r["n_stocks_total"],
+                "score": r["score"],
                 "score_delta": delta,
                 "score_history": score_history_series(conn, key),
-                "ema": ema,
-                "breadth": breadth,
-                "rs": rs,
-                "stocks": stock_detail_list(conn, symbols),
+                "ema": r["ema"],
+                "breadth": r["breadth"],
+                "rs": r["rs"],
+                "rs_rating": rating,
+                "rs_rating_delta": rs_rating_delta,
+                "high52": r["high52"],
+                "high52_delta": high52_delta,
+                "stocks": stock_detail_list(conn, r["symbols"]),
                 "synthetic": True,
-                "last_date": last_date,
+                "last_date": r["last_date"],
             })
 
     results.sort(key=lambda r: r["score"], reverse=True)

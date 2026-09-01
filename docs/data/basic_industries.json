@@ -111,6 +111,19 @@
           0.0602
         ]
       },
+      "rs_rating": 98,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 33.3,
+        "n_stocks": 12,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "DYCL",
@@ -386,6 +399,19 @@
           0.0478
         ]
       },
+      "rs_rating": 79,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 47.4,
+        "n_stocks": 19,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "AXISBANK",
@@ -653,6 +679,19 @@
           0.0405
         ]
       },
+      "rs_rating": 50,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 30.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "3BBLACKBIO",
@@ -887,6 +926,19 @@
           0.0399,
           0.0399
         ]
+      },
+      "rs_rating": 77,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 20.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -1139,6 +1191,19 @@
           0.0461
         ]
       },
+      "rs_rating": 91,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 50.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "BALUFORGE",
@@ -1373,6 +1438,19 @@
           0.0473,
           0.0475
         ]
+      },
+      "rs_rating": 45,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 39.1,
+        "n_stocks": 23,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -1713,6 +1791,19 @@
           0.0646
         ]
       },
+      "rs_rating": 55,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 25.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "SALSTEEL",
@@ -1875,6 +1966,19 @@
           0.0407,
           0.0408
         ]
+      },
+      "rs_rating": 55,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 10.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -2102,6 +2206,19 @@
           0.0473,
           0.0472
         ]
+      },
+      "rs_rating": 87,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 25.0,
+        "n_stocks": 36,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -2594,6 +2711,19 @@
           0.034
         ]
       },
+      "rs_rating": 31,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 23.5,
+        "n_stocks": 17,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "BBTC",
@@ -2884,6 +3014,19 @@
           0.047,
           0.0473
         ]
+      },
+      "rs_rating": 88,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 33.9,
+        "n_stocks": 118,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -4176,6 +4319,19 @@
           0.0406
         ]
       },
+      "rs_rating": 75,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 27.9,
+        "n_stocks": 61,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "AETHER",
@@ -4987,6 +5143,19 @@
           0.0405
         ]
       },
+      "rs_rating": 54,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 22.9,
+        "n_stocks": 35,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "BLUSPRING",
@@ -5645,6 +5814,19 @@
           0.0415,
           0.0415
         ]
+      },
+      "rs_rating": 63,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 24.2,
+        "n_stocks": 66,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -6377,6 +6559,19 @@
           0.0388
         ]
       },
+      "rs_rating": 35,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "PDSL",
@@ -6539,6 +6734,19 @@
           0.0381,
           0.0382
         ]
+      },
+      "rs_rating": 67,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 32.0,
+        "n_stocks": 25,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -6887,6 +7095,19 @@
           0.0533
         ]
       },
+      "rs_rating": 95,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "CONTROLPR",
@@ -7138,6 +7359,19 @@
           0.0375
         ]
       },
+      "rs_rating": 85,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 22.2,
+        "n_stocks": 9,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "NPST",
@@ -7348,6 +7582,19 @@
           0.0427,
           0.0432
         ]
+      },
+      "rs_rating": 80,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 11.1,
+        "n_stocks": 9,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -7600,6 +7847,19 @@
           0.0388
         ]
       },
+      "rs_rating": 58,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 12,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "AFSL",
@@ -7826,6 +8086,19 @@
           0.0437,
           0.0436
         ]
+      },
+      "rs_rating": 82,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 25.8,
+        "n_stocks": 62,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -8614,6 +8887,19 @@
           0.053
         ]
       },
+      "rs_rating": 73,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 33.3,
+        "n_stocks": 9,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "HATSUN",
@@ -8808,6 +9094,19 @@
           0.0457,
           0.0454
         ]
+      },
+      "rs_rating": 90,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 25.0,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -9027,6 +9326,19 @@
           0.0487,
           0.0484
         ]
+      },
+      "rs_rating": 39,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 12,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -9254,6 +9566,19 @@
           0.051,
           0.0514
         ]
+      },
+      "rs_rating": 89,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 30.6,
+        "n_stocks": 85,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -10266,6 +10591,19 @@
           0.0452
         ]
       },
+      "rs_rating": 84,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 37.5,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "KIRIINDUS",
@@ -10532,6 +10870,19 @@
           0.0379,
           0.0377
         ]
+      },
+      "rs_rating": 28,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 11,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -10823,6 +11174,19 @@
           0.0477,
           0.0483
         ]
+      },
+      "rs_rating": 83,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 46.2,
+        "n_stocks": 13,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -11202,6 +11566,19 @@
           0.036,
           0.0359
         ]
+      },
+      "rs_rating": 48,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 25.0,
+        "n_stocks": 20,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -11590,6 +11967,19 @@
           0.0418
         ]
       },
+      "rs_rating": 57,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 22.2,
+        "n_stocks": 18,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "DTIL",
@@ -11857,6 +12247,19 @@
           0.077
         ]
       },
+      "rs_rating": 97,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 57.1,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ATHERENERG",
@@ -12052,6 +12455,19 @@
           0.0373
         ]
       },
+      "rs_rating": 66,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 14.3,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "IFCI",
@@ -12222,6 +12638,19 @@
           0.0552,
           0.0564
         ]
+      },
+      "rs_rating": 93,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 33.3,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -12394,6 +12823,19 @@
           0.0434
         ]
       },
+      "rs_rating": 48,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "HINDOILEXP",
@@ -12564,6 +13006,19 @@
           0.0385,
           0.0392
         ]
+      },
+      "rs_rating": 64,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 22.2,
+        "n_stocks": 9,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -12775,6 +13230,19 @@
           0.0406,
           0.0416
         ]
+      },
+      "rs_rating": 86,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 31.8,
+        "n_stocks": 22,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -13123,6 +13591,19 @@
           0.0436
         ]
       },
+      "rs_rating": 67,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "OPTIEMUS",
@@ -13301,6 +13782,19 @@
           0.0526,
           0.0524
         ]
+      },
+      "rs_rating": 92,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 12.0,
+        "n_stocks": 25,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -13649,6 +14143,19 @@
           0.0423
         ]
       },
+      "rs_rating": 70,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "BIL",
@@ -13827,6 +14334,19 @@
           0.0455,
           0.0461
         ]
+      },
+      "rs_rating": 81,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 22.6,
+        "n_stocks": 31,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -14358,6 +14878,19 @@
           0.0369,
           0.0369
         ]
+      },
+      "rs_rating": 68,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 17.8,
+        "n_stocks": 90,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -15466,6 +15999,19 @@
           0.037
         ]
       },
+      "rs_rating": 36,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 25.0,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "UFO",
@@ -15685,6 +16231,19 @@
           0.0374
         ]
       },
+      "rs_rating": 62,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 37.5,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "EXXARO",
@@ -15863,6 +16422,19 @@
           0.0276,
           0.0278
         ]
+      },
+      "rs_rating": 70,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -16107,6 +16679,19 @@
           0.0489
         ]
       },
+      "rs_rating": 85,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "DEVYANI",
@@ -16302,6 +16887,19 @@
           0.0722
         ]
       },
+      "rs_rating": 91,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 25.0,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ARFIN",
@@ -16489,6 +17087,19 @@
           0.0449
         ]
       },
+      "rs_rating": 96,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 3,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "DOLPHIN",
@@ -16643,6 +17254,19 @@
           0.0451,
           0.0449
         ]
+      },
+      "rs_rating": 73,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -16822,6 +17446,19 @@
           0.0447,
           0.0448
         ]
+      },
+      "rs_rating": 74,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 27.6,
+        "n_stocks": 29,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -17337,6 +17974,19 @@
           0.0428,
           0.0427
         ]
+      },
+      "rs_rating": 82,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 24.6,
+        "n_stocks": 65,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -18189,6 +18839,19 @@
           0.0352
         ]
       },
+      "rs_rating": 72,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 20.0,
+        "n_stocks": 15,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "IRIS",
@@ -18464,6 +19127,19 @@
           0.0444
         ]
       },
+      "rs_rating": 32,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 33.3,
+        "n_stocks": 3,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "VISACHROME",
@@ -18642,6 +19318,19 @@
           0.0367,
           0.0368
         ]
+      },
+      "rs_rating": 46,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 24.1,
+        "n_stocks": 29,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -19214,6 +19903,19 @@
           0.0352
         ]
       },
+      "rs_rating": 69,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 19.2,
+        "n_stocks": 26,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ANIKINDS",
@@ -19617,6 +20319,19 @@
           0.0398
         ]
       },
+      "rs_rating": 20,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 22.2,
+        "n_stocks": 18,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "CRISIL",
@@ -19940,6 +20655,19 @@
           0.0475
         ]
       },
+      "rs_rating": 94,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "GANDHAR",
@@ -20126,6 +20854,19 @@
           0.0355,
           0.0355
         ]
+      },
+      "rs_rating": 33,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 12.1,
+        "n_stocks": 33,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -20602,6 +21343,19 @@
           0.0419
         ]
       },
+      "rs_rating": 52,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 11.1,
+        "n_stocks": 9,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "MODIRUBBER",
@@ -20812,6 +21566,19 @@
           0.0465,
           0.0462
         ]
+      },
+      "rs_rating": 61,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 10.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -21055,6 +21822,19 @@
           0.0339,
           0.0335
         ]
+      },
+      "rs_rating": 21,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 10.2,
+        "n_stocks": 49,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -21707,6 +22487,19 @@
           0.0362
         ]
       },
+      "rs_rating": 27,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 11.8,
+        "n_stocks": 34,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "APOLSINHOT",
@@ -22174,6 +22967,19 @@
           0.0364
         ]
       },
+      "rs_rating": 24,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 33.3,
+        "n_stocks": 3,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "TAALTECH",
@@ -22328,6 +23134,19 @@
           0.0354,
           0.0356
         ]
+      },
+      "rs_rating": 9,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -22491,6 +23310,19 @@
           0.0314,
           0.0321
         ]
+      },
+      "rs_rating": 27,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 22.2,
+        "n_stocks": 9,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -22686,6 +23518,19 @@
           0.0341,
           0.034
         ]
+      },
+      "rs_rating": 33,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 18.4,
+        "n_stocks": 76,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -23546,6 +24391,19 @@
           0.0361
         ]
       },
+      "rs_rating": 24,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "KEEPLEARN",
@@ -23821,6 +24679,19 @@
           0.0395
         ]
       },
+      "rs_rating": 58,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 14.3,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "SKFINDUS",
@@ -23999,6 +24870,19 @@
           0.0316,
           0.032
         ]
+      },
+      "rs_rating": 51,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 12.5,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -24235,6 +25119,19 @@
           0.032
         ]
       },
+      "rs_rating": 42,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "AJAXENGG",
@@ -24389,6 +25286,19 @@
           0.0364,
           0.036
         ]
+      },
+      "rs_rating": 53,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 24,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -24809,6 +25719,19 @@
           0.0459
         ]
       },
+      "rs_rating": 78,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "APCOTEXIND",
@@ -25011,6 +25934,19 @@
           0.0308,
           0.0308
         ]
+      },
+      "rs_rating": 25,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 5.0,
+        "n_stocks": 20,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -25343,6 +26279,19 @@
           0.0409
         ]
       },
+      "rs_rating": 61,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ADL",
@@ -25570,6 +26519,19 @@
           0.0372
         ]
       },
+      "rs_rating": 40,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 12.5,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ABSLAMC",
@@ -25748,6 +26710,19 @@
           0.0358,
           0.0353
         ]
+      },
+      "rs_rating": 41,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 8.5,
+        "n_stocks": 47,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -26408,6 +27383,19 @@
           0.0365
         ]
       },
+      "rs_rating": 42,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 14.3,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "INDIGOPNTS",
@@ -26595,6 +27583,19 @@
           0.0292
         ]
       },
+      "rs_rating": 8,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 3,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "SRD",
@@ -26750,6 +27751,19 @@
           0.0351
         ]
       },
+      "rs_rating": 2,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "QUINT",
@@ -26904,6 +27918,19 @@
           0.0459,
           0.0461
         ]
+      },
+      "rs_rating": 64,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 15.6,
+        "n_stocks": 32,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -27340,6 +28367,19 @@
           0.0555
         ]
       },
+      "rs_rating": 94,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 40.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "SEAMECLTD",
@@ -27527,6 +28567,19 @@
           0.0386
         ]
       },
+      "rs_rating": 30,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "MTNL",
@@ -27697,6 +28750,19 @@
           0.0384,
           0.0385
         ]
+      },
+      "rs_rating": 79,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 14.3,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -27869,6 +28935,19 @@
           0.0464
         ]
       },
+      "rs_rating": 56,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "BPCL",
@@ -28040,6 +29119,19 @@
           0.0413
         ]
       },
+      "rs_rating": 47,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 33.3,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "TTKHLTCARE",
@@ -28210,6 +29302,19 @@
           0.0379,
           0.038
         ]
+      },
+      "rs_rating": 22,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 5.3,
+        "n_stocks": 38,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -28638,6 +29743,19 @@
           0.0398
         ]
       },
+      "rs_rating": 65,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 33.3,
+        "n_stocks": 3,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "COMPEAU",
@@ -28792,6 +29910,19 @@
           0.0387,
           0.0389
         ]
+      },
+      "rs_rating": 60,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -28955,6 +30086,19 @@
           0.0442,
           0.044
         ]
+      },
+      "rs_rating": 97,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 20.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -29134,6 +30278,19 @@
           0.0365,
           0.0364
         ]
+      },
+      "rs_rating": 12,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 9.4,
+        "n_stocks": 32,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -29514,6 +30671,19 @@
           0.0444
         ]
       },
+      "rs_rating": 43,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 10.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "20MICRONS",
@@ -29716,6 +30886,19 @@
           0.0348,
           0.0344
         ]
+      },
+      "rs_rating": 9,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 5.6,
+        "n_stocks": 18,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -30008,6 +31191,19 @@
           0.0444
         ]
       },
+      "rs_rating": 76,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 25.0,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "UTKARSHBNK",
@@ -30194,6 +31390,19 @@
           0.0294,
           0.0302
         ]
+      },
+      "rs_rating": null,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -30430,6 +31639,19 @@
           0.0379
         ]
       },
+      "rs_rating": 59,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 21.4,
+        "n_stocks": 14,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ELGIEQUIP",
@@ -30665,6 +31887,19 @@
           0.0391
         ]
       },
+      "rs_rating": 30,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ALLDIGI",
@@ -30867,6 +32102,19 @@
           0.0326,
           0.0325
         ]
+      },
+      "rs_rating": 18,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 8.0,
+        "n_stocks": 75,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -31983,6 +33231,19 @@
           0.0414
         ]
       },
+      "rs_rating": 71,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "TECHNOCRAF",
@@ -32169,6 +33430,19 @@
           0.0278,
           0.0282
         ]
+      },
+      "rs_rating": 7,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -32429,6 +33703,19 @@
           0.0423
         ]
       },
+      "rs_rating": 88,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "JARO",
@@ -32599,6 +33886,19 @@
           0.0368,
           0.0368
         ]
+      },
+      "rs_rating": 44,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 15.4,
+        "n_stocks": 26,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -32963,6 +34263,19 @@
           0.0374
         ]
       },
+      "rs_rating": 18,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "AJOONI",
@@ -33125,6 +34438,19 @@
           0.0437,
           0.0435
         ]
+      },
+      "rs_rating": 39,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 12,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -33336,6 +34662,19 @@
           0.0392,
           0.039
         ]
+      },
+      "rs_rating": 49,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 18.8,
+        "n_stocks": 16,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -33588,6 +34927,19 @@
           0.0333
         ]
       },
+      "rs_rating": 26,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 50.0,
+        "n_stocks": 2,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "SIS",
@@ -33750,6 +35102,19 @@
           0.0328,
           0.0328
         ]
+      },
+      "rs_rating": 10,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -33921,6 +35286,19 @@
           0.0443,
           0.0442
         ]
+      },
+      "rs_rating": 37,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 10.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -34148,6 +35526,19 @@
           0.0377,
           0.0375
         ]
+      },
+      "rs_rating": 29,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 14.3,
+        "n_stocks": 14,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -34384,6 +35775,19 @@
           0.0487
         ]
       },
+      "rs_rating": 76,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "FUSION",
@@ -34538,6 +35942,19 @@
           0.028,
           0.0281
         ]
+      },
+      "rs_rating": 6,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -34709,6 +36126,19 @@
           0.0244,
           0.0244
         ]
+      },
+      "rs_rating": 17,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -34920,6 +36350,19 @@
           0.0325,
           0.0324
         ]
+      },
+      "rs_rating": 15,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 14.3,
+        "n_stocks": 14,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -35172,6 +36615,19 @@
           0.0295
         ]
       },
+      "rs_rating": 34,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "JUSTDIAL",
@@ -35334,6 +36790,19 @@
           0.0344,
           0.0343
         ]
+      },
+      "rs_rating": 16,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 10.0,
+        "n_stocks": 20,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -35626,6 +37095,19 @@
           0.0304
         ]
       },
+      "rs_rating": 3,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 6.2,
+        "n_stocks": 16,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ARVINDFASN",
@@ -35893,6 +37375,19 @@
           0.0322
         ]
       },
+      "rs_rating": null,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 3,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "AAATECH",
@@ -36055,6 +37550,19 @@
           0.0309,
           0.0309
         ]
+      },
+      "rs_rating": 21,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -36242,6 +37750,19 @@
           0.0204,
           0.0202
         ]
+      },
+      "rs_rating": 4,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 12,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -36478,6 +37999,19 @@
           0.0349
         ]
       },
+      "rs_rating": 15,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 12.5,
+        "n_stocks": 8,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "TBOTEK",
@@ -36680,6 +38214,19 @@
           0.0261,
           0.025
         ]
+      },
+      "rs_rating": 13,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -36908,6 +38455,19 @@
           0.0334
         ]
       },
+      "rs_rating": 6,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 20.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "HNDFDS",
@@ -37062,6 +38622,19 @@
           0.0421,
           0.0411
         ]
+      },
+      "rs_rating": 1,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 5,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -37226,6 +38799,19 @@
           0.0407
         ]
       },
+      "rs_rating": 38,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "NIACL",
@@ -37389,6 +38975,19 @@
           0.0461
         ]
       },
+      "rs_rating": 36,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "MERCURYEV",
@@ -37551,6 +39150,19 @@
           0.0282,
           0.0282
         ]
+      },
+      "rs_rating": 11,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 4.8,
+        "n_stocks": 21,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -37875,6 +39487,19 @@
           0.0399
         ]
       },
+      "rs_rating": 52,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 6,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ASHOKAMET",
@@ -38045,6 +39670,19 @@
           0.0353,
           0.0351
         ]
+      },
+      "rs_rating": 23,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 12.5,
+        "n_stocks": 24,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -38369,6 +40007,19 @@
           0.0139
         ]
       },
+      "rs_rating": 3,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ELITECON",
@@ -38524,6 +40175,19 @@
           0.0436
         ]
       },
+      "rs_rating": 19,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 3,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "SEJALLTD",
@@ -38678,6 +40342,19 @@
           0.0258,
           0.0258
         ]
+      },
+      "rs_rating": 14,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 7,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -38858,6 +40535,19 @@
           0.0289
         ]
       },
+      "rs_rating": 5,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "ALLTIME",
@@ -39012,6 +40702,19 @@
           0.0326,
           0.0321
         ]
+      },
+      "rs_rating": 12,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {
@@ -39176,6 +40879,19 @@
           0.0299
         ]
       },
+      "rs_rating": 45,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 4,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
+      },
       "stocks": [
         {
           "symbol": "INFOMEDIA",
@@ -39330,6 +41046,19 @@
           0.0197,
           0.0159
         ]
+      },
+      "rs_rating": null,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 1,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": false
       },
       "stocks": [
         {

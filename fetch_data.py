@@ -34,11 +34,16 @@ HEADERS = {
 def make_session() -> requests.Session:
     s = requests.Session()
     s.headers.update(HEADERS)
-    # Prime cookies
-    try:
-        s.get("https://www.nseindia.com", timeout=10)
-    except requests.RequestException:
-        pass
+    # NOTE: no longer priming via www.nseindia.com's homepage first. Live
+    # testing showed archives.nseindia.com issues its own _abck/bm_sz
+    # cookies on the very first request and works fine unprimed -- while
+    # the homepage is on the much more aggressively Akamai-protected main
+    # site, and if THAT request gets soft-blocked/challenged, the
+    # resulting cookie rides along on every later archives request in
+    # this session and can get them silently rejected too, even though a
+    # fresh unprimed request would have worked. If this ever needs
+    # priming again, prime against archives.nseindia.com itself, not
+    # www.nseindia.com.
     return s
 
 
@@ -54,32 +59,44 @@ def trading_days_back(n: int):
     return days
 
 
-def fetch_index_file(session: requests.Session, date: dt.date) -> pd.DataFrame | None:
-    fname = f"ind_close_all_{date.strftime('%d%m%Y')}.csv"
-    url = f"{NSE_BASE}/content/indices/{fname}"
-    r = session.get(url, timeout=15)
-    if r.status_code != 200 or not r.text.strip():
+def _fetch_csv(session: requests.Session, url: str, timeout: int, label: str) -> pd.DataFrame | None:
+    """Shared fetch+parse with a visible reason on failure -- previously
+    fetch_index_file/fetch_bhavcopy returned None on ANY failure (bad
+    status, empty body, bad parse) and the caller just counted it as
+    'missed', with no way to tell a genuine holiday apart from a block or
+    a schema change. Now prints exactly which one it was."""
+    try:
+        r = session.get(url, timeout=timeout)
+    except requests.RequestException as e:
+        print(f"  [miss] {label}: request failed -- {e}")
+        return None
+    if r.status_code != 200:
+        preview = (r.text or "")[:150].replace("\n", " ")
+        print(f"  [miss] {label}: status={r.status_code}, preview={preview!r}")
+        return None
+    if not r.text.strip():
+        print(f"  [miss] {label}: status=200 but empty body (likely a holiday)")
         return None
     try:
         df = pd.read_csv(io.StringIO(r.text))
-    except Exception:
+    except Exception as e:
+        preview = r.text[:150].replace("\n", " ")
+        print(f"  [miss] {label}: status=200 but couldn't parse as CSV -- {e} -- preview={preview!r}")
         return None
     df.columns = [c.strip() for c in df.columns]
     return df
+
+
+def fetch_index_file(session: requests.Session, date: dt.date) -> pd.DataFrame | None:
+    fname = f"ind_close_all_{date.strftime('%d%m%Y')}.csv"
+    url = f"{NSE_BASE}/content/indices/{fname}"
+    return _fetch_csv(session, url, timeout=15, label=f"index {date.isoformat()}")
 
 
 def fetch_bhavcopy(session: requests.Session, date: dt.date) -> pd.DataFrame | None:
     fname = f"sec_bhavdata_full_{date.strftime('%d%m%Y')}.csv"
     url = f"{NSE_BASE}/products/content/{fname}"
-    r = session.get(url, timeout=20)
-    if r.status_code != 200 or not r.text.strip():
-        return None
-    try:
-        df = pd.read_csv(io.StringIO(r.text))
-    except Exception:
-        return None
-    df.columns = [c.strip() for c in df.columns]
-    return df
+    return _fetch_csv(session, url, timeout=20, label=f"bhavcopy {date.isoformat()}")
 
 
 def fetch_constituents(session: requests.Session, list_url: str) -> list[str]:
