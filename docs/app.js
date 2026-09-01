@@ -413,6 +413,7 @@ function applyView(view, raw) {
     renderRegimeBanner("regime-banner-midsmall", "Mid/Smallcap 400", raw.regime_midsmall);
     const sectors = raw.sectors || [];
     document.getElementById("sectors-tab").textContent = `Sectors (${sectors.length})`;
+    renderLeadersRow("sectors", sectors);
     showData(sectors);
     return;
   }
@@ -422,7 +423,9 @@ function applyView(view, raw) {
   document.getElementById("regime-banner-nifty").classList.add("hidden");
   document.getElementById("regime-banner-midsmall").classList.add("hidden");
   infoIcon.classList.remove("hidden");
-  showData(raw.industries || []);
+  const industries = raw.industries || [];
+  renderLeadersRow("industries", industries);
+  showData(industries);
 }
 
 document.querySelectorAll(".tab").forEach(tab => {
@@ -433,5 +436,53 @@ document.getElementById("search-box").addEventListener("input", (e) => {
   SEARCH_TERM = e.target.value.trim();
   renderBoard(sortedData());
 });
+
+function renderLeadersList(elId, rows) {
+  const el = document.getElementById(elId);
+  const top3 = rows.slice(0, 3); // already sorted by score desc in compute.py/compute_basic_industry.py
+  if (!top3.length) {
+    el.innerHTML = `<span class="muted">No data</span>`;
+    return;
+  }
+  el.innerHTML = top3.map((row, i) => {
+    const name = row.sector || row.industry;
+    return `
+      <div class="leader-item">
+        <span class="leader-rank">${i + 1}</span>
+        <span class="leader-name">${name}</span>
+        <span class="score-badge ${scoreClass(row.score)}">${row.score}</span>
+      </div>`;
+  }).join("");
+}
+
+function renderImprovingList(elId, rows) {
+  const el = document.getElementById(elId);
+  const withDelta = rows.filter(r => r.score_delta && r.score_delta.available);
+  const top3 = withDelta.slice().sort((a, b) => b.score_delta.delta - a.score_delta.delta).slice(0, 3);
+  if (!top3.length) {
+    el.innerHTML = `<span class="muted">No delta data yet</span>`;
+    return;
+  }
+  el.innerHTML = top3.map((row, i) => {
+    const name = row.sector || row.industry;
+    const d = row.score_delta.delta;
+    const cls = d > 0 ? "up" : d < 0 ? "down" : "flat";
+    const arrow = d > 0 ? "▲" : d < 0 ? "▼" : "–";
+    return `
+      <div class="leader-item">
+        <span class="leader-rank">${i + 1}</span>
+        <span class="leader-name">${name}</span>
+        <span class="score-delta ${cls}">${arrow}${Math.abs(d)}</span>
+      </div>`;
+  }).join("");
+}
+
+function renderLeadersRow(view, rows) {
+  const kindLabel = view === "sectors" ? "Sectors" : "Industries";
+  document.getElementById("leaders-top-title").textContent = `Top ${kindLabel}`;
+  document.getElementById("leaders-improving-title").textContent = `Most Improving ${kindLabel}`;
+  renderLeadersList("leaders-top-list", rows);
+  renderImprovingList("leaders-improving-list", rows);
+}
 
 loadView("sectors");
