@@ -58,6 +58,8 @@ header {
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.12s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 .tab:hover { color: var(--text); }
 .tab.active {
@@ -263,6 +265,17 @@ main {
   gap: 12px;
 }
 #copy-status { color: var(--green); }
+#copy-mode {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  outline: none;
+}
+#copy-mode:focus { border-color: var(--green); }
 
 .score-col { cursor: help; }
 .regime-title { font-weight: 700; font-size: 13px; }

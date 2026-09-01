@@ -1,4 +1,5 @@
 const SCANNER_URL = "data/stock_scanner.json";
+const FILTER_STORAGE_KEY = "scannerFilters";
 
 let ALL_STOCKS = [];
 let FILTERED = [];
@@ -6,6 +7,44 @@ let SELECTED = new Set(); // symbols
 let SEARCH_TERM = "";
 let SORT_KEY = "turnover";
 let SORT_DIR = "desc";
+
+const FILTER_FIELD_IDS = [
+  "f-ema-21", "f-ema-50", "f-ema-200",
+  "f-high-min", "f-high-max", "f-low-min", "f-low-max",
+  "f-price-min", "f-price-max", "f-turnover-min",
+  "f-mcap-min", "f-mcap-max",
+];
+
+function saveFiltersToStorage() {
+  const state = {};
+  FILTER_FIELD_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    state[id] = el.type === "checkbox" ? el.checked : el.value;
+  });
+  try {
+    localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state));
+  } catch (err) {
+    // localStorage can fail in private-browsing mode or if disabled --
+    // filters just won't persist this session, nothing else breaks.
+  }
+}
+
+function loadFiltersFromStorage() {
+  let state;
+  try {
+    const raw = localStorage.getItem(FILTER_STORAGE_KEY);
+    if (!raw) return;
+    state = JSON.parse(raw);
+  } catch (err) {
+    return;
+  }
+  FILTER_FIELD_IDS.forEach(id => {
+    if (!(id in state)) return;
+    const el = document.getElementById(id);
+    if (el.type === "checkbox") el.checked = !!state[id];
+    else el.value = state[id];
+  });
+}
 
 function stackLadder(ema) {
   if (!ema || !ema.available) return `<span class="muted">n/a</span>`;
@@ -185,9 +224,18 @@ function toggleSelectAllShown(checked) {
 document.getElementById("select-all").addEventListener("change", (e) => toggleSelectAllShown(e.target.checked));
 document.getElementById("select-all-th").addEventListener("change", (e) => toggleSelectAllShown(e.target.checked));
 
-function buildTradingViewText() {
+function buildTradingViewText(mode) {
   const bySymbol = new Map(ALL_STOCKS.map(s => [s.symbol, s]));
   const selected = [...SELECTED].map(sym => bySymbol.get(sym)).filter(Boolean);
+
+  if (mode === "flat") {
+    return selected.map(s => `NSE:${s.symbol}`).join(",");
+  }
+
+  // Industry-wise: one continuous comma-separated line, with each
+  // group's header token "###IndustryName(count)" inline alongside the
+  // symbols -- not on its own line -- e.g.
+  // ###Auto Ancilaries(1),NSE:SSWL,###Jewellery(1),NSE:RBZJEWEL,...
   const groups = new Map(); // industry -> [symbol,...]
   selected.forEach(s => {
     const key = s.basic_industry || "Unclassified";
@@ -195,7 +243,13 @@ function buildTradingViewText() {
     groups.get(key).push(`NSE:${s.symbol}`);
   });
   const sortedKeys = [...groups.keys()].sort();
-  return sortedKeys.map(k => `###${k}\n${groups.get(k).join(",")}`).join("\n");
+  const parts = [];
+  sortedKeys.forEach(k => {
+    const syms = groups.get(k);
+    parts.push(`###${k}(${syms.length})`);
+    parts.push(...syms);
+  });
+  return parts.join(",");
 }
 
 document.getElementById("copy-tv").addEventListener("click", async () => {
@@ -204,7 +258,8 @@ document.getElementById("copy-tv").addEventListener("click", async () => {
     setTimeout(() => { document.getElementById("copy-status").textContent = ""; }, 2500);
     return;
   }
-  const text = buildTradingViewText();
+  const mode = document.getElementById("copy-mode").value;
+  const text = buildTradingViewText(mode);
   try {
     await navigator.clipboard.writeText(text);
     document.getElementById("copy-status").textContent = `Copied ${SELECTED.size} symbols`;
@@ -229,13 +284,17 @@ document.getElementById("copy-tv").addEventListener("click", async () => {
   setTimeout(() => { document.getElementById("copy-status").textContent = ""; }, 3000);
 });
 
-document.getElementById("f-apply").addEventListener("click", applyFilters);
+document.getElementById("f-apply").addEventListener("click", () => {
+  saveFiltersToStorage();
+  applyFilters();
+});
 document.getElementById("f-reset").addEventListener("click", () => {
   document.querySelectorAll(".filter-field input").forEach(el => {
     if (el.disabled) return;
     if (el.type === "checkbox") el.checked = false;
     else el.value = "";
   });
+  try { localStorage.removeItem(FILTER_STORAGE_KEY); } catch (err) {}
   applyFilters();
 });
 document.getElementById("search-box").addEventListener("input", (e) => {
@@ -244,12 +303,13 @@ document.getElementById("search-box").addEventListener("input", (e) => {
 });
 
 async function load() {
+  loadFiltersFromStorage();
   try {
     const res = await fetch(SCANNER_URL);
     ALL_STOCKS = await res.json();
     updateSortHeaderStyles();
     FILTERED = ALL_STOCKS.slice();
-    renderResults();
+    applyFilters();
     const dates = ALL_STOCKS.map(s => s.last_date).filter(Boolean);
     document.getElementById("asof").textContent = dates.length ? `as of ${dates.sort().pop()}` : "";
   } catch (err) {
