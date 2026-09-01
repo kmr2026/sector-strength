@@ -482,7 +482,16 @@ function renderLeadersRow(view, rows) {
   document.getElementById("leaders-top-title").textContent = `Top ${kindLabel}`;
   document.getElementById("leaders-improving-title").textContent = `Most Improving ${kindLabel}`;
   renderLeadersList("leaders-top-list", rows);
-  renderImprovingList("leaders-improving-list", rows);
+  // "Most Improving Industries" only -- a thin industry can swing its
+  // score a lot on the back of just 1-2 stocks moving, which isn't a
+  // meaningful "sector is waking up" signal the way it is when 10+
+  // stocks are participating. Sectors aren't filtered this way: their
+  // constituent counts are already curated/official index membership,
+  // not the wide, uneven basic-industry buckets this is guarding against.
+  const improvingRows = view === "industries"
+    ? rows.filter(r => (r.n_stocks_total || 0) >= 10)
+    : rows;
+  renderImprovingList("leaders-improving-list", improvingRows);
 }
 
 loadView("sectors");
