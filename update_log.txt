@@ -823,3 +823,226 @@ C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_in
   daily_returns = wide.pct_change()
 C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
   daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+Wrote 24 sectors to leaderboard.json (regime: Bearish)
+Wrote 133 basic industries to basic_industries.json (source: screener_public_188cat)
+Wrote 2666 stocks to stock_scanner.json
+Done at 2026-09-01T22:06:30.767159
+[01-09-2026 22:06:30.85] Committing and pushing... 
