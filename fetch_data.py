@@ -295,9 +295,9 @@ def update_index_prices():
     print(f"  index files parsed: {got}, missed/holidays: {missed}")
 
 
-def update_stock_prices():
-    """Stores EVERY EQ-series stock's daily close/high/low/volume, not just
-    the ones in your tracked sectors -- this is what makes the
+def update_stock_prices(refetch_days: int = 0):
+    """Stores EVERY EQ/BE-series stock's daily close/high/low/volume, not
+    just the ones in your tracked sectors -- this is what makes the
     basic-industry view AND the stock scanner possible.
 
     'existing_dates' only counts dates where volume IS NOT NULL -- so any
@@ -306,9 +306,24 @@ def update_stock_prices():
     filling in the full row via INSERT OR REPLACE. Self-healing, no
     separate backfill script needed -- same trick update_index_prices()
     already uses for brand-new indices.
+
+    That self-healing check is per-DATE, not per-symbol though -- so it
+    can't catch a symbol that was silently dropped on dates where OTHER
+    stocks succeeded (e.g. BE-series rows before the EQ-only filter was
+    fixed). refetch_days re-checks the last N calendar days regardless of
+    whether they're already marked done, so a fix like the EQ->EQ/BE
+    change actually gets applied retroactively instead of only affecting
+    fetches going forward.
     """
     print(f"Fetching stock bhavcopy history ({STOCK_HISTORY_DAYS} days, full universe)...")
+    if refetch_days > 0:
+        print(f"  --refetch-days={refetch_days}: re-checking the last {refetch_days} days "
+              f"even if already marked fetched (use this after a fix that changes which "
+              f"rows get kept, so it applies retroactively, not just to future runs).")
     session = make_session()
+    refetch_cutoff = None
+    if refetch_days > 0:
+        refetch_cutoff = (dt.date.today() - dt.timedelta(days=refetch_days)).isoformat()
     with get_conn() as conn:
         existing_dates = {
             row[0] for row in conn.execute(
@@ -318,7 +333,7 @@ def update_stock_prices():
         got, missed, total_rows = 0, 0, 0
         for date in trading_days_back(STOCK_HISTORY_DAYS):
             ds = date.isoformat()
-            if ds in existing_dates:
+            if ds in existing_dates and not (refetch_cutoff and ds >= refetch_cutoff):
                 continue
             df = fetch_bhavcopy(session, date)
             if df is None:
@@ -335,7 +350,21 @@ def update_stock_prices():
                 continue
             rows = []
             for _, r in df.iterrows():
-                if series_col and str(r[series_col]).strip().upper() != "EQ":
+                # EQ is normal settlement; BE and BZ are NSE's Trade-to-
+                # Trade series -- triggered when a stock gets flagged
+                # under ASM (Additional Surveillance Measure) for an
+                # unusually sharp price move (BZ additionally bars F&O
+                # trading on the stock, a stricter tier of the same
+                # thing). Still real, actively traded, non-delisted
+                # companies -- e.g. MTARTECH after its ~400% one-year
+                # run. EQ-only was silently dropping every row for any
+                # stock flagged this way, which looked identical to
+                # "delisted" downstream even though nothing was actually
+                # wrong with the company. Deliberately NOT including SM/
+                # ST/SZ (NSE Emerge/SME platform) here -- that's a
+                # genuinely different market segment (own lot sizes,
+                # liquidity, disclosure norms), not a dropped-row bug.
+                if series_col and str(r[series_col]).strip().upper() not in ("EQ", "BE", "BZ"):
                     continue
                 sym = str(r[sym_col]).strip()
                 try:
@@ -369,7 +398,7 @@ def update_stock_prices():
     print(f"  bhavcopy files parsed: {got}, missed/holidays: {missed}, rows stored: {total_rows}")
 
 
-def run_daily_update():
+def run_daily_update(refetch_days: int = 0):
     init_db()
     with get_conn() as conn:
         has_basic_industry = conn.execute(
@@ -382,9 +411,14 @@ def run_daily_update():
     if not has_basic_industry:
         update_nifty500_industries()
     update_index_prices()
-    update_stock_prices()
+    update_stock_prices(refetch_days=refetch_days)
     print("Done.")
 
 
 if __name__ == "__main__":
-    run_daily_update()
+    import sys
+    refetch_days = 0
+    for arg in sys.argv[1:]:
+        if arg.startswith("--refetch-days="):
+            refetch_days = int(arg.split("=", 1)[1])
+    run_daily_update(refetch_days=refetch_days)

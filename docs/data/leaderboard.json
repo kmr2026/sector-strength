@@ -139,7 +139,7 @@
           1.1138
         ]
       },
-      "rs_rating": 87,
+      "rs_rating": 83,
       "rs_rating_delta": {
         "available": false
       },
@@ -934,7 +934,7 @@
           0.5483
         ]
       },
-      "rs_rating": 91,
+      "rs_rating": 87,
       "rs_rating_delta": {
         "available": false
       },
@@ -1290,10 +1290,10 @@
     {
       "sector": "Telecom",
       "index_name": "NIFTY TELECOMMUNICATIONS",
-      "score": 69,
+      "score": 71,
       "score_delta": {
         "available": true,
-        "delta": -12,
+        "delta": -10,
         "prev_score": 81,
         "prev_date": "2026-08-31",
         "bullish_stack_changed": false,
@@ -1302,7 +1302,7 @@
       "score_history": [
         63,
         81,
-        69
+        71
       ],
       "ema": {
         "available": true,
@@ -1320,11 +1320,11 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 30.8,
-        "pct_above_10ma_week_ago": 53.8,
+        "pct_above_10ma": 38.5,
+        "pct_above_10ma_week_ago": 61.5,
         "breadth_rising": false,
-        "pct_above_21ma": 46.2,
-        "pct_above_21ma_week_ago": 38.5,
+        "pct_above_21ma": 53.8,
+        "pct_above_21ma_week_ago": 46.2,
         "breadth_21_rising": true,
         "overheated": false,
         "n_stocks": 13,
@@ -1394,20 +1394,20 @@
           0.1552
         ]
       },
-      "rs_rating": 75,
+      "rs_rating": 95,
       "rs_rating_delta": {
         "available": false
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 0.0,
-        "n_stocks": 12,
+        "pct_within_52wk_high": 7.7,
+        "n_stocks": 13,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
         "delta": 0.0,
-        "prev_value": 0.0,
+        "prev_value": 7.7,
         "prev_date": "2026-09-01",
         "direction": "flat"
       },
@@ -1419,6 +1419,14 @@
           "above_10ma": true,
           "above_21ma": true,
           "close": 582.8
+        },
+        {
+          "symbol": "STLTECH",
+          "name": "Sterlite Tech.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 693.7
         },
         {
           "symbol": "TATACOMM",
@@ -1507,14 +1515,6 @@
           "above_10ma": false,
           "above_21ma": false,
           "close": 501.95
-        },
-        {
-          "symbol": "STLTECH",
-          "name": "Sterlite Tech.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 405.15
         }
       ],
       "last_date": "2026-09-01"
@@ -2161,7 +2161,7 @@
           0.7216
         ]
       },
-      "rs_rating": 79,
+      "rs_rating": 75,
       "rs_rating_delta": {
         "available": false
       },
@@ -2618,7 +2618,7 @@
         "pct_above_10ma_week_ago": 47.4,
         "breadth_rising": false,
         "pct_above_21ma": 26.3,
-        "pct_above_21ma_week_ago": 78.9,
+        "pct_above_21ma_week_ago": 84.2,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 19,
@@ -2692,20 +2692,20 @@
           0.4011
         ]
       },
-      "rs_rating": 95,
+      "rs_rating": 91,
       "rs_rating_delta": {
         "available": false
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 5.6,
-        "n_stocks": 18,
+        "pct_within_52wk_high": 5.3,
+        "n_stocks": 19,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
         "delta": 0.0,
-        "prev_value": 5.6,
+        "prev_value": 5.3,
         "prev_date": "2026-09-01",
         "direction": "flat"
       },
@@ -2844,7 +2844,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 7777.0
+          "close": 6946.5
         },
         {
           "symbol": "PARAS",
@@ -3888,7 +3888,7 @@
           1.1844
         ]
       },
-      "rs_rating": 83,
+      "rs_rating": 79,
       "rs_rating_delta": {
         "available": false
       },
