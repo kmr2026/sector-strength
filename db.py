@@ -14,6 +14,9 @@ CREATE TABLE IF NOT EXISTS stock_prices (
     symbol TEXT NOT NULL,
     date TEXT NOT NULL,
     close REAL NOT NULL,
+    high REAL,
+    low REAL,
+    volume REAL,
     PRIMARY KEY (symbol, date)
 );
 
@@ -35,6 +38,8 @@ CREATE TABLE IF NOT EXISTS basic_industry_map (
     industry TEXT,
     basic_industry TEXT NOT NULL,
     company_name TEXT,
+    market_cap_cr REAL,
+    shares_outstanding REAL,
     classified_at TEXT
 );
 
@@ -103,6 +108,34 @@ def init_db():
                 conn.execute(f"ALTER TABLE score_history ADD COLUMN {col} INTEGER")
             except sqlite3.OperationalError:
                 pass  # column already exists
+        # Same pattern for stock_prices' high/low/volume -- added for the
+        # stock-scanner feature. fetch_data.py's update_stock_prices()
+        # treats any date missing 'volume' as not-yet-fetched, so existing
+        # close-only rows self-heal (get re-fetched with full OHLCV) on the
+        # next run -- no separate backfill script needed.
+        for col in ("high", "low", "volume"):
+            try:
+                conn.execute(f"ALTER TABLE stock_prices ADD COLUMN {col} REAL")
+            except sqlite3.OperationalError:
+                pass  # column already exists
+        # Same pattern for basic_industry_map's market_cap_cr -- added for
+        # the scanner's Market Cap filter. classify_via_screener.py needs
+        # --force on its next run to backfill this for industries already
+        # classified before this column existed (its normal skip-what's-
+        # already-done logic won't revisit them otherwise).
+        try:
+            conn.execute("ALTER TABLE basic_industry_map ADD COLUMN market_cap_cr REAL")
+        except sqlite3.OperationalError:
+            pass  # column already exists
+        # shares_outstanding is the stable, derived value (market_cap_cr /
+        # CMP at scrape time) -- compute_stock_scanner.py multiplies this
+        # by TODAY's close price to get a market cap that's fresh every
+        # day, instead of the one-time scraped market_cap_cr snapshot
+        # going stale as the price moves.
+        try:
+            conn.execute("ALTER TABLE basic_industry_map ADD COLUMN shares_outstanding REAL")
+        except sqlite3.OperationalError:
+            pass  # column already exists
 
 
 if __name__ == "__main__":

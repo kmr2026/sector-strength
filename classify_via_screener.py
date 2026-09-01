@@ -36,9 +36,15 @@ when the index page said there should be more), it retries that industry
 with backoff rather than silently recording a bad result.
 
 USAGE:
-    python classify_via_screener.py             # full run, skips what's already done
-    python classify_via_screener.py --force      # re-fetch everything, even if already classified
-    python classify_via_screener.py --debug      # fetch just the index page and print what it found
+    python classify_via_screener.py                  # full run, skips what's already done
+    python classify_via_screener.py --force           # re-fetch everything, even if already classified
+    python classify_via_screener.py --backfill-missing  # keeps existing classification, only retries
+                                                          # industries with zero shares_outstanding data
+                                                          # (never classified, classified before market
+                                                          # cap existed, or failed partway through a
+                                                          # previous --force run) -- much cheaper than
+                                                          # --force when only a handful are incomplete
+    python classify_via_screener.py --debug           # fetch just the index page and print what it found
 """
 import re
 import sys
@@ -62,9 +68,12 @@ HEADERS = {
 }
 
 # Much more conservative than the first attempt -- that one used 0.4-0.8s
-# and tripped a rate limit. Screener.in is a much smaller operation than
-# NSE; treat it gently.
-MIN_DELAY, MAX_DELAY = 3.0, 5.0
+# and tripped a rate limit. A second attempt at 3-5s still triggered an
+# IP-level block partway through a 188-industry --force run (confirmed via
+# being unable to even browse screener.in manually afterward) -- widened
+# further here, since the block is IP-level, not request-level, so speed
+# alone determines whether it triggers.
+MIN_DELAY, MAX_DELAY = 6.0, 10.0
 MAX_RETRIES = 3
 RETRY_BACKOFF_BASE = 15  # seconds; doubles each retry
 
@@ -139,10 +148,40 @@ def discover_industries(session: requests.Session) -> list[tuple[str, str]]:
     return industries
 
 
-def fetch_industry_companies(session: requests.Session, leaf_url: str) -> list[tuple[str, str]] | None:
-    """Returns [(symbol, company_name), ...] across all pages of one
-    industry, or None if it couldn't be fetched reliably (caller should
-    treat this as 'try again later', not 'zero companies').
+def _parse_number(text: str) -> float | None:
+    text = text.strip().replace(",", "")
+    if not text or text in ("-", "--"):
+        return None
+    try:
+        return float(text)
+    except ValueError:
+        return None
+
+
+def _find_column_index(header_row, *name_fragments: str) -> int | None:
+    """Finds a column by header text containing any of the given
+    fragments (case-insensitive) -- resilient to screener.in shifting
+    column order, since we match by what the header says, not position."""
+    for i, c in enumerate(header_row.find_all(["th", "td"])):
+        text = c.get_text(strip=True).lower()
+        if any(frag in text for frag in name_fragments):
+            return i
+    return None
+
+
+def fetch_industry_companies(session: requests.Session, leaf_url: str) -> list[tuple[str, str, float | None, float | None]] | None:
+    """Returns [(symbol, company_name, market_cap_cr, shares_outstanding), ...]
+    across all pages of one industry, or None if it couldn't be fetched
+    reliably (caller should treat this as 'try again later', not 'zero
+    companies').
+
+    market_cap_cr and shares_outstanding both come from the SAME results
+    table as the company links -- screener.in's default columns already
+    include 'Mar Cap Rs.Cr.' and 'CMP Rs.', so this needs no extra
+    request. shares_outstanding = market_cap_cr / CMP at scrape time --
+    a STABLE per-company value (share count barely changes day to day,
+    unlike price), meant to be multiplied by a fresh daily close price
+    later rather than re-scraped -- see compute_stock_scanner.py.
 
     Tracks raw link count separately from the BSE-filtered count: if the
     page genuinely had zero parseable company links despite the index
@@ -169,18 +208,49 @@ def fetch_industry_companies(session: requests.Session, leaf_url: str) -> list[t
                 expected_count = int(m.group(1))
                 total_pages = int(m.group(2))
 
-        for a in soup.find_all("a", href=True):
+        table = None
+        mcap_idx = cmp_idx = None
+        for t in soup.find_all("table"):
+            header_row = t.find("tr")
+            if header_row is None:
+                continue
+            idx = _find_column_index(header_row, "mar cap", "market cap")
+            if idx is not None:
+                table, mcap_idx = t, idx
+                cmp_idx = _find_column_index(header_row, "cmp")
+                break
+        # Fall back to scanning the whole page for links if we couldn't
+        # locate the table -- classification still works, market cap/
+        # shares just come back None rather than failing the whole fetch.
+        rows = table.find_all("tr") if table is not None else soup.find_all("tr")
+
+        for tr in rows:
+            a = tr.find("a", href=True)
+            if not a:
+                continue
             path = _path_only(a["href"])
             m = COMPANY_LINK_RE.match(path)
-            if m:
-                symbol = m.group(1)
-                name = a.get_text(strip=True)
-                if not (symbol and name):
-                    continue
-                raw_link_count += 1
-                if symbol.isdigit():
-                    continue  # BSE-only numeric code, not an NSE symbol -- skip
-                companies.append((symbol, name))
+            if not m:
+                continue
+            symbol = m.group(1)
+            name = a.get_text(strip=True)
+            if not (symbol and name):
+                continue
+            raw_link_count += 1
+            if symbol.isdigit():
+                continue  # BSE-only numeric code, not an NSE symbol -- skip
+            mcap = cmp_price = None
+            cells = tr.find_all("td")
+            if mcap_idx is not None and len(cells) > mcap_idx:
+                mcap = _parse_number(cells[mcap_idx].get_text(strip=True))
+            if cmp_idx is not None and len(cells) > cmp_idx:
+                cmp_price = _parse_number(cells[cmp_idx].get_text(strip=True))
+            shares_outstanding = None
+            if mcap is not None and cmp_price:
+                # market_cap_cr is in crores (1e7); shares_outstanding is
+                # a plain share count.
+                shares_outstanding = mcap * 1e7 / cmp_price
+            companies.append((symbol, name, mcap, shares_outstanding))
 
         page += 1
         if page <= total_pages:
@@ -197,7 +267,23 @@ def fetch_industry_companies(session: requests.Session, leaf_url: str) -> list[t
     return companies
 
 
-def run(force: bool = False):
+def get_industries_missing_shares(conn) -> set[str]:
+    """Industries where NOT A SINGLE symbol has shares_outstanding yet --
+    covers industries never classified, classified before market cap was
+    added, AND industries that failed partway through a --force backfill
+    (a failed fetch leaves old rows untouched, so they still show up as
+    'classified' even though shares_outstanding never got filled in).
+    Used by --backfill-missing to retry only what's actually incomplete."""
+    rows = conn.execute(
+        "SELECT basic_industry, "
+        "SUM(CASE WHEN shares_outstanding IS NOT NULL THEN 1 ELSE 0 END) as have, "
+        "COUNT(*) as total "
+        "FROM basic_industry_map GROUP BY basic_industry"
+    ).fetchall()
+    return {name for name, have, total in rows if have == 0}
+
+
+def run(force: bool = False, backfill_missing: bool = False):
     init_db()
     session = make_session()
 
@@ -226,10 +312,22 @@ def run(force: bool = False):
     if not force and already_done:
         print(f"{len(already_done)} industries already classified from a previous "
               f"run -- skipping those. Use --force to re-fetch everything.")
+        print("NOTE: if you're running this to backfill market_cap_cr (added "
+              "after your last classification run), you need --force this "
+              "time -- otherwise every already-classified industry is "
+              "skipped and keeps its market_cap_cr as NULL.")
+
+    missing_shares = set()
+    if backfill_missing:
+        with get_conn() as conn:
+            missing_shares = get_industries_missing_shares(conn)
+        print(f"--backfill-missing: {len(missing_shares)} already-classified "
+              f"industries still have no shares_outstanding data -- retrying "
+              f"just those, leaving the rest untouched.")
 
     succeeded, failed = [], []
     for i, (name, leaf_url) in enumerate(industries, 1):
-        if not force and name in already_done:
+        if not force and name in already_done and not (backfill_missing and name in missing_shares):
             continue
 
         companies = fetch_industry_companies(session, leaf_url)
@@ -241,15 +339,15 @@ def run(force: bool = False):
 
         print(f"  [{i}/{len(industries)}] {name}: {len(companies)} companies")
         now = dt.datetime.now().isoformat()
-        rows = [(sym, name, cname, now) for sym, cname in companies]
+        rows = [(sym, name, cname, mcap, shares, now) for sym, cname, mcap, shares in companies]
 
         with get_conn() as conn:
             conn.execute("DELETE FROM basic_industry_map WHERE basic_industry = ?", (name,))
             if rows:
                 conn.executemany(
                     """INSERT OR REPLACE INTO basic_industry_map
-                       (symbol, basic_industry, company_name, classified_at)
-                       VALUES (?, ?, ?, ?)""",
+                       (symbol, basic_industry, company_name, market_cap_cr, shares_outstanding, classified_at)
+                       VALUES (?, ?, ?, ?, ?, ?)""",
                     rows,
                 )
             else:
@@ -299,8 +397,8 @@ def debug():
             print("  FAILED to fetch reliably")
         else:
             print(f"Found {len(companies)} companies:")
-            for sym, cname in companies[:10]:
-                print(f"  {sym}: {cname}")
+            for sym, cname, mcap, shares in companies[:10]:
+                print(f"  {sym}: {cname} (mcap@scrape: {mcap}, shares: {shares})")
 
 
 if __name__ == "__main__":
@@ -308,5 +406,5 @@ if __name__ == "__main__":
     if "--debug" in args:
         debug()
     else:
-        run(force="--force" in args)
+        run(force="--force" in args, backfill_missing="--backfill-missing" in args)
 

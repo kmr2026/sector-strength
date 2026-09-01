@@ -1,0 +1,141 @@
+"""
+Per-stock scanner data -- computes EMA position, RS Rating, distance from
+52-week high/low, 20-day ADR%, and 30-day average turnover for every NSE
+stock with enough history.
+
+Unlike compute.py/compute_basic_industry.py (which score SECTORS/
+INDUSTRIES by aggregating many stocks into one group row), this scores
+INDIVIDUAL STOCKS directly -- one row per symbol. Powers the stock
+scanner UI (docs/scanner.html), a free alternative to paid scanners like
+ChartsMaze's custom-scanner.
+
+RS Rating here is percentile-ranked against the FULL stock universe (not
+a sector/industry subset) -- reuses rs_ratings_from_raw() from scoring.py
+on the same raw per-stock scores compute.py/compute_basic_industry.py
+already use for their group-level RS Ratings, so a stock's number here is
+directly comparable to how it contributes to its sector's/industry's own
+RS Rating.
+"""
+import pandas as pd
+from db import get_conn
+from scoring import ema_block, universe_raw_rs_scores, rs_ratings_from_raw
+
+
+def _stock_52wk_block(series: pd.Series) -> dict:
+    if len(series) < 10:
+        return {"available": False}
+    window = series.tail(min(len(series), 252))
+    high, low, last = window.max(), window.min(), series.iloc[-1]
+    if not high or not low:
+        return {"available": False}
+    return {
+        "available": True,
+        "high_52wk": round(float(high), 2),
+        "low_52wk": round(float(low), 2),
+        "pct_from_high": round((high - last) / high * 100, 2),
+        "pct_from_low": round((last - low) / low * 100, 2),
+    }
+
+
+def _adr_pct(high_s: pd.Series, low_s: pd.Series, days: int = 20) -> float | None:
+    """Average Daily Range %, ChartsMaze-style: mean of (high-low)/low*100
+    over the trailing N days -- a volatility measure, not a directional one."""
+    joined = pd.concat([high_s, low_s], axis=1, join="inner").dropna()
+    joined.columns = ["high", "low"]
+    if len(joined) < days:
+        return None
+    recent = joined.tail(days)
+    valid = recent[recent["low"] > 0]
+    if valid.empty:
+        return None
+    daily_range_pct = (valid["high"] - valid["low"]) / valid["low"] * 100
+    return round(float(daily_range_pct.mean()), 2)
+
+
+def _avg_turnover_cr(close_s: pd.Series, vol_s: pd.Series, days: int = 30) -> float | None:
+    """Average daily (price x volume) over the trailing N days, in crores --
+    ChartsMaze's liquidity filter equivalent."""
+    joined = pd.concat([close_s, vol_s], axis=1, join="inner").dropna()
+    joined.columns = ["close", "volume"]
+    if len(joined) < days:
+        return None
+    recent = joined.tail(days)
+    turnover = (recent["close"] * recent["volume"]).mean()
+    return round(float(turnover) / 1e7, 2)  # rupees -> crores
+
+
+def get_symbol_metadata(conn) -> dict:
+    """symbol -> {name, basic_industry, shares_outstanding}, best-effort
+    from basic_industry_map. shares_outstanding is the stable, derived
+    share count (see classify_via_screener.py) -- market cap itself is
+    computed fresh below from this x TODAY's close, not read as a stored
+    snapshot, so it never goes stale as the price moves."""
+    rows = conn.execute(
+        "SELECT symbol, company_name, basic_industry, shares_outstanding FROM basic_industry_map"
+    ).fetchall()
+    return {r[0]: {"name": r[1] or r[0], "basic_industry": r[2], "shares_outstanding": r[3]} for r in rows}
+
+
+def compute_all() -> list[dict]:
+    with get_conn() as conn:
+        df = pd.read_sql_query(
+            "SELECT symbol, date, close, high, low, volume FROM stock_prices ORDER BY date",
+            conn,
+        )
+        if df.empty:
+            return []
+        df["date"] = pd.to_datetime(df["date"])
+        meta = get_symbol_metadata(conn)
+
+        # Same raw-score computation compute.py/compute_basic_industry.py
+        # use for their group-level RS Ratings -- ranked here against the
+        # FULL universe instead of averaged into a group first.
+        universe_scores = universe_raw_rs_scores(conn)
+        ratings = rs_ratings_from_raw(universe_scores)
+
+        results = []
+        for symbol, g in df.groupby("symbol"):
+            g = g.sort_values("date")
+            idx = g["date"]
+            close_s = pd.Series(g["close"].values, index=idx)
+            high_s = pd.Series(g["high"].values, index=idx)
+            low_s = pd.Series(g["low"].values, index=idx)
+            vol_s = pd.Series(g["volume"].values, index=idx)
+
+            ema = ema_block(close_s)
+            wk52 = _stock_52wk_block(close_s)
+            adr = _adr_pct(high_s, low_s)
+            turnover = _avg_turnover_cr(close_s, vol_s)
+            info = meta.get(symbol, {})
+            last_close = round(float(close_s.iloc[-1]), 2)
+            shares = info.get("shares_outstanding")
+            # Market cap computed fresh here, every run, from the STABLE
+            # share count x TODAY's close -- not a stored snapshot, so it
+            # tracks the current price automatically instead of going
+            # stale between classify_via_screener.py runs.
+            market_cap_cr = round(shares * last_close / 1e7, 2) if shares else None
+
+            results.append({
+                "symbol": symbol,
+                "name": info.get("name", symbol),
+                "basic_industry": info.get("basic_industry"),
+                "market_cap_cr": market_cap_cr,
+                "close": last_close,
+                "last_date": g["date"].iloc[-1].date().isoformat(),
+                "ema": ema,
+                "rs_rating": ratings.get(symbol),
+                "pct_from_52wk_high": wk52.get("pct_from_high") if wk52.get("available") else None,
+                "pct_from_52wk_low": wk52.get("pct_from_low") if wk52.get("available") else None,
+                "adr_pct_20d": adr,
+                "avg_turnover_cr_30d": turnover,
+            })
+
+    results.sort(key=lambda r: r["rs_rating"] if r["rs_rating"] is not None else -1, reverse=True)
+    return results
+
+
+if __name__ == "__main__":
+    import json
+    result = compute_all()
+    print(f"{len(result)} stocks scanned")
+    print(json.dumps(result[:3], indent=2, default=str))

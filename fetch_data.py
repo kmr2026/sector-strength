@@ -296,15 +296,24 @@ def update_index_prices():
 
 
 def update_stock_prices():
-    """Stores EVERY EQ-series stock's daily close, not just the ones in your
-    16 tracked sectors -- this is what makes the 197-basic-industry view
-    possible. Bhavcopy already contains every stock for the day; we're just
-    no longer throwing most of it away."""
+    """Stores EVERY EQ-series stock's daily close/high/low/volume, not just
+    the ones in your tracked sectors -- this is what makes the
+    basic-industry view AND the stock scanner possible.
+
+    'existing_dates' only counts dates where volume IS NOT NULL -- so any
+    date stored back when this only saved 'close' (before high/low/volume
+    were added) looks unfetched and gets pulled again automatically here,
+    filling in the full row via INSERT OR REPLACE. Self-healing, no
+    separate backfill script needed -- same trick update_index_prices()
+    already uses for brand-new indices.
+    """
     print(f"Fetching stock bhavcopy history ({STOCK_HISTORY_DAYS} days, full universe)...")
     session = make_session()
     with get_conn() as conn:
         existing_dates = {
-            row[0] for row in conn.execute("SELECT DISTINCT date FROM stock_prices").fetchall()
+            row[0] for row in conn.execute(
+                "SELECT DISTINCT date FROM stock_prices WHERE volume IS NOT NULL"
+            ).fetchall()
         }
         got, missed, total_rows = 0, 0, 0
         for date in trading_days_back(STOCK_HISTORY_DAYS):
@@ -317,6 +326,9 @@ def update_stock_prices():
                 continue
             sym_col = next((c for c in df.columns if c.strip().upper() == "SYMBOL"), None)
             close_col = next((c for c in df.columns if c.strip().upper() == "CLOSE_PRICE"), None)
+            high_col = next((c for c in df.columns if c.strip().upper() == "HIGH_PRICE"), None)
+            low_col = next((c for c in df.columns if c.strip().upper() == "LOW_PRICE"), None)
+            vol_col = next((c for c in df.columns if c.strip().upper() == "TTL_TRD_QNTY"), None)
             series_col = next((c for c in df.columns if c.strip().upper() == "SERIES"), None)
             if not sym_col or not close_col:
                 missed += 1
@@ -327,12 +339,28 @@ def update_stock_prices():
                     continue
                 sym = str(r[sym_col]).strip()
                 try:
-                    rows.append((sym, ds, float(r[close_col])))
+                    close = float(r[close_col])
                 except (ValueError, TypeError):
                     continue
+                # high/low/volume are best-effort -- a missing/malformed
+                # value on any of these shouldn't drop the whole row, since
+                # close alone still feeds every EMA/breadth/RS calc that
+                # already existed before this change.
+                def _optional_float(col):
+                    if not col:
+                        return None
+                    try:
+                        return float(r[col])
+                    except (ValueError, TypeError):
+                        return None
+                high = _optional_float(high_col)
+                low = _optional_float(low_col)
+                volume = _optional_float(vol_col)
+                rows.append((sym, ds, close, high, low, volume))
             if rows:
                 conn.executemany(
-                    "INSERT OR REPLACE INTO stock_prices (symbol, date, close) VALUES (?, ?, ?)",
+                    "INSERT OR REPLACE INTO stock_prices (symbol, date, close, high, low, volume) "
+                    "VALUES (?, ?, ?, ?, ?, ?)",
                     rows,
                 )
                 got += 1

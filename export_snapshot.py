@@ -21,6 +21,7 @@ from pathlib import Path
 
 from compute import compute_all as compute_sectors
 from compute_basic_industry import compute_all_with_meta
+from compute_stock_scanner import compute_all as compute_stock_scanner
 
 DATA_DIR = Path(__file__).parent / "docs" / "data"
 
@@ -37,6 +38,10 @@ def main():
     (DATA_DIR / "basic_industries.json").write_text(json.dumps(industries_result, indent=2, default=str))
     print(f"Wrote {len(industries_result['industries'])} basic industries to basic_industries.json "
           f"(source: {industries_result['classification_source']})")
+
+    scanner_result = compute_stock_scanner()
+    (DATA_DIR / "stock_scanner.json").write_text(json.dumps(scanner_result, indent=2, default=str))
+    print(f"Wrote {len(scanner_result)} stocks to stock_scanner.json")
 
     print(f"Done at {dt.datetime.now().isoformat()}")
 

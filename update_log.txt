@@ -777,3 +777,6 @@ To https://github.com/kmr2026/sector-strength.git
 ---------------------------------------------- 
 [01-09-2026 13:21:48.86] Task triggered. 
 [01-09-2026 13:21:53.69] Before 6:30 PM and yesterday's run is up to date - not running yet. 
+---------------------------------------------- 
+[01-09-2026 17:50:03.86] Task triggered. 
+[01-09-2026 17:50:05.81] Before 6:30 PM and yesterday's run is up to date - not running yet. 

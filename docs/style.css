@@ -177,6 +177,93 @@ main {
   .leaders-row { flex-direction: column; }
 }
 
+.filter-panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+.filter-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.filter-row:last-of-type { margin-bottom: 0; }
+.filter-field {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.filter-field label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.filter-field input[type="number"],
+.filter-field input[type="text"],
+.filter-field select {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 7px 10px;
+  border-radius: 5px;
+  outline: none;
+  width: 100%;
+}
+.filter-field input:focus,
+.filter-field select:focus { border-color: var(--green); }
+.range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.range-inputs input { width: 0; flex: 1; }
+.range-inputs span { color: var(--muted); }
+.filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--text);
+  cursor: pointer;
+}
+.filter-checkbox-group {
+  display: flex;
+  gap: 16px;
+  padding-top: 4px;
+}
+.filter-field input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.filter-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.results-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 12px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.results-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+#copy-status { color: var(--green); }
+
 .score-col { cursor: help; }
 .regime-title { font-weight: 700; font-size: 13px; }
 .regime-subtitle { font-size: 12px; color: var(--muted); }

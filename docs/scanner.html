@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stock Scanner</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>STOCK<span>SCANNER</span></h1>
+      <div id="asof" class="asof">loading…</div>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="index.html">Sector Strength</a>
+      <button class="tab active" data-view="scanner">Scanner</button>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-box" placeholder="Search symbol or company name..." autocomplete="off" />
+    </div>
+  </header>
+
+  <main>
+    <div class="filter-panel" id="filter-panel">
+      <div class="filter-row">
+        <div class="filter-field">
+          <label>Price Above EMA</label>
+          <div class="filter-checkbox-group">
+            <label class="filter-checkbox"><input type="checkbox" id="f-ema-21" /> 21 EMA</label>
+            <label class="filter-checkbox"><input type="checkbox" id="f-ema-50" /> 50 EMA</label>
+            <label class="filter-checkbox"><input type="checkbox" id="f-ema-200" /> 200 EMA</label>
+          </div>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-field range-field">
+          <label>% From 52wk High</label>
+          <div class="range-inputs"><input type="number" id="f-high-min" placeholder="0" /> <span>-</span> <input type="number" id="f-high-max" placeholder="20" /></div>
+        </div>
+        <div class="filter-field range-field">
+          <label>% From 52wk Low</label>
+          <div class="range-inputs"><input type="number" id="f-low-min" placeholder="0" /> <span>-</span> <input type="number" id="f-low-max" placeholder="10000" /></div>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-field">
+          <label>Avg Price x Volume 30d (Cr) &gt;=</label>
+          <input type="number" id="f-turnover-min" placeholder="5" />
+        </div>
+        <div class="filter-field range-field">
+          <label>Market Cap Range (Cr)</label>
+          <div class="range-inputs"><input type="number" id="f-mcap-min" placeholder="500" /> <span>-</span> <input type="number" id="f-mcap-max" placeholder="5000000" /></div>
+        </div>
+        <div class="filter-field range-field">
+          <label>Stock Price</label>
+          <div class="range-inputs"><input type="number" id="f-price-min" placeholder="5" /> <span>-</span> <input type="number" id="f-price-max" placeholder="10000000" /></div>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button id="f-reset" class="tab">Reset</button>
+        <button id="f-apply" class="tab active">Apply</button>
+      </div>
+    </div>
+
+    <div class="results-header">
+      <div id="results-count" class="asof"></div>
+      <div class="results-actions">
+        <label class="filter-checkbox"><input type="checkbox" id="select-all" /> Select all shown</label>
+        <button id="copy-tv" class="tab">Copy selected for TradingView</button>
+        <span id="copy-status" class="asof"></span>
+      </div>
+    </div>
+
+    <div id="empty-state" class="empty-state hidden">
+      <p>No data yet.</p>
+      <p class="muted">Run <code>python fetch_data.py</code> then <code>python export_snapshot.py</code> once, then refresh this page.</p>
+    </div>
+
+    <table id="board" class="board hidden">
+      <thead>
+        <tr>
+          <th class="rank-col"><input type="checkbox" id="select-all-th" title="Select all shown" /></th>
+          <th class="sortable" data-sort="name">Symbol / Name</th>
+          <th class="sortable" data-sort="industry">Industry</th>
+          <th class="sortable" data-sort="price">Price</th>
+          <th class="sortable" data-sort="ema">EMA Stack</th>
+          <th class="sortable" data-sort="fromHigh">% From 52wk High</th>
+          <th class="sortable" data-sort="fromLow">% From 52wk Low</th>
+          <th class="sortable" data-sort="turnover">Avg Turnover (Cr)</th>
+          <th class="sortable" data-sort="mcap">Market Cap (Cr)</th>
+        </tr>
+      </thead>
+      <tbody id="board-body"></tbody>
+    </table>
+  </main>
+
+  <script src="scanner.js"></script>
+</body>
+</html>
