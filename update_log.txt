@@ -780,3 +780,46 @@ To https://github.com/kmr2026/sector-strength.git
 ---------------------------------------------- 
 [01-09-2026 17:50:03.86] Task triggered. 
 [01-09-2026 17:50:05.81] Before 6:30 PM and yesterday's run is up to date - not running yet. 
+---------------------------------------------- 
+[01-09-2026 22:05:20.73] Task triggered. 
+[01-09-2026 22:05:23.10] Running fetch_data.py... 
+Refreshing sector constituent lists...
+Fetching index history (300 days)...
+  [miss] index 2026-06-26: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-05-28: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-05-01: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-04-14: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-04-03: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-03-31: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-03-26: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-03-03: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-01-26: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2026-01-15: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2025-12-25: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2025-11-05: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2025-10-22: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2025-10-02: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2025-08-27: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] index 2025-08-15: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  index files parsed: 0, missed/holidays: 16
+Fetching stock bhavcopy history (300 days, full universe)...
+  [miss] bhavcopy 2025-10-02: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] bhavcopy 2025-08-27: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  [miss] bhavcopy 2025-08-15: status=404, preview='<!DOCTYPE html>\r <html lang="en">\r \r <head>\r     <meta charset="UTF-8">\r     <meta name="viewport" content="width=device-width, initial-scale=1.0">\r  '
+  bhavcopy files parsed: 0, missed/holidays: 3, rows stored: 0
+Done.
+[01-09-2026 22:05:26.07] Running export_snapshot.py... 
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()
+C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength\compute_basic_industry.py:49: FutureWarning: The default fill_method='pad' in DataFrame.pct_change is deprecated and will be removed in a future version. Either fill in any non-leading NA values prior to calling pct_change or specify 'fill_method=None' to not fill NA values.
+  daily_returns = wide.pct_change()

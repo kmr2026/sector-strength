@@ -10,8 +10,8 @@ let SORT_DIR = "desc";
 
 const FILTER_FIELD_IDS = [
   "f-ema-21", "f-ema-50", "f-ema-200",
-  "f-high-min", "f-high-max", "f-low-min", "f-low-max",
-  "f-price-min", "f-price-max", "f-turnover-min",
+  "f-high-min", "f-high-max", "f-low-min",
+  "f-price-min", "f-turnover-min",
   "f-mcap-min", "f-mcap-max",
 ];
 
@@ -71,8 +71,8 @@ function readFilters() {
     ema50: document.getElementById("f-ema-50").checked,
     ema200: document.getElementById("f-ema-200").checked,
     highMin: num("f-high-min"), highMax: num("f-high-max"),
-    lowMin: num("f-low-min"), lowMax: num("f-low-max"),
-    priceMin: num("f-price-min"), priceMax: num("f-price-max"),
+    lowMin: num("f-low-min"),
+    priceMin: num("f-price-min"),
     turnoverMin: num("f-turnover-min"),
     mcapMin: num("f-mcap-min"), mcapMax: num("f-mcap-max"),
   };
@@ -88,12 +88,16 @@ function inRange(val, min, max) {
 function applyFilters() {
   const f = readFilters();
   FILTERED = ALL_STOCKS.filter(s => {
-    if (f.ema21 && !(s.ema && s.ema.available && s.ema.above_21)) return false;
-    if (f.ema50 && !(s.ema && s.ema.available && s.ema.above_50)) return false;
-    if (f.ema200 && !(s.ema && s.ema.available && s.ema.above_200)) return false;
+    // A checked EMA box only excludes a stock that EXPLICITLY sits below
+    // that EMA -- a young stock without enough history for it yet
+    // (above_21/50/200 is null, not false) passes through instead of
+    // being wrongly treated as failing the check.
+    if (f.ema21 && s.ema && s.ema.available && s.ema.above_21 === false) return false;
+    if (f.ema50 && s.ema && s.ema.available && s.ema.above_50 === false) return false;
+    if (f.ema200 && s.ema && s.ema.available && s.ema.above_200 === false) return false;
     if (!inRange(s.pct_from_52wk_high, f.highMin, f.highMax)) return false;
-    if (!inRange(s.pct_from_52wk_low, f.lowMin, f.lowMax)) return false;
-    if (!inRange(s.close, f.priceMin, f.priceMax)) return false;
+    if (f.lowMin !== null && !(s.pct_from_52wk_low !== null && s.pct_from_52wk_low !== undefined && s.pct_from_52wk_low >= f.lowMin)) return false;
+    if (f.priceMin !== null && !(s.close !== null && s.close !== undefined && s.close >= f.priceMin)) return false;
     if (f.turnoverMin !== null && !(s.avg_turnover_cr_30d >= f.turnoverMin)) return false;
     if (!inRange(s.market_cap_cr, f.mcapMin, f.mcapMax)) return false;
     return true;

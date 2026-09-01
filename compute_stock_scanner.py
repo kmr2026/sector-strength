@@ -85,6 +85,26 @@ def compute_all() -> list[dict]:
         if df.empty:
             return []
         df["date"] = pd.to_datetime(df["date"])
+
+        # A symbol whose price data stopped updating a while ago (delisted,
+        # suspended, renamed -- NSE just silently stops including it in the
+        # daily bhavcopy) still sits in stock_prices with its last real
+        # date frozen in the past. Left in, its 52wk-high/low, EMA, and
+        # turnover all get computed off that stale "last" row as if it
+        # were current -- producing exactly the kind of nonsense numbers
+        # (hundreds-of-percent-from-low, huge turnover) that don't
+        # actually reflect anything tradeable today. A stock genuinely
+        # trading has a last date within a few sessions of the most
+        # recent date anywhere in the table; anything older than that
+        # (10 calendar days -- enough slack for a long weekend/holiday
+        # run without falsely dropping active stocks) is excluded here,
+        # once, rather than silently poisoning every metric downstream.
+        global_max_date = df["date"].max()
+        stale_cutoff = global_max_date - pd.Timedelta(days=10)
+        last_date_by_symbol = df.groupby("symbol")["date"].max()
+        active_symbols = set(last_date_by_symbol[last_date_by_symbol >= stale_cutoff].index)
+        df = df[df["symbol"].isin(active_symbols)]
+
         meta = get_symbol_metadata(conn)
 
         # Same raw-score computation compute.py/compute_basic_industry.py
