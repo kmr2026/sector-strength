@@ -10,7 +10,7 @@ let SORT_DIR = "desc";
 
 const FILTER_FIELD_IDS = [
   "f-ema-21", "f-ema-50", "f-ema-200",
-  "f-high-min", "f-high-max", "f-low-min",
+  "f-high-max", "f-low-min",
   "f-price-min", "f-turnover-min",
   "f-mcap-min", "f-mcap-max",
 ];
@@ -70,7 +70,7 @@ function readFilters() {
     ema21: document.getElementById("f-ema-21").checked,
     ema50: document.getElementById("f-ema-50").checked,
     ema200: document.getElementById("f-ema-200").checked,
-    highMin: num("f-high-min"), highMax: num("f-high-max"),
+    highMax: num("f-high-max"),
     lowMin: num("f-low-min"),
     priceMin: num("f-price-min"),
     turnoverMin: num("f-turnover-min"),
@@ -95,7 +95,7 @@ function applyFilters() {
     if (f.ema21 && s.ema && s.ema.available && s.ema.above_21 === false) return false;
     if (f.ema50 && s.ema && s.ema.available && s.ema.above_50 === false) return false;
     if (f.ema200 && s.ema && s.ema.available && s.ema.above_200 === false) return false;
-    if (!inRange(s.pct_from_52wk_high, f.highMin, f.highMax)) return false;
+    if (f.highMax !== null && !(s.pct_from_52wk_high !== null && s.pct_from_52wk_high !== undefined && s.pct_from_52wk_high <= f.highMax)) return false;
     if (f.lowMin !== null && !(s.pct_from_52wk_low !== null && s.pct_from_52wk_low !== undefined && s.pct_from_52wk_low >= f.lowMin)) return false;
     if (f.priceMin !== null && !(s.close !== null && s.close !== undefined && s.close >= f.priceMin)) return false;
     if (f.turnoverMin !== null && !(s.avg_turnover_cr_30d >= f.turnoverMin)) return false;
