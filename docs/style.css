@@ -198,6 +198,7 @@ main {
   padding: 2px 7px;
   border-radius: 3px;
   text-transform: none;
+  white-space: nowrap;
 }
 .change-good { background: rgba(63,185,80,0.15); color: var(--green); }
 .change-bad { background: rgba(248,81,73,0.12); color: var(--red); }

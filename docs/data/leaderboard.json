@@ -149,7 +149,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 35.7,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -382,7 +386,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 50.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -589,7 +597,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 60.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -876,7 +888,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 50.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1163,7 +1179,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 23.1,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1388,7 +1408,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 11.1,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1667,7 +1691,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 0.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1885,7 +1913,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 8.3,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -2116,7 +2148,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -2352,7 +2388,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 22.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -2879,7 +2919,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 10.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3086,7 +3130,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3293,7 +3341,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 40.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3540,7 +3592,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 15.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3816,7 +3872,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 31.6,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4095,7 +4155,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 10.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4302,7 +4366,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4589,7 +4657,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 6.7,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4836,7 +4908,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 10.0,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5283,7 +5359,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 23.3,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5639,7 +5719,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 8.3,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5856,7 +5940,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 6.2,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -6111,7 +6199,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 13.3,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -6347,7 +6439,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 4.8,
+        "prev_date": "2026-08-31",
+        "direction": "flat"
       },
       "stocks": [
         {
