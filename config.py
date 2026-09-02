@@ -91,6 +91,7 @@ BENCHMARK = "NIFTY 50"
 # actually trade. Shown alongside Nifty 50, not instead of it -- the
 # divergence between the two is itself informative.
 MIDSMALL_INDEX = "NIFTY MIDSMALLCAP 400"
+SMALLCAP_INDEX = "NIFTY SMALLCAP 250"
 
 # How much history to keep
 INDEX_HISTORY_DAYS = 300     # need ~200+ trading days for the 200 EMA

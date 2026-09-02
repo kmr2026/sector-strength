@@ -14,7 +14,7 @@ of this file already keeps.
 See scoring.py for the actual EMA/breadth/RS/score/RS-Rating math (shared
 with compute_basic_industry.py).
 """
-from config import SECTORS, BENCHMARK, MIDSMALL_INDEX
+from config import SECTORS, BENCHMARK, MIDSMALL_INDEX, SMALLCAP_INDEX
 from db import get_conn
 from scoring import (
     series_for, ema_block, breadth_block, rs_block, regime_block, composite_score,
@@ -30,11 +30,15 @@ def compute_all() -> dict:
         regime = regime_block(bench_series) if not bench_series.empty else {"available": False}
         midsmall_series = series_for(conn, "index_prices", "sector", MIDSMALL_INDEX)
         regime_midsmall = regime_block(midsmall_series) if not midsmall_series.empty else {"available": False}
+        smallcap_series = series_for(conn, "index_prices", "sector", SMALLCAP_INDEX)
+        regime_smallcap = regime_block(smallcap_series) if not smallcap_series.empty else {"available": False}
 
         nifty_last_date = bench_series.index[-1].date().isoformat() if not bench_series.empty else None
         regime.update(regime_delta_block(conn, f"regime:{BENCHMARK}", nifty_last_date, regime.get("state")))
         midsmall_last_date = midsmall_series.index[-1].date().isoformat() if not midsmall_series.empty else None
         regime_midsmall.update(regime_delta_block(conn, f"regime:{MIDSMALL_INDEX}", midsmall_last_date, regime_midsmall.get("state")))
+        smallcap_last_date = smallcap_series.index[-1].date().isoformat() if not smallcap_series.empty else None
+        regime_smallcap.update(regime_delta_block(conn, f"regime:{SMALLCAP_INDEX}", smallcap_last_date, regime_smallcap.get("state")))
 
         # Computed once per run, shared by every sector below -- this is
         # the expensive step RS Rating adds (full-universe price scan).
@@ -100,7 +104,7 @@ def compute_all() -> dict:
                 "last_date": r["last_date"],
             })
     results.sort(key=lambda r: r["score"], reverse=True)
-    return {"regime": regime, "regime_midsmall": regime_midsmall, "sectors": results}
+    return {"regime": regime, "regime_midsmall": regime_midsmall, "regime_smallcap": regime_smallcap, "sectors": results}
 
 
 if __name__ == "__main__":

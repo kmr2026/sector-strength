@@ -496,6 +496,7 @@ function applyView(view, raw) {
     document.getElementById("board").classList.remove("hidden");
     renderRegimeBanner("regime-banner-nifty", "Nifty 50", raw.regime);
     renderRegimeBanner("regime-banner-midsmall", "Mid/Smallcap 400", raw.regime_midsmall);
+    renderRegimeBanner("regime-banner-smallcap", "Nifty Smallcap 250", raw.regime_smallcap);
     const sectors = raw.sectors || [];
     document.getElementById("sectors-tab").textContent = `Sectors (${sectors.length})`;
     renderLeadersRow("sectors", sectors);
@@ -508,6 +509,7 @@ function applyView(view, raw) {
     // performance/rank/market cap. See showAnalyticsData().
     document.getElementById("regime-banner-nifty").classList.add("hidden");
     document.getElementById("regime-banner-midsmall").classList.add("hidden");
+    document.getElementById("regime-banner-smallcap").classList.add("hidden");
     document.getElementById("leaders-row").classList.add("hidden");
     infoIcon.classList.add("hidden");
     document.getElementById("board").classList.add("hidden");
@@ -520,6 +522,7 @@ function applyView(view, raw) {
   // regimes don't change between tabs.
   document.getElementById("regime-banner-nifty").classList.add("hidden");
   document.getElementById("regime-banner-midsmall").classList.add("hidden");
+  document.getElementById("regime-banner-smallcap").classList.add("hidden");
   document.getElementById("leaders-row").classList.remove("hidden");
   document.getElementById("analytics-board").classList.add("hidden");
   document.getElementById("board").classList.remove("hidden");

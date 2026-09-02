@@ -27,6 +27,17 @@
     "prev_state": "Bullish",
     "prev_date": "2026-08-31"
   },
+  "regime_smallcap": {
+    "available": true,
+    "state": "Bullish",
+    "subtitle": "Above 21/50/200 EMA -- bullish stack intact -- 21 EMA rising",
+    "price": 18363.1,
+    "above_21": true,
+    "above_50": true,
+    "above_200": true,
+    "bullish_stack": true,
+    "delta_available": false
+  },
   "sectors": [
     {
       "sector": "Pharma",

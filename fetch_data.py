@@ -19,7 +19,7 @@ import datetime as dt
 import requests
 import pandas as pd
 
-from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX
+from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX, SMALLCAP_INDEX
 from db import get_conn, init_db
 
 HEADERS = {
@@ -239,7 +239,7 @@ def update_nifty500_industries():
 def update_index_prices():
     print(f"Fetching index history ({INDEX_HISTORY_DAYS} days)...")
     session = make_session()
-    wanted = {v[0] for v in SECTORS.values()} | {"NIFTY 50", MIDSMALL_INDEX}
+    wanted = {v[0] for v in SECTORS.values()} | {"NIFTY 50", MIDSMALL_INDEX, SMALLCAP_INDEX}
     got, missed = 0, 0
     with get_conn() as conn:
         # If any wanted index has zero rows so far (e.g. just added to
