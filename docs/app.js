@@ -88,6 +88,20 @@ function rsRatingCell(rating) {
   return `<span class="score-badge ${cls}">${rating}</span>`;
 }
 
+function perfCell(v) {
+  if (v === null || v === undefined) return `<span class="muted">n/a</span>`;
+  const cls = v > 0 ? "trend-up" : v < 0 ? "trend-down" : "";
+  return `<span class="${cls}">${v}%</span>`;
+}
+
+function rankCell(v) {
+  return (v === null || v === undefined) ? `<span class="muted">n/a</span>` : `${v}`;
+}
+
+function mcapCell(v) {
+  return (v === null || v === undefined) ? `<span class="muted">n/a</span>` : v.toLocaleString();
+}
+
 function rsCell(rs) {
   if (!rs.available) return `<span class="rs-na">n/a</span>`;
   const good = rs.rs_above_ema && rs.rs_rising_1w;
@@ -135,6 +149,15 @@ function sortValue(row, key) {
       if (!rs.rs_above_ema && !rs.rs_rising_1w) return 0;
       return 1;
     }
+    case "perf1w": return row.perf_1w ?? -9999;
+    case "perf1m": return row.perf_1m ?? -9999;
+    case "perf3m": return row.perf_3m ?? -9999;
+    // Ranks: 1 = best, so treat missing as worse-than-worst for sorting
+    // rather than -1 (which would sort ahead of rank 1).
+    case "rank1w": return row.rank_1w ?? 9999;
+    case "rank1m": return row.rank_1m ?? 9999;
+    case "rank3m": return row.rank_3m ?? 9999;
+    case "groupMcap": return row.group_market_cap_cr ?? -1;
     default:
       return 0;
   }
@@ -323,6 +346,13 @@ function openDetail(row) {
   if (CURRENT_VIEW === "industries") {
     const withData = b.available ? b.n_stocks : 0;
     items.push(detailItem("NSE Stocks Used", `${withData} of ${row.n_stocks_total} classified`));
+    items.push(detailItem("1W / 1M / 3M Performance",
+      `${row.perf_1w ?? "n/a"}% / ${row.perf_1m ?? "n/a"}% / ${row.perf_3m ?? "n/a"}%`));
+    items.push(detailItem("1W / 1M / 3M Rank",
+      `${row.rank_1w ?? "n/a"} / ${row.rank_1m ?? "n/a"} / ${row.rank_3m ?? "n/a"}`));
+    items.push(detailItem("Group Market Cap (Cr)",
+      row.group_market_cap_cr !== null && row.group_market_cap_cr !== undefined
+        ? row.group_market_cap_cr.toLocaleString() : "n/a"));
   }
   grid.innerHTML = items.join("");
 
@@ -409,6 +439,9 @@ function applyView(view, raw) {
   const infoIcon = document.getElementById("info-icon");
   if (view === "sectors") {
     infoIcon.classList.add("hidden");
+    document.getElementById("leaders-row").classList.remove("hidden");
+    document.getElementById("analytics-board").classList.add("hidden");
+    document.getElementById("board").classList.remove("hidden");
     renderRegimeBanner("regime-banner-nifty", "Nifty 50", raw.regime);
     renderRegimeBanner("regime-banner-midsmall", "Mid/Smallcap 400", raw.regime_midsmall);
     const sectors = raw.sectors || [];
@@ -417,11 +450,27 @@ function applyView(view, raw) {
     showData(sectors);
     return;
   }
+  if (view === "analytics") {
+    // Its own focused table, not more columns bolted onto the shared
+    // one -- deliberately no Score/EMA/Breadth columns here, just
+    // performance/rank/market cap. See showAnalyticsData().
+    document.getElementById("regime-banner-nifty").classList.add("hidden");
+    document.getElementById("regime-banner-midsmall").classList.add("hidden");
+    document.getElementById("leaders-row").classList.add("hidden");
+    infoIcon.classList.add("hidden");
+    document.getElementById("board").classList.add("hidden");
+    document.getElementById("empty-state").classList.add("hidden");
+    showAnalyticsData(raw.industries || []);
+    return;
+  }
   // industries view: raw is { classification_source, industries } -- no
   // regime banners here, the sectors tab already showed them and the
   // regimes don't change between tabs.
   document.getElementById("regime-banner-nifty").classList.add("hidden");
   document.getElementById("regime-banner-midsmall").classList.add("hidden");
+  document.getElementById("leaders-row").classList.remove("hidden");
+  document.getElementById("analytics-board").classList.add("hidden");
+  document.getElementById("board").classList.remove("hidden");
   infoIcon.classList.remove("hidden");
   const industries = raw.industries || [];
   renderLeadersRow("industries", industries);
@@ -434,7 +483,105 @@ document.querySelectorAll(".tab").forEach(tab => {
 
 document.getElementById("search-box").addEventListener("input", (e) => {
   SEARCH_TERM = e.target.value.trim();
-  renderBoard(sortedData());
+  if (CURRENT_VIEW === "analytics") {
+    renderAnalyticsBoard();
+  } else {
+    renderBoard(sortedData());
+  }
+});
+
+let ANALYTICS_DATA = [];
+let ANALYTICS_SORT_KEY = "rank1m";
+let ANALYTICS_SORT_DIR = "asc";
+
+function analyticsSortValue(row, key) {
+  switch (key) {
+    case "name": return row.industry.toLowerCase();
+    case "perf1w": return row.perf_1w ?? -9999;
+    case "perf1m": return row.perf_1m ?? -9999;
+    case "perf3m": return row.perf_3m ?? -9999;
+    // Ranks: 1 = best, so missing sorts as worse-than-worst, not best.
+    case "rank1w": return row.rank_1w ?? 9999;
+    case "rank1m": return row.rank_1m ?? 9999;
+    case "rank3m": return row.rank_3m ?? 9999;
+    case "nstocks": return row.n_stocks_total ?? -1;
+    case "groupMcap": return row.group_market_cap_cr ?? -1;
+    default: return 0;
+  }
+}
+
+function analyticsSortedData() {
+  let data = ANALYTICS_DATA.slice();
+  if (SEARCH_TERM) {
+    const q = SEARCH_TERM.toLowerCase();
+    data = data.filter(r => r.industry.toLowerCase().includes(q));
+  }
+  data.sort((a, b) => {
+    const va = analyticsSortValue(a, ANALYTICS_SORT_KEY), vb = analyticsSortValue(b, ANALYTICS_SORT_KEY);
+    const cmp = typeof va === "string" ? va.localeCompare(vb) : va - vb;
+    return ANALYTICS_SORT_DIR === "asc" ? cmp : -cmp;
+  });
+  return data;
+}
+
+function updateAnalyticsSortHeaderStyles() {
+  document.querySelectorAll("#analytics-board th.sortable").forEach(th => {
+    const key = th.dataset.sort;
+    th.classList.toggle("sort-active", key === ANALYTICS_SORT_KEY);
+    const existing = th.querySelector(".sort-arrow");
+    if (existing) existing.remove();
+    if (key === ANALYTICS_SORT_KEY) {
+      const arrow = document.createElement("span");
+      arrow.className = "sort-arrow";
+      arrow.textContent = ANALYTICS_SORT_DIR === "asc" ? "▲" : "▼";
+      th.appendChild(arrow);
+    }
+  });
+}
+
+function renderAnalyticsBoard() {
+  const data = analyticsSortedData();
+  const tbody = document.getElementById("analytics-board-body");
+  tbody.innerHTML = "";
+  if (!data.length) {
+    tbody.innerHTML = `<tr><td colspan="10" class="no-results">No matches for "${SEARCH_TERM}"</td></tr>`;
+    return;
+  }
+  data.forEach((row, i) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td class="rank-col">${i + 1}</td>
+      <td class="sector-col" data-label="Industry">${row.industry}</td>
+      <td data-label="1W Perf%">${perfCell(row.perf_1w)}</td>
+      <td data-label="1M Perf%">${perfCell(row.perf_1m)}</td>
+      <td data-label="3M Perf%">${perfCell(row.perf_3m)}</td>
+      <td data-label="1W Rank">${rankCell(row.rank_1w)}</td>
+      <td data-label="1M Rank">${rankCell(row.rank_1m)}</td>
+      <td data-label="3M Rank">${rankCell(row.rank_3m)}</td>
+      <td data-label="# Stocks">${row.n_stocks_total ?? "n/a"}</td>
+      <td data-label="Group Mkt Cap (Cr)">${mcapCell(row.group_market_cap_cr)}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function showAnalyticsData(data) {
+  ANALYTICS_DATA = data;
+  document.getElementById("analytics-board").classList.remove("hidden");
+  updateAnalyticsSortHeaderStyles();
+  renderAnalyticsBoard();
+  const dates = data.map(r => r.last_date).filter(Boolean);
+  document.getElementById("asof").textContent = dates.length ? `as of ${dates.sort().pop()}` : "";
+}
+
+document.querySelectorAll("#analytics-board th.sortable").forEach(th => {
+  th.addEventListener("click", () => {
+    const key = th.dataset.sort;
+    if (key === ANALYTICS_SORT_KEY) ANALYTICS_SORT_DIR = ANALYTICS_SORT_DIR === "asc" ? "desc" : "asc";
+    else { ANALYTICS_SORT_KEY = key; ANALYTICS_SORT_DIR = key.startsWith("rank") ? "asc" : "desc"; }
+    updateAnalyticsSortHeaderStyles();
+    renderAnalyticsBoard();
+  });
 });
 
 function renderLeadersList(elId, rows) {

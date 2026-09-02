@@ -26,8 +26,41 @@ from scoring import (
     series_for, ema_block, breadth_block, rs_block, composite_score,
     stock_detail_list, score_delta_block, score_history_series,
     universe_raw_rs_scores, group_raw_rs_score, rs_ratings_from_raw,
-    pct_within_52wk_high_block, metric_delta_block,
+    pct_within_52wk_high_block, metric_delta_block, pct_return, ordinal_rank_desc,
 )
+
+
+def _group_market_cap(conn, symbols: list[str]) -> float | None:
+    """Sum of market cap (shares_outstanding x latest close) across the
+    group's stocks -- same shares x price approach the stock scanner uses
+    per stock, aggregated here. None if no stock in the group has both a
+    price and a share count on file yet."""
+    if not symbols:
+        return None
+    placeholders = ",".join("?" * len(symbols))
+    close_rows = conn.execute(
+        f"""SELECT sp.symbol, sp.close FROM stock_prices sp
+            INNER JOIN (
+                SELECT symbol, MAX(date) as max_date FROM stock_prices
+                WHERE symbol IN ({placeholders}) GROUP BY symbol
+            ) latest ON sp.symbol = latest.symbol AND sp.date = latest.max_date
+            WHERE sp.symbol IN ({placeholders})""",
+        symbols + symbols,
+    ).fetchall()
+    close_by_symbol = {r[0]: r[1] for r in close_rows}
+    shares_rows = conn.execute(
+        f"SELECT symbol, shares_outstanding FROM basic_industry_map WHERE symbol IN ({placeholders})",
+        symbols,
+    ).fetchall()
+    shares_by_symbol = {r[0]: r[1] for r in shares_rows if r[1]}
+
+    total, found = 0.0, False
+    for sym in symbols:
+        shares, close = shares_by_symbol.get(sym), close_by_symbol.get(sym)
+        if shares and close:
+            total += shares * close / 1e7
+            found = True
+    return round(total, 2) if found else None
 
 
 def _build_synthetic_index(conn, symbols: list[str]) -> pd.Series:
@@ -96,13 +129,22 @@ def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
             last_date = synthetic_series.index[-1].date().isoformat() if not synthetic_series.empty else None
             high52 = pct_within_52wk_high_block(conn, symbols)
             raw_rs = group_raw_rs_score(universe_scores, symbols)
+            perf_1w = pct_return(synthetic_series, 5)
+            perf_1m = pct_return(synthetic_series, 21)
+            perf_3m = pct_return(synthetic_series, 63)
+            group_mcap = _group_market_cap(conn, symbols)
             prelim.append({
                 "industry": industry_name, "n_stocks_total": len(symbols), "score": score,
                 "ema": ema, "breadth": breadth, "rs": rs, "symbols": symbols,
                 "last_date": last_date, "high52": high52, "raw_rs": raw_rs,
+                "perf_1w": perf_1w, "perf_1m": perf_1m, "perf_3m": perf_3m,
+                "group_market_cap_cr": group_mcap,
             })
 
         ratings = rs_ratings_from_raw({r["industry"]: r["raw_rs"] for r in prelim})
+        rank_1w = ordinal_rank_desc({r["industry"]: r["perf_1w"] for r in prelim})
+        rank_1m = ordinal_rank_desc({r["industry"]: r["perf_1m"] for r in prelim})
+        rank_3m = ordinal_rank_desc({r["industry"]: r["perf_3m"] for r in prelim})
 
         # Pass 2: assemble final results now RS Rating is known.
         results = []
@@ -131,6 +173,11 @@ def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
                 "rs": r["rs"],
                 "rs_rating": rating,
                 "rs_rating_delta": rs_rating_delta,
+                "perf_1w": r["perf_1w"], "perf_1m": r["perf_1m"], "perf_3m": r["perf_3m"],
+                "rank_1w": rank_1w.get(r["industry"]),
+                "rank_1m": rank_1m.get(r["industry"]),
+                "rank_3m": rank_3m.get(r["industry"]),
+                "group_market_cap_cr": r["group_market_cap_cr"],
                 "high52": r["high52"],
                 "high52_delta": high52_delta,
                 "stocks": stock_detail_list(conn, r["symbols"]),

@@ -116,6 +116,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.71,
+      "perf_1m": 5.86,
+      "perf_3m": 12.92,
+      "rank_1w": 11,
+      "rank_1m": 19,
+      "rank_3m": 26,
+      "group_market_cap_cr": 73606.01,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 28.6,
@@ -513,6 +520,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.86,
+      "perf_1m": 1.87,
+      "perf_3m": 8.75,
+      "rank_1w": 30,
+      "rank_1m": 40,
+      "rank_3m": 37,
+      "group_market_cap_cr": 3558456.88,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 36.8,
@@ -798,6 +812,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 7.31,
+      "perf_1m": 17.25,
+      "perf_3m": 29.38,
+      "rank_1w": 1,
+      "rank_1m": 2,
+      "rank_3m": 4,
+      "group_market_cap_cr": 20784.78,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 45.5,
@@ -1083,6 +1104,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.23,
+      "perf_1m": 11.21,
+      "perf_3m": 32.59,
+      "rank_1w": 13,
+      "rank_1m": 8,
+      "rank_3m": 2,
+      "group_market_cap_cr": 37740.05,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 28.6,
@@ -1288,6 +1316,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.77,
+      "perf_1m": 6.47,
+      "perf_3m": 33.1,
+      "rank_1w": 23,
+      "rank_1m": 17,
+      "rank_3m": 1,
+      "group_market_cap_cr": 36028.43,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 50.0,
@@ -1549,6 +1584,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.06,
+      "perf_1m": 1.98,
+      "perf_3m": 9.68,
+      "rank_1w": 18,
+      "rank_1m": 39,
+      "rank_3m": 33,
+      "group_market_cap_cr": 38671.01,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 30.0,
@@ -1778,6 +1820,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.08,
+      "perf_1m": 6.67,
+      "perf_3m": 15.27,
+      "rank_1w": 17,
+      "rank_1m": 16,
+      "rank_3m": 17,
+      "group_market_cap_cr": 2792947.28,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 32.8,
@@ -3087,6 +3136,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 5.35,
+      "perf_1m": 8.33,
+      "perf_3m": 4.7,
+      "rank_1w": 4,
+      "rank_1m": 12,
+      "rank_3m": 53,
+      "group_market_cap_cr": 25104.14,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 25.0,
@@ -3268,6 +3324,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 4.04,
+      "perf_1m": 11.47,
+      "perf_3m": 29.28,
+      "rank_1w": 8,
+      "rank_1m": 7,
+      "rank_3m": 5,
+      "group_market_cap_cr": 77526.62,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 28.6,
@@ -3465,6 +3528,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 4.91,
+      "perf_1m": 15.03,
+      "perf_3m": 18.43,
+      "rank_1w": 5,
+      "rank_1m": 3,
+      "rank_3m": 11,
+      "group_market_cap_cr": 6833.22,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 12.5,
@@ -3662,6 +3732,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 4.31,
+      "perf_1m": 14.55,
+      "perf_3m": 17.78,
+      "rank_1w": 6,
+      "rank_1m": 5,
+      "rank_3m": 13,
+      "group_market_cap_cr": 265105.1,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 33.3,
@@ -3955,6 +4032,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.87,
+      "perf_1m": 5.65,
+      "perf_3m": 4.74,
+      "rank_1w": 21,
+      "rank_1m": 20,
+      "rank_3m": 52,
+      "group_market_cap_cr": 875553.93,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 14.3,
@@ -4200,6 +4284,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.4,
+      "perf_1m": 5.97,
+      "perf_3m": 19.42,
+      "rank_1w": 59,
+      "rank_1m": 18,
+      "rank_3m": 10,
+      "group_market_cap_cr": 51218.77,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 19.4,
@@ -4733,6 +4824,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 5.61,
+      "perf_1m": 13.54,
+      "perf_3m": 25.2,
+      "rank_1w": 3,
+      "rank_1m": 6,
+      "rank_3m": 6,
+      "group_market_cap_cr": 111980.63,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 41.7,
@@ -4986,6 +5084,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.04,
+      "perf_1m": 2.37,
+      "perf_3m": 3.56,
+      "rank_1w": 48,
+      "rank_1m": 35,
+      "rank_3m": 62,
+      "group_market_cap_cr": 35193.07,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -5255,6 +5360,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -4.18,
+      "perf_1m": 17.74,
+      "perf_3m": 20.06,
+      "rank_1w": 125,
+      "rank_1m": 1,
+      "rank_3m": 9,
+      "group_market_cap_cr": 49916.61,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 3.8,
@@ -5620,6 +5732,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.44,
+      "perf_1m": 3.25,
+      "perf_3m": 10.35,
+      "rank_1w": 61,
+      "rank_1m": 30,
+      "rank_3m": 32,
+      "group_market_cap_cr": 5636.81,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 16.7,
@@ -5801,6 +5920,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.9,
+      "perf_1m": 4.4,
+      "perf_3m": 11.22,
+      "rank_1w": 10,
+      "rank_1m": 25,
+      "rank_3m": 29,
+      "group_market_cap_cr": 83565.63,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 27.3,
@@ -6054,6 +6180,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.12,
+      "perf_1m": 2.32,
+      "perf_3m": 5.11,
+      "rank_1w": 15,
+      "rank_1m": 37,
+      "rank_3m": 50,
+      "group_market_cap_cr": 370892.52,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 26.9,
@@ -6859,6 +6992,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.29,
+      "perf_1m": 7.69,
+      "perf_3m": 3.98,
+      "rank_1w": 24,
+      "rank_1m": 14,
+      "rank_3m": 57,
+      "group_market_cap_cr": 401383.76,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -7048,6 +7188,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.2,
+      "perf_1m": 5.6,
+      "perf_3m": 10.49,
+      "rank_1w": 27,
+      "rank_1m": 21,
+      "rank_3m": 31,
+      "group_market_cap_cr": 143765.84,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 17.4,
@@ -7453,6 +7600,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.5,
+      "perf_1m": 2.7,
+      "perf_3m": 13.1,
+      "rank_1w": 38,
+      "rank_1m": 32,
+      "rank_3m": 25,
+      "group_market_cap_cr": 574307.13,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 21.6,
@@ -8282,6 +8436,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.25,
+      "perf_1m": 2.46,
+      "perf_3m": 13.68,
+      "rank_1w": 25,
+      "rank_1m": 34,
+      "rank_3m": 21,
+      "group_market_cap_cr": 1289029.1,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 29.6,
@@ -9311,6 +9472,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.1,
+      "perf_1m": 0.79,
+      "perf_3m": 7.89,
+      "rank_1w": 16,
+      "rank_1m": 48,
+      "rank_3m": 40,
+      "group_market_cap_cr": 150203.44,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 27.6,
@@ -9676,6 +9844,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.23,
+      "perf_1m": -1.03,
+      "perf_3m": 8.88,
+      "rank_1w": 53,
+      "rank_1m": 72,
+      "rank_3m": 36,
+      "group_market_cap_cr": 188215.98,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 8.3,
@@ -9945,6 +10120,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.2,
+      "perf_1m": 14.78,
+      "perf_3m": 31.38,
+      "rank_1w": 26,
+      "rank_1m": 4,
+      "rank_3m": 3,
+      "group_market_cap_cr": 74868.0,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 30.0,
@@ -10158,6 +10340,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.05,
+      "perf_1m": -0.38,
+      "perf_3m": 7.05,
+      "rank_1w": 28,
+      "rank_1m": 60,
+      "rank_3m": 43,
+      "group_market_cap_cr": 102198.49,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 18.4,
@@ -10835,6 +11024,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.75,
+      "perf_1m": 4.32,
+      "perf_3m": 13.55,
+      "rank_1w": 32,
+      "rank_1m": 26,
+      "rank_3m": 22,
+      "group_market_cap_cr": 54821.64,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 25.0,
@@ -11072,6 +11268,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.91,
+      "perf_1m": 9.66,
+      "perf_3m": 9.13,
+      "rank_1w": 20,
+      "rank_1m": 9,
+      "rank_3m": 35,
+      "group_market_cap_cr": 10562.14,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 20.0,
@@ -11269,6 +11472,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.77,
+      "perf_1m": 3.51,
+      "perf_3m": 15.65,
+      "rank_1w": 31,
+      "rank_1m": 28,
+      "rank_3m": 16,
+      "group_market_cap_cr": 638106.92,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 18.9,
@@ -11778,6 +11988,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.46,
+      "perf_1m": 2.62,
+      "perf_3m": 12.34,
+      "rank_1w": 62,
+      "rank_1m": 33,
+      "rank_3m": 28,
+      "group_market_cap_cr": 382514.91,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 19.2,
@@ -12647,6 +12864,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.58,
+      "perf_1m": 4.96,
+      "perf_3m": 4.96,
+      "rank_1w": 66,
+      "rank_1m": 23,
+      "rank_3m": 51,
+      "group_market_cap_cr": 50566.05,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 23.3,
@@ -13068,6 +13292,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.93,
+      "perf_1m": 8.73,
+      "perf_3m": 24.55,
+      "rank_1w": 19,
+      "rank_1m": 10,
+      "rank_3m": 7,
+      "group_market_cap_cr": 617239.78,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 28.6,
@@ -13281,6 +13512,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.66,
+      "perf_1m": 3.94,
+      "perf_3m": 3.91,
+      "rank_1w": 70,
+      "rank_1m": 27,
+      "rank_3m": 58,
+      "group_market_cap_cr": 123193.63,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 27.8,
@@ -13566,6 +13804,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.6,
+      "perf_1m": 1.22,
+      "perf_3m": 13.27,
+      "rank_1w": 95,
+      "rank_1m": 45,
+      "rank_3m": 24,
+      "group_market_cap_cr": 640656.47,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 10.0,
@@ -13811,6 +14056,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.98,
+      "perf_1m": 3.31,
+      "perf_3m": 2.1,
+      "rank_1w": 9,
+      "rank_1m": 29,
+      "rank_3m": 73,
+      "group_market_cap_cr": 26473.25,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 37.5,
@@ -14008,6 +14260,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.05,
+      "perf_1m": 5.36,
+      "perf_3m": 17.08,
+      "rank_1w": 103,
+      "rank_1m": 22,
+      "rank_3m": 14,
+      "group_market_cap_cr": 45604.54,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 28.6,
@@ -14197,6 +14456,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 1.81,
+      "perf_1m": 2.77,
+      "perf_3m": -4.91,
+      "rank_1w": 22,
+      "rank_1m": 31,
+      "rank_3m": 106,
+      "group_market_cap_cr": 17096.96,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 10.0,
@@ -14458,6 +14724,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.8,
+      "perf_1m": 1.3,
+      "perf_3m": 2.99,
+      "rank_1w": 74,
+      "rank_1m": 44,
+      "rank_3m": 65,
+      "group_market_cap_cr": 95566.15,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 8.8,
@@ -14951,6 +15224,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.63,
+      "perf_1m": 2.25,
+      "perf_3m": 12.46,
+      "rank_1w": 69,
+      "rank_1m": 38,
+      "rank_3m": 27,
+      "group_market_cap_cr": 233329.26,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 20.0,
@@ -15180,6 +15460,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.59,
+      "perf_1m": -0.32,
+      "perf_3m": 6.96,
+      "rank_1w": 67,
+      "rank_1m": 58,
+      "rank_3m": 44,
+      "group_market_cap_cr": 160313.83,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 11.1,
@@ -15409,6 +15696,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.38,
+      "perf_1m": -0.43,
+      "perf_3m": 4.55,
+      "rank_1w": 58,
+      "rank_1m": 61,
+      "rank_3m": 54,
+      "group_market_cap_cr": 502488.39,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 21.4,
@@ -15654,6 +15948,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.27,
+      "perf_1m": -1.82,
+      "perf_3m": 10.51,
+      "rank_1w": 41,
+      "rank_1m": 82,
+      "rank_3m": 30,
+      "group_market_cap_cr": 9812.24,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 12.5,
@@ -15875,6 +16176,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.1,
+      "perf_1m": -1.03,
+      "perf_3m": 6.95,
+      "rank_1w": 46,
+      "rank_1m": 71,
+      "rank_3m": 45,
+      "group_market_cap_cr": 23238.66,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 9.1,
@@ -16144,6 +16452,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.21,
+      "perf_1m": 0.48,
+      "perf_3m": 2.31,
+      "rank_1w": 52,
+      "rank_1m": 51,
+      "rank_3m": 69,
+      "group_market_cap_cr": 666843.09,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 30.4,
@@ -16501,6 +16816,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.56,
+      "perf_1m": -0.45,
+      "perf_3m": 14.6,
+      "rank_1w": 65,
+      "rank_1m": 62,
+      "rank_3m": 19,
+      "group_market_cap_cr": 1845774.71,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 13.7,
@@ -17250,6 +17572,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.25,
+      "perf_1m": 1.02,
+      "perf_3m": 9.17,
+      "rank_1w": 54,
+      "rank_1m": 47,
+      "rank_3m": 34,
+      "group_market_cap_cr": 869491.86,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 15.4,
@@ -17615,6 +17944,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.13,
+      "perf_1m": 0.68,
+      "perf_3m": 0.5,
+      "rank_1w": 45,
+      "rank_1m": 49,
+      "rank_3m": 83,
+      "group_market_cap_cr": 350566.76,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 17.6,
@@ -18164,6 +18500,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.9,
+      "perf_1m": 0.1,
+      "perf_3m": 1.87,
+      "rank_1w": 29,
+      "rank_1m": 53,
+      "rank_3m": 74,
+      "group_market_cap_cr": 48867.97,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 18.2,
@@ -18505,6 +18848,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.05,
+      "perf_1m": -1.29,
+      "perf_3m": 0.94,
+      "rank_1w": 83,
+      "rank_1m": 76,
+      "rank_3m": 79,
+      "group_market_cap_cr": 17098.58,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 22.2,
@@ -18742,6 +19092,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 7.13,
+      "perf_1m": 8.1,
+      "perf_3m": 3.74,
+      "rank_1w": 2,
+      "rank_1m": 13,
+      "rank_3m": 60,
+      "group_market_cap_cr": 30306.37,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 22.2,
@@ -18955,6 +19312,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.31,
+      "perf_1m": -0.68,
+      "perf_3m": -0.51,
+      "rank_1w": 40,
+      "rank_1m": 64,
+      "rank_3m": 89,
+      "group_market_cap_cr": 425832.81,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 25.0,
@@ -19152,6 +19516,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.84,
+      "perf_1m": -1.05,
+      "perf_3m": 8.26,
+      "rank_1w": 77,
+      "rank_1m": 73,
+      "rank_3m": 38,
+      "group_market_cap_cr": 97957.74,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 14.3,
@@ -19341,6 +19712,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.41,
+      "perf_1m": -0.13,
+      "perf_3m": -0.58,
+      "rank_1w": 60,
+      "rank_1m": 55,
+      "rank_3m": 90,
+      "group_market_cap_cr": 270761.2,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 7.3,
@@ -20018,6 +20396,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.16,
+      "perf_1m": 0.64,
+      "perf_3m": -19.02,
+      "rank_1w": 14,
+      "rank_1m": 50,
+      "rank_3m": 131,
+      "group_market_cap_cr": 2993.01,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -20271,6 +20656,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.54,
+      "perf_1m": -1.58,
+      "perf_3m": -0.11,
+      "rank_1w": 91,
+      "rank_1m": 79,
+      "rank_3m": 86,
+      "group_market_cap_cr": 47676.65,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 16.7,
@@ -20476,6 +20868,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.51,
+      "perf_1m": -0.87,
+      "perf_3m": 6.11,
+      "rank_1w": 37,
+      "rank_1m": 67,
+      "rank_3m": 47,
+      "group_market_cap_cr": 90913.15,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 14.3,
@@ -20673,6 +21072,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.07,
+      "perf_1m": -0.9,
+      "perf_3m": 2.89,
+      "rank_1w": 47,
+      "rank_1m": 68,
+      "rank_3m": 66,
+      "group_market_cap_cr": 57529.91,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -20878,6 +21284,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.16,
+      "perf_1m": -2.69,
+      "perf_3m": 4.06,
+      "rank_1w": 42,
+      "rank_1m": 93,
+      "rank_3m": 56,
+      "group_market_cap_cr": 2601740.94,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 7.5,
@@ -21547,6 +21960,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.59,
+      "perf_1m": -0.32,
+      "perf_3m": 2.24,
+      "rank_1w": 94,
+      "rank_1m": 57,
+      "rank_3m": 70,
+      "group_market_cap_cr": 46595.46,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -21856,6 +22276,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.18,
+      "perf_1m": 4.42,
+      "perf_3m": 2.45,
+      "rank_1w": 106,
+      "rank_1m": 24,
+      "rank_3m": 67,
+      "group_market_cap_cr": 469867.84,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 12.5,
@@ -22061,6 +22488,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.19,
+      "perf_1m": 1.17,
+      "perf_3m": -3.78,
+      "rank_1w": 107,
+      "rank_1m": 46,
+      "rank_3m": 101,
+      "group_market_cap_cr": 386.12,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -22234,6 +22668,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.53,
+      "perf_1m": -3.46,
+      "perf_3m": -0.19,
+      "rank_1w": 36,
+      "rank_1m": 104,
+      "rank_3m": 87,
+      "group_market_cap_cr": 21643.66,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 4.3,
@@ -22583,6 +23024,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.54,
+      "perf_1m": -2.88,
+      "perf_3m": 3.81,
+      "rank_1w": 63,
+      "rank_1m": 97,
+      "rank_3m": 59,
+      "group_market_cap_cr": 167084.74,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 4.3,
@@ -22924,6 +23372,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.27,
+      "perf_1m": -0.93,
+      "perf_3m": 0.12,
+      "rank_1w": 55,
+      "rank_1m": 69,
+      "rank_3m": 84,
+      "group_market_cap_cr": 183845.93,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 18.9,
@@ -24041,6 +24496,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.0,
+      "perf_1m": -1.85,
+      "perf_3m": 3.31,
+      "rank_1w": 49,
+      "rank_1m": 84,
+      "rank_3m": 64,
+      "group_market_cap_cr": 258344.61,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 7.9,
@@ -24526,6 +24988,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.69,
+      "perf_1m": 1.34,
+      "perf_3m": -2.26,
+      "rank_1w": 110,
+      "rank_1m": 43,
+      "rank_3m": 98,
+      "group_market_cap_cr": 55376.67,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 12.0,
@@ -24963,6 +25432,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.71,
+      "perf_1m": -3.21,
+      "perf_3m": -0.99,
+      "rank_1w": 33,
+      "rank_1m": 102,
+      "rank_3m": 93,
+      "group_market_cap_cr": 267337.42,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 21.4,
@@ -25216,6 +25692,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.9,
+      "perf_1m": -0.22,
+      "perf_3m": 0.74,
+      "rank_1w": 78,
+      "rank_1m": 56,
+      "rank_3m": 80,
+      "group_market_cap_cr": 779634.39,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 12.5,
@@ -26093,6 +26576,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.83,
+      "perf_1m": -3.94,
+      "perf_3m": 13.75,
+      "rank_1w": 100,
+      "rank_1m": 107,
+      "rank_3m": 20,
+      "group_market_cap_cr": 38529.49,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -26266,6 +26756,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.07,
+      "perf_1m": -2.78,
+      "perf_3m": 1.78,
+      "rank_1w": 105,
+      "rank_1m": 95,
+      "rank_3m": 76,
+      "group_market_cap_cr": 402012.8,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 14.3,
@@ -26455,6 +26952,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.6,
+      "perf_1m": -1.93,
+      "perf_3m": -1.67,
+      "rank_1w": 68,
+      "rank_1m": 85,
+      "rank_3m": 94,
+      "group_market_cap_cr": 428006.53,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -26900,6 +27404,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.99,
+      "perf_1m": -1.84,
+      "perf_3m": 4.32,
+      "rank_1w": 82,
+      "rank_1m": 83,
+      "rank_3m": 55,
+      "group_market_cap_cr": 471604.21,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 10.5,
@@ -27209,6 +27720,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -5.03,
+      "perf_1m": 7.05,
+      "perf_3m": -2.18,
+      "rank_1w": 130,
+      "rank_1m": 15,
+      "rank_3m": 97,
+      "group_market_cap_cr": 4464.56,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -27382,6 +27900,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.43,
+      "perf_1m": -2.45,
+      "perf_3m": -7.1,
+      "rank_1w": 90,
+      "rank_1m": 90,
+      "rank_3m": 113,
+      "group_market_cap_cr": 1444214.06,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -27571,6 +28096,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.7,
+      "perf_1m": -2.78,
+      "perf_3m": 0.52,
+      "rank_1w": 72,
+      "rank_1m": 96,
+      "rank_3m": 82,
+      "group_market_cap_cr": 108891.52,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 16.7,
@@ -27752,6 +28284,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.91,
+      "perf_1m": -3.14,
+      "perf_3m": 8.17,
+      "rank_1w": 117,
+      "rank_1m": 101,
+      "rank_3m": 39,
+      "group_market_cap_cr": 198810.71,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 33.3,
@@ -27925,6 +28464,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.28,
+      "perf_1m": -1.71,
+      "perf_3m": 0.56,
+      "rank_1w": 56,
+      "rank_1m": 81,
+      "rank_3m": 81,
+      "group_market_cap_cr": 10082.13,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -28218,6 +28764,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -5.74,
+      "perf_1m": 8.64,
+      "perf_3m": 20.56,
+      "rank_1w": 131,
+      "rank_1m": 11,
+      "rank_3m": 8,
+      "group_market_cap_cr": 93050.64,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -28431,6 +28984,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.28,
+      "perf_1m": -2.6,
+      "perf_3m": -3.87,
+      "rank_1w": 57,
+      "rank_1m": 92,
+      "rank_3m": 102,
+      "group_market_cap_cr": 171956.19,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 14.3,
@@ -28620,6 +29180,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.53,
+      "perf_1m": -0.38,
+      "perf_3m": -13.62,
+      "rank_1w": 35,
+      "rank_1m": 59,
+      "rank_3m": 126,
+      "group_market_cap_cr": 506.9,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -28801,6 +29368,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.13,
+      "perf_1m": -4.76,
+      "perf_3m": -8.22,
+      "rank_1w": 44,
+      "rank_1m": 114,
+      "rank_3m": 117,
+      "group_market_cap_cr": 6097.6,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 50.0,
@@ -28982,6 +29556,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.38,
+      "perf_1m": -1.13,
+      "perf_3m": 7.1,
+      "rank_1w": 89,
+      "rank_1m": 74,
+      "rank_3m": 42,
+      "group_market_cap_cr": 350422.71,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 12.5,
@@ -29187,6 +29768,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.55,
+      "perf_1m": -3.09,
+      "perf_3m": -5.53,
+      "rank_1w": 64,
+      "rank_1m": 100,
+      "rank_3m": 108,
+      "group_market_cap_cr": 20518.48,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -29376,6 +29964,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -3.7,
+      "perf_1m": 1.39,
+      "perf_3m": 15.81,
+      "rank_1w": 124,
+      "rank_1m": 42,
+      "rank_3m": 15,
+      "group_market_cap_cr": 6027.84,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -29573,6 +30168,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.22,
+      "perf_1m": -0.04,
+      "perf_3m": 3.7,
+      "rank_1w": 87,
+      "rank_1m": 54,
+      "rank_3m": 61,
+      "group_market_cap_cr": 6942.44,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -29754,6 +30356,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.05,
+      "perf_1m": -1.0,
+      "perf_3m": 5.59,
+      "rank_1w": 84,
+      "rank_1m": 70,
+      "rank_3m": 49,
+      "group_market_cap_cr": 138638.13,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 11.8,
@@ -30047,6 +30656,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.18,
+      "perf_1m": -10.02,
+      "perf_3m": 14.77,
+      "rank_1w": 51,
+      "rank_1m": 128,
+      "rank_3m": 18,
+      "group_market_cap_cr": 24345.43,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 16.7,
@@ -30252,6 +30868,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.96,
+      "perf_1m": -1.94,
+      "perf_3m": 17.93,
+      "rank_1w": 101,
+      "rank_1m": 86,
+      "rank_3m": 12,
+      "group_market_cap_cr": 3063.95,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 33.3,
@@ -30425,6 +31048,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.58,
+      "perf_1m": -7.62,
+      "perf_3m": 6.13,
+      "rank_1w": 34,
+      "rank_1m": 122,
+      "rank_3m": 46,
+      "group_market_cap_cr": 5497.02,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -30598,6 +31228,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.24,
+      "perf_1m": 2.34,
+      "perf_3m": -7.34,
+      "rank_1w": 108,
+      "rank_1m": 36,
+      "rank_3m": 115,
+      "group_market_cap_cr": 24069.52,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 28.6,
@@ -30787,6 +31424,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.82,
+      "perf_1m": -1.29,
+      "perf_3m": -2.38,
+      "rank_1w": 76,
+      "rank_1m": 77,
+      "rank_3m": 99,
+      "group_market_cap_cr": 329813.98,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 6.2,
@@ -31072,6 +31716,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 2.28,
+      "perf_1m": -1.28,
+      "perf_3m": -14.33,
+      "rank_1w": 12,
+      "rank_1m": 75,
+      "rank_3m": 127,
+      "group_market_cap_cr": 25491.1,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 16.7,
@@ -31253,6 +31904,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.2,
+      "perf_1m": -1.64,
+      "perf_3m": -6.1,
+      "rank_1w": 86,
+      "rank_1m": 80,
+      "rank_3m": 112,
+      "group_market_cap_cr": 1165344.82,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 14.7,
@@ -31706,6 +32364,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.99,
+      "perf_1m": -2.73,
+      "perf_3m": -5.52,
+      "rank_1w": 81,
+      "rank_1m": 94,
+      "rank_3m": 107,
+      "group_market_cap_cr": 907577.08,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 6.7,
@@ -32839,6 +33504,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.8,
+      "perf_1m": -5.37,
+      "perf_3m": -5.74,
+      "rank_1w": 75,
+      "rank_1m": 116,
+      "rank_3m": 111,
+      "group_market_cap_cr": 223294.86,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 10.0,
@@ -33060,6 +33732,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.12,
+      "perf_1m": -4.33,
+      "perf_3m": -2.85,
+      "rank_1w": 50,
+      "rank_1m": 111,
+      "rank_3m": 100,
+      "group_market_cap_cr": 949044.61,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 6.1,
@@ -33457,6 +34136,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.77,
+      "perf_1m": -9.92,
+      "perf_3m": -27.69,
+      "rank_1w": 73,
+      "rank_1m": 126,
+      "rank_3m": 132,
+      "group_market_cap_cr": 122151.81,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -33638,6 +34324,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.15,
+      "perf_1m": -2.48,
+      "perf_3m": -4.69,
+      "rank_1w": 43,
+      "rank_1m": 91,
+      "rank_3m": 105,
+      "group_market_cap_cr": 13528.98,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -33827,6 +34520,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.87,
+      "perf_1m": -1.41,
+      "perf_3m": 7.32,
+      "rank_1w": 116,
+      "rank_1m": 78,
+      "rank_3m": 41,
+      "group_market_cap_cr": 35091.81,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -34072,6 +34772,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -3.61,
+      "perf_1m": -7.01,
+      "perf_3m": -7.12,
+      "rank_1w": 123,
+      "rank_1m": 121,
+      "rank_3m": 114,
+      "group_market_cap_cr": 142348.3,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -34269,6 +34976,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.7,
+      "perf_1m": -4.14,
+      "perf_3m": -5.71,
+      "rank_1w": 71,
+      "rank_1m": 109,
+      "rank_3m": 109,
+      "group_market_cap_cr": 273268.74,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 13.3,
@@ -34522,6 +35236,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 0.36,
+      "perf_1m": -8.61,
+      "perf_3m": -12.92,
+      "rank_1w": 39,
+      "rank_1m": 124,
+      "rank_3m": 125,
+      "group_market_cap_cr": 20283.05,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -34799,6 +35520,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.65,
+      "perf_1m": -3.05,
+      "perf_3m": 1.79,
+      "rank_1w": 96,
+      "rank_1m": 99,
+      "rank_3m": 75,
+      "group_market_cap_cr": 954563.31,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 16.7,
@@ -34980,6 +35708,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -3.33,
+      "perf_1m": -4.7,
+      "perf_3m": 13.52,
+      "rank_1w": 122,
+      "rank_1m": 112,
+      "rank_3m": 23,
+      "group_market_cap_cr": 116654.36,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 11.1,
@@ -35185,6 +35920,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.98,
+      "perf_1m": -5.58,
+      "perf_3m": -9.09,
+      "rank_1w": 80,
+      "rank_1m": 118,
+      "rank_3m": 118,
+      "group_market_cap_cr": 965039.37,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 12.0,
@@ -35526,6 +36268,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -3.12,
+      "perf_1m": -0.79,
+      "perf_3m": -9.36,
+      "rank_1w": 119,
+      "rank_1m": 66,
+      "rank_3m": 119,
+      "group_market_cap_cr": 176915.13,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 5.3,
@@ -35835,6 +36584,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -4.58,
+      "perf_1m": -4.73,
+      "perf_3m": -7.68,
+      "rank_1w": 127,
+      "rank_1m": 113,
+      "rank_3m": 116,
+      "group_market_cap_cr": 36661.36,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -36024,6 +36780,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -3.17,
+      "perf_1m": -10.0,
+      "perf_3m": 3.46,
+      "rank_1w": 120,
+      "rank_1m": 127,
+      "rank_3m": 63,
+      "group_market_cap_cr": 32898.01,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -36197,6 +36960,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": 4.16,
+      "perf_1m": -14.82,
+      "perf_3m": -11.08,
+      "rank_1w": 7,
+      "rank_1m": 132,
+      "rank_3m": 122,
+      "group_market_cap_cr": 692.05,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -36370,6 +37140,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -0.92,
+      "perf_1m": -9.82,
+      "perf_3m": -4.27,
+      "rank_1w": 79,
+      "rank_1m": 125,
+      "rank_3m": 104,
+      "group_market_cap_cr": 8568.82,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 16.7,
@@ -36599,6 +37376,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.73,
+      "perf_1m": -7.74,
+      "perf_3m": -17.48,
+      "rank_1w": 113,
+      "rank_1m": 123,
+      "rank_3m": 130,
+      "group_market_cap_cr": 588330.64,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -36780,6 +37564,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.23,
+      "perf_1m": -3.42,
+      "perf_3m": 2.45,
+      "rank_1w": 88,
+      "rank_1m": 103,
+      "rank_3m": 68,
+      "group_market_cap_cr": 321144.97,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 6.5,
@@ -37161,6 +37952,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.05,
+      "perf_1m": 0.22,
+      "perf_3m": 2.19,
+      "rank_1w": 104,
+      "rank_1m": 52,
+      "rank_3m": 71,
+      "group_market_cap_cr": 150573.25,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 16.2,
@@ -37750,6 +38548,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.99,
+      "perf_1m": -2.89,
+      "perf_3m": -11.38,
+      "rank_1w": 102,
+      "rank_1m": 98,
+      "rank_3m": 123,
+      "group_market_cap_cr": 2228074.0,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 14.3,
@@ -37939,6 +38744,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.41,
+      "perf_1m": -0.62,
+      "perf_3m": -3.9,
+      "rank_1w": 109,
+      "rank_1m": 63,
+      "rank_3m": 103,
+      "group_market_cap_cr": 181763.1,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 14.3,
@@ -38208,6 +39020,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -3.29,
+      "perf_1m": -5.48,
+      "perf_3m": 0.01,
+      "rank_1w": 121,
+      "rank_1m": 117,
+      "rank_3m": 85,
+      "group_market_cap_cr": 293770.28,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 10.0,
@@ -38517,6 +39336,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.56,
+      "perf_1m": -0.74,
+      "perf_3m": 1.12,
+      "rank_1w": 92,
+      "rank_1m": 65,
+      "rank_3m": 78,
+      "group_market_cap_cr": 1852545.63,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -38746,6 +39572,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.81,
+      "perf_1m": -11.63,
+      "perf_3m": 1.69,
+      "rank_1w": 99,
+      "rank_1m": 130,
+      "rank_3m": 77,
+      "group_market_cap_cr": 90677.39,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 12.5,
@@ -38967,6 +39800,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -4.7,
+      "perf_1m": 1.43,
+      "perf_3m": -2.15,
+      "rank_1w": 128,
+      "rank_1m": 41,
+      "rank_3m": 96,
+      "group_market_cap_cr": 1405.51,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -39140,6 +39980,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -4.44,
+      "perf_1m": -3.86,
+      "perf_3m": -12.58,
+      "rank_1w": 126,
+      "rank_1m": 106,
+      "rank_3m": 124,
+      "group_market_cap_cr": 2269.35,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -39385,6 +40232,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -6.5,
+      "perf_1m": -10.21,
+      "perf_3m": -11.03,
+      "rank_1w": 132,
+      "rank_1m": 129,
+      "rank_3m": 121,
+      "group_market_cap_cr": 804646.15,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 20.0,
@@ -39558,6 +40412,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -3.08,
+      "perf_1m": -5.71,
+      "perf_3m": -15.42,
+      "rank_1w": 118,
+      "rank_1m": 119,
+      "rank_3m": 128,
+      "group_market_cap_cr": 34280.84,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -39811,6 +40672,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.59,
+      "perf_1m": -6.12,
+      "perf_3m": -2.12,
+      "rank_1w": 93,
+      "rank_1m": 120,
+      "rank_3m": 95,
+      "group_market_cap_cr": 44693.46,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -40032,6 +40900,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.71,
+      "perf_1m": -2.22,
+      "perf_3m": -5.73,
+      "rank_1w": 111,
+      "rank_1m": 89,
+      "rank_3m": 110,
+      "group_market_cap_cr": 324259.05,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 8.3,
@@ -40285,6 +41160,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.16,
+      "perf_1m": -2.04,
+      "perf_3m": -0.31,
+      "rank_1w": 85,
+      "rank_1m": 88,
+      "rank_3m": 88,
+      "group_market_cap_cr": 243685.84,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -40466,6 +41348,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -4.82,
+      "perf_1m": -5.01,
+      "perf_3m": -17.02,
+      "rank_1w": 129,
+      "rank_1m": 115,
+      "rank_3m": 129,
+      "group_market_cap_cr": 6722.18,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -40663,6 +41552,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.67,
+      "perf_1m": -4.25,
+      "perf_3m": -0.72,
+      "rank_1w": 97,
+      "rank_1m": 110,
+      "rank_3m": 91,
+      "group_market_cap_cr": 730032.56,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -40844,6 +41740,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.84,
+      "perf_1m": -3.8,
+      "perf_3m": 5.68,
+      "rank_1w": 115,
+      "rank_1m": 105,
+      "rank_3m": 48,
+      "group_market_cap_cr": 257664.69,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -41113,6 +42016,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -8.37,
+      "perf_1m": -17.25,
+      "perf_3m": -33.81,
+      "rank_1w": 133,
+      "rank_1m": 133,
+      "rank_3m": 133,
+      "group_market_cap_cr": 37774.85,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -41286,6 +42196,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -1.79,
+      "perf_1m": -11.85,
+      "perf_3m": -10.37,
+      "rank_1w": 98,
+      "rank_1m": 131,
+      "rank_3m": 120,
+      "group_market_cap_cr": 9204.48,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -41459,6 +42376,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.72,
+      "perf_1m": -1.96,
+      "perf_3m": -0.9,
+      "rank_1w": 112,
+      "rank_1m": 87,
+      "rank_3m": 92,
+      "group_market_cap_cr": 16203.97,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,
@@ -41632,6 +42556,13 @@
       "rs_rating_delta": {
         "available": false
       },
+      "perf_1w": -2.74,
+      "perf_1m": -4.01,
+      "perf_3m": 2.18,
+      "rank_1w": 114,
+      "rank_1m": 108,
+      "rank_3m": 72,
+      "group_market_cap_cr": 336843.53,
       "high52": {
         "available": true,
         "pct_within_52wk_high": 0.0,

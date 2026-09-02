@@ -15,6 +15,7 @@
     <div class="tabs">
       <button id="sectors-tab" class="tab active" data-view="sectors">Sectors</button>
       <button class="tab" data-view="industries">All Industries</button>
+      <button class="tab" data-view="analytics">Industry Analytics</button>
       <a class="tab" href="scanner.html">Scanner</a>
       <button id="info-icon" class="info-icon hidden" title="EMA and RS here use a synthetic equal-weighted index, since NSE doesn't publish an official index for this level of detail. Industries with too few stocks are left out.">ⓘ</button>
     </div>
@@ -62,6 +63,24 @@
         </tr>
       </thead>
       <tbody id="board-body"></tbody>
+    </table>
+
+    <table id="analytics-board" class="board hidden">
+      <thead>
+        <tr>
+          <th class="rank-col">#</th>
+          <th class="sortable" data-sort="name">Industry</th>
+          <th class="sortable" data-sort="perf1w">1W Perf%</th>
+          <th class="sortable" data-sort="perf1m">1M Perf%</th>
+          <th class="sortable" data-sort="perf3m">3M Perf%</th>
+          <th class="sortable" data-sort="rank1w" title="Ordinal rank among all industries by 1-week performance -- 1 = best">1W Rank</th>
+          <th class="sortable" data-sort="rank1m" title="Ordinal rank among all industries by 1-month performance -- 1 = best">1M Rank</th>
+          <th class="sortable" data-sort="rank3m" title="Ordinal rank among all industries by 3-month performance -- 1 = best">3M Rank</th>
+          <th class="sortable" data-sort="nstocks"># Stocks</th>
+          <th class="sortable" data-sort="groupMcap" title="Sum of market cap (shares outstanding x latest close) across the industry's stocks">Group Mkt Cap (Cr)</th>
+        </tr>
+      </thead>
+      <tbody id="analytics-board-body"></tbody>
     </table>
   </main>
 

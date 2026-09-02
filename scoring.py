@@ -361,6 +361,35 @@ def score_history_series(conn, key: str, limit: int = 60) -> list[int]:
     return [r[0] for r in reversed(rows)]
 
 
+def pct_return(series: pd.Series, days: int) -> float | None:
+    """Simple % price change over the trailing N trading days -- lighter
+    weight than RS Rating's 253-day requirement, so young stocks/industries
+    that can't get an RS Rating yet can often still show a period return.
+    Shared by the stock scanner (per-stock 1M/3M) and the basic-industry
+    view (per-industry 1W/1M/3M, off the synthetic index)."""
+    if len(series) < days + 1:
+        return None
+    last = series.iloc[-1]
+    base = series.iloc[-1 - days]
+    if not base:
+        return None
+    return round((last - base) / base * 100, 2)
+
+
+def ordinal_rank_desc(values_by_key: dict) -> dict:
+    """Ranks a {key: value} dict by value descending -- 1 = highest value,
+    matching the plain 'Rank 1, 2, 3...' convention (not a 1-99 percentile
+    like RS Rating). Keys with a None value are left out of the ranking
+    entirely rather than being pushed to the bottom, since 'no data' isn't
+    the same claim as 'worst performer'."""
+    ranked_keys = sorted(
+        (k for k, v in values_by_key.items() if v is not None),
+        key=lambda k: values_by_key[k],
+        reverse=True,
+    )
+    return {k: i + 1 for i, k in enumerate(ranked_keys)}
+
+
 def stock_raw_rs_score(series: pd.Series) -> float | None:
     """Weighted price-performance score behind an RS Rating, in the style
     widely used to approximate MarketSmith/IBD's methodology (not
