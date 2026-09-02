@@ -67,6 +67,8 @@ function applyFilters() {
   industries.sort((a, b) => b.barValue - a.barValue);
 
   CURRENT_INDUSTRIES = industries;
+  document.getElementById("tg-layout").classList.remove("hidden");
+  document.getElementById("empty-state").classList.add("hidden");
   renderBars(industries);
   renderOverallTable(qualifying, field);
 
@@ -87,17 +89,10 @@ function fmtReturn(v) {
 
 function renderBars(industries) {
   const el = document.getElementById("tg-bars");
-  const layout = document.getElementById("tg-layout");
-  const empty = document.getElementById("empty-state");
   if (!industries.length) {
-    el.innerHTML = "";
-    layout.classList.add("hidden");
-    empty.classList.remove("hidden");
-    empty.querySelector("p").textContent = "No industries match these filters.";
+    el.innerHTML = `<p class="muted">No industries have ${document.getElementById("f-min-count").value}+ stocks meeting these filters -- try lowering "No. of stocks in Industry". Individual gainers may still be listed on the right.</p>`;
     return;
   }
-  empty.classList.add("hidden");
-  layout.classList.remove("hidden");
   const maxVal = industries[0].barValue;
   el.innerHTML = industries.map(ind => {
     const widthPct = maxVal > 0 ? Math.max(8, (ind.barValue / maxVal) * 100) : 8;
