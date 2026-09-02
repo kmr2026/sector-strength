@@ -46,6 +46,24 @@ function loadFiltersFromStorage() {
   });
 }
 
+function ratingClass(rating) {
+  if (rating === null || rating === undefined) return "score-low";
+  if (rating >= 80) return "score-high";
+  if (rating >= 50) return "score-mid";
+  return "score-low";
+}
+
+function rsRatingCell(rating) {
+  if (rating === null || rating === undefined) return `<span class="muted">n/a</span>`;
+  return `<span class="score-badge ${ratingClass(rating)}">${rating}</span>`;
+}
+
+function returnCell(v) {
+  if (v === null || v === undefined) return `<span class="muted">n/a</span>`;
+  const cls = v > 0 ? "trend-up" : v < 0 ? "trend-down" : "";
+  return `<span class="${cls}">${v}%</span>`;
+}
+
 function stackLadder(ema) {
   if (!ema || !ema.available) return `<span class="muted">n/a</span>`;
   const bars = [
@@ -116,6 +134,9 @@ function sortValue(row, key) {
     case "name": return row.symbol.toLowerCase();
     case "industry": return (row.basic_industry || "").toLowerCase();
     case "price": return row.close ?? -1;
+    case "rsRating": return row.rs_rating ?? -1;
+    case "return1m": return row.return_1m ?? -9999;
+    case "return3m": return row.return_3m ?? -9999;
     case "ema": {
       if (!row.ema || !row.ema.available) return -1;
       const count = [row.ema.above_21, row.ema.above_50, row.ema.above_200].filter(Boolean).length;
@@ -199,6 +220,9 @@ function renderResults() {
       <td class="sector-col">${s.symbol}<div class="muted" style="font-weight:400; font-size:11px;">${s.name || ""}</div></td>
       <td>${s.basic_industry || `<span class="muted">n/a</span>`}</td>
       <td>${fmt(s.close)}</td>
+      <td>${rsRatingCell(s.rs_rating)}</td>
+      <td>${returnCell(s.return_1m)}</td>
+      <td>${returnCell(s.return_3m)}</td>
       <td>${stackLadder(s.ema)}</td>
       <td>${fmt(s.pct_from_52wk_high, "%")}</td>
       <td>${fmt(s.pct_from_52wk_low, "%")}</td>
@@ -246,7 +270,7 @@ function buildTradingViewText(mode) {
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(`NSE:${s.symbol}`);
   });
-  const sortedKeys = [...groups.keys()].sort();
+  const sortedKeys = [...groups.keys()].sort((a, b) => groups.get(b).length - groups.get(a).length);
   const parts = [];
   sortedKeys.forEach(k => {
     const syms = groups.get(k);

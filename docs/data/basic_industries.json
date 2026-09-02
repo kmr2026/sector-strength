@@ -3963,10 +3963,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -1.1,
-        "prev_value": 15.4,
+        "delta": 0.0,
+        "prev_value": 14.3,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5263,10 +5263,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.2,
-        "prev_value": 4.0,
+        "delta": 0.0,
+        "prev_value": 3.8,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -6062,10 +6062,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 1.1,
-        "prev_value": 25.8,
+        "delta": 0.0,
+        "prev_value": 26.9,
         "prev_date": "2026-09-01",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -8290,10 +8290,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.3,
-        "prev_value": 29.9,
+        "delta": 0.0,
+        "prev_value": 29.6,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -11080,10 +11080,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 20.0,
-        "prev_value": 0.0,
+        "delta": 0.0,
+        "prev_value": 20.0,
         "prev_date": "2026-09-01",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -11277,10 +11277,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.5,
-        "prev_value": 19.4,
+        "delta": 0.0,
+        "prev_value": 18.9,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -11786,10 +11786,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.2,
-        "prev_value": 19.4,
+        "delta": 0.0,
+        "prev_value": 19.2,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -14959,10 +14959,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -2.2,
-        "prev_value": 22.2,
+        "delta": 0.0,
+        "prev_value": 20.0,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -15883,10 +15883,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -2.0,
-        "prev_value": 11.1,
+        "delta": 0.0,
+        "prev_value": 9.1,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -17623,10 +17623,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.6,
-        "prev_value": 18.2,
+        "delta": 0.0,
+        "prev_value": 17.6,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -22242,10 +22242,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.5,
-        "prev_value": 4.8,
+        "delta": 0.0,
+        "prev_value": 4.3,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -25224,10 +25224,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.6,
-        "prev_value": 13.1,
+        "delta": 0.0,
+        "prev_value": 12.5,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -31714,10 +31714,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 1.0,
-        "prev_value": 5.7,
+        "delta": 0.0,
+        "prev_value": 6.7,
         "prev_date": "2026-09-01",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -34277,10 +34277,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -1.0,
-        "prev_value": 14.3,
+        "delta": 0.0,
+        "prev_value": 13.3,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -37169,10 +37169,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.5,
-        "prev_value": 16.7,
+        "delta": 0.0,
+        "prev_value": 16.2,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -40040,10 +40040,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -2.8,
-        "prev_value": 11.1,
+        "delta": 0.0,
+        "prev_value": 8.3,
         "prev_date": "2026-09-01",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {

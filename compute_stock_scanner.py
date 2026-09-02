@@ -64,6 +64,19 @@ def _avg_turnover_cr(close_s: pd.Series, vol_s: pd.Series, days: int = 30) -> fl
     return round(float(turnover) / 1e7, 2)  # rupees -> crores
 
 
+def _pct_return(series: pd.Series, days: int) -> float | None:
+    """Simple % price change over the trailing N trading days -- lighter
+    weight than RS Rating's 253-day requirement, so young stocks that
+    can't get an RS Rating yet can often still show a 1M/3M return."""
+    if len(series) < days + 1:
+        return None
+    last = series.iloc[-1]
+    base = series.iloc[-1 - days]
+    if not base:
+        return None
+    return round((last - base) / base * 100, 2)
+
+
 def get_symbol_metadata(conn) -> dict:
     """symbol -> {name, basic_industry, shares_outstanding}, best-effort
     from basic_industry_map. shares_outstanding is the stable, derived
@@ -126,6 +139,8 @@ def compute_all() -> list[dict]:
             wk52 = _stock_52wk_block(close_s)
             adr = _adr_pct(high_s, low_s)
             turnover = _avg_turnover_cr(close_s, vol_s)
+            return_1m = _pct_return(close_s, 21)
+            return_3m = _pct_return(close_s, 63)
             info = meta.get(symbol, {})
             last_close = round(float(close_s.iloc[-1]), 2)
             shares = info.get("shares_outstanding")
@@ -144,6 +159,8 @@ def compute_all() -> list[dict]:
                 "last_date": g["date"].iloc[-1].date().isoformat(),
                 "ema": ema,
                 "rs_rating": ratings.get(symbol),
+                "return_1m": return_1m,
+                "return_3m": return_3m,
                 "pct_from_52wk_high": wk52.get("pct_from_high") if wk52.get("available") else None,
                 "pct_from_52wk_low": wk52.get("pct_from_low") if wk52.get("available") else None,
                 "adr_pct_20d": adr,
