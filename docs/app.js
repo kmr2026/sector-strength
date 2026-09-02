@@ -1,8 +1,9 @@
 const SECTORS_URL = "data/leaderboard.json";
 const INDUSTRIES_URL = "data/basic_industries.json";
+const SCANNER_URL = "data/stock_scanner.json";
 
 let CURRENT_VIEW = "sectors";
-let CACHE = { sectors: null, industries: null };
+let CACHE = { sectors: null, industries: null, scanner: null };
 let CURRENT_DATA = [];
 let SORT_KEY = "score";
 let SORT_DIR = "desc"; // "asc" | "desc"
@@ -376,6 +377,57 @@ document.getElementById("detail-panel").addEventListener("click", (e) => {
   if (e.target.id === "detail-panel") e.target.classList.add("hidden");
 });
 
+async function ensureScannerData() {
+  if (CACHE.scanner) return CACHE.scanner;
+  const res = await fetch(SCANNER_URL);
+  const data = await res.json();
+  CACHE.scanner = data;
+  return data;
+}
+
+async function openIndustryStocks(industryName) {
+  const modal = document.getElementById("industry-stocks-modal");
+  const tbody = document.getElementById("industry-stocks-body");
+  document.getElementById("industry-stocks-title").textContent = industryName;
+  tbody.innerHTML = `<tr><td colspan="6" class="muted">Loading…</td></tr>`;
+  modal.classList.remove("hidden");
+
+  let stocks;
+  try {
+    stocks = await ensureScannerData();
+  } catch (err) {
+    tbody.innerHTML = `<tr><td colspan="6" class="muted">Couldn't load stock data</td></tr>`;
+    return;
+  }
+
+  const matches = stocks
+    .filter(s => s.basic_industry === industryName)
+    .sort((a, b) => (b.rs_rating ?? -1) - (a.rs_rating ?? -1));
+
+  if (!matches.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="muted">No stocks found for this industry</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = matches.map(s => `
+    <tr>
+      <td class="sector-col">${s.symbol}<div class="muted" style="font-weight:400; font-size:11px;">${s.name || ""}</div></td>
+      <td>${rsRatingCell(s.rs_rating)}</td>
+      <td>${s.basic_industry || `<span class="muted">n/a</span>`}</td>
+      <td>${perfCell(s.return_1m)}</td>
+      <td>${perfCell(s.return_3m)}</td>
+      <td>${s.pct_from_52wk_high !== null && s.pct_from_52wk_high !== undefined ? `${s.pct_from_52wk_high}%` : `<span class="muted">n/a</span>`}</td>
+    </tr>
+  `).join("");
+}
+
+document.getElementById("close-industry-stocks").addEventListener("click", () => {
+  document.getElementById("industry-stocks-modal").classList.add("hidden");
+});
+document.getElementById("industry-stocks-modal").addEventListener("click", (e) => {
+  if (e.target.id === "industry-stocks-modal") e.target.classList.add("hidden");
+});
+
 function showData(data) {
   CURRENT_DATA = data;
   if (!data.length) {
@@ -561,6 +613,7 @@ function renderAnalyticsBoard() {
       <td data-label="# Stocks">${row.n_stocks_total ?? "n/a"}</td>
       <td data-label="Group Mkt Cap (Cr)">${mcapCell(row.group_market_cap_cr)}</td>
     `;
+    tr.addEventListener("click", () => openIndustryStocks(row.industry));
     tbody.appendChild(tr);
   });
 }
