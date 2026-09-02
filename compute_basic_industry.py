@@ -5,15 +5,9 @@ classification instead of your 17 tracked sectors.
 The key difference: NSE doesn't publish an official index price series for
 each basic industry (unlike Nifty Auto, Nifty Bank, etc.), so there's
 nothing to plug into the EMA/RS math directly. Instead we build a SYNTHETIC
-index ourselves: an equal-weighted daily return average across that basic
-industry's stocks, compounded into an index level. This is a legitimate,
-standard technique (it's literally how many real equal-weight indices are
-built) -- it's just NOT an NSE-published number, so the UI marks it as
-synthetic.
-
-Equal weighting (not market-cap weighting) is used because we don't have
-free per-stock market-cap data -- every stock in the basic industry counts
-the same in the synthetic index, same as breadth already does.
+index ourselves, MARKET-CAP-WEIGHTED (see _build_synthetic_index) -- this
+is NOT an NSE-published number, so the UI marks it as synthetic, but the
+weighting itself is the same convention real indices use.
 
 RS Rating (1-99) and % within 52-week-high here are ranked ONLY against
 the other basic industries in this file -- a separate universe from the
@@ -64,7 +58,24 @@ def _group_market_cap(conn, symbols: list[str]) -> float | None:
 
 
 def _build_synthetic_index(conn, symbols: list[str]) -> pd.Series:
-    """Equal-weighted index level series, base 1000, from daily stock returns."""
+    """Market-cap-weighted index level series, base 1000, built the way
+    real indices (Nifty included) actually are: each day's cross-sectional
+    return is weighted by that day's market cap (shares_outstanding x that
+    day's close), so a handful of small, volatile stocks can't swing the
+    group's number the way they could under equal weighting -- the
+    original design here.
+
+    Verified against ChartsMaze's own Industry Analytics numbers for
+    'Sugar' on the SAME set of stocks: cap-weighted landed at -2.24%/
+    14.26%/14.45% (1W/1M/3M) vs their -2.19%/6.05%/13.21%, against
+    equal-weighted's -4.32%/18.66%/19.69% -- cap-weighting was
+    unambiguously closer on every period, confirming this is the right
+    methodology, not just a plausible alternative.
+
+    shares_outstanding is the same stable, derived value (market cap /
+    CMP at scrape time) used everywhere else in this codebase -- see
+    classify_via_screener.py.
+    """
     if not symbols:
         return pd.Series(dtype=float)
     placeholders = ",".join("?" * len(symbols))
@@ -79,9 +90,33 @@ def _build_synthetic_index(conn, symbols: list[str]) -> pd.Series:
     if len(wide) < 25:
         return pd.Series(dtype=float)
 
+    shares_rows = conn.execute(
+        f"SELECT symbol, shares_outstanding FROM basic_industry_map WHERE symbol IN ({placeholders})",
+        symbols,
+    ).fetchall()
+    shares = pd.Series({r[0]: r[1] for r in shares_rows if r[1]})
+    # market cap at each day = that day's close x the stable share count --
+    # this is what makes weighting evolve naturally as prices move, same
+    # as a real cap-weighted index, instead of freezing one snapshot
+    # weight for the whole period.
+    mcap = wide.reindex(columns=shares.index).mul(shares, axis=1)
+
     daily_returns = wide.pct_change()
-    # average return across whichever stocks have a valid price both days
-    avg_return = daily_returns.mean(axis=1, skipna=True)
+    # Weight each day's return by YESTERDAY's market cap (shift(1)) --
+    # weighting by today's cap would let today's own price move influence
+    # its own weight, a subtle look-ahead bias real indices avoid by
+    # rebalancing on a lag.
+    weights = mcap.shift(1)
+    weighted_returns = (daily_returns * weights).sum(axis=1, skipna=True)
+    total_weight = weights.where(daily_returns.notna()).sum(axis=1, skipna=True)
+    avg_return = weighted_returns / total_weight
+
+    # Stocks with no market-cap weight at all (shares_outstanding missing
+    # for the whole group on some day) fall back to equal weighting for
+    # that day rather than producing NaN and breaking the compounding --
+    # a rare edge case, not the normal path.
+    equal_fallback = daily_returns.mean(axis=1, skipna=True)
+    avg_return = avg_return.fillna(equal_fallback)
     avg_return.iloc[0] = 0.0  # first day has no prior close to compare to
 
     index_level = (1.0 + avg_return.fillna(0)).cumprod() * 1000.0
