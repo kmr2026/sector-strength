@@ -67,7 +67,9 @@ async function load() {
   document.getElementById("sd-symbol").textContent = s.symbol;
   document.getElementById("sd-name").textContent = s.name || "";
   document.getElementById("sd-industry-link").textContent = s.basic_industry || "Unclassified";
-  document.getElementById("sd-industry-link").href = `index.html`;
+  document.getElementById("sd-industry-link").href = s.basic_industry
+    ? `index.html?industry=${encodeURIComponent(s.basic_industry)}`
+    : `index.html`;
 
   document.getElementById("sd-price").textContent = fmtPrice(s.close);
   document.getElementById("sd-rs-rating").innerHTML = (s.rs_rating !== null && s.rs_rating !== undefined)

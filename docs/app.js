@@ -697,4 +697,13 @@ function renderLeadersRow(view, rows) {
   renderImprovingList("leaders-improving-list", improvingRows);
 }
 
-loadView("sectors");
+// Deep-link support: a link like index.html?industry=Auto+Ancillaries
+// (used by stock.html's "Industry:" link) jumps straight to the Industry
+// Analytics tab with that industry's stock list already open, instead of
+// landing on the generic default Sectors tab with no context.
+const deepLinkIndustry = new URLSearchParams(window.location.search).get("industry");
+if (deepLinkIndustry) {
+  loadView("analytics").then(() => openIndustryStocks(deepLinkIndustry));
+} else {
+  loadView("sectors");
+}
