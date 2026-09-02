@@ -22,7 +22,7 @@ REM blocks to reach a label further down is a well-known source of the
 REM script silently dying mid-block with no error, which is exactly what
 REM was happening before this fix.
 
-cd /d "C:\Users\mahen\OneDrive\Desktop\sector-strength\sector-strength"
+cd /d "C:\Projects\sector-strength"
 
 set LOCKFILE=last_run_date.txt
 
