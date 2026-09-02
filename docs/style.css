@@ -313,6 +313,42 @@ main {
 }
 .tg-bar-row:hover .tg-bar-fill { filter: brightness(1.12); }
 .tg-bar-row.selected .tg-bar-fill { filter: brightness(1.25); }
+
+.sd-title-block { margin-bottom: 16px; }
+.sd-symbol { font-size: 20px; font-weight: 700; }
+.sd-industry-line { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.sd-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.sd-card {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  min-width: 0;
+}
+.sd-card-wide { flex: 1; }
+.sd-card-label {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+}
+.sd-card-value { font-size: 18px; font-weight: 700; }
+.sd-returns-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.sd-ema-caption { font-size: 11px; color: var(--muted); margin-top: 6px; }
+@media (max-width: 700px) {
+  .sd-row { flex-direction: column; }
+}
 .results-header {
   display: flex;
   align-items: center;

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Stock Detail</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1 id="stock-header">STOCK<span>DETAIL</span></h1>
+      <div id="asof" class="asof">loading…</div>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="index.html">Sector Strength</a>
+      <a class="tab" href="topgainers.html">Top Gainers</a>
+      <a class="tab" href="scanner.html">Scanner</a>
+    </div>
+  </header>
+
+  <main>
+    <div id="empty-state" class="empty-state hidden">
+      <p>Couldn't find this stock.</p>
+      <p class="muted">Make sure the link included a valid <code>?symbol=</code> and that <code>python export_snapshot.py</code> has been run.</p>
+    </div>
+
+    <div id="sd-content" class="hidden">
+      <div class="sd-title-block">
+        <div class="sd-symbol"><span id="sd-symbol"></span> <span id="sd-name" class="muted"></span></div>
+        <div class="sd-industry-line">Industry: <a id="sd-industry-link" href="#" style="color: var(--green);"></a></div>
+      </div>
+
+      <div class="sd-row">
+        <div class="sd-card">
+          <div class="sd-card-label">Price</div>
+          <div class="sd-card-value" id="sd-price"></div>
+        </div>
+        <div class="sd-card">
+          <div class="sd-card-label">RS Rating</div>
+          <div id="sd-rs-rating"></div>
+        </div>
+        <div class="sd-card">
+          <div class="sd-card-label">Market Cap</div>
+          <div class="sd-card-value" id="sd-mcap"></div>
+        </div>
+      </div>
+
+      <div class="sd-row">
+        <div class="sd-card sd-card-wide">
+          <div class="sd-card-label">Returns</div>
+          <div class="sd-returns-line" id="sd-returns"></div>
+        </div>
+      </div>
+
+      <div class="sd-row">
+        <div class="sd-card">
+          <div class="sd-card-label">52 week high</div>
+          <div class="sd-card-value" id="sd-52-high"></div>
+        </div>
+        <div class="sd-card">
+          <div class="sd-card-label">52 week low</div>
+          <div class="sd-card-value" id="sd-52-low"></div>
+        </div>
+      </div>
+
+      <div class="sd-row">
+        <div class="sd-card">
+          <div class="sd-card-label">EMA stack</div>
+          <div class="stack-ladder" id="sd-ema-ladder"></div>
+          <div class="sd-ema-caption" id="sd-ema-caption"></div>
+        </div>
+        <div class="sd-card">
+          <div class="sd-card-label">Turnover 30d / ADR 20d</div>
+          <div class="sd-card-value" id="sd-turnover-adr"></div>
+        </div>
+      </div>
+
+      <div class="sd-row">
+        <div class="sd-card sd-card-wide">
+          <div class="sd-card-label"><span id="sd-industry-rank-label"></span> industry rank</div>
+          <div class="sd-returns-line" id="sd-industry-rank"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="stock.js"></script>
+</body>
+</html>

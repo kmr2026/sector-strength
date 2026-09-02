@@ -122,7 +122,7 @@ function renderOverallTable(qualifying, field) {
   }
   tbody.innerHTML = sorted.map(s => `
     <tr>
-      <td class="sector-col">${s.symbol}</td>
+      <td class="sector-col"><a href="stock.html?symbol=${s.symbol}" target="_blank" style="color: var(--green);">${s.symbol}</a></td>
       <td>${fmtReturn(s[field])}</td>
     </tr>
   `).join("");
@@ -146,7 +146,7 @@ function renderIndustryTable(ind, field) {
   }
   tbody.innerHTML = ind.stocks.map(s => `
     <tr>
-      <td class="sector-col">${s.symbol}</td>
+      <td class="sector-col"><a href="stock.html?symbol=${s.symbol}" target="_blank" style="color: var(--green);">${s.symbol}</a></td>
       <td>${fmtReturn(s[field])}</td>
     </tr>
   `).join("");
