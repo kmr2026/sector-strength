@@ -274,7 +274,14 @@ function buildTradingViewText(mode) {
   const parts = [];
   sortedKeys.forEach(k => {
     const syms = groups.get(k);
-    parts.push(`###${k}(${syms.length})`);
+    // Some industry names contain a literal comma (e.g. "Gems, Jewellery
+    // And Watches") -- since this whole format uses commas as the field
+    // separator, an unstripped comma inside the name splits it into an
+    // extra bogus "symbol" token when pasted into TradingView. Only
+    // affects this copied string -- the real industry name elsewhere on
+    // the site (dropdown, table, modal) is untouched.
+    const safeName = k.replace(/,/g, "");
+    parts.push(`###${safeName}(${syms.length})`);
     parts.push(...syms);
   });
   return parts.join(",");
