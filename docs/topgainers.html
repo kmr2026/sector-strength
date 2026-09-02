@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Top Gainers</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>TOP<span>GAINERS</span></h1>
+      <div id="asof" class="asof">loading…</div>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="index.html">Sector Strength</a>
+      <button class="tab active" data-view="topgainers">Top Gainers</button>
+      <a class="tab" href="scanner.html">Scanner</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="filter-panel" id="filter-panel">
+      <div class="filter-row">
+        <div class="filter-field">
+          <label>Returns Type</label>
+          <select id="f-period">
+            <option value="1d" selected>1 Day Return</option>
+            <option value="1w">1 Week Return</option>
+            <option value="1m">1 Month Return</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label>Market Cap &gt; (Cr)</label>
+          <input type="number" id="f-mcap-min" value="1000" />
+        </div>
+        <div class="filter-field">
+          <label>Stock Return% &gt;</label>
+          <input type="number" id="f-return-min" value="5" />
+        </div>
+        <div class="filter-field">
+          <label>No. of stocks in Industry &gt;=</label>
+          <input type="number" id="f-min-count" value="3" />
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button id="f-apply" class="tab active">Apply</button>
+      </div>
+    </div>
+
+    <div id="empty-state" class="empty-state hidden">
+      <p>No data yet.</p>
+      <p class="muted">Run <code>python fetch_data.py</code> then <code>python export_snapshot.py</code> once, then refresh this page.</p>
+    </div>
+
+    <div id="tg-layout" class="tg-layout hidden">
+      <div class="tg-chart-panel">
+        <h3 class="tg-panel-title">Returns(%) by Industry</h3>
+        <div id="tg-bars"></div>
+      </div>
+      <div class="tg-side-panel">
+        <div class="tg-side-block">
+          <h3 class="tg-panel-title">Overall Top Performers</h3>
+          <table class="board tg-side-table">
+            <thead><tr><th>Stock</th><th>Return (%)</th></tr></thead>
+            <tbody id="tg-overall-body"></tbody>
+          </table>
+        </div>
+        <div class="tg-side-block">
+          <h3 class="tg-panel-title">Top Performers in <span id="tg-selected-industry" style="color: var(--green);"></span></h3>
+          <table class="board tg-side-table">
+            <thead><tr><th>Stock</th><th>Return (%)</th></tr></thead>
+            <tbody id="tg-industry-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="topgainers.js"></script>
+</body>
+</html>

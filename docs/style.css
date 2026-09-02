@@ -251,6 +251,68 @@ main {
   justify-content: flex-end;
   gap: 8px;
 }
+.tg-layout {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  align-items: flex-start;
+}
+.tg-chart-panel {
+  flex: 3;
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.tg-side-panel {
+  flex: 2;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.tg-side-block {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+}
+.tg-panel-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.tg-side-table { font-size: 13px; }
+.tg-bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.tg-bar-track {
+  flex: 1;
+  background: var(--panel-2);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 34px;
+  position: relative;
+}
+.tg-bar-fill {
+  height: 100%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #06210f;
+  white-space: nowrap;
+  transition: filter 0.12s ease;
+}
+.tg-bar-row:hover .tg-bar-fill { filter: brightness(1.12); }
+.tg-bar-row.selected .tg-bar-fill { filter: brightness(1.25); }
 .results-header {
   display: flex;
   align-items: center;

@@ -126,6 +126,8 @@ def compute_all() -> list[dict]:
             wk52 = _stock_52wk_block(close_s)
             adr = _adr_pct(high_s, low_s)
             turnover = _avg_turnover_cr(close_s, vol_s)
+            return_1d = pct_return(close_s, 1)
+            return_1w = pct_return(close_s, 5)
             return_1m = pct_return(close_s, 21)
             return_3m = pct_return(close_s, 63)
             info = meta.get(symbol, {})
@@ -146,6 +148,8 @@ def compute_all() -> list[dict]:
                 "last_date": g["date"].iloc[-1].date().isoformat(),
                 "ema": ema,
                 "rs_rating": ratings.get(symbol),
+                "return_1d": return_1d,
+                "return_1w": return_1w,
                 "return_1m": return_1m,
                 "return_3m": return_3m,
                 "pct_from_52wk_high": wk52.get("pct_from_high") if wk52.get("available") else None,
