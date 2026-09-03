@@ -411,7 +411,7 @@ async function openIndustryStocks(industryName) {
 
   tbody.innerHTML = matches.map(s => `
     <tr>
-      <td class="sector-col">${s.symbol}<div class="muted" style="font-weight:400; font-size:11px;">${s.name || ""}</div></td>
+      <td class="sector-col"><a href="stock.html?symbol=${s.symbol}" target="_blank" style="color: var(--green);">${s.symbol}</a><div class="muted" style="font-weight:400; font-size:11px;">${s.name || ""}</div></td>
       <td>${rsRatingCell(s.rs_rating)}</td>
       <td>${s.basic_industry || `<span class="muted">n/a</span>`}</td>
       <td>${perfCell(s.return_1m)}</td>
