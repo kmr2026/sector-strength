@@ -24,6 +24,11 @@ function numCell(v) {
   return (v === null || v === undefined) ? `<span class="muted">n/a</span>` : `${v}`;
 }
 
+function emaCell(v, colClass) {
+  if (v === null || v === undefined) return `<span class="muted">n/a</span>`;
+  return `<span class="mb-cell ${colClass}">${v}</span>`;
+}
+
 function netCell(v) {
   const cls = v > 0 ? "trend-up" : v < 0 ? "trend-down" : "";
   const sign = v > 0 ? "+" : "";
@@ -64,10 +69,10 @@ function renderTables() {
   document.getElementById("mb-ema-body").innerHTML = emaRows.map(r => `
     <tr>
       <td>${formatDate(r.date)}</td>
-      <td>${numCell(r.pct_above_10ema)}</td>
-      <td>${numCell(r.pct_above_21ema)}</td>
-      <td>${numCell(r.pct_above_50ema)}</td>
-      <td>${numCell(r.pct_above_200ema)}</td>
+      <td>${emaCell(r.pct_above_10ema, "mb-col-10ema")}</td>
+      <td>${emaCell(r.pct_above_21ema, "mb-col-21ema")}</td>
+      <td>${emaCell(r.pct_above_50ema, "mb-col-50ema")}</td>
+      <td>${emaCell(r.pct_above_200ema, "mb-col-200ema")}</td>
     </tr>
   `).join("");
 

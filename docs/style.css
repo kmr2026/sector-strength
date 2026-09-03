@@ -8,6 +8,7 @@
   --green: #3fb950;
   --red: #f85149;
   --amber: #d29922;
+  --teal: #2ea8a0;
   --mono: "SF Mono", "JetBrains Mono", "Cascadia Code", Consolas, monospace;
 }
 
@@ -373,6 +374,21 @@ main {
 .mb-table-wrap {
   max-height: 480px;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.mb-table-wrap::-webkit-scrollbar {
+  width: 7px;
+}
+.mb-table-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mb-table-wrap::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.mb-table-wrap::-webkit-scrollbar-thumb:hover {
+  background: var(--green);
 }
 .mb-table {
   width: 100%;
@@ -402,6 +418,16 @@ main {
   border-top: 1px solid var(--panel-2);
 }
 .mb-table tbody tr:hover { background: var(--panel); }
+
+/* Chartink-style column tints for the EMA breadth table */
+.mb-cell {
+  font-weight: 600;
+  border-radius: 3px;
+}
+.mb-col-10ema  { background: rgba(210, 153, 34, 0.14); color: var(--amber); }
+.mb-col-21ema  { background: rgba(63, 185, 80, 0.13);  color: var(--green); }
+.mb-col-50ema  { background: rgba(46, 168, 160, 0.16); color: var(--teal);  }
+.mb-col-200ema { background: rgba(248, 81, 73, 0.13);  color: var(--red);   }
 .results-header {
   display: flex;
   align-items: center;
