@@ -354,8 +354,13 @@ main {
 
 .mb-layout {
   display: flex;
+  flex-direction: column;
   gap: 12px;
   margin-top: 16px;
+}
+.mb-row {
+  display: flex;
+  gap: 12px;
   flex-wrap: wrap;
 }
 .mb-panel {
