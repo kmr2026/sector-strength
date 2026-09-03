@@ -23,7 +23,7 @@ function formatDate(iso) {
 function tintClass(v) {
   if (v === null || v === undefined) return "";
   if (v >= 50) return "mb-tint-green";
-  if (v >= 30) return "mb-tint-amber";
+  if (v >= 20) return "mb-tint-amber";
   return "mb-tint-red";
 }
 
