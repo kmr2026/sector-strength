@@ -61,8 +61,8 @@
       </div>
       <div class="filter-row">
         <div class="filter-field">
-          <label>Return Range%</label>
-          <select id="f-return-period">
+          <label class="filter-checkbox"><input type="checkbox" id="f-return-enable" /> Return Range%</label>
+          <select id="f-return-period" disabled>
             <option value="return_1d">1 Day</option>
             <option value="return_1w">1 Week</option>
             <option value="return_1m" selected>1 Month</option>
@@ -73,16 +73,16 @@
         </div>
         <div class="filter-field range-field">
           <label>&nbsp;</label>
-          <div class="range-inputs"><input type="number" id="f-return-min" placeholder="-10" /> <span>-</span> <input type="number" id="f-return-max" placeholder="1200" /></div>
+          <div class="range-inputs"><input type="number" id="f-return-min" placeholder="-10" disabled /> <span>-</span> <input type="number" id="f-return-max" placeholder="1200" disabled /></div>
         </div>
       </div>
       <div class="filter-row">
         <div class="filter-field">
           <label class="filter-checkbox"><input type="checkbox" id="f-circuit-enable" /> Exclude Circuit Stocks</label>
           <div class="filter-checkbox-group" style="padding-top: 8px;">
-            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="2" /> 2% Circuit</label>
-            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="5" /> 5% Circuit</label>
-            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="10" /> 10% Circuit</label>
+            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="2" disabled /> 2% Circuit</label>
+            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="5" disabled /> 5% Circuit</label>
+            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="10" disabled /> 10% Circuit</label>
           </div>
         </div>
       </div>

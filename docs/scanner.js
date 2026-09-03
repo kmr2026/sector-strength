@@ -103,6 +103,7 @@ function readFilters() {
     priceMin: num("f-price-min"),
     turnoverMin: num("f-turnover-min"),
     mcapMin: num("f-mcap-min"), mcapMax: num("f-mcap-max"),
+    returnEnable: document.getElementById("f-return-enable").checked,
     returnPeriod: document.getElementById("f-return-period").value,
     returnMin: num("f-return-min"), returnMax: num("f-return-max"),
     circuitEnable: document.getElementById("f-circuit-enable").checked,
@@ -132,10 +133,11 @@ function applyFilters() {
     if (f.priceMin !== null && !(s.close !== null && s.close !== undefined && s.close >= f.priceMin)) return false;
     if (f.turnoverMin !== null && !(s.avg_turnover_cr_30d >= f.turnoverMin)) return false;
     if (!inRange(s.market_cap_cr, f.mcapMin, f.mcapMax)) return false;
-    // Return Range% -- applies to whichever period is selected in the
-    // dropdown. A stock without a value yet for that period (too young)
-    // only gets excluded if a real min/max was actually set.
-    if ((f.returnMin !== null || f.returnMax !== null) && !inRange(s[f.returnPeriod], f.returnMin, f.returnMax)) return false;
+    // Return Range% -- only applies at all if its own checkbox is
+    // checked, not just because a min/max happens to be typed in (those
+    // boxes stay disabled until the checkbox is on, but this guards it
+    // explicitly regardless).
+    if (f.returnEnable && !inRange(s[f.returnPeriod], f.returnMin, f.returnMax)) return false;
     // Exclude Circuit Stocks -- excludes by the stock's currently
     // ASSIGNED band (2/5/10%), not by whether it's actually locked at
     // that limit today. A stock with no assigned band (F&O-eligible) is
@@ -349,11 +351,12 @@ document.getElementById("f-apply").addEventListener("click", () => {
 });
 document.getElementById("f-reset").addEventListener("click", () => {
   document.querySelectorAll(".filter-field input").forEach(el => {
-    if (el.disabled) return;
     if (el.type === "checkbox") el.checked = false;
     else el.value = "";
   });
   document.getElementById("f-return-period").value = "return_1m";
+  syncCircuitBandToggle();
+  syncReturnRangeToggle();
   try { localStorage.removeItem(FILTER_STORAGE_KEY); } catch (err) {}
   applyFilters();
 });
@@ -362,8 +365,27 @@ document.getElementById("search-box").addEventListener("input", (e) => {
   applyFilters();
 });
 
+function syncCircuitBandToggle() {
+  const enabled = document.getElementById("f-circuit-enable").checked;
+  document.querySelectorAll(".f-circuit-band").forEach(cb => { cb.disabled = !enabled; });
+}
+document.getElementById("f-circuit-enable").addEventListener("change", syncCircuitBandToggle);
+
+function syncReturnRangeToggle() {
+  const enabled = document.getElementById("f-return-enable").checked;
+  document.getElementById("f-return-period").disabled = !enabled;
+  document.getElementById("f-return-min").disabled = !enabled;
+  document.getElementById("f-return-max").disabled = !enabled;
+}
+document.getElementById("f-return-enable").addEventListener("change", syncReturnRangeToggle);
+
 async function load() {
   loadFiltersFromStorage();
+  // A restored "enabled" state from localStorage needs its sub-controls
+  // un-disabled to match -- these two run the same sync the change
+  // listeners above do, just once on load.
+  syncCircuitBandToggle();
+  syncReturnRangeToggle();
   try {
     const res = await fetch(SCANNER_URL);
     ALL_STOCKS = await res.json();
