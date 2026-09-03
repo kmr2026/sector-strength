@@ -22,6 +22,7 @@ from pathlib import Path
 from compute import compute_all as compute_sectors
 from compute_basic_industry import compute_all_with_meta
 from compute_stock_scanner import compute_all as compute_stock_scanner
+from compute_market_breadth import compute_all as compute_market_breadth
 
 DATA_DIR = Path(__file__).parent / "docs" / "data"
 
@@ -60,6 +61,10 @@ def main():
 
     (DATA_DIR / "stock_scanner.json").write_text(json.dumps(scanner_result, indent=2, default=str))
     print(f"Wrote {len(scanner_result)} stocks to stock_scanner.json")
+
+    breadth_result = compute_market_breadth()
+    (DATA_DIR / "market_breadth.json").write_text(json.dumps(breadth_result, indent=2, default=str))
+    print(f"Wrote {len(breadth_result)} days of history to market_breadth.json")
 
     print(f"Done at {dt.datetime.now().isoformat()}")
 

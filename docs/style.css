@@ -349,6 +349,48 @@ main {
 @media (max-width: 700px) {
   .sd-row { flex-direction: column; }
 }
+
+.mb-layout {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.mb-panel {
+  flex: 1;
+  min-width: 260px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+.mb-panel-title {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
+}
+.mb-table-wrap {
+  max-height: 480px;
+  overflow-y: auto;
+}
+.mb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.mb-table thead th {
+  text-align: left;
+  color: var(--muted);
+  padding: 4px 6px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+}
+.mb-table tbody td {
+  padding: 4px 6px;
+  border-top: 1px solid var(--panel-2);
+}
 .results-header {
   display: flex;
   align-items: center;

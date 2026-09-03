@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Market Breadth</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>MARKET<span>BREADTH</span></h1>
+      <div id="asof" class="asof">loading…</div>
+    </div>
+    <div class="tabs">
+      <a class="tab" href="index.html">Sector Strength</a>
+      <a class="tab" href="topgainers.html">Top Gainers</a>
+      <button class="tab active" data-view="breadth">Market Breadth</button>
+      <a class="tab" href="scanner.html">Scanner</a>
+    </div>
+  </header>
+
+  <main>
+    <div id="empty-state" class="empty-state hidden">
+      <p>No data yet.</p>
+      <p class="muted">Run <code>python fetch_data.py</code> then <code>python export_snapshot.py</code> once, then refresh this page.</p>
+    </div>
+
+    <div id="mb-layout" class="mb-layout hidden">
+      <div class="mb-panel">
+        <div class="mb-panel-title">Market Breadth <span id="mb-universe-count" class="muted"></span></div>
+        <div class="mb-table-wrap">
+          <table class="mb-table">
+            <thead>
+              <tr><th>Date</th><th>10EMA</th><th>21EMA</th><th>50EMA</th><th>200EMA</th></tr>
+            </thead>
+            <tbody id="mb-ema-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mb-panel">
+        <div class="mb-panel-title">4% Up vs 4% Down</div>
+        <div class="mb-table-wrap">
+          <table class="mb-table">
+            <thead>
+              <tr><th>Date</th><th>Advance</th><th>Decline</th></tr>
+            </thead>
+            <tbody id="mb-4pct-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mb-panel">
+        <div class="mb-panel-title">Net new highs vs lows</div>
+        <div class="mb-table-wrap">
+          <table class="mb-table">
+            <thead>
+              <tr><th>Date</th><th>New highs</th><th>New lows</th><th>Net</th></tr>
+            </thead>
+            <tbody id="mb-highslows-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="breadth.js"></script>
+</body>
+</html>
