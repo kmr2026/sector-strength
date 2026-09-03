@@ -20,13 +20,20 @@ function formatDate(iso) {
   return `${day}${suffix} ${month}'${year}`;
 }
 
+function tintClass(v) {
+  if (v === null || v === undefined) return "";
+  if (v >= 50) return "mb-tint-green";
+  if (v >= 30) return "mb-tint-amber";
+  return "mb-tint-red";
+}
+
 function numCell(v) {
   return (v === null || v === undefined) ? `<span class="muted">n/a</span>` : `${v}`;
 }
 
-function emaCell(v, colClass) {
-  if (v === null || v === undefined) return `<span class="muted">n/a</span>`;
-  return `<span class="mb-cell ${colClass}">${v}</span>`;
+function tintedCell(v) {
+  if (v === null || v === undefined) return `<td><span class="muted">n/a</span></td>`;
+  return `<td class="${tintClass(v)}">${v}</td>`;
 }
 
 function netCell(v) {
@@ -69,10 +76,10 @@ function renderTables() {
   document.getElementById("mb-ema-body").innerHTML = emaRows.map(r => `
     <tr>
       <td>${formatDate(r.date)}</td>
-      <td>${emaCell(r.pct_above_10ema, "mb-col-10ema")}</td>
-      <td>${emaCell(r.pct_above_21ema, "mb-col-21ema")}</td>
-      <td>${emaCell(r.pct_above_50ema, "mb-col-50ema")}</td>
-      <td>${emaCell(r.pct_above_200ema, "mb-col-200ema")}</td>
+      ${tintedCell(r.pct_above_10ema)}
+      ${tintedCell(r.pct_above_21ema)}
+      ${tintedCell(r.pct_above_50ema)}
+      ${tintedCell(r.pct_above_200ema)}
     </tr>
   `).join("");
 
@@ -80,8 +87,8 @@ function renderTables() {
   document.getElementById("mb-4pct-body").innerHTML = pct4Rows.map(r => `
     <tr>
       <td>${formatDate(r.date)}</td>
-      <td class="trend-up">${numCell(r.pct_4up)}</td>
-      <td class="trend-down">${numCell(r.pct_4down)}</td>
+      <td class="mb-tint-green">${numCell(r.pct_4up)}</td>
+      <td class="mb-tint-red">${numCell(r.pct_4down)}</td>
     </tr>
   `).join("");
 
@@ -89,8 +96,8 @@ function renderTables() {
   document.getElementById("mb-highslows-body").innerHTML = hlRows.map(r => `
     <tr>
       <td>${formatDate(r.date)}</td>
-      <td class="trend-up">${r.new_highs}</td>
-      <td class="trend-down">${r.new_lows}</td>
+      <td class="mb-tint-green">${r.new_highs}</td>
+      <td class="mb-tint-red">${r.new_lows}</td>
       <td>${netCell(r.net_new_highs)}</td>
     </tr>
   `).join("");

@@ -373,18 +373,18 @@ main {
   margin-bottom: 8px;
 }
 .mb-table-wrap {
-  max-height: 480px;
+  max-height: 340px;
   overflow-y: auto;
 }
 .mb-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 12px;
+  font-size: 13px;
 }
 .mb-table thead th {
   text-align: left;
   color: var(--muted);
-  padding: 4px 6px;
+  padding: 10px 12px;
   position: sticky;
   top: 0;
   background: var(--bg);
@@ -400,10 +400,13 @@ main {
   margin-left: 3px;
 }
 .mb-table tbody td {
-  padding: 4px 6px;
+  padding: 10px 12px;
   border-top: 1px solid var(--panel-2);
 }
 .mb-table tbody tr:hover { background: var(--panel); }
+.mb-tint-green { background: rgba(63,185,80,0.15); color: var(--green); font-weight: 600; }
+.mb-tint-amber { background: rgba(210,153,34,0.15); color: var(--amber); font-weight: 600; }
+.mb-tint-red { background: rgba(248,81,73,0.12); color: var(--red); font-weight: 600; }
 .results-header {
   display: flex;
   align-items: center;
