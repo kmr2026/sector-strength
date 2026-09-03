@@ -387,10 +387,21 @@ main {
   top: 0;
   background: var(--bg);
 }
+.mb-table thead th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+.mb-table thead th.sortable:hover { color: var(--text); }
+.mb-table thead th.sortable.sort-active { color: var(--green); }
+.mb-table thead th.sortable .sort-arrow {
+  font-size: 9px;
+  margin-left: 3px;
+}
 .mb-table tbody td {
   padding: 4px 6px;
   border-top: 1px solid var(--panel-2);
 }
+.mb-table tbody tr:hover { background: var(--panel); }
 .results-header {
   display: flex;
   align-items: center;

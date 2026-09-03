@@ -1,8 +1,27 @@
 const BREADTH_URL = "data/market_breadth.json";
 const SCANNER_URL = "data/stock_scanner.json";
 
-function pctCell(v) {
-  return (v === null || v === undefined) ? `<span class="muted">n/a</span>` : `${v}%`;
+let ROWS = [];
+const SORT = {
+  ema: { key: "date", dir: "desc" },
+  pct4: { key: "date", dir: "desc" },
+  highslow: { key: "date", dir: "desc" },
+};
+
+function formatDate(iso) {
+  const d = new Date(iso + "T00:00:00");
+  const day = d.getDate();
+  const month = d.toLocaleString("en-US", { month: "short" });
+  const year = String(d.getFullYear()).slice(-2);
+  const suffix = (day % 10 === 1 && day !== 11) ? "st"
+    : (day % 10 === 2 && day !== 12) ? "nd"
+    : (day % 10 === 3 && day !== 13) ? "rd"
+    : "th";
+  return `${day}${suffix} ${month}'${year}`;
+}
+
+function numCell(v) {
+  return (v === null || v === undefined) ? `<span class="muted">n/a</span>` : `${v}`;
 }
 
 function netCell(v) {
@@ -11,34 +30,81 @@ function netCell(v) {
   return `<span class="${cls}">${sign}${v}</span>`;
 }
 
-function renderTables(rows) {
-  document.getElementById("mb-ema-body").innerHTML = rows.map(r => `
+function sortedRows(tableKey) {
+  const { key, dir } = SORT[tableKey];
+  const arr = ROWS.slice();
+  arr.sort((a, b) => {
+    let va = a[key], vb = b[key];
+    if (key === "date") { va = a.date; vb = b.date; } // ISO strings sort correctly as-is
+    else { va = va ?? -Infinity; vb = vb ?? -Infinity; }
+    const cmp = typeof va === "string" ? va.localeCompare(vb) : va - vb;
+    return dir === "asc" ? cmp : -cmp;
+  });
+  return arr;
+}
+
+function updateSortHeaders(tableKey) {
+  document.querySelectorAll(`th.sortable[data-table="${tableKey}"]`).forEach(th => {
+    const key = th.dataset.sort;
+    const active = key === SORT[tableKey].key;
+    th.classList.toggle("sort-active", active);
+    const existing = th.querySelector(".sort-arrow");
+    if (existing) existing.remove();
+    if (active) {
+      const arrow = document.createElement("span");
+      arrow.className = "sort-arrow";
+      arrow.textContent = SORT[tableKey].dir === "asc" ? "▲" : "▼";
+      th.appendChild(arrow);
+    }
+  });
+}
+
+function renderTables() {
+  const emaRows = sortedRows("ema");
+  document.getElementById("mb-ema-body").innerHTML = emaRows.map(r => `
     <tr>
-      <td>${r.date}</td>
-      <td>${pctCell(r.pct_above_10ema)}</td>
-      <td>${pctCell(r.pct_above_21ema)}</td>
-      <td>${pctCell(r.pct_above_50ema)}</td>
-      <td>${pctCell(r.pct_above_200ema)}</td>
+      <td>${formatDate(r.date)}</td>
+      <td>${numCell(r.pct_above_10ema)}</td>
+      <td>${numCell(r.pct_above_21ema)}</td>
+      <td>${numCell(r.pct_above_50ema)}</td>
+      <td>${numCell(r.pct_above_200ema)}</td>
     </tr>
   `).join("");
 
-  document.getElementById("mb-4pct-body").innerHTML = rows.map(r => `
+  const pct4Rows = sortedRows("pct4");
+  document.getElementById("mb-4pct-body").innerHTML = pct4Rows.map(r => `
     <tr>
-      <td>${r.date}</td>
-      <td class="trend-up">${pctCell(r.pct_4up)}</td>
-      <td class="trend-down">${pctCell(r.pct_4down)}</td>
+      <td>${formatDate(r.date)}</td>
+      <td class="trend-up">${numCell(r.pct_4up)}</td>
+      <td class="trend-down">${numCell(r.pct_4down)}</td>
     </tr>
   `).join("");
 
-  document.getElementById("mb-highslows-body").innerHTML = rows.map(r => `
+  const hlRows = sortedRows("highslow");
+  document.getElementById("mb-highslows-body").innerHTML = hlRows.map(r => `
     <tr>
-      <td>${r.date}</td>
+      <td>${formatDate(r.date)}</td>
       <td class="trend-up">${r.new_highs}</td>
       <td class="trend-down">${r.new_lows}</td>
       <td>${netCell(r.net_new_highs)}</td>
     </tr>
   `).join("");
 }
+
+document.querySelectorAll("th.sortable").forEach(th => {
+  th.addEventListener("click", () => {
+    const tableKey = th.dataset.table;
+    const key = th.dataset.sort;
+    if (SORT[tableKey].key === key) {
+      SORT[tableKey].dir = SORT[tableKey].dir === "asc" ? "desc" : "asc";
+    } else {
+      SORT[tableKey].key = key;
+      SORT[tableKey].dir = key === "date" ? "desc" : "desc";
+    }
+    updateSortHeaders(tableKey);
+    renderTables();
+  });
+});
 
 async function load() {
   try {
@@ -54,10 +120,12 @@ async function load() {
       return;
     }
 
+    ROWS = rows;
     document.getElementById("mb-layout").classList.remove("hidden");
     document.getElementById("mb-universe-count").textContent = `(${stocks.length} stocks)`;
-    renderTables(rows);
-    document.getElementById("asof").textContent = `as of ${rows[0].date}`;
+    ["ema", "pct4", "highslow"].forEach(updateSortHeaders);
+    renderTables();
+    document.getElementById("asof").textContent = `as of ${formatDate(rows[0].date)}`;
   } catch (err) {
     document.getElementById("asof").textContent = "couldn't load data";
     document.getElementById("empty-state").classList.remove("hidden");
