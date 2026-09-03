@@ -80,6 +80,8 @@ function renderTables() {
       ${tintedCell(r.pct_above_21ema)}
       ${tintedCell(r.pct_above_50ema)}
       ${tintedCell(r.pct_above_200ema)}
+      <td>${numCell(r.xp_score)}</td>
+      <td class="${tintClass(r.up_volume_pct)}">${numCell(r.up_volume_pct)}${r.volume_day_type ? ` <span class="${r.volume_day_type.includes('Up') ? 'trend-up' : 'trend-down'}" style="font-size:10px;">(${r.volume_day_type})</span>` : ""}</td>
     </tr>
   `).join("");
 
