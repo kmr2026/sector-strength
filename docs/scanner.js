@@ -217,7 +217,7 @@ function renderResults() {
     const checked = SELECTED.has(s.symbol) ? "checked" : "";
     tr.innerHTML = `
       <td class="rank-col"><input type="checkbox" class="row-select" data-symbol="${s.symbol}" ${checked} /></td>
-      <td class="sector-col"><a href="stock.html?symbol=${s.symbol}" target="_blank" style="color: var(--green);">${s.symbol}</a><div class="muted" style="font-weight:400; font-size:11px;">${s.name || ""}</div></td>
+      <td class="sector-col"><a href="stock.html?symbol=${s.symbol}" target="_blank" class="stock-link">${s.symbol}</a><div class="muted" style="font-weight:400; font-size:11px;">${s.name || ""}</div></td>
       <td>${s.basic_industry || `<span class="muted">n/a</span>`}</td>
       <td>${fmt(s.close)}</td>
       <td>${rsRatingCell(s.rs_rating)}</td>
