@@ -19,7 +19,7 @@ import datetime as dt
 import requests
 import pandas as pd
 
-from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX, SMALLCAP_INDEX
+from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX, SMALLCAP_INDEX, CIRCUIT_BANDS_URL
 from db import get_conn, init_db
 
 HEADERS = {
@@ -398,6 +398,56 @@ def update_stock_prices(refetch_days: int = 0):
     print(f"  bhavcopy files parsed: {got}, missed/holidays: {missed}, rows stored: {total_rows}")
 
 
+def update_circuit_bands():
+    """Refreshes the circuit_bands table from NSE's own daily-updated
+    'Complete List of Price Bands' file -- a full replace each run, not
+    accumulated history, since only today's assignment is meaningful and
+    NSE revises these periodically (a stock can move between bands, or
+    drop the band entirely if it becomes F&O-eligible)."""
+    print("Fetching circuit band list...")
+    session = make_session()
+    try:
+        r = session.get(CIRCUIT_BANDS_URL, timeout=20)
+    except requests.RequestException as e:
+        print(f"  [miss] circuit bands: request failed -- {e}")
+        return
+    if r.status_code != 200 or not r.text.strip():
+        preview = (r.text or "")[:150].replace("\n", " ")
+        print(f"  [miss] circuit bands: status={r.status_code}, preview={preview!r}")
+        return
+    try:
+        df = pd.read_csv(io.StringIO(r.text))
+    except Exception as e:
+        print(f"  [miss] circuit bands: couldn't parse as CSV -- {e}")
+        return
+    df.columns = [c.strip() for c in df.columns]
+    sym_col = next((c for c in df.columns if c.strip().lower() == "symbol"), None)
+    band_col = next((c for c in df.columns if c.strip().lower() == "band"), None)
+    if not sym_col or not band_col:
+        print(f"  [miss] circuit bands: expected columns not found, got {list(df.columns)}")
+        return
+
+    now = dt.datetime.now().isoformat()
+    rows = []
+    for _, row in df.iterrows():
+        sym = str(row[sym_col]).strip()
+        try:
+            band = int(row[band_col])
+        except (ValueError, TypeError):
+            continue
+        if sym:
+            rows.append((sym, band, now))
+
+    with get_conn() as conn:
+        conn.execute("DELETE FROM circuit_bands")
+        if rows:
+            conn.executemany(
+                "INSERT OR REPLACE INTO circuit_bands (symbol, band, updated_at) VALUES (?, ?, ?)",
+                rows,
+            )
+    print(f"  circuit bands: {len(rows)} symbols with an assigned band")
+
+
 def run_daily_update(refetch_days: int = 0):
     init_db()
     with get_conn() as conn:
@@ -412,6 +462,7 @@ def run_daily_update(refetch_days: int = 0):
         update_nifty500_industries()
     update_index_prices()
     update_stock_prices(refetch_days=refetch_days)
+    update_circuit_bands()
     print("Done.")
 
 

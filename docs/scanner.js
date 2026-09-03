@@ -13,6 +13,8 @@ const FILTER_FIELD_IDS = [
   "f-high-max", "f-low-min",
   "f-price-min", "f-turnover-min",
   "f-mcap-min", "f-mcap-max",
+  "f-return-period", "f-return-min", "f-return-max",
+  "f-circuit-enable",
 ];
 
 function saveFiltersToStorage() {
@@ -21,6 +23,9 @@ function saveFiltersToStorage() {
     const el = document.getElementById(id);
     state[id] = el.type === "checkbox" ? el.checked : el.value;
   });
+  // Circuit band checkboxes share a class, not individual IDs -- stored
+  // separately as the list of currently-checked band values.
+  state["circuitBands"] = [...document.querySelectorAll(".f-circuit-band:checked")].map(cb => cb.value);
   try {
     localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state));
   } catch (err) {
@@ -44,6 +49,11 @@ function loadFiltersFromStorage() {
     if (el.type === "checkbox") el.checked = !!state[id];
     else el.value = state[id];
   });
+  if (Array.isArray(state.circuitBands)) {
+    document.querySelectorAll(".f-circuit-band").forEach(cb => {
+      cb.checked = state.circuitBands.includes(cb.value);
+    });
+  }
 }
 
 function ratingClass(rating) {
@@ -93,6 +103,10 @@ function readFilters() {
     priceMin: num("f-price-min"),
     turnoverMin: num("f-turnover-min"),
     mcapMin: num("f-mcap-min"), mcapMax: num("f-mcap-max"),
+    returnPeriod: document.getElementById("f-return-period").value,
+    returnMin: num("f-return-min"), returnMax: num("f-return-max"),
+    circuitEnable: document.getElementById("f-circuit-enable").checked,
+    circuitBands: [...document.querySelectorAll(".f-circuit-band:checked")].map(cb => parseInt(cb.value, 10)),
   };
 }
 
@@ -118,6 +132,16 @@ function applyFilters() {
     if (f.priceMin !== null && !(s.close !== null && s.close !== undefined && s.close >= f.priceMin)) return false;
     if (f.turnoverMin !== null && !(s.avg_turnover_cr_30d >= f.turnoverMin)) return false;
     if (!inRange(s.market_cap_cr, f.mcapMin, f.mcapMax)) return false;
+    // Return Range% -- applies to whichever period is selected in the
+    // dropdown. A stock without a value yet for that period (too young)
+    // only gets excluded if a real min/max was actually set.
+    if ((f.returnMin !== null || f.returnMax !== null) && !inRange(s[f.returnPeriod], f.returnMin, f.returnMax)) return false;
+    // Exclude Circuit Stocks -- excludes by the stock's currently
+    // ASSIGNED band (2/5/10%), not by whether it's actually locked at
+    // that limit today. A stock with no assigned band (F&O-eligible) is
+    // never excluded by this filter, regardless of which boxes are checked.
+    if (f.circuitEnable && f.circuitBands.length && s.circuit_band !== null && s.circuit_band !== undefined
+        && f.circuitBands.includes(s.circuit_band)) return false;
     return true;
   });
   if (SEARCH_TERM) {
@@ -329,6 +353,7 @@ document.getElementById("f-reset").addEventListener("click", () => {
     if (el.type === "checkbox") el.checked = false;
     else el.value = "";
   });
+  document.getElementById("f-return-period").value = "return_1m";
   try { localStorage.removeItem(FILTER_STORAGE_KEY); } catch (err) {}
   applyFilters();
 });

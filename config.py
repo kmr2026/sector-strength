@@ -119,6 +119,13 @@ EQUITY_MASTER_URL = f"{NSE_BASE}/content/equities/EQUITY_L.csv"
 # ~2,500 stocks, via screener.in's public pages) -- run that instead.
 NIFTY500_INDUSTRY_URL = OLD_INDICES_PATH + "ind_nifty500list.csv"
 
+# Different subdomain from NSE_BASE (nsearchives vs archives) -- NSE's
+# own "Complete List of Price Bands" file, listing every symbol's
+# assigned daily circuit band (2/5/10/20%). Powers the Scanner's
+# "Exclude Circuit Stocks" filter. A symbol with no row in this file is
+# F&O-eligible and has no fixed band.
+CIRCUIT_BANDS_URL = "https://nsearchives.nseindia.com/content/equities/sec_list.csv"
+
 # A basic industry needs at least this many stocks with price history to be
 # shown at all -- below this, breadth/EMA/RS numbers aren't statistically
 # meaningful (e.g. a "72% breadth" from 2 stocks means almost nothing).

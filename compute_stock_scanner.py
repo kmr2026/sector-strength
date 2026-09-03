@@ -76,6 +76,15 @@ def get_symbol_metadata(conn) -> dict:
     return {r[0]: {"name": r[1] or r[0], "basic_industry": r[2], "shares_outstanding": r[3]} for r in rows}
 
 
+def get_circuit_bands(conn) -> dict:
+    """symbol -> assigned circuit band (2/5/10/20), from NSE's own daily
+    price-bands file (see fetch_data.py's update_circuit_bands). A
+    symbol with no entry is F&O-eligible and has no fixed band -- callers
+    should treat a missing key as 'no band', not as band 0."""
+    rows = conn.execute("SELECT symbol, band FROM circuit_bands").fetchall()
+    return {r[0]: r[1] for r in rows}
+
+
 def compute_all() -> list[dict]:
     with get_conn() as conn:
         df = pd.read_sql_query(
@@ -106,6 +115,7 @@ def compute_all() -> list[dict]:
         df = df[df["symbol"].isin(active_symbols)]
 
         meta = get_symbol_metadata(conn)
+        circuit_bands = get_circuit_bands(conn)
 
         # Same raw-score computation compute.py/compute_basic_industry.py
         # use for their group-level RS Ratings -- ranked here against the
@@ -130,6 +140,8 @@ def compute_all() -> list[dict]:
             return_1w = pct_return(close_s, 5)
             return_1m = pct_return(close_s, 21)
             return_3m = pct_return(close_s, 63)
+            return_6m = pct_return(close_s, 126)
+            return_1y = pct_return(close_s, 252)
             info = meta.get(symbol, {})
             last_close = round(float(close_s.iloc[-1]), 2)
             shares = info.get("shares_outstanding")
@@ -152,6 +164,9 @@ def compute_all() -> list[dict]:
                 "return_1w": return_1w,
                 "return_1m": return_1m,
                 "return_3m": return_3m,
+                "return_6m": return_6m,
+                "return_1y": return_1y,
+                "circuit_band": circuit_bands.get(symbol),
                 "pct_from_52wk_high": wk52.get("pct_from_high") if wk52.get("available") else None,
                 "pct_from_52wk_low": wk52.get("pct_from_low") if wk52.get("available") else None,
                 "high_52wk": wk52.get("high_52wk") if wk52.get("available") else None,

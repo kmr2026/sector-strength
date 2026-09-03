@@ -165,10 +165,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -10.0,
-        "prev_value": 40.0,
+        "delta": 0.0,
+        "prev_value": 30.0,
         "prev_date": "2026-09-02",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -378,10 +378,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -5.0,
-        "prev_value": 55.0,
+        "delta": 0.0,
+        "prev_value": 50.0,
         "prev_date": "2026-09-02",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -671,10 +671,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -5.0,
-        "prev_value": 50.0,
+        "delta": 0.0,
+        "prev_value": 45.0,
         "prev_date": "2026-09-02",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1624,10 +1624,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -14.3,
-        "prev_value": 28.6,
+        "delta": 0.0,
+        "prev_value": 14.3,
         "prev_date": "2026-09-02",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1869,10 +1869,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -6.7,
-        "prev_value": 26.7,
+        "delta": 0.0,
+        "prev_value": 20.0,
         "prev_date": "2026-09-02",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -2359,10 +2359,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -6.6,
-        "prev_value": 13.3,
+        "delta": 0.0,
+        "prev_value": 6.7,
         "prev_date": "2026-09-02",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -2612,10 +2612,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -2.5,
-        "prev_value": 10.0,
+        "delta": 0.0,
+        "prev_value": 7.5,
         "prev_date": "2026-09-02",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3349,10 +3349,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 5.0,
-        "prev_value": 15.0,
+        "delta": 0.0,
+        "prev_value": 20.0,
         "prev_date": "2026-09-02",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3867,10 +3867,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 5.3,
-        "prev_value": 15.8,
+        "delta": 0.0,
+        "prev_value": 21.1,
         "prev_date": "2026-09-02",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4614,10 +4614,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 4.0,
-        "prev_value": 16.0,
+        "delta": 0.0,
+        "prev_value": 20.0,
         "prev_date": "2026-09-02",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5632,10 +5632,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 5.0,
-        "prev_value": 5.0,
+        "delta": 0.0,
+        "prev_value": 10.0,
         "prev_date": "2026-09-02",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5925,10 +5925,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 3.3,
-        "prev_value": 10.0,
+        "delta": 0.0,
+        "prev_value": 13.3,
         "prev_date": "2026-09-02",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -6595,10 +6595,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 13.3,
-        "prev_value": 0.0,
+        "delta": 0.0,
+        "prev_value": 13.3,
         "prev_date": "2026-09-02",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {

@@ -43,6 +43,20 @@ CREATE TABLE IF NOT EXISTS basic_industry_map (
     classified_at TEXT
 );
 
+-- Daily snapshot of each symbol's ASSIGNED price band (2/5/10/20), from
+-- NSE's own "Complete List of Price Bands" file. Fully replaced on every
+-- fetch (see fetch_data.py) rather than accumulated as history -- only
+-- today's assignment matters for the scanner's "Exclude Circuit Stocks"
+-- filter, and NSE revises these periodically, so yesterday's value would
+-- just be wrong going forward. A symbol with NO row here is F&O-eligible
+-- (no fixed band, per NSE's own price-bands page), never excluded by
+-- this filter.
+CREATE TABLE IF NOT EXISTS circuit_bands (
+    symbol TEXT NOT NULL PRIMARY KEY,
+    band INTEGER NOT NULL,
+    updated_at TEXT
+);
+
 CREATE TABLE IF NOT EXISTS classification_meta (
     key TEXT NOT NULL PRIMARY KEY,
     value TEXT

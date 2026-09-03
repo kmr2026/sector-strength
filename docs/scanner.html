@@ -59,6 +59,33 @@
           <input type="number" id="f-price-min" placeholder="20" />
         </div>
       </div>
+      <div class="filter-row">
+        <div class="filter-field">
+          <label>Return Range%</label>
+          <select id="f-return-period">
+            <option value="return_1d">1 Day</option>
+            <option value="return_1w">1 Week</option>
+            <option value="return_1m" selected>1 Month</option>
+            <option value="return_3m">3 Month</option>
+            <option value="return_6m">6 Month</option>
+            <option value="return_1y">1 Year</option>
+          </select>
+        </div>
+        <div class="filter-field range-field">
+          <label>&nbsp;</label>
+          <div class="range-inputs"><input type="number" id="f-return-min" placeholder="-10" /> <span>-</span> <input type="number" id="f-return-max" placeholder="1200" /></div>
+        </div>
+      </div>
+      <div class="filter-row">
+        <div class="filter-field">
+          <label class="filter-checkbox"><input type="checkbox" id="f-circuit-enable" /> Exclude Circuit Stocks</label>
+          <div class="filter-checkbox-group" style="padding-top: 8px;">
+            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="2" /> 2% Circuit</label>
+            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="5" /> 5% Circuit</label>
+            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="10" /> 10% Circuit</label>
+          </div>
+        </div>
+      </div>
       <div class="filter-actions">
         <button id="f-reset" class="tab">Reset</button>
         <button id="f-apply" class="tab active">Apply</button>
