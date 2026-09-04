@@ -218,7 +218,6 @@ function fmt(v, suffix = "") {
 function updateSelectAllState() {
   const shown = sortedData();
   const allSelected = shown.length > 0 && shown.every(s => SELECTED.has(s.symbol));
-  document.getElementById("select-all").checked = allSelected;
   document.getElementById("select-all-th").checked = allSelected;
 }
 
@@ -273,7 +272,6 @@ function toggleSelectAllShown(checked) {
   });
   renderResults();
 }
-document.getElementById("select-all").addEventListener("change", (e) => toggleSelectAllShown(e.target.checked));
 document.getElementById("select-all-th").addEventListener("change", (e) => toggleSelectAllShown(e.target.checked));
 
 function buildTradingViewText(mode) {

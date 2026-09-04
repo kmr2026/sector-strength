@@ -753,17 +753,23 @@ canvas {
 }
 
 /* ---- Scanner redesign: icon toolbar, modals, dropdowns, donut ---- */
-.icon-toolbar {
+.icon-toolbar-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 16px;
 }
-.icon-btn {
-  width: 40px;
-  height: 40px;
+.icon-toolbar {
+  display: flex;
+  gap: 2px;
   border: 1px solid var(--border);
-  border-radius: 6px;
+  border-radius: 8px;
+  padding: 6px;
+}
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -772,8 +778,8 @@ canvas {
   position: relative;
   transition: all 0.12s ease;
 }
-.icon-btn:hover { color: var(--text); border-color: var(--muted); }
-.icon-btn svg { width: 18px; height: 18px; }
+.icon-btn:hover { color: var(--text); background: var(--panel); }
+.icon-btn svg { width: 16px; height: 16px; }
 
 .modal-box-wide { max-width: 760px; }
 .detail-inner h2 {

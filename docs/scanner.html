@@ -24,21 +24,23 @@
   </header>
 
   <main>
-    <div class="icon-toolbar">
-      <div class="icon-btn" id="open-filters" title="Filters">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6M18 4v3"/><path d="M4 10h16l-6 7v4l-4-2v-2z"/></svg>
-      </div>
-      <div class="icon-btn" id="open-summary" title="Scan Summary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="8"/><path d="M11 4v8h8"/><path d="M15.5 5.5l-3 5.5"/></svg>
-      </div>
-      <div class="icon-btn" id="open-copy" title="Copy for TradingView">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="12" height="13" rx="1.5"/><path d="M3 7l6-4 6 4"/><circle cx="19" cy="16" r="4"/><path d="M17.5 16h3M19 14.5v3"/></svg>
-        <div class="copy-menu" id="copy-menu">
-          <div class="copy-menu-item" id="copy-flat">Copy All (Flat List)</div>
-          <div class="copy-menu-item" id="copy-industry">Copy by Industry</div>
-          <div class="copy-menu-item copy-batches-trigger" id="copy-batches-trigger">
-            <span>Copy in Batches of 30</span><span class="submenu-arrow">▸</span>
-            <div class="batches-submenu" id="batches-submenu"></div>
+    <div class="icon-toolbar-row">
+      <div class="icon-toolbar">
+        <div class="icon-btn" id="open-filters" title="Filters">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6M18 4v3"/><path d="M4 10h16l-6 7v4l-4-2v-2z"/></svg>
+        </div>
+        <div class="icon-btn" id="open-summary" title="Scan Summary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="8"/><path d="M11 4v8h8"/><path d="M15.5 5.5l-3 5.5"/></svg>
+        </div>
+        <div class="icon-btn" id="open-copy" title="Copy for TradingView">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="12" height="13" rx="1.5"/><path d="M3 7l6-4 6 4"/><circle cx="19" cy="16" r="4"/><path d="M17.5 16h3M19 14.5v3"/></svg>
+          <div class="copy-menu" id="copy-menu">
+            <div class="copy-menu-item" id="copy-flat">Copy All (Flat List)</div>
+            <div class="copy-menu-item" id="copy-industry">Copy by Industry</div>
+            <div class="copy-menu-item copy-batches-trigger" id="copy-batches-trigger">
+              <span>Copy in Batches of 30</span><span class="submenu-arrow">▸</span>
+              <div class="batches-submenu" id="batches-submenu"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -47,7 +49,6 @@
 
     <div class="results-header">
       <div id="results-count" class="asof"></div>
-      <label class="filter-checkbox"><input type="checkbox" id="select-all" /> Select all shown</label>
     </div>
 
     <div id="empty-state" class="empty-state hidden">
