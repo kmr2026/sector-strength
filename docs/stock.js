@@ -35,6 +35,36 @@ function fmtPrice(v) {
   return (v === null || v === undefined) ? "n/a" : `₹${v.toLocaleString()}`;
 }
 
+function initTradingViewChart(symbol) {
+  if (typeof TradingView === "undefined") return; // tv.js failed to load -- fail quietly, rest of the page still works
+  new TradingView.widget({
+    width: "100%",
+    height: "100%",
+    symbol: `NSE:${symbol}`,
+    interval: "D",
+    timezone: "Asia/Kolkata",
+    theme: "dark",
+    style: "1",
+    locale: "en",
+    toolbar_bg: "#0c0f13",
+    enable_publishing: false,
+    hide_top_toolbar: false,
+    allow_symbol_change: false,
+    // 10/21/50 EMA overlaid on price, plus volume as a subplot below --
+    // matches the same EMA periods used everywhere else on this site.
+    // If these don't render correctly, "MAExp@tv-basicstudies" is the
+    // one piece of this config that's convention rather than something
+    // independently verified against current TradingView docs.
+    studies: [
+      { id: "MAExp@tv-basicstudies", inputs: { length: 10 } },
+      { id: "MAExp@tv-basicstudies", inputs: { length: 21 } },
+      { id: "MAExp@tv-basicstudies", inputs: { length: 50 } },
+      "Volume@tv-basicstudies",
+    ],
+    container_id: "tv-chart-container",
+  });
+}
+
 async function load() {
   const params = new URLSearchParams(window.location.search);
   const symbol = (params.get("symbol") || "").toUpperCase().trim();
@@ -45,6 +75,12 @@ async function load() {
       "No stock specified -- open this page via a stock link, e.g. stock.html?symbol=SSWL";
     return;
   }
+
+  // Called AFTER the rest of the fetch below, not here -- the container
+  // sits inside #sd-content, which starts hidden (display:none) until
+  // the page's own data finishes loading. Initializing the widget while
+  // its container has zero size makes TradingView's own sizing detection
+  // fail silently, so this has to wait until #sd-content is visible.
 
   let stocks;
   try {
@@ -108,6 +144,7 @@ async function load() {
   ].join("");
 
   document.getElementById("sd-content").classList.remove("hidden");
+  initTradingViewChart(symbol);
   document.getElementById("asof").textContent = s.last_date ? `as of ${s.last_date}` : "";
 }
 
