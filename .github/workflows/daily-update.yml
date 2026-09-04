@@ -16,7 +16,13 @@ name: Daily Data Update
 on:
   schedule:
     - cron: "0 13 * * 1-5"
-  workflow_dispatch: {}   # lets you manually trigger a run from the Actions tab, e.g. to test this
+  workflow_dispatch:
+    inputs:
+      force_reclassify:
+        description: "Force full re-classification (tick this once a month, or after a known industry change -- otherwise leave unticked for the normal daily run)"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write   # needed to commit the regenerated data files back to the repo
@@ -48,7 +54,16 @@ jobs:
             sector-strength-db-
 
       - name: Install dependencies
-        run: pip install pandas requests
+        run: pip install pandas requests beautifulsoup4
+
+      - name: Classify basic industries
+        run: |
+          if [ "${{ github.event.inputs.force_reclassify }}" = "true" ]; then
+            echo "Force reclassify requested -- re-walking all industries (this run will take longer than usual)"
+            python classify_via_screener.py --force
+          else
+            python classify_via_screener.py
+          fi
 
       - name: Fetch data
         run: python fetch_data.py
