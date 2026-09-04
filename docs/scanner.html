@@ -24,85 +24,30 @@
   </header>
 
   <main>
-    <div class="filter-panel" id="filter-panel">
-      <div class="filter-row">
-        <div class="filter-field">
-          <label>Price Above EMA</label>
-          <div class="filter-checkbox-group">
-            <label class="filter-checkbox"><input type="checkbox" id="f-ema-21" /> 21 EMA</label>
-            <label class="filter-checkbox"><input type="checkbox" id="f-ema-50" /> 50 EMA</label>
-            <label class="filter-checkbox"><input type="checkbox" id="f-ema-200" /> 200 EMA</label>
+    <div class="icon-toolbar">
+      <div class="icon-btn" id="open-filters" title="Filters">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6M18 4v3"/><path d="M4 10h16l-6 7v4l-4-2v-2z"/></svg>
+      </div>
+      <div class="icon-btn" id="open-summary" title="Scan Summary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="12" r="8"/><path d="M11 4v8h8"/><path d="M15.5 5.5l-3 5.5"/></svg>
+      </div>
+      <div class="icon-btn" id="open-copy" title="Copy for TradingView">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="12" height="13" rx="1.5"/><path d="M3 7l6-4 6 4"/><circle cx="19" cy="16" r="4"/><path d="M17.5 16h3M19 14.5v3"/></svg>
+        <div class="copy-menu" id="copy-menu">
+          <div class="copy-menu-item" id="copy-flat">Copy All (Flat List)</div>
+          <div class="copy-menu-item" id="copy-industry">Copy by Industry</div>
+          <div class="copy-menu-item copy-batches-trigger" id="copy-batches-trigger">
+            <span>Copy in Batches of 30</span><span class="submenu-arrow">▸</span>
+            <div class="batches-submenu" id="batches-submenu"></div>
           </div>
         </div>
       </div>
-      <div class="filter-row">
-        <div class="filter-field range-field">
-          <label>% From 52wk High (within)</label>
-          <input type="number" id="f-high-max" placeholder="20" />
-        </div>
-        <div class="filter-field range-field">
-          <label>% From 52wk Low (at least)</label>
-          <input type="number" id="f-low-min" placeholder="50" />
-        </div>
-      </div>
-      <div class="filter-row">
-        <div class="filter-field">
-          <label>Avg Price x Volume 30d (Cr) &gt;=</label>
-          <input type="number" id="f-turnover-min" placeholder="5" />
-        </div>
-        <div class="filter-field range-field">
-          <label>Market Cap Range (Cr)</label>
-          <div class="range-inputs"><input type="number" id="f-mcap-min" placeholder="500" /> <span>-</span> <input type="number" id="f-mcap-max" placeholder="5000000" /></div>
-        </div>
-        <div class="filter-field">
-          <label>Stock Price (at least)</label>
-          <input type="number" id="f-price-min" placeholder="20" />
-        </div>
-      </div>
-      <div class="filter-row">
-        <div class="filter-field">
-          <label class="filter-checkbox"><input type="checkbox" id="f-return-enable" /> Return Range%</label>
-          <select id="f-return-period" disabled>
-            <option value="return_1d">1 Day</option>
-            <option value="return_1w">1 Week</option>
-            <option value="return_1m" selected>1 Month</option>
-            <option value="return_3m">3 Month</option>
-            <option value="return_6m">6 Month</option>
-            <option value="return_1y">1 Year</option>
-          </select>
-        </div>
-        <div class="filter-field range-field">
-          <label>&nbsp;</label>
-          <div class="range-inputs"><input type="number" id="f-return-min" placeholder="-10" disabled /> <span>-</span> <input type="number" id="f-return-max" placeholder="1200" disabled /></div>
-        </div>
-      </div>
-      <div class="filter-row">
-        <div class="filter-field">
-          <label class="filter-checkbox"><input type="checkbox" id="f-circuit-enable" /> Exclude Circuit Stocks</label>
-          <div class="filter-checkbox-group" style="padding-top: 8px;">
-            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="2" disabled /> 2% Circuit</label>
-            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="5" disabled /> 5% Circuit</label>
-            <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="10" disabled /> 10% Circuit</label>
-          </div>
-        </div>
-      </div>
-      <div class="filter-actions">
-        <button id="f-reset" class="tab">Reset</button>
-        <button id="f-apply" class="tab active">Apply</button>
-      </div>
+      <span id="copy-status" class="asof"></span>
     </div>
 
     <div class="results-header">
       <div id="results-count" class="asof"></div>
-      <div class="results-actions">
-        <label class="filter-checkbox"><input type="checkbox" id="select-all" /> Select all shown</label>
-        <select id="copy-mode">
-          <option value="industry">Industry-wise</option>
-          <option value="flat">All (flat list)</option>
-        </select>
-        <button id="copy-tv" class="tab">Copy selected for TradingView</button>
-        <span id="copy-status" class="asof"></span>
-      </div>
+      <label class="filter-checkbox"><input type="checkbox" id="select-all" /> Select all shown</label>
     </div>
 
     <div id="empty-state" class="empty-state hidden">
@@ -130,6 +75,95 @@
       <tbody id="board-body"></tbody>
     </table>
   </main>
+
+  <!-- Filters modal -- closes ONLY via Apply or the X, never by clicking the backdrop, so an accidental click can't lose your filter setup. -->
+  <div class="detail-panel hidden" id="filter-modal-overlay">
+    <div class="detail-inner modal-box-wide">
+      <button class="close-btn" id="close-filters">&times;</button>
+      <h2>Filters</h2>
+      <div class="filter-grid">
+        <div class="filter-field-g">
+          <label>Price Above EMA</label>
+          <div class="dropdown-select" id="ema-dropdown">
+            <div class="dropdown-trigger" data-target="ema-options">Any EMA</div>
+            <div class="dropdown-options" id="ema-options">
+              <label class="filter-checkbox"><input type="checkbox" id="f-ema-21" /> 21 EMA</label>
+              <label class="filter-checkbox"><input type="checkbox" id="f-ema-50" /> 50 EMA</label>
+              <label class="filter-checkbox"><input type="checkbox" id="f-ema-200" /> 200 EMA</label>
+            </div>
+          </div>
+        </div>
+        <div class="filter-field-g">
+          <label>% From 52wk High (within)</label>
+          <input type="number" id="f-high-max" placeholder="20" />
+        </div>
+        <div class="filter-field-g">
+          <label>% From 52wk Low (at least)</label>
+          <input type="number" id="f-low-min" placeholder="50" />
+        </div>
+        <div class="filter-field-g">
+          <label>Avg Price x Volume 30d (Cr) &gt;=</label>
+          <input type="number" id="f-turnover-min" placeholder="5" />
+        </div>
+        <div class="filter-field-g">
+          <label>Market Cap Range (Cr)</label>
+          <div class="range-inputs"><input type="number" id="f-mcap-min" placeholder="500" /> <span>-</span> <input type="number" id="f-mcap-max" placeholder="5000000" /></div>
+        </div>
+        <div class="filter-field-g">
+          <label>Stock Price (at least)</label>
+          <input type="number" id="f-price-min" placeholder="20" />
+        </div>
+        <div class="filter-field-g">
+          <label class="filter-checkbox"><input type="checkbox" id="f-return-enable" /> Return Range%</label>
+          <select id="f-return-period" disabled>
+            <option value="return_1d">1 Day</option>
+            <option value="return_1w">1 Week</option>
+            <option value="return_1m" selected>1 Month</option>
+            <option value="return_3m">3 Month</option>
+            <option value="return_6m">6 Month</option>
+            <option value="return_1y">1 Year</option>
+          </select>
+          <div class="range-inputs" style="margin-top:6px;"><input type="number" id="f-return-min" placeholder="-10" disabled /> <span>-</span> <input type="number" id="f-return-max" placeholder="1200" disabled /></div>
+        </div>
+        <div class="filter-field-g">
+          <label class="filter-checkbox"><input type="checkbox" id="f-circuit-enable" /> Exclude Circuit Stocks</label>
+          <div class="dropdown-select" id="circuit-dropdown">
+            <div class="dropdown-trigger" data-target="circuit-options">Select band(s)</div>
+            <div class="dropdown-options" id="circuit-options">
+              <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="2" disabled /> 2% Circuit</label>
+              <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="5" disabled /> 5% Circuit</label>
+              <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="10" disabled /> 10% Circuit</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button id="f-reset" class="tab">Reset</button>
+        <button id="f-apply" class="tab active">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scan Summary modal -->
+  <div class="detail-panel hidden" id="summary-modal-overlay">
+    <div class="detail-inner modal-box-wide">
+      <button class="close-btn" id="close-summary">&times;</button>
+      <h2>Scan Summary</h2>
+      <div class="summary-body">
+        <div class="donut-wrap">
+          <div class="donut" id="summary-donut"></div>
+          <div class="donut-center">
+            <div class="donut-center-label">Total Stocks</div>
+            <div class="donut-center-value" id="summary-total">0</div>
+          </div>
+        </div>
+        <table class="board summary-table">
+          <thead><tr><th>Basic Industry</th><th>Stocks Passed</th><th>% of Industry</th></tr></thead>
+          <tbody id="summary-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
   <script src="scanner.js"></script>
 </body>

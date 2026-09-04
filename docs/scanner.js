@@ -220,8 +220,6 @@ function updateSelectAllState() {
   const allSelected = shown.length > 0 && shown.every(s => SELECTED.has(s.symbol));
   document.getElementById("select-all").checked = allSelected;
   document.getElementById("select-all-th").checked = allSelected;
-  document.getElementById("copy-tv").textContent =
-    SELECTED.size ? `Copy selected for TradingView (${SELECTED.size})` : "Copy selected for TradingView";
 }
 
 function renderResults() {
@@ -313,17 +311,10 @@ function buildTradingViewText(mode) {
   return parts.join(",");
 }
 
-document.getElementById("copy-tv").addEventListener("click", async () => {
-  if (!SELECTED.size) {
-    document.getElementById("copy-status").textContent = "Select at least one stock first";
-    setTimeout(() => { document.getElementById("copy-status").textContent = ""; }, 2500);
-    return;
-  }
-  const mode = document.getElementById("copy-mode").value;
-  const text = buildTradingViewText(mode);
+async function copyText(text, count) {
   try {
     await navigator.clipboard.writeText(text);
-    document.getElementById("copy-status").textContent = `Copied ${SELECTED.size} symbols`;
+    document.getElementById("copy-status").textContent = `Copied ${count} symbols`;
   } catch (err) {
     // Clipboard API can fail on non-HTTPS/older browsers -- fall back to a
     // manual-copy textarea rather than leaving the user with nothing.
@@ -336,27 +327,115 @@ document.getElementById("copy-tv").addEventListener("click", async () => {
     ta.select();
     try {
       document.execCommand("copy");
-      document.getElementById("copy-status").textContent = `Copied ${SELECTED.size} symbols`;
+      document.getElementById("copy-status").textContent = `Copied ${count} symbols`;
     } catch (err2) {
       document.getElementById("copy-status").textContent = "Copy failed -- select and copy manually";
     }
     document.body.removeChild(ta);
   }
   setTimeout(() => { document.getElementById("copy-status").textContent = ""; }, 3000);
+}
+
+function flashNoSelection() {
+  document.getElementById("copy-status").textContent = "Select at least one stock first";
+  setTimeout(() => { document.getElementById("copy-status").textContent = ""; }, 2500);
+}
+
+function closeAllMenus() {
+  document.getElementById("copy-menu").classList.remove("open");
+  document.getElementById("batches-submenu").classList.remove("open");
+  document.querySelectorAll(".dropdown-trigger.open").forEach(t => t.classList.remove("open"));
+  document.querySelectorAll(".dropdown-options.open").forEach(o => o.classList.remove("open"));
+}
+
+document.querySelector("#open-copy > svg").addEventListener("click", (e) => {
+  e.stopPropagation();
+  const menu = document.getElementById("copy-menu");
+  const willOpen = !menu.classList.contains("open");
+  closeAllMenus();
+  if (willOpen) menu.classList.add("open");
+});
+
+document.getElementById("copy-flat").addEventListener("click", () => {
+  if (!SELECTED.size) { flashNoSelection(); return; }
+  copyText(buildTradingViewText("flat"), SELECTED.size);
+  closeAllMenus();
+});
+
+document.getElementById("copy-industry").addEventListener("click", () => {
+  if (!SELECTED.size) { flashNoSelection(); return; }
+  copyText(buildTradingViewText("industry"), SELECTED.size);
+  closeAllMenus();
+});
+
+function populateBatchesSubmenu() {
+  const submenu = document.getElementById("batches-submenu");
+  const total = SELECTED.size;
+  if (total === 0) {
+    submenu.innerHTML = `<div class="batches-submenu-item muted">No stocks selected</div>`;
+    return;
+  }
+  const symbolsInOrder = [...SELECTED];
+  const batchCount = Math.ceil(total / 30);
+  let html = "";
+  for (let i = 0; i < batchCount; i++) {
+    const start = i * 30;
+    const end = Math.min((i + 1) * 30, total);
+    html += `<div class="batches-submenu-item" data-start="${start}" data-end="${end}">${start + 1}-${end}</div>`;
+  }
+  submenu.innerHTML = html;
+  submenu.querySelectorAll(".batches-submenu-item[data-start]").forEach(item => {
+    item.addEventListener("click", () => {
+      const start = parseInt(item.dataset.start, 10);
+      const end = parseInt(item.dataset.end, 10);
+      const slice = symbolsInOrder.slice(start, end);
+      const text = slice.map(sym => `NSE:${sym}`).join(",");
+      copyText(text, slice.length);
+      closeAllMenus();
+    });
+  });
+}
+
+document.getElementById("copy-batches-trigger").addEventListener("click", (e) => {
+  e.stopPropagation();
+  const submenu = document.getElementById("batches-submenu");
+  const willOpen = !submenu.classList.contains("open");
+  submenu.classList.remove("open");
+  if (willOpen) {
+    populateBatchesSubmenu();
+    submenu.classList.add("open");
+  }
 });
 
 document.getElementById("f-apply").addEventListener("click", () => {
   saveFiltersToStorage();
   applyFilters();
+  document.getElementById("filter-modal-overlay").classList.add("hidden");
+});
+document.getElementById("close-filters").addEventListener("click", () => {
+  // Discard unsaved edits -- restore inputs to whatever was last actually
+  // applied, rather than leaving half-typed values sitting in the form
+  // for next time the modal opens.
+  loadFiltersFromStorage();
+  syncCircuitBandToggle();
+  syncReturnRangeToggle();
+  syncEmaDropdownLabel();
+  syncCircuitDropdownLabel();
+  document.getElementById("filter-modal-overlay").classList.add("hidden");
+});
+document.getElementById("open-filters").addEventListener("click", () => {
+  document.getElementById("filter-modal-overlay").classList.remove("hidden");
 });
 document.getElementById("f-reset").addEventListener("click", () => {
-  document.querySelectorAll(".filter-field input").forEach(el => {
+  document.querySelectorAll(".filter-field-g input").forEach(el => {
     if (el.type === "checkbox") el.checked = false;
     else el.value = "";
   });
   document.getElementById("f-return-period").value = "return_1m";
   syncCircuitBandToggle();
   syncReturnRangeToggle();
+  syncEmaDropdownLabel();
+  syncCircuitDropdownLabel();
   try { localStorage.removeItem(FILTER_STORAGE_KEY); } catch (err) {}
   applyFilters();
 });
@@ -379,6 +458,103 @@ function syncReturnRangeToggle() {
 }
 document.getElementById("f-return-enable").addEventListener("change", syncReturnRangeToggle);
 
+function syncEmaDropdownLabel() {
+  const selected = [];
+  if (document.getElementById("f-ema-21").checked) selected.push("21");
+  if (document.getElementById("f-ema-50").checked) selected.push("50");
+  if (document.getElementById("f-ema-200").checked) selected.push("200");
+  document.querySelector('#ema-dropdown .dropdown-trigger').textContent =
+    selected.length ? `${selected.join(", ")} EMA` : "Any EMA";
+}
+["f-ema-21", "f-ema-50", "f-ema-200"].forEach(id => {
+  document.getElementById(id).addEventListener("change", syncEmaDropdownLabel);
+});
+
+function syncCircuitDropdownLabel() {
+  const selected = [...document.querySelectorAll(".f-circuit-band:checked")].map(cb => cb.value);
+  document.querySelector('#circuit-dropdown .dropdown-trigger').textContent =
+    selected.length ? `${selected.join("%, ")}% Circuit` : "Select band(s)";
+}
+document.querySelectorAll(".f-circuit-band").forEach(cb => {
+  cb.addEventListener("change", syncCircuitDropdownLabel);
+});
+
+// Dropdown open/close -- clicking a trigger opens its own options panel
+// (closing any other open one first); clicking anywhere truly outside a
+// dropdown/menu closes everything. Checkbox clicks INSIDE an open panel
+// don't close it, since they're not "outside" clicks.
+document.querySelectorAll(".dropdown-trigger").forEach(trigger => {
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const targetId = trigger.dataset.target;
+    const isOpen = trigger.classList.contains("open");
+    closeAllMenus();
+    if (!isOpen) {
+      trigger.classList.add("open");
+      document.getElementById(targetId).classList.add("open");
+    }
+  });
+});
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".dropdown-select") && !e.target.closest("#open-copy")) {
+    closeAllMenus();
+  }
+});
+
+const SUMMARY_COLORS = ["#3fb950", "#d29922", "#4f8ef7", "#e05fa0", "#7c5cf7", "#f85149", "#2dd4bf", "#eab308"];
+
+function renderScanSummary() {
+  const total = FILTERED.length;
+  document.getElementById("summary-total").textContent = total;
+
+  const counts = new Map(); // industry -> count among FILTERED
+  FILTERED.forEach(s => {
+    const key = s.basic_industry || "Unclassified";
+    counts.set(key, (counts.get(key) || 0) + 1);
+  });
+  const industryTotals = new Map(); // industry -> count across the FULL universe
+  ALL_STOCKS.forEach(s => {
+    const key = s.basic_industry || "Unclassified";
+    industryTotals.set(key, (industryTotals.get(key) || 0) + 1);
+  });
+
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  const top = sorted.slice(0, 8);
+  const rest = sorted.slice(8);
+  const restSum = rest.reduce((acc, [, c]) => acc + c, 0);
+
+  let cursor = 0;
+  const gradientParts = [];
+  const rows = [];
+  top.forEach(([industry, count], i) => {
+    const pct = total > 0 ? (count / total) * 100 : 0;
+    const color = SUMMARY_COLORS[i % SUMMARY_COLORS.length];
+    gradientParts.push(`${color} ${cursor}% ${cursor + pct}%`);
+    cursor += pct;
+    const industryTotal = industryTotals.get(industry) || count;
+    const pctOfIndustry = industryTotal > 0 ? ((count / industryTotal) * 100).toFixed(1) : "—";
+    rows.push(`<tr><td><span class="swatch" style="background:${color}"></span>${industry}</td><td>${count}</td><td>${pctOfIndustry}%</td></tr>`);
+  });
+  if (rest.length && restSum > 0) {
+    const pct = total > 0 ? (restSum / total) * 100 : 0;
+    gradientParts.push(`#7c8797 ${cursor}% ${cursor + pct}%`);
+    cursor += pct;
+    rows.push(`<tr><td><span class="swatch" style="background:#7c8797"></span>Other (${rest.length} industries)</td><td>${restSum}</td><td>—</td></tr>`);
+  }
+  document.getElementById("summary-donut").style.background =
+    gradientParts.length ? `conic-gradient(${gradientParts.join(", ")})` : "var(--panel-2)";
+  document.getElementById("summary-table-body").innerHTML =
+    rows.length ? rows.join("") : `<tr><td colspan="3" class="muted">No stocks match the current filters</td></tr>`;
+}
+
+document.getElementById("open-summary").addEventListener("click", () => {
+  renderScanSummary();
+  document.getElementById("summary-modal-overlay").classList.remove("hidden");
+});
+document.getElementById("close-summary").addEventListener("click", () => {
+  document.getElementById("summary-modal-overlay").classList.add("hidden");
+});
+
 async function load() {
   loadFiltersFromStorage();
   // A restored "enabled" state from localStorage needs its sub-controls
@@ -386,6 +562,8 @@ async function load() {
   // listeners above do, just once on load.
   syncCircuitBandToggle();
   syncReturnRangeToggle();
+  syncEmaDropdownLabel();
+  syncCircuitDropdownLabel();
   try {
     const res = await fetch(SCANNER_URL);
     ALL_STOCKS = await res.json();
