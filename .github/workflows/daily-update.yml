@@ -1,0 +1,71 @@
+name: Daily Data Update
+
+# Runs entirely on GitHub's own servers -- no dependency on your computer
+# being on, logged in, or even powered on. Replaces the local Task
+# Scheduler job.
+#
+# GitHub Actions cron is UTC. 13:00 UTC = 6:30 PM IST. Monday-Friday only
+# (NSE trading days) -- weekends/holidays will still fire and just get
+# the same graceful "[miss] ... holiday" handling fetch_data.py already
+# has, so it's harmless, just a few wasted seconds those days.
+#
+# Honest caveat, straight from GitHub's own docs: scheduled workflows can
+# be delayed during periods of high load across GitHub -- usually by a
+# few minutes, occasionally longer. Not instant-precision, but reliably
+# runs same-day, which is what actually matters here.
+on:
+  schedule:
+    - cron: "0 13 * * 1-5"
+  workflow_dispatch: {}   # lets you manually trigger a run from the Actions tab, e.g. to test this
+
+permissions:
+  contents: write   # needed to commit the regenerated data files back to the repo
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # sector_strength.db isn't committed to the repo (and shouldn't
+      # be -- it's a growing binary file that changes every run). Instead
+      # it's cached between runs: restore whatever the last run saved,
+      # then save a fresh copy at the end of this one. restore-keys uses
+      # a prefix match, so it always picks up the most recent cache
+      # regardless of which exact run produced it.
+      - name: Restore database from cache
+        uses: actions/cache/restore@v4
+        with:
+          path: sector_strength.db
+          key: sector-strength-db-${{ github.run_id }}
+          restore-keys: |
+            sector-strength-db-
+
+      - name: Install dependencies
+        run: pip install pandas requests
+
+      - name: Fetch data
+        run: python fetch_data.py
+
+      - name: Export snapshot
+        run: python export_snapshot.py
+
+      - name: Save database to cache
+        uses: actions/cache/save@v4
+        with:
+          path: sector_strength.db
+          key: sector-strength-db-${{ github.run_id }}
+
+      - name: Commit and push updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data/
+          git diff --staged --quiet || git commit -m "Automated daily update $(date -u +'%Y-%m-%d')"
+          git push
