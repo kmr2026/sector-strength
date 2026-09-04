@@ -8,7 +8,10 @@
     "above_50": false,
     "above_200": false,
     "bullish_stack": false,
-    "delta_available": false
+    "delta_available": true,
+    "changed": false,
+    "prev_state": "Bearish",
+    "prev_date": "2026-09-02"
   },
   "regime_midsmall": {
     "available": true,
@@ -19,7 +22,10 @@
     "above_50": true,
     "above_200": true,
     "bullish_stack": false,
-    "delta_available": false
+    "delta_available": true,
+    "changed": false,
+    "prev_state": "Mixed",
+    "prev_date": "2026-09-02"
   },
   "regime_smallcap": {
     "available": true,
@@ -30,7 +36,10 @@
     "above_50": true,
     "above_200": true,
     "bullish_stack": true,
-    "delta_available": false
+    "delta_available": true,
+    "changed": true,
+    "prev_state": "Mixed",
+    "prev_date": "2026-09-02"
   },
   "sectors": [
     {
@@ -38,9 +47,17 @@
       "index_name": "NIFTY PRIVATE BANK",
       "score": 90,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 90,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        94,
+        86,
+        90,
         90
       ],
       "ema": {
@@ -53,7 +70,7 @@
         "extended": false,
         "ema50": 27545.62,
         "above_50": true,
-        "ema200": 27470.75,
+        "ema200": 27480.92,
         "above_200": true,
         "bullish_stack": true
       },
@@ -148,12 +165,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 30.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "AXISBANK",
-          "name": "Axis Bank Ltd.",
+          "name": "Axis Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -161,7 +182,7 @@
         },
         {
           "symbol": "IDFCFIRSTB",
-          "name": "IDFC First Bank Ltd.",
+          "name": "IDFC First Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -169,7 +190,7 @@
         },
         {
           "symbol": "KOTAKBANK",
-          "name": "Kotak Mahindra Bank Ltd.",
+          "name": "Kotak Mah. Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -177,7 +198,7 @@
         },
         {
           "symbol": "RBLBANK",
-          "name": "RBL Bank Ltd.",
+          "name": "RBL Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -185,7 +206,7 @@
         },
         {
           "symbol": "INDUSINDBK",
-          "name": "IndusInd Bank Ltd.",
+          "name": "IndusInd Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -193,7 +214,7 @@
         },
         {
           "symbol": "YESBANK",
-          "name": "Yes Bank Ltd.",
+          "name": "Yes Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -201,7 +222,7 @@
         },
         {
           "symbol": "ICICIBANK",
-          "name": "ICICI Bank Ltd.",
+          "name": "ICICI Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -209,7 +230,7 @@
         },
         {
           "symbol": "BANDHANBNK",
-          "name": "Bandhan Bank Ltd.",
+          "name": "Bandhan Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -217,7 +238,7 @@
         },
         {
           "symbol": "FEDERALBNK",
-          "name": "Federal Bank Ltd.",
+          "name": "Federal Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -225,7 +246,7 @@
         },
         {
           "symbol": "HDFCBANK",
-          "name": "HDFC Bank Ltd.",
+          "name": "HDFC Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -239,9 +260,18 @@
       "index_name": "NIFTY REALTY",
       "score": 89,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 35,
+        "prev_score": 54,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": true,
+        "overheated_changed": false
       },
       "score_history": [
+        83,
+        73,
+        31,
+        54,
         89
       ],
       "ema": {
@@ -254,7 +284,7 @@
         "extended": false,
         "ema50": 885.68,
         "above_50": true,
-        "ema200": 854.95,
+        "ema200": 854.74,
         "above_200": true,
         "bullish_stack": true
       },
@@ -349,12 +379,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 10.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "ANANTRAJ",
-          "name": "Anant Raj Ltd.",
+          "name": "Anant Raj",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -362,7 +396,7 @@
         },
         {
           "symbol": "BRIGADE",
-          "name": "Brigade Enterprises Ltd.",
+          "name": "Brigade Enterpr.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -370,7 +404,7 @@
         },
         {
           "symbol": "DLF",
-          "name": "DLF Ltd.",
+          "name": "DLF",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -378,7 +412,7 @@
         },
         {
           "symbol": "OBEROIRLTY",
-          "name": "Oberoi Realty Ltd.",
+          "name": "Oberoi Realty",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -386,7 +420,7 @@
         },
         {
           "symbol": "PHOENIXLTD",
-          "name": "Phoenix Mills Ltd.",
+          "name": "Phoenix Mills",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -394,7 +428,7 @@
         },
         {
           "symbol": "PRESTIGE",
-          "name": "Prestige Estates Projects Ltd.",
+          "name": "Prestige Estates",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -402,7 +436,7 @@
         },
         {
           "symbol": "LODHA",
-          "name": "Lodha Developers Ltd.",
+          "name": "Lodha Developers",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -410,7 +444,7 @@
         },
         {
           "symbol": "ABREL",
-          "name": "Aditya Birla Real Estate Ltd.",
+          "name": "A B Real Estate",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -418,7 +452,7 @@
         },
         {
           "symbol": "GODREJPROP",
-          "name": "Godrej Properties Ltd.",
+          "name": "Godrej Propert.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -426,7 +460,7 @@
         },
         {
           "symbol": "SOBHA",
-          "name": "Sobha Ltd.",
+          "name": "Sobha",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -440,9 +474,18 @@
       "index_name": "NIFTY PHARMA",
       "score": 83,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 83,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        91,
+        93,
+        91,
+        83,
         83
       ],
       "ema": {
@@ -455,7 +498,7 @@
         "extended": false,
         "ema50": 26077.61,
         "above_50": true,
-        "ema200": 24296.72,
+        "ema200": 24293.6,
         "above_200": true,
         "bullish_stack": true
       },
@@ -550,12 +593,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 50.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "DIVISLAB",
-          "name": "Divi's Laboratories Ltd.",
+          "name": "Divi's Lab.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -563,7 +610,7 @@
         },
         {
           "symbol": "GLAND",
-          "name": "Gland Pharma Ltd.",
+          "name": "Gland Pharma",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -571,7 +618,7 @@
         },
         {
           "symbol": "GLENMARK",
-          "name": "Glenmark Pharmaceuticals Ltd.",
+          "name": "Glenmark Pharma.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -579,7 +626,7 @@
         },
         {
           "symbol": "IPCALAB",
-          "name": "Ipca Laboratories Ltd.",
+          "name": "Ipca Labs.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -587,7 +634,7 @@
         },
         {
           "symbol": "PPLPHARMA",
-          "name": "Piramal Pharma Ltd.",
+          "name": "Piramal Pharma",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -595,7 +642,7 @@
         },
         {
           "symbol": "SAILIFE",
-          "name": "Sai Life Sciences Ltd.",
+          "name": "Sai Life",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -603,7 +650,7 @@
         },
         {
           "symbol": "WOCKPHARMA",
-          "name": "Wockhardt Ltd.",
+          "name": "Wockhardt",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -611,7 +658,7 @@
         },
         {
           "symbol": "LAURUSLABS",
-          "name": "Laurus Labs Ltd.",
+          "name": "Laurus Labs",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -619,7 +666,7 @@
         },
         {
           "symbol": "ABBOTINDIA",
-          "name": "Abbott India Ltd.",
+          "name": "Abbott India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -627,7 +674,7 @@
         },
         {
           "symbol": "AJANTPHARM",
-          "name": "Ajanta Pharmaceuticals Ltd.",
+          "name": "Ajanta Pharma",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -635,7 +682,7 @@
         },
         {
           "symbol": "ALKEM",
-          "name": "Alkem Laboratories Ltd.",
+          "name": "Alkem Lab",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -643,7 +690,7 @@
         },
         {
           "symbol": "AUROPHARMA",
-          "name": "Aurobindo Pharma Ltd.",
+          "name": "Aurobindo Pharma",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -651,7 +698,7 @@
         },
         {
           "symbol": "BIOCON",
-          "name": "Biocon Ltd.",
+          "name": "Biocon",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -659,7 +706,7 @@
         },
         {
           "symbol": "CIPLA",
-          "name": "Cipla Ltd.",
+          "name": "Cipla",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -667,7 +714,7 @@
         },
         {
           "symbol": "DRREDDY",
-          "name": "Dr. Reddy's Laboratories Ltd.",
+          "name": "Dr Reddy's Labs",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -675,7 +722,7 @@
         },
         {
           "symbol": "LUPIN",
-          "name": "Lupin Ltd.",
+          "name": "Lupin",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -683,7 +730,7 @@
         },
         {
           "symbol": "MANKIND",
-          "name": "Mankind Pharma Ltd.",
+          "name": "Mankind Pharma",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -691,7 +738,7 @@
         },
         {
           "symbol": "SUNPHARMA",
-          "name": "Sun Pharmaceutical Industries Ltd.",
+          "name": "Sun Pharma.Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -699,7 +746,7 @@
         },
         {
           "symbol": "TORNTPHARM",
-          "name": "Torrent Pharmaceuticals Ltd.",
+          "name": "Torrent Pharma.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -707,7 +754,7 @@
         },
         {
           "symbol": "ZYDUSLIFE",
-          "name": "Zydus Lifesciences Ltd.",
+          "name": "Zydus Lifesci.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -721,9 +768,18 @@
       "index_name": "NIFTY CHEMICALS",
       "score": 76,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 35,
+        "prev_score": 41,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": true,
+        "overheated_changed": false
       },
       "score_history": [
+        43,
+        27,
+        51,
+        41,
         76
       ],
       "ema": {
@@ -734,9 +790,9 @@
         "ema21_rising": false,
         "pct_above_21": 0.18,
         "extended": false,
-        "ema50": 30078.32,
+        "ema50": 30078.33,
         "above_50": true,
-        "ema200": 29343.28,
+        "ema200": 29375.89,
         "above_200": true,
         "bullish_stack": true
       },
@@ -831,12 +887,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "FLUOROCHEM",
-          "name": "Gujarat Fluorochemicals Ltd.",
+          "name": "Gujarat Fluoroch",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -844,7 +904,7 @@
         },
         {
           "symbol": "GNFC",
-          "name": "GNFC",
+          "name": "G N F C",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -852,7 +912,7 @@
         },
         {
           "symbol": "NAVINFLUOR",
-          "name": "Navin Fluorine International Ltd.",
+          "name": "Navin Fluo.Intl.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -860,7 +920,7 @@
         },
         {
           "symbol": "SOLARINDS",
-          "name": "Solar Industries India Ltd.",
+          "name": "Solar Industries",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -868,7 +928,7 @@
         },
         {
           "symbol": "SRF",
-          "name": "SRF Ltd.",
+          "name": "SRF",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -876,7 +936,7 @@
         },
         {
           "symbol": "UPL",
-          "name": "UPL Ltd.",
+          "name": "UPL",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -884,7 +944,7 @@
         },
         {
           "symbol": "COROMANDEL",
-          "name": "Coromandel International Ltd.",
+          "name": "Coromandel Inter",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -892,7 +952,7 @@
         },
         {
           "symbol": "TATACHEM",
-          "name": "Tata Chemicals Ltd.",
+          "name": "Tata Chemicals",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -900,7 +960,7 @@
         },
         {
           "symbol": "AARTIIND",
-          "name": "Aarti Industries Ltd.",
+          "name": "Aarti Industries",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -908,7 +968,7 @@
         },
         {
           "symbol": "ATUL",
-          "name": "Atul Ltd.",
+          "name": "Atul",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -916,7 +976,7 @@
         },
         {
           "symbol": "BAYERCROP",
-          "name": "Bayer Cropscience Ltd.",
+          "name": "Bayer Crop Sci.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -924,7 +984,7 @@
         },
         {
           "symbol": "CHAMBLFERT",
-          "name": "Chambal Fertilizers & Chemicals Ltd.",
+          "name": "Chambal Fert.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -932,7 +992,7 @@
         },
         {
           "symbol": "DEEPAKNTR",
-          "name": "Deepak Nitrite Ltd.",
+          "name": "Deepak Nitrite",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -940,7 +1000,7 @@
         },
         {
           "symbol": "EIDPARRY",
-          "name": "E.I.D. Parry (India) Ltd.",
+          "name": "EID Parry",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -948,7 +1008,7 @@
         },
         {
           "symbol": "HSCL",
-          "name": "Himadri Speciality Chemical Ltd.",
+          "name": "Himadri Special",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -956,7 +1016,7 @@
         },
         {
           "symbol": "LINDEINDIA",
-          "name": "Linde India Ltd.",
+          "name": "Linde India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -964,7 +1024,7 @@
         },
         {
           "symbol": "PCBL",
-          "name": "PCBL Chemical Ltd.",
+          "name": "PCBL Chemical",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -972,7 +1032,7 @@
         },
         {
           "symbol": "PIDILITIND",
-          "name": "Pidilite Industries Ltd.",
+          "name": "Pidilite Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -980,7 +1040,7 @@
         },
         {
           "symbol": "PIIND",
-          "name": "PI Industries Ltd.",
+          "name": "P I Industries",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -988,7 +1048,7 @@
         },
         {
           "symbol": "SUMICHEM",
-          "name": "Sumitomo Chemical India Ltd.",
+          "name": "Sumitomo Chemi.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1002,9 +1062,18 @@
       "index_name": "NIFTY METAL",
       "score": 73,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 25,
+        "prev_score": 48,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": true,
+        "overheated_changed": false
       },
       "score_history": [
+        88,
+        76,
+        76,
+        48,
         73
       ],
       "ema": {
@@ -1017,7 +1086,7 @@
         "extended": false,
         "ema50": 12997.19,
         "above_50": true,
-        "ema200": 12163.32,
+        "ema200": 12169.84,
         "above_200": true,
         "bullish_stack": true
       },
@@ -1112,12 +1181,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "JSL",
-          "name": "Jindal Stainless Ltd.",
+          "name": "Jindal Stain.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1125,7 +1198,7 @@
         },
         {
           "symbol": "SAIL",
-          "name": "Steel Authority of India Ltd.",
+          "name": "S A I L",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1133,7 +1206,7 @@
         },
         {
           "symbol": "WELCORP",
-          "name": "Welspun Corp Ltd.",
+          "name": "Welspun Corp",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1141,7 +1214,7 @@
         },
         {
           "symbol": "LLOYDSME",
-          "name": "Lloyds Metals And Energy Ltd.",
+          "name": "Lloyds Metals",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -1149,7 +1222,7 @@
         },
         {
           "symbol": "APLAPOLLO",
-          "name": "APL Apollo Tubes Ltd.",
+          "name": "APL Apollo Tubes",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -1157,7 +1230,7 @@
         },
         {
           "symbol": "JINDALSTEL",
-          "name": "Jindal Steel Ltd.",
+          "name": "Jindal Steel",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -1165,7 +1238,7 @@
         },
         {
           "symbol": "JSWSTEEL",
-          "name": "JSW Steel Ltd.",
+          "name": "JSW Steel",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -1173,7 +1246,7 @@
         },
         {
           "symbol": "ADANIENT",
-          "name": "Adani Enterprises Ltd.",
+          "name": "Adani Enterp.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1181,7 +1254,7 @@
         },
         {
           "symbol": "HINDALCO",
-          "name": "Hindalco Industries Ltd.",
+          "name": "Hindalco Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1189,7 +1262,7 @@
         },
         {
           "symbol": "HINDCOPPER",
-          "name": "Hindustan Copper Ltd.",
+          "name": "Hindustan Copper",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1197,7 +1270,7 @@
         },
         {
           "symbol": "HINDZINC",
-          "name": "Hindustan Zinc Ltd.",
+          "name": "Hindustan Zinc",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1205,7 +1278,7 @@
         },
         {
           "symbol": "NATIONALUM",
-          "name": "National Aluminium Co. Ltd.",
+          "name": "Natl. Aluminium",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1213,7 +1286,7 @@
         },
         {
           "symbol": "NMDC",
-          "name": "NMDC Ltd.",
+          "name": "NMDC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1221,7 +1294,7 @@
         },
         {
           "symbol": "TATASTEEL",
-          "name": "Tata Steel Ltd.",
+          "name": "Tata Steel",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1229,7 +1302,7 @@
         },
         {
           "symbol": "VEDL",
-          "name": "Vedanta Ltd.",
+          "name": "Vedanta",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1243,9 +1316,18 @@
       "index_name": "NIFTY IT",
       "score": 63,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 63,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        67,
+        67,
+        73,
+        63,
         63
       ],
       "ema": {
@@ -1256,9 +1338,9 @@
         "ema21_rising": true,
         "pct_above_21": 0.2,
         "extended": false,
-        "ema50": 30210.23,
+        "ema50": 30210.25,
         "above_50": true,
-        "ema200": 31527.18,
+        "ema200": 31620.18,
         "above_200": false,
         "bullish_stack": false
       },
@@ -1353,12 +1435,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "COFORGE",
-          "name": "Coforge Ltd.",
+          "name": "Coforge",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1366,7 +1452,7 @@
         },
         {
           "symbol": "MPHASIS",
-          "name": "MphasiS Ltd.",
+          "name": "Mphasis",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1374,7 +1460,7 @@
         },
         {
           "symbol": "OFSS",
-          "name": "Oracle Financial Services Software Ltd.",
+          "name": "Oracle Fin.Serv.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1382,7 +1468,7 @@
         },
         {
           "symbol": "HCLTECH",
-          "name": "HCL Technologies Ltd.",
+          "name": "HCL Technologies",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -1390,7 +1476,7 @@
         },
         {
           "symbol": "LTM",
-          "name": "LTM Ltd.",
+          "name": "LTM",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -1398,7 +1484,7 @@
         },
         {
           "symbol": "TCS",
-          "name": "Tata Consultancy Services Ltd.",
+          "name": "TCS",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -1406,7 +1492,7 @@
         },
         {
           "symbol": "PERSISTENT",
-          "name": "Persistent Systems Ltd.",
+          "name": "Persistent Systems",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -1414,7 +1500,7 @@
         },
         {
           "symbol": "INFY",
-          "name": "Infosys Ltd.",
+          "name": "Infosys",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1422,7 +1508,7 @@
         },
         {
           "symbol": "TECHM",
-          "name": "Tech Mahindra Ltd.",
+          "name": "Tech Mahindra",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1430,7 +1516,7 @@
         },
         {
           "symbol": "WIPRO",
-          "name": "Wipro Ltd.",
+          "name": "Wipro",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1444,9 +1530,18 @@
       "index_name": "NIFTY BANK",
       "score": 59,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 10,
+        "prev_score": 49,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        44,
+        94,
+        56,
+        49,
         59
       ],
       "ema": {
@@ -1459,7 +1554,7 @@
         "extended": false,
         "ema50": 57314.98,
         "above_50": true,
-        "ema200": 56992.39,
+        "ema200": 57003.45,
         "above_200": true,
         "bullish_stack": false
       },
@@ -1554,12 +1649,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 14.3,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "AXISBANK",
-          "name": "Axis Bank Ltd.",
+          "name": "Axis Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1567,7 +1666,7 @@
         },
         {
           "symbol": "IDFCFIRSTB",
-          "name": "IDFC First Bank Ltd.",
+          "name": "IDFC First Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1575,7 +1674,7 @@
         },
         {
           "symbol": "KOTAKBANK",
-          "name": "Kotak Mahindra Bank Ltd.",
+          "name": "Kotak Mah. Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1583,7 +1682,7 @@
         },
         {
           "symbol": "PNB",
-          "name": "Punjab National Bank",
+          "name": "Punjab Natl.Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1591,7 +1690,7 @@
         },
         {
           "symbol": "UNIONBANK",
-          "name": "Union Bank of India",
+          "name": "Union Bank (I)",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1599,7 +1698,7 @@
         },
         {
           "symbol": "INDUSINDBK",
-          "name": "IndusInd Bank Ltd.",
+          "name": "IndusInd Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -1607,7 +1706,7 @@
         },
         {
           "symbol": "YESBANK",
-          "name": "Yes Bank Ltd.",
+          "name": "Yes Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -1615,7 +1714,7 @@
         },
         {
           "symbol": "ICICIBANK",
-          "name": "ICICI Bank Ltd.",
+          "name": "ICICI Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -1623,7 +1722,7 @@
         },
         {
           "symbol": "AUBANK",
-          "name": "AU Small Finance Bank Ltd.",
+          "name": "AU Small Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1647,7 +1746,7 @@
         },
         {
           "symbol": "FEDERALBNK",
-          "name": "Federal Bank Ltd.",
+          "name": "Federal Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1655,7 +1754,7 @@
         },
         {
           "symbol": "HDFCBANK",
-          "name": "HDFC Bank Ltd.",
+          "name": "HDFC Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1663,7 +1762,7 @@
         },
         {
           "symbol": "SBIN",
-          "name": "State Bank of India",
+          "name": "SBI",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1677,9 +1776,18 @@
       "index_name": "NIFTY PSU BANK",
       "score": 58,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 20,
+        "prev_score": 38,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        82,
+        82,
+        25,
+        38,
         58
       ],
       "ema": {
@@ -1692,7 +1800,7 @@
         "extended": false,
         "ema50": 8538.63,
         "above_50": true,
-        "ema200": 8386.71,
+        "ema200": 8390.35,
         "above_200": true,
         "bullish_stack": false
       },
@@ -1787,7 +1895,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 0.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1808,7 +1920,7 @@
         },
         {
           "symbol": "MAHABANK",
-          "name": "Bank of Maharashtra",
+          "name": "Bank of Maha",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1816,7 +1928,7 @@
         },
         {
           "symbol": "PNB",
-          "name": "Punjab National Bank",
+          "name": "Punjab Natl.Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1824,7 +1936,7 @@
         },
         {
           "symbol": "UNIONBANK",
-          "name": "Union Bank of India",
+          "name": "Union Bank (I)",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -1832,7 +1944,7 @@
         },
         {
           "symbol": "CENTRALBK",
-          "name": "Central Bank of India",
+          "name": "Central Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -1840,7 +1952,7 @@
         },
         {
           "symbol": "IOB",
-          "name": "Indian Overseas Bank",
+          "name": "I O B",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -1864,7 +1976,7 @@
         },
         {
           "symbol": "PSB",
-          "name": "PSB",
+          "name": "Pun. & Sind Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1872,7 +1984,7 @@
         },
         {
           "symbol": "SBIN",
-          "name": "State Bank of India",
+          "name": "SBI",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -1894,9 +2006,18 @@
       "index_name": "NIFTY ENERGY",
       "score": 46,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 46,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        14,
+        20,
+        4,
+        46,
         46
       ],
       "ema": {
@@ -1909,7 +2030,7 @@
         "extended": false,
         "ema50": 38673.9,
         "above_50": false,
-        "ema200": 37912.73,
+        "ema200": 37932.01,
         "above_200": true,
         "bullish_stack": false
       },
@@ -2004,12 +2125,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 7.5,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "ADANIPOWER",
-          "name": "Adani Power Ltd.",
+          "name": "Adani Power",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2017,7 +2142,7 @@
         },
         {
           "symbol": "BHEL",
-          "name": "Bharat Heavy Electricals Ltd.",
+          "name": "B H E L",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2025,7 +2150,7 @@
         },
         {
           "symbol": "BPCL",
-          "name": "Bharat Petroleum Corporation Ltd.",
+          "name": "B P C L",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2033,7 +2158,7 @@
         },
         {
           "symbol": "CGPOWER",
-          "name": "CG Power and Industrial Solutions Ltd.",
+          "name": "CG Power & Ind",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2041,7 +2166,7 @@
         },
         {
           "symbol": "COALINDIA",
-          "name": "Coal India Ltd.",
+          "name": "Coal India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2049,7 +2174,7 @@
         },
         {
           "symbol": "GAIL",
-          "name": "GAIL (India) Ltd.",
+          "name": "GAIL (India)",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2057,7 +2182,7 @@
         },
         {
           "symbol": "GVT&D",
-          "name": "GE Vernova T&D India Ltd.",
+          "name": "GVT&D",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2065,7 +2190,7 @@
         },
         {
           "symbol": "INOXWIND",
-          "name": "Inox Wind Ltd.",
+          "name": "Inox Wind",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2073,7 +2198,7 @@
         },
         {
           "symbol": "OIL",
-          "name": "Oil India Ltd.",
+          "name": "Oil India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2081,7 +2206,7 @@
         },
         {
           "symbol": "TORNTPOWER",
-          "name": "Torrent Power Ltd.",
+          "name": "Torrent Power",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2089,7 +2214,7 @@
         },
         {
           "symbol": "CASTROLIND",
-          "name": "Castrol India Ltd.",
+          "name": "Castrol India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2097,7 +2222,7 @@
         },
         {
           "symbol": "IGL",
-          "name": "Indraprastha Gas Ltd.",
+          "name": "Indraprastha Gas",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2105,7 +2230,7 @@
         },
         {
           "symbol": "JSWENERGY",
-          "name": "JSW Energy Ltd.",
+          "name": "JSW Energy",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2113,7 +2238,7 @@
         },
         {
           "symbol": "NHPC",
-          "name": "NHPC Ltd.",
+          "name": "NHPC Ltd",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2121,7 +2246,7 @@
         },
         {
           "symbol": "NLCINDIA",
-          "name": "NLC India Ltd.",
+          "name": "NLC India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2129,7 +2254,7 @@
         },
         {
           "symbol": "ONGC",
-          "name": "Oil & Natural Gas Corporation Ltd.",
+          "name": "O N G C",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2137,7 +2262,7 @@
         },
         {
           "symbol": "RELIANCE",
-          "name": "Reliance Industries Ltd.",
+          "name": "Reliance Industries",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2145,7 +2270,7 @@
         },
         {
           "symbol": "TATAPOWER",
-          "name": "Tata Power Co. Ltd.",
+          "name": "Tata Power Co.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2153,7 +2278,7 @@
         },
         {
           "symbol": "PETRONET",
-          "name": "Petronet LNG Ltd.",
+          "name": "Petronet LNG",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -2161,7 +2286,7 @@
         },
         {
           "symbol": "SIEMENS",
-          "name": "Siemens Ltd.",
+          "name": "Siemens",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -2169,7 +2294,7 @@
         },
         {
           "symbol": "ABB",
-          "name": "ABB India Ltd.",
+          "name": "A B B",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2177,7 +2302,7 @@
         },
         {
           "symbol": "ADANIENSOL",
-          "name": "Adani Energy Solutions Ltd.",
+          "name": "Adani Energy Sol",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2185,7 +2310,7 @@
         },
         {
           "symbol": "ADANIGREEN",
-          "name": "Adani Green Energy Ltd.",
+          "name": "Adani Green",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2193,7 +2318,7 @@
         },
         {
           "symbol": "AEGISLOG",
-          "name": "Aegis Logistics Ltd.",
+          "name": "Aegis Logistics",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2201,7 +2326,7 @@
         },
         {
           "symbol": "ATGL",
-          "name": "Adani Total Gas Ltd.",
+          "name": "Adani Total Gas",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2209,7 +2334,7 @@
         },
         {
           "symbol": "CESC",
-          "name": "CESC Ltd.",
+          "name": "CESC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2217,7 +2342,7 @@
         },
         {
           "symbol": "ENRIN",
-          "name": "Siemens Energy India Ltd.",
+          "name": "Siemens Ener.Ind",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2225,7 +2350,7 @@
         },
         {
           "symbol": "HINDPETRO",
-          "name": "Hindustan Petroleum Corporation Ltd.",
+          "name": "H P C L",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2233,7 +2358,7 @@
         },
         {
           "symbol": "IOC",
-          "name": "Indian Oil Corporation Ltd.",
+          "name": "I O C L",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2241,7 +2366,7 @@
         },
         {
           "symbol": "JPPOWER",
-          "name": "Jaiprakash Power Ventures Ltd.",
+          "name": "JP Power Ven.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2249,7 +2374,7 @@
         },
         {
           "symbol": "MGL",
-          "name": "Mahanagar Gas Ltd.",
+          "name": "Mahanagar Gas",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2257,7 +2382,7 @@
         },
         {
           "symbol": "NAVA",
-          "name": "Nava Ltd.",
+          "name": "Nava",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2265,7 +2390,7 @@
         },
         {
           "symbol": "NTPC",
-          "name": "NTPC Ltd.",
+          "name": "NTPC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2273,7 +2398,7 @@
         },
         {
           "symbol": "NTPCGREEN",
-          "name": "NTPC Green Energy Ltd.",
+          "name": "NTPC Green Ene.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2281,7 +2406,7 @@
         },
         {
           "symbol": "POWERGRID",
-          "name": "Power Grid Corporation of India Ltd.",
+          "name": "Power Grid Corpn",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2289,7 +2414,7 @@
         },
         {
           "symbol": "POWERINDIA",
-          "name": "Hitachi Energy India Ltd.",
+          "name": "Hitachi Energy",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2297,7 +2422,7 @@
         },
         {
           "symbol": "RPOWER",
-          "name": "Reliance Power Ltd.",
+          "name": "Reliance Power",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2305,7 +2430,7 @@
         },
         {
           "symbol": "SJVN",
-          "name": "SJVN Ltd.",
+          "name": "SJVN",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2313,7 +2438,7 @@
         },
         {
           "symbol": "SUZLON",
-          "name": "Suzlon Energy Ltd.",
+          "name": "Suzlon Energy",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2321,7 +2446,7 @@
         },
         {
           "symbol": "THERMAX",
-          "name": "Thermax Ltd.",
+          "name": "Thermax",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2335,9 +2460,18 @@
       "index_name": "NIFTY HEALTHCARE INDEX",
       "score": 45,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": -35,
+        "prev_score": 80,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": true,
+        "overheated_changed": false
       },
       "score_history": [
+        91,
+        92,
+        84,
+        80,
         45
       ],
       "ema": {
@@ -2348,9 +2482,9 @@
         "ema21_rising": true,
         "pct_above_21": -0.28,
         "extended": false,
-        "ema50": 16389.57,
+        "ema50": 16389.58,
         "above_50": true,
-        "ema200": 15506.67,
+        "ema200": 15512.77,
         "above_200": true,
         "bullish_stack": false
       },
@@ -2445,12 +2579,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 45.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "DIVISLAB",
-          "name": "Divi's Laboratories Ltd.",
+          "name": "Divi's Lab.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2458,7 +2596,7 @@
         },
         {
           "symbol": "GLENMARK",
-          "name": "Glenmark Pharmaceuticals Ltd.",
+          "name": "Glenmark Pharma.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2466,7 +2604,7 @@
         },
         {
           "symbol": "IPCALAB",
-          "name": "Ipca Laboratories Ltd.",
+          "name": "Ipca Labs.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2474,7 +2612,7 @@
         },
         {
           "symbol": "PPLPHARMA",
-          "name": "Piramal Pharma Ltd.",
+          "name": "Piramal Pharma",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2482,7 +2620,7 @@
         },
         {
           "symbol": "FORTIS",
-          "name": "Fortis Healthcare Ltd.",
+          "name": "Fortis Health.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2490,7 +2628,7 @@
         },
         {
           "symbol": "LAURUSLABS",
-          "name": "Laurus Labs Ltd.",
+          "name": "Laurus Labs",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -2498,7 +2636,7 @@
         },
         {
           "symbol": "ABBOTINDIA",
-          "name": "Abbott India Ltd.",
+          "name": "Abbott India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2506,7 +2644,7 @@
         },
         {
           "symbol": "ALKEM",
-          "name": "Alkem Laboratories Ltd.",
+          "name": "Alkem Lab",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2514,7 +2652,7 @@
         },
         {
           "symbol": "APOLLOHOSP",
-          "name": "Apollo Hospitals Enterprise Ltd.",
+          "name": "Apollo Hospitals",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2522,7 +2660,7 @@
         },
         {
           "symbol": "AUROPHARMA",
-          "name": "Aurobindo Pharma Ltd.",
+          "name": "Aurobindo Pharma",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2530,7 +2668,7 @@
         },
         {
           "symbol": "BIOCON",
-          "name": "Biocon Ltd.",
+          "name": "Biocon",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2538,7 +2676,7 @@
         },
         {
           "symbol": "CIPLA",
-          "name": "Cipla Ltd.",
+          "name": "Cipla",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2546,7 +2684,7 @@
         },
         {
           "symbol": "DRREDDY",
-          "name": "Dr. Reddy's Laboratories Ltd.",
+          "name": "Dr Reddy's Labs",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2554,7 +2692,7 @@
         },
         {
           "symbol": "LUPIN",
-          "name": "Lupin Ltd.",
+          "name": "Lupin",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2562,7 +2700,7 @@
         },
         {
           "symbol": "MANKIND",
-          "name": "Mankind Pharma Ltd.",
+          "name": "Mankind Pharma",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2570,7 +2708,7 @@
         },
         {
           "symbol": "MAXHEALTH",
-          "name": "Max Healthcare Institute Ltd.",
+          "name": "Max Healthcare",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2578,7 +2716,7 @@
         },
         {
           "symbol": "SUNPHARMA",
-          "name": "Sun Pharmaceutical Industries Ltd.",
+          "name": "Sun Pharma.Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2586,7 +2724,7 @@
         },
         {
           "symbol": "SYNGENE",
-          "name": "Syngene International Ltd.",
+          "name": "Syngene Intl.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2594,7 +2732,7 @@
         },
         {
           "symbol": "TORNTPHARM",
-          "name": "Torrent Pharmaceuticals Ltd.",
+          "name": "Torrent Pharma.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2602,7 +2740,7 @@
         },
         {
           "symbol": "ZYDUSLIFE",
-          "name": "Zydus Lifesciences Ltd.",
+          "name": "Zydus Lifesci.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2616,9 +2754,18 @@
       "index_name": "NIFTY CONSUMER DURABLES",
       "score": 43,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": -5,
+        "prev_score": 48,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        91,
+        89,
+        33,
+        48,
         43
       ],
       "ema": {
@@ -2629,9 +2776,9 @@
         "ema21_rising": false,
         "pct_above_21": -1.19,
         "extended": false,
-        "ema50": 39333.56,
+        "ema50": 39333.57,
         "above_50": true,
-        "ema200": 37798.98,
+        "ema200": 37838.87,
         "above_200": true,
         "bullish_stack": false
       },
@@ -2726,12 +2873,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 23.1,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "KAJARIACER",
-          "name": "Kajaria Ceramics Ltd.",
+          "name": "Kajaria Ceramics",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2739,7 +2890,7 @@
         },
         {
           "symbol": "WHIRLPOOL",
-          "name": "Whirlpool of India Ltd.",
+          "name": "Whirlpool India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2747,7 +2898,7 @@
         },
         {
           "symbol": "AMBER",
-          "name": "Amber Enterprises India Ltd.",
+          "name": "Amber Enterp.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -2755,7 +2906,7 @@
         },
         {
           "symbol": "DIXON",
-          "name": "Dixon Technologies (India) Ltd.",
+          "name": "Dixon Technolog.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -2763,7 +2914,7 @@
         },
         {
           "symbol": "LGEINDIA",
-          "name": "LG Electronics India Ltd.",
+          "name": "LG Electronics",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -2771,7 +2922,7 @@
         },
         {
           "symbol": "BATAINDIA",
-          "name": "Bata India Ltd.",
+          "name": "Bata India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2779,7 +2930,7 @@
         },
         {
           "symbol": "BLUESTARCO",
-          "name": "Blue Star Ltd.",
+          "name": "Blue Star",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2787,7 +2938,7 @@
         },
         {
           "symbol": "CROMPTON",
-          "name": "Crompton Greaves Consumer Electricals Ltd.",
+          "name": "Crompton Gr. Con",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2795,7 +2946,7 @@
         },
         {
           "symbol": "HAVELLS",
-          "name": "Havells India Ltd.",
+          "name": "Havells India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2803,7 +2954,7 @@
         },
         {
           "symbol": "KALYANKJIL",
-          "name": "Kalyan Jewellers India Ltd.",
+          "name": "Kalyan Jewellers",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2811,7 +2962,7 @@
         },
         {
           "symbol": "PGEL",
-          "name": "PG Electroplast Ltd.",
+          "name": "PG Electroplast",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2819,7 +2970,7 @@
         },
         {
           "symbol": "TITAN",
-          "name": "Titan Company Ltd.",
+          "name": "Titan Company",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2827,7 +2978,7 @@
         },
         {
           "symbol": "VOLTAS",
-          "name": "Voltas Ltd.",
+          "name": "Voltas",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2841,9 +2992,18 @@
       "index_name": "NIFTY MEDIA",
       "score": 41,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 25,
+        "prev_score": 16,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        73,
+        29,
+        29,
+        16,
         41
       ],
       "ema": {
@@ -2856,7 +3016,7 @@
         "extended": false,
         "ema50": 1550.16,
         "above_50": true,
-        "ema200": 1503.53,
+        "ema200": 1504.45,
         "above_200": true,
         "bullish_stack": false
       },
@@ -2951,12 +3111,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 10.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "NAZARA",
-          "name": "NAZARA",
+          "name": "Nazara Technolo.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2964,7 +3128,7 @@
         },
         {
           "symbol": "PVRINOX",
-          "name": "PVR INOX Ltd.",
+          "name": "PVR Inox",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -2972,7 +3136,7 @@
         },
         {
           "symbol": "TIPSMUSIC",
-          "name": "TIPSMUSIC",
+          "name": "Tips Music",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -2980,7 +3144,7 @@
         },
         {
           "symbol": "PFOCUS",
-          "name": "Prime Focus Ltd.",
+          "name": "Prime Focus",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -2988,7 +3152,7 @@
         },
         {
           "symbol": "DBCORP",
-          "name": "DBCORP",
+          "name": "D B Corp",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -2996,7 +3160,7 @@
         },
         {
           "symbol": "HATHWAY",
-          "name": "HATHWAY",
+          "name": "Hathway Cable",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3004,7 +3168,7 @@
         },
         {
           "symbol": "NETWORK18",
-          "name": "NETWORK18",
+          "name": "Netwrk.18 Media",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3012,7 +3176,7 @@
         },
         {
           "symbol": "SAREGAMA",
-          "name": "Saregama India Ltd",
+          "name": "Saregama India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3020,7 +3184,7 @@
         },
         {
           "symbol": "SUNTV",
-          "name": "Sun TV Network Ltd.",
+          "name": "Sun TV Network",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3028,7 +3192,7 @@
         },
         {
           "symbol": "ZEEL",
-          "name": "Zee Entertainment Enterprises Ltd.",
+          "name": "Zee Entertainmen",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3042,9 +3206,17 @@
       "index_name": "NIFTY INDIA DEFENCE",
       "score": 41,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": -5,
+        "prev_score": 46,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        83,
+        45,
+        46,
         41
       ],
       "ema": {
@@ -3057,7 +3229,7 @@
         "extended": false,
         "ema50": 9534.72,
         "above_50": true,
-        "ema200": 8877.63,
+        "ema200": 8901.17,
         "above_200": true,
         "bullish_stack": false
       },
@@ -3152,12 +3324,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 5.3,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "AXISCADES",
-          "name": "AXISCADES",
+          "name": "AXISCADES Tech.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3165,7 +3341,7 @@
         },
         {
           "symbol": "BEML",
-          "name": "BEML Ltd.",
+          "name": "BEML Ltd",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3173,7 +3349,7 @@
         },
         {
           "symbol": "SOLARINDS",
-          "name": "Solar Industries India Ltd.",
+          "name": "Solar Industries",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3181,7 +3357,7 @@
         },
         {
           "symbol": "DATAPATTNS",
-          "name": "Data Patterns (India) Ltd.",
+          "name": "Data Pattern",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -3189,7 +3365,7 @@
         },
         {
           "symbol": "DYNAMATECH",
-          "name": "DYNAMATECH",
+          "name": "Dynamatic Tech.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -3197,7 +3373,7 @@
         },
         {
           "symbol": "PARAS",
-          "name": "PARAS",
+          "name": "Paras Defence",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -3205,7 +3381,7 @@
         },
         {
           "symbol": "AEQUS",
-          "name": "AEQUS",
+          "name": "Aequs",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3213,7 +3389,7 @@
         },
         {
           "symbol": "APOLLO",
-          "name": "APOLLO",
+          "name": "Apollo Micro Sys",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3221,7 +3397,7 @@
         },
         {
           "symbol": "ASTRAMICRO",
-          "name": "ASTRAMICRO",
+          "name": "Astra Microwave",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3229,7 +3405,7 @@
         },
         {
           "symbol": "BDL",
-          "name": "Bharat Dynamics Ltd.",
+          "name": "Bharat Dynamics",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3237,7 +3413,7 @@
         },
         {
           "symbol": "BEL",
-          "name": "Bharat Electronics Ltd.",
+          "name": "Bharat Electron",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3245,7 +3421,7 @@
         },
         {
           "symbol": "BHARATFORG",
-          "name": "Bharat Forge Ltd.",
+          "name": "Bharat Forge",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3253,7 +3429,7 @@
         },
         {
           "symbol": "COCHINSHIP",
-          "name": "Cochin Shipyard Ltd.",
+          "name": "Cochin Shipyard",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3261,7 +3437,7 @@
         },
         {
           "symbol": "GRSE",
-          "name": "Garden Reach Shipbuilders & Engineers Ltd.",
+          "name": "Garden Reach Sh.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3269,7 +3445,7 @@
         },
         {
           "symbol": "HAL",
-          "name": "Hindustan Aeronautics Ltd.",
+          "name": "Hind.Aeronautics",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3277,7 +3453,7 @@
         },
         {
           "symbol": "MAZDOCK",
-          "name": "Mazagoan Dock Shipbuilders Ltd.",
+          "name": "Mazagon Dock",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3285,7 +3461,7 @@
         },
         {
           "symbol": "MIDHANI",
-          "name": "MIDHANI",
+          "name": "Mishra Dhatu Nig",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3293,7 +3469,7 @@
         },
         {
           "symbol": "MTARTECH",
-          "name": "MTARTECH",
+          "name": "MTAR Technologie",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3301,7 +3477,7 @@
         },
         {
           "symbol": "ZENTEC",
-          "name": "Zen Technologies Ltd.",
+          "name": "Zen Technologies",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3315,9 +3491,18 @@
       "index_name": "NIFTY OIL & GAS",
       "score": 38,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": -10,
+        "prev_score": 48,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        4,
+        22,
+        30,
+        48,
         38
       ],
       "ema": {
@@ -3328,9 +3513,9 @@
         "ema21_rising": false,
         "pct_above_21": -0.06,
         "extended": false,
-        "ema50": 11194.11,
+        "ema50": 11194.12,
         "above_50": false,
-        "ema200": 11378.72,
+        "ema200": 11395.88,
         "above_200": false,
         "bullish_stack": false
       },
@@ -3425,12 +3610,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 6.7,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "AEGISVOPAK",
-          "name": "Aegis Vopak Terminals Ltd.",
+          "name": "Aegis Vopak Term",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3438,7 +3627,7 @@
         },
         {
           "symbol": "BPCL",
-          "name": "Bharat Petroleum Corporation Ltd.",
+          "name": "B P C L",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3446,7 +3635,7 @@
         },
         {
           "symbol": "CHENNPETRO",
-          "name": "Chennai Petroleum Corporation Ltd.",
+          "name": "C P C L",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3454,7 +3643,7 @@
         },
         {
           "symbol": "GAIL",
-          "name": "GAIL (India) Ltd.",
+          "name": "GAIL (India)",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3462,7 +3651,7 @@
         },
         {
           "symbol": "OIL",
-          "name": "Oil India Ltd.",
+          "name": "Oil India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3470,7 +3659,7 @@
         },
         {
           "symbol": "CASTROLIND",
-          "name": "Castrol India Ltd.",
+          "name": "Castrol India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -3478,7 +3667,7 @@
         },
         {
           "symbol": "IGL",
-          "name": "Indraprastha Gas Ltd.",
+          "name": "Indraprastha Gas",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -3486,7 +3675,7 @@
         },
         {
           "symbol": "ONGC",
-          "name": "Oil & Natural Gas Corporation Ltd.",
+          "name": "O N G C",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -3494,7 +3683,7 @@
         },
         {
           "symbol": "RELIANCE",
-          "name": "Reliance Industries Ltd.",
+          "name": "Reliance Industries",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -3502,7 +3691,7 @@
         },
         {
           "symbol": "PETRONET",
-          "name": "Petronet LNG Ltd.",
+          "name": "Petronet LNG",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -3510,7 +3699,7 @@
         },
         {
           "symbol": "AEGISLOG",
-          "name": "Aegis Logistics Ltd.",
+          "name": "Aegis Logistics",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3518,7 +3707,7 @@
         },
         {
           "symbol": "ATGL",
-          "name": "Adani Total Gas Ltd.",
+          "name": "Adani Total Gas",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3526,7 +3715,7 @@
         },
         {
           "symbol": "HINDPETRO",
-          "name": "Hindustan Petroleum Corporation Ltd.",
+          "name": "H P C L",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3534,7 +3723,7 @@
         },
         {
           "symbol": "IOC",
-          "name": "Indian Oil Corporation Ltd.",
+          "name": "I O C L",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3542,7 +3731,7 @@
         },
         {
           "symbol": "MGL",
-          "name": "Mahanagar Gas Ltd.",
+          "name": "Mahanagar Gas",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3556,9 +3745,17 @@
       "index_name": "NIFTY CAPITAL GOODS",
       "score": 38,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 25,
+        "prev_score": 13,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        75,
+        47,
+        13,
         38
       ],
       "ema": {
@@ -3664,12 +3861,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "APARINDS",
-          "name": "Apar Industries Ltd.",
+          "name": "Apar Inds.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3677,7 +3878,7 @@
         },
         {
           "symbol": "BEML",
-          "name": "BEML Ltd.",
+          "name": "BEML Ltd",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3685,7 +3886,7 @@
         },
         {
           "symbol": "BHEL",
-          "name": "Bharat Heavy Electricals Ltd.",
+          "name": "B H E L",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3693,7 +3894,7 @@
         },
         {
           "symbol": "CGPOWER",
-          "name": "CG Power and Industrial Solutions Ltd.",
+          "name": "CG Power & Ind",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3701,7 +3902,7 @@
         },
         {
           "symbol": "ELGIEQUIP",
-          "name": "Elgi Equipments Ltd.",
+          "name": "Elgi Equipments",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3709,7 +3910,7 @@
         },
         {
           "symbol": "FINCABLES",
-          "name": "Finolex Cables Ltd.",
+          "name": "Finolex Cables",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3717,7 +3918,7 @@
         },
         {
           "symbol": "GVT&D",
-          "name": "GE Vernova T&D India Ltd.",
+          "name": "GVT&D",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3725,7 +3926,7 @@
         },
         {
           "symbol": "INOXWIND",
-          "name": "Inox Wind Ltd.",
+          "name": "Inox Wind",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3733,7 +3934,7 @@
         },
         {
           "symbol": "JYOTICNC",
-          "name": "Jyoti CNC Automation Ltd.",
+          "name": "Jyoti CNC Auto.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3741,7 +3942,7 @@
         },
         {
           "symbol": "KIRLOSENG",
-          "name": "Kirloskar Oil Eng Ltd.",
+          "name": "Kirloskar Oil",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3749,7 +3950,7 @@
         },
         {
           "symbol": "PTCIL",
-          "name": "PTC Industries Ltd.",
+          "name": "PTC Industries",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3757,7 +3958,7 @@
         },
         {
           "symbol": "TITAGARH",
-          "name": "Titagarh Rail Systems Ltd.",
+          "name": "Titagarh Rail",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3765,7 +3966,7 @@
         },
         {
           "symbol": "USHAMART",
-          "name": "Usha Martin Ltd.",
+          "name": "Usha Martin",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3773,7 +3974,7 @@
         },
         {
           "symbol": "VOLTAMP",
-          "name": "VOLTAMP",
+          "name": "Volt.Transform.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3781,7 +3982,7 @@
         },
         {
           "symbol": "WELCORP",
-          "name": "Welspun Corp Ltd.",
+          "name": "Welspun Corp",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -3789,7 +3990,7 @@
         },
         {
           "symbol": "AIAENG",
-          "name": "AIA Engineering Ltd.",
+          "name": "AIA Engineering",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -3797,7 +3998,7 @@
         },
         {
           "symbol": "APLAPOLLO",
-          "name": "APL Apollo Tubes Ltd.",
+          "name": "APL Apollo Tubes",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -3805,7 +4006,7 @@
         },
         {
           "symbol": "DATAPATTNS",
-          "name": "Data Patterns (India) Ltd.",
+          "name": "Data Pattern",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -3813,7 +4014,7 @@
         },
         {
           "symbol": "PRAJIND",
-          "name": "PRAJIND",
+          "name": "Praj Industries",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -3821,7 +4022,7 @@
         },
         {
           "symbol": "SIEMENS",
-          "name": "Siemens Ltd.",
+          "name": "Siemens",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -3829,7 +4030,7 @@
         },
         {
           "symbol": "ABB",
-          "name": "ABB India Ltd.",
+          "name": "A B B",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3837,7 +4038,7 @@
         },
         {
           "symbol": "ASHOKLEY",
-          "name": "Ashok Leyland Ltd.",
+          "name": "Ashok Leyland",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3845,7 +4046,7 @@
         },
         {
           "symbol": "ASTRAL",
-          "name": "Astral Ltd.",
+          "name": "Astral",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3853,7 +4054,7 @@
         },
         {
           "symbol": "ASTRAMICRO",
-          "name": "ASTRAMICRO",
+          "name": "Astra Microwave",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3861,7 +4062,7 @@
         },
         {
           "symbol": "BDL",
-          "name": "Bharat Dynamics Ltd.",
+          "name": "Bharat Dynamics",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3869,7 +4070,7 @@
         },
         {
           "symbol": "BEL",
-          "name": "Bharat Electronics Ltd.",
+          "name": "Bharat Electron",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3877,7 +4078,7 @@
         },
         {
           "symbol": "CARBORUNIV",
-          "name": "Carborundum Universal Ltd.",
+          "name": "Carborundum Uni.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3885,7 +4086,7 @@
         },
         {
           "symbol": "COCHINSHIP",
-          "name": "Cochin Shipyard Ltd.",
+          "name": "Cochin Shipyard",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3893,7 +4094,7 @@
         },
         {
           "symbol": "CUMMINSIND",
-          "name": "Cummins India Ltd.",
+          "name": "Cummins India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3901,7 +4102,7 @@
         },
         {
           "symbol": "ENRIN",
-          "name": "Siemens Energy India Ltd.",
+          "name": "Siemens Ener.Ind",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3909,7 +4110,7 @@
         },
         {
           "symbol": "ESCORTS",
-          "name": "Escorts Kubota Ltd.",
+          "name": "Escorts Kubota",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3917,7 +4118,7 @@
         },
         {
           "symbol": "FINPIPE",
-          "name": "FINPIPE",
+          "name": "Finolex Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3925,7 +4126,7 @@
         },
         {
           "symbol": "GRSE",
-          "name": "Garden Reach Shipbuilders & Engineers Ltd.",
+          "name": "Garden Reach Sh.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3933,7 +4134,7 @@
         },
         {
           "symbol": "HAL",
-          "name": "Hindustan Aeronautics Ltd.",
+          "name": "Hind.Aeronautics",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3941,7 +4142,7 @@
         },
         {
           "symbol": "HBLENGINE",
-          "name": "HBL Engineering Ltd.",
+          "name": "HBL Engineering",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3949,7 +4150,7 @@
         },
         {
           "symbol": "HONAUT",
-          "name": "Honeywell Automation India Ltd.",
+          "name": "Honeywell Auto",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3957,7 +4158,7 @@
         },
         {
           "symbol": "KAYNES",
-          "name": "Kaynes Technology India Ltd.",
+          "name": "Kaynes Tech",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3965,7 +4166,7 @@
         },
         {
           "symbol": "KEI",
-          "name": "KEI Industries Ltd.",
+          "name": "KEI Industries",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3973,7 +4174,7 @@
         },
         {
           "symbol": "MAZDOCK",
-          "name": "Mazagoan Dock Shipbuilders Ltd.",
+          "name": "Mazagon Dock",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3981,7 +4182,7 @@
         },
         {
           "symbol": "POLYCAB",
-          "name": "Polycab India Ltd.",
+          "name": "Polycab India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3989,7 +4190,7 @@
         },
         {
           "symbol": "POWERINDIA",
-          "name": "Hitachi Energy India Ltd.",
+          "name": "Hitachi Energy",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -3997,7 +4198,7 @@
         },
         {
           "symbol": "PREMIERENE",
-          "name": "Premier Energies Ltd.",
+          "name": "Premier Energies",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4005,7 +4206,7 @@
         },
         {
           "symbol": "SUPREMEIND",
-          "name": "Supreme Industries Ltd.",
+          "name": "Supreme Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4013,7 +4214,7 @@
         },
         {
           "symbol": "SUZLON",
-          "name": "Suzlon Energy Ltd.",
+          "name": "Suzlon Energy",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4021,7 +4222,7 @@
         },
         {
           "symbol": "TDPOWERSYS",
-          "name": "TDPOWERSYS",
+          "name": "TD Power Systems",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4029,7 +4230,7 @@
         },
         {
           "symbol": "THERMAX",
-          "name": "Thermax Ltd.",
+          "name": "Thermax",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4037,7 +4238,7 @@
         },
         {
           "symbol": "TIMKEN",
-          "name": "Timken India Ltd.",
+          "name": "Timken India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4045,7 +4246,7 @@
         },
         {
           "symbol": "TMCV",
-          "name": "Tata Motors Ltd.",
+          "name": "Tata Motors",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4053,7 +4254,7 @@
         },
         {
           "symbol": "TRITURBINE",
-          "name": "Triveni Turbine Ltd.",
+          "name": "Triveni Turbine",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4061,7 +4262,7 @@
         },
         {
           "symbol": "WAAREEENER",
-          "name": "Waaree Energies Ltd.",
+          "name": "Waaree Energies",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4075,9 +4276,18 @@
       "index_name": "NIFTY TELECOMMUNICATIONS",
       "score": 35,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": -35,
+        "prev_score": 70,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": true,
+        "overheated_changed": false
       },
       "score_history": [
+        63,
+        81,
+        71,
+        70,
         35
       ],
       "ema": {
@@ -4183,12 +4393,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 15.4,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "STLTECH",
-          "name": "STLTECH",
+          "name": "Sterlite Tech.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4196,7 +4410,7 @@
         },
         {
           "symbol": "TEJASNET",
-          "name": "Tejas Networks Ltd.",
+          "name": "Tejas Networks",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4204,7 +4418,7 @@
         },
         {
           "symbol": "TATACOMM",
-          "name": "Tata Communications Ltd.",
+          "name": "Tata Comm",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -4212,7 +4426,7 @@
         },
         {
           "symbol": "TTML",
-          "name": "Tata Teleservices (Maharashtra) Ltd.",
+          "name": "Tata Tele. Mah.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -4220,7 +4434,7 @@
         },
         {
           "symbol": "IDEA",
-          "name": "Vodafone Idea Ltd.",
+          "name": "Vodafone Idea",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -4228,7 +4442,7 @@
         },
         {
           "symbol": "BHARTIARTL",
-          "name": "Bharti Airtel Ltd.",
+          "name": "Bharti Airtel",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4236,7 +4450,7 @@
         },
         {
           "symbol": "BHARTIHEXA",
-          "name": "Bharti Hexacom Ltd.",
+          "name": "Bharti Hexacom",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4244,7 +4458,7 @@
         },
         {
           "symbol": "HFCL",
-          "name": "HFCL Ltd.",
+          "name": "HFCL",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4252,7 +4466,7 @@
         },
         {
           "symbol": "INDUSTOWER",
-          "name": "Indus Towers Ltd.",
+          "name": "Indus Towers",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4260,7 +4474,7 @@
         },
         {
           "symbol": "ITI",
-          "name": "ITI Ltd.",
+          "name": "ITI",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4268,7 +4482,7 @@
         },
         {
           "symbol": "OPTIEMUS",
-          "name": "OPTIEMUS",
+          "name": "Optiemus Infra.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4276,7 +4490,7 @@
         },
         {
           "symbol": "RAILTEL",
-          "name": "Railtel Corporation Of India Ltd.",
+          "name": "Railtel Corpn.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4284,7 +4498,7 @@
         },
         {
           "symbol": "ROUTE",
-          "name": "ROUTE",
+          "name": "Route Mobile",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4298,9 +4512,17 @@
       "index_name": "NIFTY NBFC",
       "score": 27,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 10,
+        "prev_score": 17,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        38,
+        7,
+        17,
         27
       ],
       "ema": {
@@ -4406,12 +4628,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 21.1,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "CGCL",
-          "name": "Capri Global Capital Ltd.",
+          "name": "Capri Global",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4419,7 +4645,7 @@
         },
         {
           "symbol": "FIVESTAR",
-          "name": "Five-Star Business Finance Ltd.",
+          "name": "Five-Star Bus.Fi",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4427,7 +4653,7 @@
         },
         {
           "symbol": "HDBFS",
-          "name": "HDB Financial Services Ltd.",
+          "name": "HDB FINANC SER",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4435,7 +4661,7 @@
         },
         {
           "symbol": "PIRAMALFIN",
-          "name": "Piramal Finance Ltd.",
+          "name": "Piramal Finance.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4443,7 +4669,7 @@
         },
         {
           "symbol": "SBFC",
-          "name": "SBFC Finance Ltd.",
+          "name": "SBFC Finance",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4451,7 +4677,7 @@
         },
         {
           "symbol": "SBICARD",
-          "name": "SBI Cards and Payment Services Ltd.",
+          "name": "SBI Cards",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4459,7 +4685,7 @@
         },
         {
           "symbol": "SUNDARMFIN",
-          "name": "Sundaram Finance Ltd.",
+          "name": "Sundaram Finance",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4467,7 +4693,7 @@
         },
         {
           "symbol": "TATACAP",
-          "name": "Tata Capital Ltd.",
+          "name": "Tata Capital",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4475,7 +4701,7 @@
         },
         {
           "symbol": "FEDFINA",
-          "name": "FEDFINA",
+          "name": "Fedbank Financi.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -4483,7 +4709,7 @@
         },
         {
           "symbol": "IIFL",
-          "name": "IIFL Finance Ltd.",
+          "name": "IIFL Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -4491,7 +4717,7 @@
         },
         {
           "symbol": "LTF",
-          "name": "L&T Finance Ltd.",
+          "name": "L&T Finance Ltd",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -4499,7 +4725,7 @@
         },
         {
           "symbol": "AIIL",
-          "name": "Authum Investment & Infrastructure Ltd.",
+          "name": "Authum Invest",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4507,7 +4733,7 @@
         },
         {
           "symbol": "BAJFINANCE",
-          "name": "Bajaj Finance Ltd.",
+          "name": "Bajaj Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4515,7 +4741,7 @@
         },
         {
           "symbol": "CHOLAFIN",
-          "name": "Cholamandalam Investment and Finance Company Ltd.",
+          "name": "Cholaman.Inv.&Fn",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4523,7 +4749,7 @@
         },
         {
           "symbol": "M&MFIN",
-          "name": "Mahindra & Mahindra Financial Services Ltd.",
+          "name": "M&MFIN",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4531,7 +4757,7 @@
         },
         {
           "symbol": "MANAPPURAM",
-          "name": "Manappuram Finance Ltd.",
+          "name": "Manappuram Fin.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4539,7 +4765,7 @@
         },
         {
           "symbol": "MUTHOOTFIN",
-          "name": "Muthoot Finance Ltd.",
+          "name": "Muthoot Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4547,7 +4773,7 @@
         },
         {
           "symbol": "POONAWALLA",
-          "name": "Poonawalla Fincorp Ltd.",
+          "name": "Poonawalla Fin",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4555,7 +4781,7 @@
         },
         {
           "symbol": "SHRIRAMFIN",
-          "name": "Shriram Finance Ltd.",
+          "name": "Shriram Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4569,9 +4795,18 @@
       "index_name": "NIFTY FINANCIAL SERVICES",
       "score": 20,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 15,
+        "prev_score": 5,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        31,
+        38,
+        14,
+        5,
         20
       ],
       "ema": {
@@ -4584,7 +4819,7 @@
         "extended": false,
         "ema50": 26270.94,
         "above_50": false,
-        "ema200": 26422.42,
+        "ema200": 26424.6,
         "above_200": false,
         "bullish_stack": false
       },
@@ -4679,12 +4914,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 10.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "AXISBANK",
-          "name": "Axis Bank Ltd.",
+          "name": "Axis Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4692,7 +4931,7 @@
         },
         {
           "symbol": "KOTAKBANK",
-          "name": "Kotak Mahindra Bank Ltd.",
+          "name": "Kotak Mah. Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4700,7 +4939,7 @@
         },
         {
           "symbol": "LICHSGFIN",
-          "name": "LIC Housing Finance Ltd.",
+          "name": "LIC Housing Fin.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4708,7 +4947,7 @@
         },
         {
           "symbol": "SBICARD",
-          "name": "SBI Cards and Payment Services Ltd.",
+          "name": "SBI Cards",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4716,7 +4955,7 @@
         },
         {
           "symbol": "BSE",
-          "name": "BSE Ltd.",
+          "name": "BSE",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -4724,7 +4963,7 @@
         },
         {
           "symbol": "ICICIBANK",
-          "name": "ICICI Bank Ltd.",
+          "name": "ICICI Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -4732,7 +4971,7 @@
         },
         {
           "symbol": "BAJAJFINSV",
-          "name": "Bajaj Finserv Ltd.",
+          "name": "Bajaj Finserv",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4740,7 +4979,7 @@
         },
         {
           "symbol": "BAJFINANCE",
-          "name": "Bajaj Finance Ltd.",
+          "name": "Bajaj Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4748,7 +4987,7 @@
         },
         {
           "symbol": "CHOLAFIN",
-          "name": "Cholamandalam Investment and Finance Company Ltd.",
+          "name": "Cholaman.Inv.&Fn",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4756,7 +4995,7 @@
         },
         {
           "symbol": "HDFCBANK",
-          "name": "HDFC Bank Ltd.",
+          "name": "HDFC Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4764,7 +5003,7 @@
         },
         {
           "symbol": "HDFCLIFE",
-          "name": "HDFC Life Insurance Company Ltd.",
+          "name": "HDFC Life Insur.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4772,7 +5011,7 @@
         },
         {
           "symbol": "ICICIGI",
-          "name": "ICICI Lombard General Insurance Company Ltd.",
+          "name": "ICICI Lombard",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4780,7 +5019,7 @@
         },
         {
           "symbol": "JIOFIN",
-          "name": "Jio Financial Services Ltd.",
+          "name": "Jio Financial",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4788,7 +5027,7 @@
         },
         {
           "symbol": "MFSL",
-          "name": "Max Financial Services Ltd.",
+          "name": "Max Financial",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4796,7 +5035,7 @@
         },
         {
           "symbol": "MUTHOOTFIN",
-          "name": "Muthoot Finance Ltd.",
+          "name": "Muthoot Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4804,7 +5043,7 @@
         },
         {
           "symbol": "PFC",
-          "name": "Power Finance Corporation Ltd.",
+          "name": "Power Fin.Corpn.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4812,7 +5051,7 @@
         },
         {
           "symbol": "RECLTD",
-          "name": "REC Ltd.",
+          "name": "REC Ltd",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4820,7 +5059,7 @@
         },
         {
           "symbol": "SBILIFE",
-          "name": "SBI Life Insurance Company Ltd.",
+          "name": "SBI Life Insuran",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4828,7 +5067,7 @@
         },
         {
           "symbol": "SBIN",
-          "name": "State Bank of India",
+          "name": "SBI",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4836,7 +5075,7 @@
         },
         {
           "symbol": "SHRIRAMFIN",
-          "name": "Shriram Finance Ltd.",
+          "name": "Shriram Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4850,9 +5089,18 @@
       "index_name": "NIFTY AUTO",
       "score": 13,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 13,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        51,
+        49,
+        25,
+        13,
         13
       ],
       "ema": {
@@ -4865,7 +5113,7 @@
         "extended": false,
         "ema50": 28197.87,
         "above_50": false,
-        "ema200": 26998.07,
+        "ema200": 27020.86,
         "above_200": true,
         "bullish_stack": false
       },
@@ -4960,12 +5208,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 13.3,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "UNOMINDA",
-          "name": "UNO Minda Ltd.",
+          "name": "Uno Minda",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -4973,7 +5225,7 @@
         },
         {
           "symbol": "BAJAJ-AUTO",
-          "name": "Bajaj Auto Ltd.",
+          "name": "BAJAJ-AUTO",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -4981,7 +5233,7 @@
         },
         {
           "symbol": "ASHOKLEY",
-          "name": "Ashok Leyland Ltd.",
+          "name": "Ashok Leyland",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4989,7 +5241,7 @@
         },
         {
           "symbol": "BHARATFORG",
-          "name": "Bharat Forge Ltd.",
+          "name": "Bharat Forge",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -4997,7 +5249,7 @@
         },
         {
           "symbol": "BOSCHLTD",
-          "name": "Bosch Ltd.",
+          "name": "Bosch",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5005,7 +5257,7 @@
         },
         {
           "symbol": "EICHERMOT",
-          "name": "Eicher Motors Ltd.",
+          "name": "Eicher Motors",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5013,7 +5265,7 @@
         },
         {
           "symbol": "EXIDEIND",
-          "name": "Exide Industries Ltd.",
+          "name": "Exide Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5021,7 +5273,7 @@
         },
         {
           "symbol": "HEROMOTOCO",
-          "name": "Hero MotoCorp Ltd.",
+          "name": "Hero Motocorp",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5029,7 +5281,7 @@
         },
         {
           "symbol": "M&M",
-          "name": "Mahindra & Mahindra Ltd.",
+          "name": "M&M",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5037,7 +5289,7 @@
         },
         {
           "symbol": "MARUTI",
-          "name": "Maruti Suzuki India Ltd.",
+          "name": "Maruti Suzuki",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5045,7 +5297,7 @@
         },
         {
           "symbol": "MOTHERSON",
-          "name": "Samvardhana Motherson International Ltd.",
+          "name": "Samvardh. Mothe.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5053,7 +5305,7 @@
         },
         {
           "symbol": "SONACOMS",
-          "name": "Sona BLW Precision Forgings Ltd.",
+          "name": "Sona BLW Precis.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5061,7 +5313,7 @@
         },
         {
           "symbol": "TIINDIA",
-          "name": "Tube Investments of India Ltd.",
+          "name": "Tube Investments",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5069,7 +5321,7 @@
         },
         {
           "symbol": "TMPV",
-          "name": "Tata Motors Passenger Vehicles Ltd.",
+          "name": "Tata Motors PVeh",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5077,7 +5329,7 @@
         },
         {
           "symbol": "TVSMOTOR",
-          "name": "TVS Motor Company Ltd.",
+          "name": "TVS Motor Co.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5091,9 +5343,17 @@
       "index_name": "NIFTY CEMENT",
       "score": 9,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 9,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        9,
+        7,
+        9,
         9
       ],
       "ema": {
@@ -5201,12 +5461,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 6.2,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "GRASIM",
-          "name": "Grasim Industries Ltd.",
+          "name": "Grasim Inds",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -5214,7 +5478,7 @@
         },
         {
           "symbol": "NUVOCO",
-          "name": "Nuvoco Vistas Corporation Ltd.",
+          "name": "Nuvoco Vistas",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -5222,7 +5486,7 @@
         },
         {
           "symbol": "PRSMJOHNSN",
-          "name": "PRSMJOHNSN",
+          "name": "Prism Johnson",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -5230,7 +5494,7 @@
         },
         {
           "symbol": "ACC",
-          "name": "ACC Ltd.",
+          "name": "ACC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5238,7 +5502,7 @@
         },
         {
           "symbol": "AMBUJACEM",
-          "name": "Ambuja Cements Ltd.",
+          "name": "Ambuja Cements",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5246,7 +5510,7 @@
         },
         {
           "symbol": "BIRLACORPN",
-          "name": "BIRLACORPN",
+          "name": "Birla Corpn.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5254,7 +5518,7 @@
         },
         {
           "symbol": "DALBHARAT",
-          "name": "Dalmia Bharat Ltd.",
+          "name": "Dalmia BharatLtd",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5262,7 +5526,7 @@
         },
         {
           "symbol": "INDIACEM",
-          "name": "India Cements Ltd.",
+          "name": "India Cements",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5270,7 +5534,7 @@
         },
         {
           "symbol": "JKCEMENT",
-          "name": "J.K. Cement Ltd.",
+          "name": "J K Cements",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5278,7 +5542,7 @@
         },
         {
           "symbol": "JKLAKSHMI",
-          "name": "JKLAKSHMI",
+          "name": "JK Lakshmi Cem.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5286,7 +5550,7 @@
         },
         {
           "symbol": "JSWCEMENT",
-          "name": "JSW Cement Ltd.",
+          "name": "JSW Cement",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5294,7 +5558,7 @@
         },
         {
           "symbol": "ORIENTCEM",
-          "name": "ORIENTCEM",
+          "name": "Orient Cement",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5302,7 +5566,7 @@
         },
         {
           "symbol": "RAMCOCEM",
-          "name": "The Ramco Cements Ltd.",
+          "name": "The Ramco Cement",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5310,7 +5574,7 @@
         },
         {
           "symbol": "SHREECEM",
-          "name": "Shree Cement Ltd.",
+          "name": "Shree Cement",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5318,7 +5582,7 @@
         },
         {
           "symbol": "STARCEMENT",
-          "name": "STARCEMENT",
+          "name": "Star Cement",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5326,7 +5590,7 @@
         },
         {
           "symbol": "ULTRACEMCO",
-          "name": "UltraTech Cement Ltd.",
+          "name": "UltraTech Cem.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5340,9 +5604,17 @@
       "index_name": "NIFTY INSURANCE",
       "score": 7,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 7,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        10,
+        5,
+        7,
         7
       ],
       "ema": {
@@ -5448,12 +5720,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 8.3,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "GICRE",
-          "name": "General Insurance Corporation of India",
+          "name": "General Insuranc",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -5461,7 +5737,7 @@
         },
         {
           "symbol": "NIACL",
-          "name": "The New India Assurance Company Ltd.",
+          "name": "New India Assura",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -5469,7 +5745,7 @@
         },
         {
           "symbol": "CANHLIFE",
-          "name": "Canara HSBC Life Insurance Company Ltd.",
+          "name": "Canara HSBC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -5477,7 +5753,7 @@
         },
         {
           "symbol": "LICI",
-          "name": "Life Insurance Corporation of India",
+          "name": "Life Insurance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -5485,7 +5761,7 @@
         },
         {
           "symbol": "GODIGIT",
-          "name": "Go Digit General Insurance Ltd.",
+          "name": "Go Digit General",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5493,7 +5769,7 @@
         },
         {
           "symbol": "HDFCLIFE",
-          "name": "HDFC Life Insurance Company Ltd.",
+          "name": "HDFC Life Insur.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5501,7 +5777,7 @@
         },
         {
           "symbol": "ICICIGI",
-          "name": "ICICI Lombard General Insurance Company Ltd.",
+          "name": "ICICI Lombard",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5509,7 +5785,7 @@
         },
         {
           "symbol": "ICICIPRULI",
-          "name": "ICICI Prudential Life Insurance Company Ltd.",
+          "name": "ICICI Pru Life",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5517,7 +5793,7 @@
         },
         {
           "symbol": "MFSL",
-          "name": "Max Financial Services Ltd.",
+          "name": "Max Financial",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5525,7 +5801,7 @@
         },
         {
           "symbol": "NIVABUPA",
-          "name": "Niva Bupa Health Insurance Company Ltd.",
+          "name": "Niva Bupa Health",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5533,7 +5809,7 @@
         },
         {
           "symbol": "SBILIFE",
-          "name": "SBI Life Insurance Company Ltd.",
+          "name": "SBI Life Insuran",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5541,7 +5817,7 @@
         },
         {
           "symbol": "STARHEALTH",
-          "name": "Star Health and Allied Insurance Company Ltd.",
+          "name": "Star Health Insu",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5555,9 +5831,18 @@
       "index_name": "NIFTY INDIA CONSUMPTION",
       "score": 4,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 4,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        26,
+        16,
+        13,
+        4,
         4
       ],
       "ema": {
@@ -5570,7 +5855,7 @@
         "extended": false,
         "ema50": 11853.48,
         "above_50": false,
-        "ema200": 11708.14,
+        "ema200": 11717.5,
         "above_200": false,
         "bullish_stack": false
       },
@@ -5665,12 +5950,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 13.3,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "ADANIPOWER",
-          "name": "Adani Power Ltd.",
+          "name": "Adani Power",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -5678,7 +5967,7 @@
         },
         {
           "symbol": "DLF",
-          "name": "DLF Ltd.",
+          "name": "DLF",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -5686,7 +5975,7 @@
         },
         {
           "symbol": "INDHOTEL",
-          "name": "Indian Hotels Co. Ltd.",
+          "name": "Indian Hotels Co",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -5694,7 +5983,7 @@
         },
         {
           "symbol": "TATAPOWER",
-          "name": "Tata Power Co. Ltd.",
+          "name": "Tata Power Co.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -5702,7 +5991,7 @@
         },
         {
           "symbol": "BAJAJ-AUTO",
-          "name": "Bajaj Auto Ltd.",
+          "name": "BAJAJ-AUTO",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -5710,7 +5999,7 @@
         },
         {
           "symbol": "DIXON",
-          "name": "Dixon Technologies (India) Ltd.",
+          "name": "Dixon Technolog.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -5718,7 +6007,7 @@
         },
         {
           "symbol": "ETERNAL",
-          "name": "Eternal Ltd.",
+          "name": "Eternal",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
@@ -5726,7 +6015,7 @@
         },
         {
           "symbol": "APOLLOHOSP",
-          "name": "Apollo Hospitals Enterprise Ltd.",
+          "name": "Apollo Hospitals",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5734,7 +6023,7 @@
         },
         {
           "symbol": "ASIANPAINT",
-          "name": "Asian Paints Ltd.",
+          "name": "Asian Paints",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5742,7 +6031,7 @@
         },
         {
           "symbol": "BHARTIARTL",
-          "name": "Bharti Airtel Ltd.",
+          "name": "Bharti Airtel",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5750,7 +6039,7 @@
         },
         {
           "symbol": "BRITANNIA",
-          "name": "Britannia Industries Ltd.",
+          "name": "Britannia Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5758,7 +6047,7 @@
         },
         {
           "symbol": "DMART",
-          "name": "Avenue Supermarts Ltd.",
+          "name": "Avenue Super.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5766,7 +6055,7 @@
         },
         {
           "symbol": "EICHERMOT",
-          "name": "Eicher Motors Ltd.",
+          "name": "Eicher Motors",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5774,7 +6063,7 @@
         },
         {
           "symbol": "GODREJCP",
-          "name": "Godrej Consumer Products Ltd.",
+          "name": "Godrej Consumer",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5782,7 +6071,7 @@
         },
         {
           "symbol": "HAVELLS",
-          "name": "Havells India Ltd.",
+          "name": "Havells India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5790,7 +6079,7 @@
         },
         {
           "symbol": "HEROMOTOCO",
-          "name": "Hero MotoCorp Ltd.",
+          "name": "Hero Motocorp",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5798,7 +6087,7 @@
         },
         {
           "symbol": "HINDUNILVR",
-          "name": "Hindustan Unilever Ltd.",
+          "name": "Hind. Unilever",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5806,7 +6095,7 @@
         },
         {
           "symbol": "INDIGO",
-          "name": "InterGlobe Aviation Ltd.",
+          "name": "Interglobe Aviat",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5814,7 +6103,7 @@
         },
         {
           "symbol": "ITC",
-          "name": "ITC Ltd.",
+          "name": "ITC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5822,7 +6111,7 @@
         },
         {
           "symbol": "M&M",
-          "name": "Mahindra & Mahindra Ltd.",
+          "name": "M&M",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5830,7 +6119,7 @@
         },
         {
           "symbol": "MARUTI",
-          "name": "Maruti Suzuki India Ltd.",
+          "name": "Maruti Suzuki",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5838,7 +6127,7 @@
         },
         {
           "symbol": "MAXHEALTH",
-          "name": "Max Healthcare Institute Ltd.",
+          "name": "Max Healthcare",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5846,7 +6135,7 @@
         },
         {
           "symbol": "NAUKRI",
-          "name": "Info Edge (India) Ltd.",
+          "name": "Info Edg.(India)",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5854,7 +6143,7 @@
         },
         {
           "symbol": "NESTLEIND",
-          "name": "Nestle India Ltd.",
+          "name": "Nestle India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5862,7 +6151,7 @@
         },
         {
           "symbol": "TATACONSUM",
-          "name": "Tata Consumer Products Ltd.",
+          "name": "Tata Consumer",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5870,7 +6159,7 @@
         },
         {
           "symbol": "TITAN",
-          "name": "Titan Company Ltd.",
+          "name": "Titan Company",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5878,7 +6167,7 @@
         },
         {
           "symbol": "TRENT",
-          "name": "Trent Ltd.",
+          "name": "Trent",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5886,7 +6175,7 @@
         },
         {
           "symbol": "TVSMOTOR",
-          "name": "TVS Motor Company Ltd.",
+          "name": "TVS Motor Co.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5894,7 +6183,7 @@
         },
         {
           "symbol": "UNITDSPR",
-          "name": "United Spirits Ltd.",
+          "name": "United Spirits",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5902,7 +6191,7 @@
         },
         {
           "symbol": "VBL",
-          "name": "Varun Beverages Ltd.",
+          "name": "Varun Beverages",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -5916,9 +6205,17 @@
       "index_name": "NIFTY POWER",
       "score": 3,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 3,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        1,
+        1,
+        3,
         3
       ],
       "ema": {
@@ -6024,12 +6321,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 4.8,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "ACMESOLAR",
-          "name": "ACME Solar Holdings Ltd.",
+          "name": "ACME Solar Hold.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -6037,7 +6338,7 @@
         },
         {
           "symbol": "ADANIPOWER",
-          "name": "Adani Power Ltd.",
+          "name": "Adani Power",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -6045,7 +6346,7 @@
         },
         {
           "symbol": "TORNTPOWER",
-          "name": "Torrent Power Ltd.",
+          "name": "Torrent Power",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
@@ -6053,7 +6354,7 @@
         },
         {
           "symbol": "JSWENERGY",
-          "name": "JSW Energy Ltd.",
+          "name": "JSW Energy",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -6061,7 +6362,7 @@
         },
         {
           "symbol": "NHPC",
-          "name": "NHPC Ltd.",
+          "name": "NHPC Ltd",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -6069,7 +6370,7 @@
         },
         {
           "symbol": "NLCINDIA",
-          "name": "NLC India Ltd.",
+          "name": "NLC India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -6077,7 +6378,7 @@
         },
         {
           "symbol": "TATAPOWER",
-          "name": "Tata Power Co. Ltd.",
+          "name": "Tata Power Co.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
@@ -6085,7 +6386,7 @@
         },
         {
           "symbol": "ADANIENSOL",
-          "name": "Adani Energy Solutions Ltd.",
+          "name": "Adani Energy Sol",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6093,7 +6394,7 @@
         },
         {
           "symbol": "ADANIGREEN",
-          "name": "Adani Green Energy Ltd.",
+          "name": "Adani Green",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6101,7 +6402,7 @@
         },
         {
           "symbol": "CESC",
-          "name": "CESC Ltd.",
+          "name": "CESC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6117,7 +6418,7 @@
         },
         {
           "symbol": "JPPOWER",
-          "name": "Jaiprakash Power Ventures Ltd.",
+          "name": "JP Power Ven.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6125,7 +6426,7 @@
         },
         {
           "symbol": "KPIGREEN",
-          "name": "KPIGREEN",
+          "name": "KPI Green Energy",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6133,7 +6434,7 @@
         },
         {
           "symbol": "NAVA",
-          "name": "Nava Ltd.",
+          "name": "Nava",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6141,7 +6442,7 @@
         },
         {
           "symbol": "NTPC",
-          "name": "NTPC Ltd.",
+          "name": "NTPC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6149,7 +6450,7 @@
         },
         {
           "symbol": "NTPCGREEN",
-          "name": "NTPC Green Energy Ltd.",
+          "name": "NTPC Green Ene.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6157,7 +6458,7 @@
         },
         {
           "symbol": "POWERGRID",
-          "name": "Power Grid Corporation of India Ltd.",
+          "name": "Power Grid Corpn",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6165,7 +6466,7 @@
         },
         {
           "symbol": "PTC",
-          "name": "PTC",
+          "name": "PTC India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6173,7 +6474,7 @@
         },
         {
           "symbol": "RPOWER",
-          "name": "Reliance Power Ltd.",
+          "name": "Reliance Power",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6181,7 +6482,7 @@
         },
         {
           "symbol": "RTNPOWER",
-          "name": "RTNPOWER",
+          "name": "RattanIndia Pow.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6189,7 +6490,7 @@
         },
         {
           "symbol": "SJVN",
-          "name": "SJVN Ltd.",
+          "name": "SJVN",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6203,9 +6504,18 @@
       "index_name": "NIFTY FMCG",
       "score": 0,
       "score_delta": {
-        "available": false
+        "available": true,
+        "delta": 0,
+        "prev_score": 0,
+        "prev_date": "2026-09-02",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
       },
       "score_history": [
+        1,
+        1,
+        0,
+        0,
         0
       ],
       "ema": {
@@ -6216,9 +6526,9 @@
         "ema21_rising": false,
         "pct_above_21": -3.18,
         "extended": false,
-        "ema50": 48300.26,
+        "ema50": 48300.25,
         "above_50": false,
-        "ema200": 50437.23,
+        "ema200": 50415.46,
         "above_200": false,
         "bullish_stack": false
       },
@@ -6313,12 +6623,16 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 13.3,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
           "symbol": "BRITANNIA",
-          "name": "Britannia Industries Ltd.",
+          "name": "Britannia Inds.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6326,7 +6640,7 @@
         },
         {
           "symbol": "COLPAL",
-          "name": "Colgate Palmolive (India) Ltd.",
+          "name": "Colgate-Palmoliv",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6334,7 +6648,7 @@
         },
         {
           "symbol": "DABUR",
-          "name": "Dabur India Ltd.",
+          "name": "Dabur India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6342,7 +6656,7 @@
         },
         {
           "symbol": "EMAMILTD",
-          "name": "Emami Ltd.",
+          "name": "Emami",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6350,7 +6664,7 @@
         },
         {
           "symbol": "GODREJCP",
-          "name": "Godrej Consumer Products Ltd.",
+          "name": "Godrej Consumer",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6358,7 +6672,7 @@
         },
         {
           "symbol": "HINDUNILVR",
-          "name": "Hindustan Unilever Ltd.",
+          "name": "Hind. Unilever",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6366,7 +6680,7 @@
         },
         {
           "symbol": "ITC",
-          "name": "ITC Ltd.",
+          "name": "ITC",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6374,7 +6688,7 @@
         },
         {
           "symbol": "MARICO",
-          "name": "Marico Ltd.",
+          "name": "Marico",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6382,7 +6696,7 @@
         },
         {
           "symbol": "NESTLEIND",
-          "name": "Nestle India Ltd.",
+          "name": "Nestle India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6390,7 +6704,7 @@
         },
         {
           "symbol": "PATANJALI",
-          "name": "Patanjali Foods Ltd.",
+          "name": "Patanjali Foods",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6398,7 +6712,7 @@
         },
         {
           "symbol": "RADICO",
-          "name": "Radico Khaitan Ltd",
+          "name": "Radico Khaitan",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6406,7 +6720,7 @@
         },
         {
           "symbol": "TATACONSUM",
-          "name": "Tata Consumer Products Ltd.",
+          "name": "Tata Consumer",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6414,7 +6728,7 @@
         },
         {
           "symbol": "UBL",
-          "name": "United Breweries Ltd.",
+          "name": "United Breweries",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6422,7 +6736,7 @@
         },
         {
           "symbol": "UNITDSPR",
-          "name": "United Spirits Ltd.",
+          "name": "United Spirits",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
@@ -6430,7 +6744,7 @@
         },
         {
           "symbol": "VBL",
-          "name": "Varun Beverages Ltd.",
+          "name": "Varun Beverages",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
