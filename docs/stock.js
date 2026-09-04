@@ -36,31 +36,30 @@ function fmtPrice(v) {
 }
 
 function initTradingViewChart(symbol) {
-  if (typeof TradingView === "undefined") return; // tv.js failed to load -- fail quietly, rest of the page still works
+  if (typeof TradingView === "undefined") return;
+
   new TradingView.widget({
-    width: "100%",
-    height: "100%",
+    autosize: true,
+
     symbol: `NSE:${symbol}`,
     interval: "D",
     timezone: "Asia/Kolkata",
     theme: "dark",
     style: "1",
     locale: "en",
+
     toolbar_bg: "#0c0f13",
     enable_publishing: false,
     hide_top_toolbar: false,
     allow_symbol_change: false,
-    // 10/21/50 EMA overlaid on price, plus volume as a subplot below --
-    // matches the same EMA periods used everywhere else on this site.
-    // If these don't render correctly, "MAExp@tv-basicstudies" is the
-    // one piece of this config that's convention rather than something
-    // independently verified against current TradingView docs.
+
     studies: [
       { id: "MAExp@tv-basicstudies", inputs: { length: 10 } },
       { id: "MAExp@tv-basicstudies", inputs: { length: 21 } },
       { id: "MAExp@tv-basicstudies", inputs: { length: 50 } },
       "Volume@tv-basicstudies",
     ],
+
     container_id: "tv-chart-container",
   });
 }
