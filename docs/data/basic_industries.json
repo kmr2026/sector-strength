@@ -13,15 +13,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 887.22,
-        "ema21": 872.07,
+        "price": 887.19,
+        "ema21": 872.05,
         "above_21": true,
         "ema21_rising": false,
         "pct_above_21": 1.74,
         "extended": false,
-        "ema50": 859.88,
+        "ema50": 859.86,
         "above_50": true,
-        "ema200": 848.0,
+        "ema200": 847.93,
         "above_200": true,
         "bullish_stack": true
       },
@@ -46,7 +46,7 @@
           0.0325,
           0.0329,
           0.0336,
-          0.0343,
+          0.0342,
           0.0332,
           0.0333,
           0.0331,
@@ -94,7 +94,7 @@
           0.0359,
           0.0364,
           0.0363,
-          0.0366,
+          0.0365,
           0.0363,
           0.0362,
           0.0364,
@@ -123,7 +123,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 9.1,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -230,15 +234,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 1062.47,
-        "ema21": 1056.8,
+        "price": 1062.5,
+        "ema21": 1056.83,
         "above_21": true,
         "ema21_rising": false,
         "pct_above_21": 0.54,
         "extended": false,
-        "ema50": 1048.27,
+        "ema50": 1048.3,
         "above_50": true,
-        "ema200": 1012.85,
+        "ema200": 1012.84,
         "above_200": true,
         "bullish_stack": true
       },
@@ -340,7 +344,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 5.9,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -495,15 +503,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 1021.85,
-        "ema21": 1020.75,
+        "price": 1021.91,
+        "ema21": 1020.82,
         "above_21": true,
         "ema21_rising": false,
         "pct_above_21": 0.11,
         "extended": false,
-        "ema50": 1010.26,
+        "ema50": 1010.32,
         "above_50": true,
-        "ema200": 977.08,
+        "ema200": 977.11,
         "above_200": true,
         "bullish_stack": true
       },
@@ -550,7 +558,7 @@
           0.0422,
           0.042,
           0.0421,
-          0.0417,
+          0.0418,
           0.0419,
           0.042,
           0.0417,
@@ -575,7 +583,7 @@
           0.0419,
           0.0421,
           0.042,
-          0.042,
+          0.0421,
           0.0421,
           0.0421,
           0.0424,
@@ -605,7 +613,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 14.3,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -736,13 +748,13 @@
       ],
       "ema": {
         "available": true,
-        "price": 1192.28,
-        "ema21": 1187.8,
+        "price": 1192.31,
+        "ema21": 1187.83,
         "above_21": true,
         "ema21_rising": true,
         "pct_above_21": 0.38,
         "extended": false,
-        "ema50": 1171.48,
+        "ema50": 1171.5,
         "above_50": true,
         "ema200": 1089.07,
         "above_200": true,
@@ -781,7 +793,7 @@
           0.0495,
           0.0493,
           0.049,
-          0.048,
+          0.0481,
           0.0481,
           0.0473,
           0.0475,
@@ -846,7 +858,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 25.4,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1369,15 +1385,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 1131.92,
-        "ema21": 1125.05,
+        "price": 1131.97,
+        "ema21": 1125.09,
         "above_21": true,
         "ema21_rising": true,
         "pct_above_21": 0.61,
         "extended": false,
-        "ema50": 1104.27,
+        "ema50": 1104.31,
         "above_50": true,
-        "ema200": 1025.94,
+        "ema200": 1025.95,
         "above_200": true,
         "bullish_stack": true
       },
@@ -1415,7 +1431,7 @@
           0.0449,
           0.045,
           0.0451,
-          0.0448,
+          0.0449,
           0.0446,
           0.045,
           0.0455,
@@ -1444,7 +1460,7 @@
           0.0465,
           0.0462,
           0.0464,
-          0.0461,
+          0.0462,
           0.0463,
           0.0468,
           0.0466,
@@ -1479,7 +1495,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 33.3,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -1882,15 +1902,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 1031.53,
-        "ema21": 1016.06,
+        "price": 1031.74,
+        "ema21": 1016.26,
         "above_21": true,
         "ema21_rising": true,
         "pct_above_21": 1.52,
         "extended": false,
-        "ema50": 1006.63,
+        "ema50": 1006.84,
         "above_50": true,
-        "ema200": 950.8,
+        "ema200": 950.91,
         "above_200": true,
         "bullish_stack": true
       },
@@ -1916,29 +1936,29 @@
           0.0407,
           0.041,
           0.0408,
-          0.0405,
+          0.0406,
           0.0434,
           0.0433,
           0.043,
           0.0431,
           0.0445,
-          0.0438,
+          0.0439,
           0.043,
           0.0437,
           0.0445,
           0.0444,
           0.0445,
           0.0439,
-          0.0432,
+          0.0433,
           0.0428,
           0.043,
           0.0423,
           0.0431,
-          0.0428,
+          0.0429,
           0.0429,
           0.0428,
           0.0423,
-          0.0422,
+          0.0423,
           0.0422,
           0.0423,
           0.042,
@@ -1964,8 +1984,8 @@
           0.0422,
           0.0421,
           0.0419,
-          0.0417,
-          0.042,
+          0.0418,
+          0.0421,
           0.0423,
           0.0421,
           0.0425,
@@ -1992,7 +2012,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 40.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -2051,15 +2075,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 986.29,
-        "ema21": 985.68,
+        "price": 986.3,
+        "ema21": 985.69,
         "above_21": true,
         "ema21_rising": false,
         "pct_above_21": 0.06,
         "extended": false,
-        "ema50": 979.94,
+        "ema50": 979.95,
         "above_50": true,
-        "ema200": 966.43,
+        "ema200": 966.41,
         "above_200": true,
         "bullish_stack": true
       },
@@ -2161,7 +2185,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 13.9,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -2988,15 +3016,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 837.37,
-        "ema21": 841.22,
+        "price": 837.42,
+        "ema21": 841.28,
         "above_21": false,
         "ema21_rising": true,
         "pct_above_21": -0.46,
         "extended": false,
-        "ema50": 827.12,
+        "ema50": 827.18,
         "above_50": true,
-        "ema200": 841.25,
+        "ema200": 841.26,
         "above_200": false,
         "bullish_stack": false
       },
@@ -3043,7 +3071,7 @@
           0.0337,
           0.0335,
           0.0337,
-          0.0334,
+          0.0335,
           0.0335,
           0.0333,
           0.033,
@@ -3098,7 +3126,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 7.4,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3333,15 +3365,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 1061.45,
-        "ema21": 1070.02,
+        "price": 1061.08,
+        "ema21": 1069.65,
         "above_21": false,
         "ema21_rising": true,
         "pct_above_21": -0.8,
         "extended": false,
-        "ema50": 1069.2,
+        "ema50": 1068.82,
         "above_50": false,
-        "ema200": 1015.44,
+        "ema200": 1015.06,
         "above_200": true,
         "bullish_stack": false
       },
@@ -3359,7 +3391,7 @@
       },
       "rs": {
         "available": true,
-        "rs_ratio": 0.0445,
+        "rs_ratio": 0.0444,
         "rs_above_ema": true,
         "rs_rising_1w": true,
         "history": [
@@ -3387,9 +3419,9 @@
           0.0456,
           0.0456,
           0.0458,
-          0.0459,
+          0.0458,
           0.0447,
-          0.0448,
+          0.0447,
           0.0452,
           0.045,
           0.0444,
@@ -3422,7 +3454,7 @@
           0.0449,
           0.0444,
           0.0445,
-          0.0445
+          0.0444
         ]
       },
       "rs_rating": 78,
@@ -3443,7 +3475,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 10.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3542,15 +3578,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 913.15,
-        "ema21": 915.78,
+        "price": 913.16,
+        "ema21": 915.8,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -0.29,
         "extended": false,
-        "ema50": 901.06,
+        "ema50": 901.07,
         "above_50": true,
-        "ema200": 896.48,
+        "ema200": 896.49,
         "above_200": true,
         "bullish_stack": false
       },
@@ -3568,7 +3604,7 @@
       },
       "rs": {
         "available": true,
-        "rs_ratio": 0.0382,
+        "rs_ratio": 0.0383,
         "rs_above_ema": true,
         "rs_rising_1w": false,
         "history": [
@@ -3631,7 +3667,7 @@
           0.0382,
           0.038,
           0.038,
-          0.0382
+          0.0383
         ]
       },
       "rs_rating": 27,
@@ -3652,7 +3688,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 17.2,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -3903,15 +3943,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 1093.22,
-        "ema21": 1104.49,
+        "price": 1093.41,
+        "ema21": 1104.68,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -1.02,
         "extended": false,
-        "ema50": 1086.14,
+        "ema50": 1086.33,
         "above_50": true,
-        "ema200": 1020.01,
+        "ema200": 1020.14,
         "above_200": true,
         "bullish_stack": false
       },
@@ -3942,11 +3982,11 @@
           0.0429,
           0.0432,
           0.0429,
-          0.0427,
+          0.0428,
           0.0423,
           0.0423,
           0.0425,
-          0.0431,
+          0.0432,
           0.0433,
           0.0427,
           0.0423,
@@ -3954,11 +3994,11 @@
           0.0417,
           0.0426,
           0.0426,
-          0.0438,
+          0.0439,
           0.044,
           0.0437,
           0.0449,
-          0.0445,
+          0.0446,
           0.0449,
           0.0452,
           0.0446,
@@ -3978,10 +4018,10 @@
           0.0445,
           0.0446,
           0.0452,
-          0.0454,
+          0.0455,
           0.0459,
           0.0466,
-          0.0461,
+          0.0462,
           0.0468,
           0.0468,
           0.0471,
@@ -4013,7 +4053,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4072,15 +4116,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 792.01,
-        "ema21": 792.04,
+        "price": 791.94,
+        "ema21": 791.97,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -0.0,
         "extended": false,
-        "ema50": 800.45,
+        "ema50": 800.37,
         "above_50": false,
-        "ema200": 830.29,
+        "ema200": 830.18,
         "above_200": false,
         "bullish_stack": false
       },
@@ -4123,7 +4167,7 @@
           0.0341,
           0.0343,
           0.0344,
-          0.0344,
+          0.0343,
           0.0339,
           0.034,
           0.0338,
@@ -4143,7 +4187,7 @@
           0.0327,
           0.0327,
           0.0329,
-          0.0329,
+          0.0328,
           0.0327,
           0.0324,
           0.0324,
@@ -4151,7 +4195,7 @@
           0.0325,
           0.0327,
           0.0324,
-          0.0325,
+          0.0324,
           0.0327,
           0.0327,
           0.0326,
@@ -4182,7 +4226,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 15.4,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4305,15 +4353,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 1320.82,
-        "ema21": 1326.94,
+        "price": 1321.19,
+        "ema21": 1327.31,
         "above_21": false,
         "ema21_rising": true,
         "pct_above_21": -0.46,
         "extended": false,
-        "ema50": 1323.46,
+        "ema50": 1323.83,
         "above_50": false,
-        "ema200": 1281.26,
+        "ema200": 1281.61,
         "above_200": true,
         "bullish_stack": false
       },
@@ -4344,10 +4392,10 @@
           0.0561,
           0.0561,
           0.0549,
-          0.0542,
+          0.0543,
           0.0532,
           0.0538,
-          0.0538,
+          0.0539,
           0.0532,
           0.0534,
           0.0537,
@@ -4362,13 +4410,13 @@
           0.0535,
           0.0526,
           0.053,
-          0.0535,
-          0.0535,
+          0.0536,
+          0.0536,
           0.0537,
           0.0538,
           0.0536,
-          0.053,
-          0.0535,
+          0.0531,
+          0.0536,
           0.0532,
           0.0534,
           0.053,
@@ -4377,12 +4425,12 @@
           0.0544,
           0.0545,
           0.0546,
-          0.0543,
+          0.0544,
           0.0548,
           0.0546,
           0.0541,
           0.0549,
-          0.0545,
+          0.0546,
           0.0544,
           0.0543,
           0.0546,
@@ -4415,7 +4463,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 11.1,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4578,15 +4630,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 922.65,
-        "ema21": 932.22,
+        "price": 922.58,
+        "ema21": 932.14,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -1.03,
         "extended": false,
-        "ema50": 928.11,
+        "ema50": 928.03,
         "above_50": false,
-        "ema200": 907.29,
+        "ema200": 907.22,
         "above_200": true,
         "bullish_stack": false
       },
@@ -4632,13 +4684,13 @@
           0.0382,
           0.0383,
           0.0385,
-          0.039,
+          0.0389,
           0.0383,
           0.0386,
           0.0392,
           0.0391,
           0.0388,
-          0.039,
+          0.0389,
           0.0391,
           0.0387,
           0.0389,
@@ -4688,7 +4740,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 11.5,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -4915,15 +4971,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 893.99,
-        "ema21": 908.29,
+        "price": 893.9,
+        "ema21": 908.2,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -1.57,
         "extended": false,
-        "ema50": 900.35,
+        "ema50": 900.26,
         "above_50": false,
-        "ema200": 888.85,
+        "ema200": 888.76,
         "above_200": true,
         "bullish_stack": false
       },
@@ -5025,7 +5081,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 25.0,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5172,15 +5232,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 1180.58,
-        "ema21": 1201.73,
+        "price": 1180.67,
+        "ema21": 1201.82,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -1.76,
         "extended": false,
-        "ema50": 1183.9,
+        "ema50": 1183.99,
         "above_50": false,
-        "ema200": 1120.87,
+        "ema200": 1120.93,
         "above_200": true,
         "bullish_stack": false
       },
@@ -5213,7 +5273,7 @@
           0.049,
           0.0473,
           0.0475,
-          0.047,
+          0.0471,
           0.0477,
           0.0476,
           0.0482,
@@ -5282,7 +5342,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 10.5,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5605,13 +5669,13 @@
       ],
       "ema": {
         "available": true,
-        "price": 860.35,
-        "ema21": 878.24,
+        "price": 860.33,
+        "ema21": 878.22,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -2.04,
         "extended": false,
-        "ema50": 885.88,
+        "ema50": 885.86,
         "above_50": false,
         "ema200": 907.4,
         "above_200": false,
@@ -5715,7 +5779,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 9.1,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -5822,15 +5890,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 915.58,
-        "ema21": 932.23,
+        "price": 915.76,
+        "ema21": 932.42,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -1.79,
         "extended": false,
-        "ema50": 950.48,
+        "ema50": 950.67,
         "above_50": false,
-        "ema200": 941.64,
+        "ema200": 941.77,
         "above_200": false,
         "bullish_stack": false
       },
@@ -5854,12 +5922,12 @@
         "history": [
           0.0416,
           0.0415,
-          0.0413,
+          0.0414,
           0.0412,
           0.0408,
           0.0412,
           0.0414,
-          0.0419,
+          0.042,
           0.0419,
           0.0414,
           0.0411,
@@ -5885,7 +5953,7 @@
           0.0406,
           0.0403,
           0.0398,
-          0.0395,
+          0.0396,
           0.0393,
           0.0395,
           0.0393,
@@ -5893,7 +5961,7 @@
           0.0394,
           0.0391,
           0.0391,
-          0.0389,
+          0.039,
           0.0389,
           0.0388,
           0.0388,
@@ -5932,7 +6000,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 5.9,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -6087,15 +6159,15 @@
       ],
       "ema": {
         "available": true,
-        "price": 841.79,
-        "ema21": 856.58,
+        "price": 842.08,
+        "ema21": 856.87,
         "above_21": false,
         "ema21_rising": false,
         "pct_above_21": -1.73,
         "extended": false,
-        "ema50": 860.05,
+        "ema50": 860.35,
         "above_50": false,
-        "ema200": 869.05,
+        "ema200": 869.32,
         "above_200": false,
         "bullish_stack": false
       },
@@ -6118,12 +6190,12 @@
         "rs_rising_1w": false,
         "history": [
           0.0363,
-          0.036,
+          0.0361,
           0.0357,
-          0.0357,
+          0.0358,
           0.0355,
           0.0355,
-          0.0355,
+          0.0356,
           0.0356,
           0.0358,
           0.0355,
@@ -6135,7 +6207,7 @@
           0.0361,
           0.0362,
           0.0361,
-          0.0361,
+          0.0362,
           0.0365,
           0.0362,
           0.0361,
@@ -6144,18 +6216,18 @@
           0.0358,
           0.0354,
           0.0358,
-          0.0358,
+          0.0359,
           0.0362,
           0.036,
           0.0363,
           0.0363,
-          0.036,
+          0.0361,
           0.0362,
           0.036,
           0.0357,
           0.0357,
           0.0357,
-          0.0356,
+          0.0357,
           0.0356,
           0.0357,
           0.0357,
@@ -6166,7 +6238,7 @@
           0.0355,
           0.0355,
           0.0355,
-          0.0356,
+          0.0357,
           0.0353,
           0.0355,
           0.0354,
@@ -6197,7 +6269,11 @@
         "band_pct": 5.0
       },
       "high52_delta": {
-        "available": false
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 7.1,
+        "prev_date": "2026-09-03",
+        "direction": "flat"
       },
       "stocks": [
         {
