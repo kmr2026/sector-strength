@@ -1,5 +1,17 @@
 [
   {
+    "date": "2026-09-04",
+    "pct_above_10ema": 44.63,
+    "pct_above_21ema": 44.06,
+    "pct_above_50ema": 48.33,
+    "pct_above_200ema": 49.19,
+    "pct_4up": 7.33,
+    "pct_4down": 2.2,
+    "new_highs": 138,
+    "new_lows": 56,
+    "net_new_highs": 82
+  },
+  {
     "date": "2026-09-03",
     "pct_above_10ema": 40.02,
     "pct_above_21ema": 40.49,
@@ -3106,17 +3118,5 @@
     "new_highs": 173,
     "new_lows": 116,
     "net_new_highs": 57
-  },
-  {
-    "date": "2025-09-04",
-    "pct_above_10ema": 50.41,
-    "pct_above_21ema": 43.87,
-    "pct_above_50ema": null,
-    "pct_above_200ema": null,
-    "pct_4up": 2.54,
-    "pct_4down": 2.17,
-    "new_highs": 149,
-    "new_lows": 104,
-    "net_new_highs": 45
   }
 ]
