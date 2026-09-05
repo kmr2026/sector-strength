@@ -51,6 +51,8 @@ function initTradingViewChart(symbol) {
     toolbar_bg: "#0c0f13",
     enable_publishing: false,
     hide_top_toolbar: false,
+    hide_side_toolbar: false,
+    withdateranges: true,
     allow_symbol_change: false,
 
     studies: [
@@ -61,6 +63,37 @@ function initTradingViewChart(symbol) {
     ],
 
     container_id: "tv-chart-container",
+  });
+
+  initChartFullscreenButton();
+}
+
+// Adds a fullscreen toggle button over the chart wrapper. Uses the
+// browser Fullscreen API on .sd-chart-wrap itself (not just the
+// TradingView iframe), so it fills the whole screen the same way the
+// native tradingview.com fullscreen control does.
+function initChartFullscreenButton() {
+  const wrap = document.querySelector(".sd-chart-wrap");
+  if (!wrap || document.getElementById("chart-fullscreen-btn")) return;
+
+  const btn = document.createElement("button");
+  btn.id = "chart-fullscreen-btn";
+  btn.className = "chart-fullscreen-btn";
+  btn.title = "Fullscreen";
+  btn.innerHTML = "&#9974;";
+  btn.addEventListener("click", () => {
+    if (!document.fullscreenElement) {
+      wrap.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
+  });
+  wrap.appendChild(btn);
+
+  document.addEventListener("fullscreenchange", () => {
+    const isFs = document.fullscreenElement === wrap;
+    btn.innerHTML = isFs ? "&#10539;" : "&#9974;";
+    btn.title = isFs ? "Exit fullscreen" : "Fullscreen";
   });
 }
 
