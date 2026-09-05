@@ -82,6 +82,19 @@ LEAF_LINK_RE = re.compile(r"^/market/IN\d{2}/IN\d{4}/IN\d{6}/IN\d{9}/$")
 COMPANY_LINK_RE = re.compile(r"^/company/([A-Za-z0-9]+)/")
 RESULTS_COUNT_RE = re.compile(r"(\d+) results found: Showing page \d+ of (\d+)")
 
+# Every leaf page's breadcrumb nav links back up through the same 4-tier
+# scheme as LEAF_LINK_RE, one segment at a time -- e.g. for Refineries &
+# Marketing (IN03/IN0301/IN030103/IN030103001), the breadcrumb is
+# Industries > Energy (IN03) > Oil, Gas & Consumable Fuels (IN0301) >
+# Petroleum Products (IN030103) > Refineries & Marketing (leaf, no link).
+# This is NSE's real Macro-Economic Sector / Sector / Industry tier, with
+# actual names -- confirmed by fetching a live leaf page and reading the
+# breadcrumb HTML directly, not guessed. No separate request needed: it's
+# on the exact same page this script already fetches for company data.
+MACRO_LINK_RE = re.compile(r"^/market/IN\d{2}/$")
+SECTOR_LINK_RE = re.compile(r"^/market/IN\d{2}/IN\d{4}/$")
+INDUSTRY_LINK_RE = re.compile(r"^/market/IN\d{2}/IN\d{4}/IN\d{6}/$")
+
 
 def _path_only(href: str) -> str:
     """Normalizes an href to just its path, whether the real page uses
@@ -91,6 +104,24 @@ def _path_only(href: str) -> str:
     if href.startswith("http"):
         return urlsplit(href).path
     return href
+
+
+def _extract_breadcrumb(soup: BeautifulSoup) -> tuple[str | None, str | None, str | None]:
+    """Returns (macro, sector, industry) names from the page's breadcrumb
+    nav -- see MACRO_LINK_RE/SECTOR_LINK_RE/INDUSTRY_LINK_RE above."""
+    macro = sector = industry = None
+    for a in soup.find_all("a", href=True):
+        path = _path_only(a["href"])
+        text = a.get_text(strip=True)
+        if not text:
+            continue
+        if MACRO_LINK_RE.match(path):
+            macro = text
+        elif SECTOR_LINK_RE.match(path):
+            sector = text
+        elif INDUSTRY_LINK_RE.match(path):
+            industry = text
+    return macro, sector, industry
 
 
 def make_session() -> requests.Session:
@@ -169,11 +200,15 @@ def _find_column_index(header_row, *name_fragments: str) -> int | None:
     return None
 
 
-def fetch_industry_companies(session: requests.Session, leaf_url: str) -> list[tuple[str, str, float | None, float | None]] | None:
-    """Returns [(symbol, company_name, market_cap_cr, shares_outstanding), ...]
-    across all pages of one industry, or None if it couldn't be fetched
-    reliably (caller should treat this as 'try again later', not 'zero
-    companies').
+def fetch_industry_companies(session: requests.Session, leaf_url: str) -> tuple[list[tuple[str, str, float | None, float | None]], tuple[str | None, str | None, str | None]] | None:
+    """Returns ([(symbol, company_name, market_cap_cr, shares_outstanding), ...],
+    (macro, sector, industry)) across all pages of one industry, or None if
+    it couldn't be fetched reliably (caller should treat this as 'try again
+    later', not 'zero companies').
+
+    macro/sector/industry come from page 1's breadcrumb (see
+    _extract_breadcrumb) -- same for every company in this leaf industry,
+    so only read once rather than re-parsed per page.
 
     market_cap_cr and shares_outstanding both come from the SAME results
     table as the company links -- screener.in's default columns already
@@ -195,6 +230,7 @@ def fetch_industry_companies(session: requests.Session, leaf_url: str) -> list[t
     page = 1
     total_pages = 1
     expected_count = None
+    breadcrumb = (None, None, None)
 
     while page <= total_pages:
         url = f"{BASE}{leaf_url}?limit=50&page={page}"
@@ -207,6 +243,7 @@ def fetch_industry_companies(session: requests.Session, leaf_url: str) -> list[t
             if m:
                 expected_count = int(m.group(1))
                 total_pages = int(m.group(2))
+            breadcrumb = _extract_breadcrumb(soup)
 
         table = None
         mcap_idx = cmp_idx = None
@@ -264,7 +301,7 @@ def fetch_industry_companies(session: requests.Session, leaf_url: str) -> list[t
 
     # raw_link_count > 0 but companies is empty means every match was a
     # BSE-only code -- a legitimate (if unusual) result, not a failure.
-    return companies
+    return companies, breadcrumb
 
 
 def get_industries_missing_shares(conn) -> set[str]:
@@ -330,24 +367,53 @@ def run(force: bool = False, backfill_missing: bool = False):
         if not force and name in already_done and not (backfill_missing and name in missing_shares):
             continue
 
-        companies = fetch_industry_companies(session, leaf_url)
-        if companies is None:
+        result = fetch_industry_companies(session, leaf_url)
+        if result is None:
             print(f"  [{i}/{len(industries)}] {name}: FAILED, will need a retry")
             failed.append(name)
             _sleep()
             continue
+        companies, (macro, sector, industry) = result
 
-        print(f"  [{i}/{len(industries)}] {name}: {len(companies)} companies")
+        print(f"  [{i}/{len(industries)}] {name}: {len(companies)} companies"
+              + (f" -- {macro} > {sector} > {industry}" if sector else ""))
         now = dt.datetime.now().isoformat()
-        rows = [(sym, name, cname, mcap, shares, now) for sym, cname, mcap, shares in companies]
+        rows = [(sym, macro, sector, industry, name, cname, mcap, shares, now) for sym, cname, mcap, shares in companies]
 
         with get_conn() as conn:
-            conn.execute("DELETE FROM basic_industry_map WHERE basic_industry = ?", (name,))
+            # Only remove symbols that are no longer in this industry's
+            # current company list -- a blind "DELETE WHERE basic_industry
+            # = name" followed by INSERT OR REPLACE would silently wipe
+            # sector/macro/industry (and shares_outstanding, if this ever
+            # ran with an incomplete companies list) for every symbol that's
+            # STILL in the industry, since REPLACE resets every column not
+            # in this statement. This was discovered because it was doing
+            # exactly that -- classify_industries.py/_playwright.py's sector
+            # data was getting silently erased every time this script re-ran.
+            current_symbols = [sym for sym, *_ in companies]
+            if current_symbols:
+                placeholders = ",".join("?" for _ in current_symbols)
+                conn.execute(
+                    f"DELETE FROM basic_industry_map WHERE basic_industry = ? "
+                    f"AND symbol NOT IN ({placeholders})",
+                    (name, *current_symbols),
+                )
+            else:
+                conn.execute("DELETE FROM basic_industry_map WHERE basic_industry = ?", (name,))
             if rows:
                 conn.executemany(
-                    """INSERT OR REPLACE INTO basic_industry_map
-                       (symbol, basic_industry, company_name, market_cap_cr, shares_outstanding, classified_at)
-                       VALUES (?, ?, ?, ?, ?, ?)""",
+                    """INSERT INTO basic_industry_map
+                       (symbol, macro, sector, industry, basic_industry, company_name, market_cap_cr, shares_outstanding, classified_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                       ON CONFLICT(symbol) DO UPDATE SET
+                         macro=excluded.macro,
+                         sector=excluded.sector,
+                         industry=excluded.industry,
+                         basic_industry=excluded.basic_industry,
+                         company_name=excluded.company_name,
+                         market_cap_cr=excluded.market_cap_cr,
+                         shares_outstanding=excluded.shares_outstanding,
+                         classified_at=excluded.classified_at""",
                     rows,
                 )
             else:
@@ -392,10 +458,12 @@ def debug():
     if industries:
         name, url = industries[0]
         print(f"\nFetching sample industry: {name}")
-        companies = fetch_industry_companies(session, url)
-        if companies is None:
+        result = fetch_industry_companies(session, url)
+        if result is None:
             print("  FAILED to fetch reliably")
         else:
+            companies, (macro, sector, industry) = result
+            print(f"Breadcrumb: {macro} > {sector} > {industry} > {name}")
             print(f"Found {len(companies)} companies:")
             for sym, cname, mcap, shares in companies[:10]:
                 print(f"  {sym}: {cname} (mcap@scrape: {mcap}, shares: {shares})")

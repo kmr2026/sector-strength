@@ -505,7 +505,7 @@ const SUMMARY_COLORS = [
 ];
 const SUMMARY_OTHER_COLOR = "#7c8797";
 
-let SUMMARY_MODE = "industry";   // "industry" | "sector"
+let SUMMARY_MODE = "sector";     // "sector" | "industry"
 let SUMMARY_SORT_KEY = "count";  // "count" | "pct"
 let SUMMARY_SORT_DIR = "desc";
 

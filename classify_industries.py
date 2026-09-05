@@ -141,7 +141,9 @@ def run(limit: int | None = None):
         all_symbols = master[sym_col].dropna().astype(str).str.strip().tolist()
 
         already_done = {
-            row[0] for row in conn.execute("SELECT symbol FROM basic_industry_map").fetchall()
+            row[0] for row in conn.execute(
+                "SELECT symbol FROM basic_industry_map WHERE sector IS NOT NULL"
+            ).fetchall()
         }
         todo = [s for s in all_symbols if s not in already_done]
         if limit:
@@ -160,9 +162,16 @@ def run(limit: int | None = None):
 
             if isinstance(result, dict):
                 conn.execute(
-                    """INSERT OR REPLACE INTO basic_industry_map
+                    """INSERT INTO basic_industry_map
                        (symbol, macro, sector, industry, basic_industry, company_name, classified_at)
-                       VALUES (?, ?, ?, ?, ?, ?, ?)""",
+                       VALUES (?, ?, ?, ?, ?, ?, ?)
+                       ON CONFLICT(symbol) DO UPDATE SET
+                         macro=excluded.macro,
+                         sector=excluded.sector,
+                         industry=excluded.industry,
+                         basic_industry=excluded.basic_industry,
+                         company_name=excluded.company_name,
+                         classified_at=excluded.classified_at""",
                     (symbol, result["macro"], result["sector"], result["industry"],
                      result["basic_industry"], result["company_name"], dt.datetime.now().isoformat()),
                 )

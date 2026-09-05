@@ -224,9 +224,12 @@ def update_nifty500_industries():
     ]
     with get_conn() as conn:
         conn.executemany(
-            """INSERT OR REPLACE INTO basic_industry_map
-               (symbol, basic_industry, company_name, classified_at)
-               VALUES (?, ?, ?, ?)""",
+            """INSERT INTO basic_industry_map (symbol, basic_industry, company_name, classified_at)
+               VALUES (?, ?, ?, ?)
+               ON CONFLICT(symbol) DO UPDATE SET
+                 basic_industry=excluded.basic_industry,
+                 company_name=excluded.company_name,
+                 classified_at=excluded.classified_at""",
             rows,
         )
         conn.execute(
