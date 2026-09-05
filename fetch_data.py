@@ -19,7 +19,7 @@ import datetime as dt
 import requests
 import pandas as pd
 
-from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX, SMALLCAP_INDEX, CIRCUIT_BANDS_URL
+from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX, SMALLCAP_INDEX, CIRCUIT_BANDS_URL, EQUITY_MASTER_URL
 from db import get_conn, init_db
 
 HEADERS = {
@@ -237,6 +237,79 @@ def update_nifty500_industries():
         )
     print(f"  {len(rows)} stocks classified across {df[ind_col].nunique()} categories "
           f"(coarse -- same scheme as sector widening, not finer)")
+
+
+def update_listing_dates():
+    """Populates basic_industry_map.listing_date from NSE's own EQUITY_L.csv
+    -- for the Scanner's 'listed in the last N months' filter.
+
+    Deliberately does NOT infer listing date from stock_prices' earliest
+    available date: STOCK_HISTORY_DAYS caps how far back price history is
+    kept (~300 trading days), so a stock listed 3 years ago would look
+    identical to one listed 300 trading days ago by that measure. NSE's
+    own file gives the real date regardless of our price-history window.
+
+    Column name matched by fuzzy substring (like update_nifty500_industries'
+    industry column) rather than an exact string -- I can't fetch/verify
+    NSE's live CSV from this sandbox's network, so this is defensive
+    against NSE using slightly different header text/casing/whitespace
+    than expected. Upserts only listing_date, same as every other write
+    to this table now -- never touches sector/macro/basic_industry/etc."""
+    print("Refreshing listing dates from NSE's equity master...")
+    session = make_session()
+    r = session.get(EQUITY_MASTER_URL, timeout=20)
+    if r.status_code != 200:
+        print(f"  [warn] equity master list not found ({r.status_code})")
+        return
+    try:
+        df = pd.read_csv(io.StringIO(r.text))
+    except Exception as e:
+        print(f"  [warn] couldn't parse equity master list: {e}")
+        return
+    df.columns = [c.strip() for c in df.columns]
+    sym_col = next((c for c in df.columns if c.strip().lower() == "symbol"), None)
+    listing_col = next((c for c in df.columns if "listing" in c.lower()), None)
+    if not sym_col or not listing_col:
+        print(f"  [warn] couldn't find symbol/listing-date columns -- got {list(df.columns)}. "
+              f"NSE may have renamed the column; this needs a code fix, not a re-run.")
+        return
+
+    rows = []
+    for _, row in df.iterrows():
+        symbol = str(row[sym_col]).strip() if pd.notna(row[sym_col]) else None
+        raw_date = row[listing_col]
+        if not symbol or pd.isna(raw_date):
+            continue
+        # NSE's date format has varied historically (DD-MMM-YYYY vs
+        # DD-MM-YYYY) -- let pandas infer it per-value rather than
+        # hardcoding one format that might silently misparse the other.
+        parsed = pd.to_datetime(raw_date, dayfirst=True, errors="coerce")
+        if pd.isna(parsed):
+            continue
+        rows.append((symbol, parsed.date().isoformat()))
+
+    if not rows:
+        print("  [warn] parsed zero valid listing dates -- not writing anything, "
+              "leaving existing data untouched.")
+        return
+
+    with get_conn() as conn:
+        # basic_industry is NOT NULL on this table -- a symbol that
+        # classify_via_screener.py hasn't classified yet doesn't have a
+        # row here at all, and inserting listing_date alone for it would
+        # violate that constraint. Skip those for now; this function
+        # re-runs daily, so they pick up their listing_date automatically
+        # once classified -- no separate backfill needed.
+        known_symbols = {r[0] for r in conn.execute("SELECT symbol FROM basic_industry_map").fetchall()}
+        rows = [r for r in rows if r[0] in known_symbols]
+        if not rows:
+            print("  [warn] none of the parsed symbols are classified yet -- nothing to update.")
+            return
+        conn.executemany(
+            "UPDATE basic_industry_map SET listing_date = ? WHERE symbol = ?",
+            [(listing_date, symbol) for symbol, listing_date in rows],
+        )
+    print(f"  {len(rows)} symbols with a listing date")
 
 
 def update_index_prices():
@@ -463,6 +536,7 @@ def run_daily_update(refetch_days: int = 0):
     update_constituents()
     if not has_basic_industry:
         update_nifty500_industries()
+    update_listing_dates()
     update_index_prices()
     update_stock_prices(refetch_days=refetch_days)
     update_circuit_bands()

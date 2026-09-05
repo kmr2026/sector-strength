@@ -4879,10 +4879,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -2.9,
-        "prev_value": 42.9,
+        "delta": 0.0,
+        "prev_value": 40.0,
         "prev_date": "2026-09-04",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -8973,10 +8973,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.6,
-        "prev_value": 32.0,
+        "delta": 0.0,
+        "prev_value": 32.6,
         "prev_date": "2026-09-04",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -11208,10 +11208,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 3.4,
-        "prev_value": 35.1,
+        "delta": 0.0,
+        "prev_value": 38.5,
         "prev_date": "2026-09-04",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -18867,10 +18867,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": -0.2,
-        "prev_value": 8.1,
+        "delta": 0.0,
+        "prev_value": 7.9,
         "prev_date": "2026-09-04",
-        "direction": "down"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -25759,10 +25759,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 1.0,
-        "prev_value": 6.7,
+        "delta": 0.0,
+        "prev_value": 7.7,
         "prev_date": "2026-09-04",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -27101,10 +27101,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 1.6,
-        "prev_value": 7.3,
+        "delta": 0.0,
+        "prev_value": 8.9,
         "prev_date": "2026-09-04",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {
@@ -31552,10 +31552,10 @@
       },
       "high52_delta": {
         "available": true,
-        "delta": 5.8,
-        "prev_value": 25.0,
+        "delta": 0.0,
+        "prev_value": 30.8,
         "prev_date": "2026-09-04",
-        "direction": "up"
+        "direction": "flat"
       },
       "stocks": [
         {

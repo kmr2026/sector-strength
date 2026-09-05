@@ -1,5 +1,6 @@
 const SCANNER_URL = "data/stock_scanner.json";
 const FILTER_STORAGE_KEY = "scannerFilters";
+const PRESETS_STORAGE_KEY = "scannerPresets";
 
 let ALL_STOCKS = [];
 let FILTERED = [];
@@ -15,9 +16,10 @@ const FILTER_FIELD_IDS = [
   "f-mcap-min", "f-mcap-max",
   "f-return-period", "f-return-min", "f-return-max",
   "f-circuit-enable",
+  "f-listing-months",
 ];
 
-function saveFiltersToStorage() {
+function captureFilterState() {
   const state = {};
   FILTER_FIELD_IDS.forEach(id => {
     const el = document.getElementById(id);
@@ -26,8 +28,30 @@ function saveFiltersToStorage() {
   // Circuit band checkboxes share a class, not individual IDs -- stored
   // separately as the list of currently-checked band values.
   state["circuitBands"] = [...document.querySelectorAll(".f-circuit-band:checked")].map(cb => cb.value);
+  return state;
+}
+
+function applyFilterState(state) {
+  FILTER_FIELD_IDS.forEach(id => {
+    if (!(id in state)) return;
+    const el = document.getElementById(id);
+    if (el.type === "checkbox") el.checked = !!state[id];
+    else el.value = state[id];
+  });
+  if (Array.isArray(state.circuitBands)) {
+    document.querySelectorAll(".f-circuit-band").forEach(cb => {
+      cb.checked = state.circuitBands.includes(cb.value);
+    });
+  }
+  syncCircuitBandToggle();
+  syncReturnRangeToggle();
+  syncEmaDropdownLabel();
+  syncCircuitDropdownLabel();
+}
+
+function saveFiltersToStorage() {
   try {
-    localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(captureFilterState()));
   } catch (err) {
     // localStorage can fail in private-browsing mode or if disabled --
     // filters just won't persist this session, nothing else breaks.
@@ -43,18 +67,113 @@ function loadFiltersFromStorage() {
   } catch (err) {
     return;
   }
-  FILTER_FIELD_IDS.forEach(id => {
-    if (!(id in state)) return;
-    const el = document.getElementById(id);
-    if (el.type === "checkbox") el.checked = !!state[id];
-    else el.value = state[id];
-  });
-  if (Array.isArray(state.circuitBands)) {
-    document.querySelectorAll(".f-circuit-band").forEach(cb => {
-      cb.checked = state.circuitBands.includes(cb.value);
-    });
+  applyFilterState(state);
+}
+
+function loadPresets() {
+  try {
+    const raw = localStorage.getItem(PRESETS_STORAGE_KEY);
+    if (!raw) return { presets: {}, defaultName: null };
+    const parsed = JSON.parse(raw);
+    return { presets: parsed.presets || {}, defaultName: parsed.defaultName || null };
+  } catch (err) {
+    return { presets: {}, defaultName: null };
   }
 }
+
+function savePresetsToStorage(data) {
+  try {
+    localStorage.setItem(PRESETS_STORAGE_KEY, JSON.stringify(data));
+  } catch (err) {
+  }
+}
+
+function applyPreset(name) {
+  const loaded = loadPresets();
+  if (!loaded.presets[name]) return;
+  applyFilterState(loaded.presets[name]);
+  saveFiltersToStorage();
+  applyFilters();
+  document.querySelector("#preset-dropdown .dropdown-trigger").textContent = name;
+}
+
+function renderPresetDropdown() {
+  const loaded = loadPresets();
+  const names = Object.keys(loaded.presets).sort((a, b) => a.localeCompare(b));
+  const container = document.getElementById("preset-options");
+  container.innerHTML = "";
+  if (!names.length) {
+    const empty = document.createElement("div");
+    empty.className = "preset-empty";
+    empty.textContent = "No saved scanners yet";
+    container.appendChild(empty);
+    return;
+  }
+  names.forEach(function(name) {
+    const isDefault = name === loaded.defaultName;
+
+    const row = document.createElement("div");
+    row.className = "preset-row";
+    row.dataset.name = name; // safe regardless of what characters name contains -- no HTML parsing involved
+
+    const label = document.createElement("span");
+    label.className = "preset-name-label";
+    label.textContent = name;
+
+    const actions = document.createElement("span");
+    actions.className = "preset-actions";
+
+    const star = document.createElement("span");
+    star.className = "preset-star" + (isDefault ? " active" : "");
+    star.title = isDefault ? "Default -- click to unset" : "Set as default (auto-loads next time)";
+    star.textContent = "\u2605";
+
+    const del = document.createElement("span");
+    del.className = "preset-delete";
+    del.title = "Delete this saved scanner";
+    del.textContent = "\u00d7";
+
+    actions.appendChild(star);
+    actions.appendChild(del);
+    row.appendChild(label);
+    row.appendChild(actions);
+    container.appendChild(row);
+
+    label.addEventListener("click", function() {
+      applyPreset(name);
+      closeAllMenus();
+    });
+    star.addEventListener("click", function(e) {
+      e.stopPropagation();
+      const data = loadPresets();
+      data.defaultName = data.defaultName === name ? null : name;
+      savePresetsToStorage(data);
+      renderPresetDropdown();
+    });
+    del.addEventListener("click", function(e) {
+      e.stopPropagation();
+      if (!confirm("Delete saved scanner \"" + name + "\"?")) return;
+      const data = loadPresets();
+      delete data.presets[name];
+      if (data.defaultName === name) data.defaultName = null;
+      savePresetsToStorage(data);
+      renderPresetDropdown();
+      const trigger = document.querySelector("#preset-dropdown .dropdown-trigger");
+      if (trigger.textContent === name) trigger.textContent = "Load scanner...";
+    });
+  });
+}
+
+document.getElementById("f-save-preset").addEventListener("click", function() {
+  const name = prompt("Save current filters as:");
+  if (!name || !name.trim()) return;
+  const trimmed = name.trim();
+  const data = loadPresets();
+  data.presets[trimmed] = captureFilterState();
+  savePresetsToStorage(data);
+  renderPresetDropdown();
+  document.querySelector("#preset-dropdown .dropdown-trigger").textContent = trimmed;
+});
 
 function ratingClass(rating) {
   if (rating === null || rating === undefined) return "score-low";
@@ -108,6 +227,7 @@ function readFilters() {
     returnMin: num("f-return-min"), returnMax: num("f-return-max"),
     circuitEnable: document.getElementById("f-circuit-enable").checked,
     circuitBands: [...document.querySelectorAll(".f-circuit-band:checked")].map(cb => parseInt(cb.value, 10)),
+    listingMonths: num("f-listing-months"),
   };
 }
 
@@ -144,6 +264,18 @@ function applyFilters() {
     // never excluded by this filter, regardless of which boxes are checked.
     if (f.circuitEnable && f.circuitBands.length && s.circuit_band !== null && s.circuit_band !== undefined
         && f.circuitBands.includes(s.circuit_band)) return false;
+    // Listed Within Last (months) -- a stock with no known listing_date
+    // (not yet backfilled, or genuinely unavailable) is excluded rather
+    // than passed through: unlike the EMA checks above, where "no data
+    // yet" is expected for a young stock and shouldn't count against it,
+    // here an unknown listing date means we can't confirm the stock
+    // actually qualifies, so it doesn't get the benefit of the doubt.
+    if (f.listingMonths !== null) {
+      if (!s.listing_date) return false;
+      const cutoff = new Date();
+      cutoff.setMonth(cutoff.getMonth() - f.listingMonths);
+      if (new Date(s.listing_date) < cutoff) return false;
+    }
     return true;
   });
   if (SEARCH_TERM) {
@@ -632,14 +764,14 @@ document.getElementById("close-summary").addEventListener("click", () => {
 });
 
 async function load() {
-  loadFiltersFromStorage();
-  // A restored "enabled" state from localStorage needs its sub-controls
-  // un-disabled to match -- these two run the same sync the change
-  // listeners above do, just once on load.
-  syncCircuitBandToggle();
-  syncReturnRangeToggle();
-  syncEmaDropdownLabel();
-  syncCircuitDropdownLabel();
+  renderPresetDropdown();
+  const { presets, defaultName } = loadPresets();
+  if (defaultName && presets[defaultName]) {
+    applyFilterState(presets[defaultName]);
+    document.querySelector("#preset-dropdown .dropdown-trigger").textContent = defaultName;
+  } else {
+    loadFiltersFromStorage();
+  }
   try {
     const res = await fetch(SCANNER_URL);
     ALL_STOCKS = await res.json();

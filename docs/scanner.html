@@ -82,6 +82,13 @@
     <div class="detail-inner modal-box-wide">
       <button class="close-btn" id="close-filters">&times;</button>
       <h2>Filters</h2>
+      <div class="preset-bar">
+        <div class="dropdown-select" id="preset-dropdown">
+          <div class="dropdown-trigger" data-target="preset-options">Load scanner...</div>
+          <div class="dropdown-options" id="preset-options"></div>
+        </div>
+        <button class="tab" id="f-save-preset">Save</button>
+      </div>
       <div class="filter-grid">
         <div class="filter-field-g">
           <label>Price Above EMA</label>
@@ -136,6 +143,10 @@
               <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="10" disabled /> 10% Circuit</label>
             </div>
           </div>
+        </div>
+        <div class="filter-field-g">
+          <label>Listed Within Last (months)</label>
+          <input type="number" id="f-listing-months" placeholder="12" />
         </div>
       </div>
       <div class="filter-actions">

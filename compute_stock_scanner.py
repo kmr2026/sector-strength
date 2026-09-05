@@ -78,9 +78,9 @@ def get_symbol_metadata(conn) -> dict:
     on the home page (Nifty Auto, Nifty Bank, etc.) -- same word, different
     grouping, kept separate on purpose."""
     rows = conn.execute(
-        "SELECT symbol, company_name, basic_industry, sector, shares_outstanding FROM basic_industry_map"
+        "SELECT symbol, company_name, basic_industry, sector, shares_outstanding, listing_date FROM basic_industry_map"
     ).fetchall()
-    return {r[0]: {"name": r[1] or r[0], "basic_industry": r[2], "sector": r[3], "shares_outstanding": r[4]} for r in rows}
+    return {r[0]: {"name": r[1] or r[0], "basic_industry": r[2], "sector": r[3], "shares_outstanding": r[4], "listing_date": r[5]} for r in rows}
 
 
 def get_circuit_bands(conn) -> dict:
@@ -163,6 +163,7 @@ def compute_all() -> list[dict]:
                 "name": info.get("name", symbol),
                 "basic_industry": info.get("basic_industry"),
                 "sector": info.get("sector"),
+                "listing_date": info.get("listing_date"),
                 "market_cap_cr": market_cap_cr,
                 "close": last_close,
                 "last_date": g["date"].iloc[-1].date().isoformat(),

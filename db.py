@@ -150,6 +150,17 @@ def init_db():
             conn.execute("ALTER TABLE basic_industry_map ADD COLUMN shares_outstanding REAL")
         except sqlite3.OperationalError:
             pass  # column already exists
+        # listing_date -- for the Scanner's "listed in the last N months"
+        # filter. Sourced from NSE's own EQUITY_L.csv (see
+        # fetch_data.py's update_listing_dates()), not inferred from
+        # price-history availability -- stock_prices only retains
+        # STOCK_HISTORY_DAYS (~300 trading days) of history, so "earliest
+        # date we have data for" would wrongly flag anything older than
+        # that window as "recently listed" too.
+        try:
+            conn.execute("ALTER TABLE basic_industry_map ADD COLUMN listing_date TEXT")
+        except sqlite3.OperationalError:
+            pass  # column already exists
 
 
 if __name__ == "__main__":
