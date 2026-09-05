@@ -65,15 +65,22 @@ def _avg_turnover_cr(close_s: pd.Series, vol_s: pd.Series, days: int = 30) -> fl
 
 
 def get_symbol_metadata(conn) -> dict:
-    """symbol -> {name, basic_industry, shares_outstanding}, best-effort
+    """symbol -> {name, basic_industry, sector, shares_outstanding}, best-effort
     from basic_industry_map. shares_outstanding is the stable, derived
     share count (see classify_via_screener.py) -- market cap itself is
     computed fresh below from this x TODAY's close, not read as a stored
-    snapshot, so it never goes stale as the price moves."""
+    snapshot, so it never goes stale as the price moves.
+
+    `sector` is NSE's official classification tier (Macro-Economic Sector ->
+    Sector -> Industry -> Basic Industry) -- classify_industries.py has
+    always captured it alongside basic_industry, it just never made it into
+    this export before. Distinct from the index-based Sectoral Indices tab
+    on the home page (Nifty Auto, Nifty Bank, etc.) -- same word, different
+    grouping, kept separate on purpose."""
     rows = conn.execute(
-        "SELECT symbol, company_name, basic_industry, shares_outstanding FROM basic_industry_map"
+        "SELECT symbol, company_name, basic_industry, sector, shares_outstanding FROM basic_industry_map"
     ).fetchall()
-    return {r[0]: {"name": r[1] or r[0], "basic_industry": r[2], "shares_outstanding": r[3]} for r in rows}
+    return {r[0]: {"name": r[1] or r[0], "basic_industry": r[2], "sector": r[3], "shares_outstanding": r[4]} for r in rows}
 
 
 def get_circuit_bands(conn) -> dict:
@@ -155,6 +162,7 @@ def compute_all() -> list[dict]:
                 "symbol": symbol,
                 "name": info.get("name", symbol),
                 "basic_industry": info.get("basic_industry"),
+                "sector": info.get("sector"),
                 "market_cap_cr": market_cap_cr,
                 "close": last_close,
                 "last_date": g["date"].iloc[-1].date().isoformat(),

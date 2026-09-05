@@ -147,9 +147,13 @@
 
   <!-- Scan Summary modal -->
   <div class="detail-panel hidden" id="summary-modal-overlay">
-    <div class="detail-inner modal-box-wide">
+    <div class="detail-inner modal-box-xl">
       <button class="close-btn" id="close-summary">&times;</button>
       <h2>Scan Summary</h2>
+      <div class="summary-mode-toggle" id="summary-mode-toggle">
+        <button class="mode-btn active" data-mode="industry">Basic Industry</button>
+        <button class="mode-btn" data-mode="sector">Sector</button>
+      </div>
       <div class="summary-body">
         <div class="donut-wrap">
           <div class="donut" id="summary-donut"></div>
@@ -158,10 +162,18 @@
             <div class="donut-center-value" id="summary-total">0</div>
           </div>
         </div>
-        <table class="board summary-table">
-          <thead><tr><th>Basic Industry</th><th>Stocks Passed</th><th>% of Industry</th></tr></thead>
-          <tbody id="summary-table-body"></tbody>
-        </table>
+        <div class="summary-table-wrap">
+          <table class="board summary-table">
+            <thead>
+              <tr>
+                <th id="summary-col-label">Basic Industry</th>
+                <th class="summary-sortable" data-sort="count">Stocks Passed</th>
+                <th class="summary-sortable" data-sort="pct" id="summary-col-pct">% of Industry</th>
+              </tr>
+            </thead>
+            <tbody id="summary-table-body"></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>

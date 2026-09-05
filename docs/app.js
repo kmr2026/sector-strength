@@ -237,7 +237,7 @@ function renderBoard(data) {
   const tbody = document.getElementById("board-body");
   tbody.innerHTML = "";
   document.getElementById("name-col-header").textContent =
-    CURRENT_VIEW === "sectors" ? "Sector" : "Basic Industry";
+    CURRENT_VIEW === "sectors" ? "Sectoral Index" : "Basic Industry";
 
   if (!data.length && SEARCH_TERM) {
     const tr = document.createElement("tr");
@@ -498,7 +498,7 @@ function applyView(view, raw) {
     renderRegimeBanner("regime-banner-midsmall", "Mid/Smallcap 400", raw.regime_midsmall);
     renderRegimeBanner("regime-banner-smallcap", "Nifty Smallcap 250", raw.regime_smallcap);
     const sectors = raw.sectors || [];
-    document.getElementById("sectors-tab").textContent = `Sectors (${sectors.length})`;
+    document.getElementById("sectors-tab").textContent = `Sectoral Indices (${sectors.length})`;
     renderLeadersRow("sectors", sectors);
     showData(sectors);
     return;
@@ -681,7 +681,7 @@ function renderImprovingList(elId, rows) {
 }
 
 function renderLeadersRow(view, rows) {
-  const kindLabel = view === "sectors" ? "Sectors" : "Industries";
+  const kindLabel = view === "sectors" ? "Sectoral Indices" : "Industries";
   document.getElementById("leaders-top-title").textContent = `Top ${kindLabel}`;
   document.getElementById("leaders-improving-title").textContent = `Most Improving ${kindLabel}`;
   renderLeadersList("leaders-top-list", rows);

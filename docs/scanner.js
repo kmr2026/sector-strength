@@ -499,51 +499,129 @@ document.addEventListener("click", (e) => {
   }
 });
 
-const SUMMARY_COLORS = ["#3fb950", "#d29922", "#4f8ef7", "#e05fa0", "#7c5cf7", "#f85149", "#2dd4bf", "#eab308"];
+const SUMMARY_COLORS = [
+  "#3fb950", "#d29922", "#4f8ef7", "#e05fa0", "#7c5cf7", "#f85149", "#2dd4bf", "#eab308",
+  "#8b5cf6", "#22c55e", "#f472b6", "#38bdf8", "#fb923c", "#a3e635", "#c084fc",
+];
+const SUMMARY_OTHER_COLOR = "#7c8797";
+
+let SUMMARY_MODE = "industry";   // "industry" | "sector"
+let SUMMARY_SORT_KEY = "count";  // "count" | "pct"
+let SUMMARY_SORT_DIR = "desc";
+
+function summaryGroupKey(s) {
+  if (SUMMARY_MODE === "sector") return s.sector || "Unclassified";
+  return s.basic_industry || "Unclassified";
+}
+
+function updateSummarySortHeaderStyles() {
+  document.querySelectorAll(".summary-sortable").forEach(th => {
+    const key = th.dataset.sort;
+    th.classList.toggle("sort-active", key === SUMMARY_SORT_KEY);
+    const existing = th.querySelector(".sort-arrow");
+    if (existing) existing.remove();
+    if (key === SUMMARY_SORT_KEY) {
+      const arrow = document.createElement("span");
+      arrow.className = "sort-arrow";
+      arrow.textContent = SUMMARY_SORT_DIR === "asc" ? "▲" : "▼";
+      th.appendChild(arrow);
+    }
+  });
+}
 
 function renderScanSummary() {
   const total = FILTERED.length;
   document.getElementById("summary-total").textContent = total;
 
-  const counts = new Map(); // industry -> count among FILTERED
+  const isSector = SUMMARY_MODE === "sector";
+  document.getElementById("summary-col-label").textContent = isSector ? "Sector" : "Basic Industry";
+  document.getElementById("summary-col-pct").textContent = isSector ? "% of Sector" : "% of Industry";
+
+  const counts = new Map(); // category -> count among FILTERED
   FILTERED.forEach(s => {
-    const key = s.basic_industry || "Unclassified";
+    const key = summaryGroupKey(s);
     counts.set(key, (counts.get(key) || 0) + 1);
   });
-  const industryTotals = new Map(); // industry -> count across the FULL universe
+  const categoryTotals = new Map(); // category -> count across the FULL universe
   ALL_STOCKS.forEach(s => {
-    const key = s.basic_industry || "Unclassified";
-    industryTotals.set(key, (industryTotals.get(key) || 0) + 1);
+    const key = summaryGroupKey(s);
+    categoryTotals.set(key, (categoryTotals.get(key) || 0) + 1);
   });
 
-  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
-  const top = sorted.slice(0, 8);
-  const rest = sorted.slice(8);
-  const restSum = rest.reduce((acc, [, c]) => acc + c, 0);
+  // Pie order is always by raw count, descending -- this decides which
+  // categories get their own slice/color and which fall into "Other".
+  // Table order (below) is independent and follows whatever column the
+  // user has sorted by, so re-sorting the table never reshuffles colors.
+  const byCountDesc = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  // Basic Industry has 100+ categories -- cap the pie at 15 slices so it
+  // stays readable, and bucket the rest into "Other". Sector has only
+  // ~13 categories total, so the cap never actually bites and every
+  // sector gets its own slice, matching ChartsMaze.
+  const pieCap = isSector ? byCountDesc.length : 15;
+  const pieTop = byCountDesc.slice(0, pieCap);
+  const pieRest = byCountDesc.slice(pieCap);
+  const pieRestSum = pieRest.reduce((acc, [, c]) => acc + c, 0);
+
+  const colorMap = new Map();
+  pieTop.forEach(([category], i) => colorMap.set(category, SUMMARY_COLORS[i % SUMMARY_COLORS.length]));
 
   let cursor = 0;
   const gradientParts = [];
-  const rows = [];
-  top.forEach(([industry, count], i) => {
+  pieTop.forEach(([category, count]) => {
     const pct = total > 0 ? (count / total) * 100 : 0;
-    const color = SUMMARY_COLORS[i % SUMMARY_COLORS.length];
-    gradientParts.push(`${color} ${cursor}% ${cursor + pct}%`);
+    gradientParts.push(`${colorMap.get(category)} ${cursor}% ${cursor + pct}%`);
     cursor += pct;
-    const industryTotal = industryTotals.get(industry) || count;
-    const pctOfIndustry = industryTotal > 0 ? ((count / industryTotal) * 100).toFixed(1) : "—";
-    rows.push(`<tr><td><span class="swatch" style="background:${color}"></span>${industry}</td><td>${count}</td><td>${pctOfIndustry}%</td></tr>`);
   });
-  if (rest.length && restSum > 0) {
-    const pct = total > 0 ? (restSum / total) * 100 : 0;
-    gradientParts.push(`#7c8797 ${cursor}% ${cursor + pct}%`);
+  if (pieRest.length && pieRestSum > 0) {
+    const pct = total > 0 ? (pieRestSum / total) * 100 : 0;
+    gradientParts.push(`${SUMMARY_OTHER_COLOR} ${cursor}% ${cursor + pct}%`);
     cursor += pct;
-    rows.push(`<tr><td><span class="swatch" style="background:#7c8797"></span>Other (${rest.length} industries)</td><td>${restSum}</td><td>—</td></tr>`);
   }
   document.getElementById("summary-donut").style.background =
     gradientParts.length ? `conic-gradient(${gradientParts.join(", ")})` : "var(--panel-2)";
+
+  // Table always lists every category (scrollable), independent of the
+  // pie's top-15 cap -- sorted by whichever column the user picked.
+  const tableRows = [...counts.entries()].map(([category, count]) => {
+    const categoryTotal = categoryTotals.get(category) || count;
+    const pct = categoryTotal > 0 ? (count / categoryTotal) * 100 : 0;
+    return { category, count, pct };
+  });
+  tableRows.sort((a, b) => {
+    const va = SUMMARY_SORT_KEY === "pct" ? a.pct : a.count;
+    const vb = SUMMARY_SORT_KEY === "pct" ? b.pct : b.count;
+    const cmp = va - vb;
+    return SUMMARY_SORT_DIR === "asc" ? cmp : -cmp;
+  });
+
+  const rows = tableRows.map(({ category, count, pct }) => {
+    const color = colorMap.get(category) || SUMMARY_OTHER_COLOR;
+    return `<tr><td><span class="swatch" style="background:${color}"></span>${category}</td><td>${count}</td><td>${pct.toFixed(1)}%</td></tr>`;
+  });
   document.getElementById("summary-table-body").innerHTML =
     rows.length ? rows.join("") : `<tr><td colspan="3" class="muted">No stocks match the current filters</td></tr>`;
+
+  updateSummarySortHeaderStyles();
 }
+
+document.querySelectorAll("#summary-mode-toggle .mode-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.classList.contains("active")) return;
+    document.querySelectorAll("#summary-mode-toggle .mode-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    SUMMARY_MODE = btn.dataset.mode;
+    renderScanSummary();
+  });
+});
+
+document.querySelectorAll(".summary-sortable").forEach(th => {
+  th.addEventListener("click", () => {
+    const key = th.dataset.sort;
+    if (key === SUMMARY_SORT_KEY) SUMMARY_SORT_DIR = SUMMARY_SORT_DIR === "asc" ? "desc" : "asc";
+    else { SUMMARY_SORT_KEY = key; SUMMARY_SORT_DIR = "desc"; }
+    renderScanSummary();
+  });
+});
 
 document.getElementById("open-summary").addEventListener("click", () => {
   renderScanSummary();
