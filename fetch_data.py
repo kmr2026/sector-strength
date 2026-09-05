@@ -263,7 +263,15 @@ def update_listing_dates():
     CLEARS listing_date for every row first, then repopulates only from
     this list -- a symbol previously marked via the old EQUITY_L.csv pass
     (any demerger/spinoff) needs its stale value actually removed, not
-    just left untouched, or it would keep wrongly passing the filter."""
+    just left untouched, or it would keep wrongly passing the filter.
+
+    KNOWN GAP, confirmed by hand: this endpoint doesn't reliably cover
+    every mainboard equity IPO -- e.g. Tata Capital's actual ~15,500cr
+    equity listing (Oct 2025) isn't in it at all, only unrelated debt/NCD
+    issues under that company name are. This is a real limitation of
+    NSE's own data here, not something fixable in this script -- verified
+    by hand-checking that it's genuinely absent, not just under a
+    different symbol."""
     print("Refreshing listing dates from NSE's public IPO record...")
     session = requests.Session()
     session.headers.update({
@@ -286,16 +294,40 @@ def update_listing_dates():
         print(f"  [warn] couldn't parse response as JSON: {e}")
         return
 
-    rows = []
+    # This endpoint mixes equity IPOs with debt/NCD (bond) issues -- a bond's
+    # "symbol" is a numeric ISIN-style code (e.g. 788TACA31), never the real
+    # stock ticker, so it can't collide with anything, but it's still noise
+    # worth excluding explicitly rather than relying on that. EQ/BE cover
+    # ordinary and trade-to-trade equity; everything else here (DEBT, N0,
+    # Z9, etc.) isn't a stock listing.
+    EQUITY_SECURITY_TYPES = {"EQ", "BE"}
+
+    # symbol -> (parsed_date, iso_string) -- keep only the MOST RECENT
+    # listing per symbol. NSE reuses tickers after a company delists (e.g.
+    # a 2017 company and an unrelated Nov 2025 IPO both traded as "BETA");
+    # since our own table treats symbol as the unique key for whoever
+    # currently holds it, "most recent listing wins" is the correct
+    # resolution -- a naive per-row UPDATE in whatever order the API
+    # returns them could otherwise let a stale old date silently overwrite
+    # a correct new one.
+    best_by_symbol = {}
+    skipped_non_equity = 0
     for rec in records:
         symbol = (rec.get("symbol") or "").strip()
         raw_date = rec.get("listingDate")
         if not symbol or not raw_date or raw_date == "-":
             continue  # "-" = not yet listed (still in the upcoming/open window)
+        if rec.get("securityType") not in EQUITY_SECURITY_TYPES:
+            skipped_non_equity += 1
+            continue
         parsed = pd.to_datetime(raw_date, dayfirst=True, errors="coerce")
         if pd.isna(parsed):
             continue
-        rows.append((symbol, parsed.date().isoformat()))
+        if symbol not in best_by_symbol or parsed > best_by_symbol[symbol][0]:
+            best_by_symbol[symbol] = (parsed, parsed.date().isoformat())
+
+    rows = [(symbol, iso_date) for symbol, (_, iso_date) in best_by_symbol.items()]
+    print(f"  ({skipped_non_equity} non-equity records skipped)")
 
     if not rows:
         print("  [warn] parsed zero valid IPO listing dates -- not touching "
