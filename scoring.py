@@ -545,40 +545,66 @@ def metric_delta_block(conn, metric: str, key: str, date: str | None, value, min
     }
 
 
-def composite_score(ema: dict, breadth: dict, rs: dict) -> int:
+def composite_score(ema: dict, breadth: dict, rs: dict, high52: dict) -> int:
     """Simple, transparent point system -- add up what's true. Max 100.
 
-    Breadth is scored on the 21-day MA (not 10-day) to match the EMA
-    block's own 21/50/200 lens -- 10MA breadth stays on the dashboard as
-    a faster, unscored early-warning column, but a score built partly on
-    a 10-day window and partly on a 21/50/200-day one was internally
-    inconsistent. RS carries more weight than before (up to 25 vs 15)
-    since it's the most direct "is this actually beating the market"
-    signal -- offset by trimming breadth's ceiling so the total still
-    caps at 100 (EMA 50 + breadth 25 + RS 25).
+    Four components -- EMA 40 + Breadth 20 + RS 25 + 52wk-high 15:
+
+    - EMA structure (up to 40, was 50): above 21/50/200 EMA +8 each,
+      bullish stack +12, 21 EMA rising +4, extended >12% from 21 EMA -8.
+      Same point *shape* as before, just scaled down 20% to make room for
+      the new 52wk-high component below.
+    - Breadth on the 21-day MA (up to 20, was 25), to match the EMA
+      block's own 21/50/200 lens -- 10MA breadth stays on the dashboard
+      as a faster, unscored early-warning column. Now also docked -5 if
+      breadth.overheated (21MA breadth >= OVERHEATED_BREADTH_PCT): this
+      flag was already being computed and tracked in score_history for
+      change-detection, but never actually cost the score anything --
+      inconsistent with the EMA side already docking an overextended
+      move via `extended`. Breadth pinned near 100% is "everything
+      stretched at once", not pure strength, same logic as the EMA
+      penalty, just applied to the other side of the score.
+    - RS vs Nifty (up to 25): unchanged -- still the fast, tactical
+      "beating the benchmark right now" check (ratio above its own 21
+      EMA, rising vs a week ago). Deliberately kept separate from the
+      slower, percentile-based RS Rating shown elsewhere on the
+      dashboard rather than merged into it.
+    - Near 52wk high (up to 15): new. pct_within_52wk_high was already
+      computed every run -- pct_within_52wk_high_block()'s own docstring
+      calls it "a more direct leadership/EP-breakout signal" than the
+      MA-based breadth columns -- but it never fed the score. For an
+      EP/breakout style, whether anything in the group is actually near
+      a new high matters as much as EMA/breadth health, so it now gets
+      its own share, scaled linearly by % of constituents within 5% of
+      their own 52-week high.
     """
     score = 0
     if ema.get("available"):
         if ema.get("above_21"):
-            score += 10
+            score += 8
         if ema.get("above_50"):
-            score += 10
+            score += 8
         if ema.get("above_200"):
-            score += 10
+            score += 8
         if ema.get("bullish_stack"):
-            score += 15
+            score += 12
         if ema.get("ema21_rising"):
-            score += 5
+            score += 4
         if ema.get("extended"):
-            score -= 10
+            score -= 8
     if breadth.get("available"):
         pct = breadth.get("pct_above_21ma") or 0
-        score += round(pct / 100 * 20)
+        score += round(pct / 100 * 15)
         if breadth.get("breadth_21_rising"):
             score += 5
+        if breadth.get("overheated"):
+            score -= 5
     if rs.get("available"):
         if rs.get("rs_above_ema"):
             score += 15
         if rs.get("rs_rising_1w"):
             score += 10
+    if high52.get("available"):
+        pct52 = high52.get("pct_within_52wk_high") or 0
+        score += round(pct52 / 100 * 15)
     return max(0, min(100, score))

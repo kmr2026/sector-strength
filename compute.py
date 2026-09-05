@@ -58,9 +58,9 @@ def compute_all() -> dict:
             ema = ema_block(sector_series)
             breadth = breadth_block(conn, symbols)
             rs = rs_block(sector_series, bench_series) if not bench_series.empty else {"available": False}
-            score = composite_score(ema, breadth, rs)
-            last_date = sector_series.index[-1].date().isoformat() if not sector_series.empty else None
             high52 = pct_within_52wk_high_block(conn, symbols)
+            score = composite_score(ema, breadth, rs, high52)
+            last_date = sector_series.index[-1].date().isoformat() if not sector_series.empty else None
             raw_rs = group_raw_rs_score(universe_scores, symbols)
             prelim.append({
                 "sector": sector_name, "index_name": index_name, "score": score,

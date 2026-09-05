@@ -155,7 +155,6 @@ def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
             ema = ema_block(synthetic_series)
             breadth = breadth_block(conn, symbols)
             rs = rs_block(synthetic_series, bench_series) if not bench_series.empty else {"available": False}
-            score = composite_score(ema, breadth, rs)
 
             n_with_data = breadth.get("n_stocks", 0) if breadth.get("available") else 0
             if max(len(symbols), n_with_data) < min_stocks:
@@ -163,6 +162,7 @@ def compute_all(min_stocks: int = MIN_STOCKS_PER_BASIC_INDUSTRY) -> list[dict]:
 
             last_date = synthetic_series.index[-1].date().isoformat() if not synthetic_series.empty else None
             high52 = pct_within_52wk_high_block(conn, symbols)
+            score = composite_score(ema, breadth, rs, high52)
             raw_rs = group_raw_rs_score(universe_scores, symbols)
             perf_1w = pct_return(synthetic_series, 5)
             perf_1m = pct_return(synthetic_series, 21)
