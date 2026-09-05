@@ -294,13 +294,17 @@ def update_listing_dates():
         print(f"  [warn] couldn't parse response as JSON: {e}")
         return
 
-    # This endpoint mixes equity IPOs with debt/NCD (bond) issues -- a bond's
-    # "symbol" is a numeric ISIN-style code (e.g. 788TACA31), never the real
-    # stock ticker, so it can't collide with anything, but it's still noise
-    # worth excluding explicitly rather than relying on that. EQ/BE cover
-    # ordinary and trade-to-trade equity; everything else here (DEBT, N0,
-    # Z9, etc.) isn't a stock listing.
-    EQUITY_SECURITY_TYPES = {"EQ", "BE"}
+    # This endpoint mixes ordinary equity IPOs with debt/NCD (bond) issues
+    # AND with InvIT/REIT trust units (IV/RR -- e.g. Cube Highways Trust,
+    # Bagmane Prime Office REIT) and SME-board IPOs. Confirmed by hand
+    # (debug_ipo_types.py) across all 1429 records: EQ (461, mainboard),
+    # BE (71, mainboard trade-to-trade) and SME (766 -- the MAJORITY of
+    # all records) are genuine equity listings and belong here. IV/RR are
+    # real securities but not ordinary stocks -- excluded on purpose, not
+    # just an oversight. Everything else (DEBT, N0, Z9, and ~20 more
+    # single/double-digit-count codes) is bond/NCD issuance, confirmed by
+    # sampling one example of every non-EQ/BE/SME type in the response.
+    EQUITY_SECURITY_TYPES = {"EQ", "BE", "SME"}
 
     # symbol -> (parsed_date, iso_string) -- keep only the MOST RECENT
     # listing per symbol. NSE reuses tickers after a company delists (e.g.
