@@ -55,7 +55,7 @@ def compute_all(lookback_days: int = 260) -> list[dict]:
     # Market Breadth tab's EMA/SMA toggle. Nothing else on the site (the
     # composite score, sector strength, scanner) ever reads the *sma
     # fields; scoring.py stays EMA-only regardless of what's toggled here.
-    periods = {10: "10", 21: "21", 50: "50", 200: "200"}
+    periods = {"10": 10, "21": 21, "50": 50, "200": 200}
     above_pct = {}
     for suffix, span in periods.items():
         valid = wide.notna().rolling(span, min_periods=span).sum() >= span
