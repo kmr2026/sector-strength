@@ -29,16 +29,24 @@
     <div id="mb-layout" class="mb-layout hidden">
       <div class="mb-row">
         <div class="mb-panel">
-          <div class="mb-panel-title">Market Breadth <span id="mb-universe-count" class="muted"></span></div>
+          <div class="mb-panel-title-row">
+            <div class="mb-panel-title">Market Breadth <span id="mb-universe-count" class="muted"></span></div>
+            <div class="mb-toggle">
+              <select id="mb-ma-mode">
+                <option value="ema" selected>EMA</option>
+                <option value="sma">SMA</option>
+              </select>
+            </div>
+          </div>
           <div class="mb-table-wrap">
             <table class="mb-table">
               <thead>
                 <tr>
                   <th class="sortable" data-table="ema" data-sort="date">Date</th>
-                  <th class="sortable" data-table="ema" data-sort="pct_above_10ema">10EMA</th>
-                  <th class="sortable" data-table="ema" data-sort="pct_above_21ema">21EMA</th>
-                  <th class="sortable" data-table="ema" data-sort="pct_above_50ema">50EMA</th>
-                  <th class="sortable" data-table="ema" data-sort="pct_above_200ema">200EMA</th>
+                  <th class="sortable" data-table="ema" data-sort="pct_above_10ema" data-col="10">10EMA</th>
+                  <th class="sortable" data-table="ema" data-sort="pct_above_21ema" data-col="21">21EMA</th>
+                  <th class="sortable" data-table="ema" data-sort="pct_above_50ema" data-col="50">50EMA</th>
+                  <th class="sortable" data-table="ema" data-sort="pct_above_200ema" data-col="200">200EMA</th>
                 </tr>
               </thead>
               <tbody id="mb-ema-body"></tbody>
@@ -66,11 +74,12 @@
 
       <div class="mb-row">
         <div class="mb-panel">
-          <div class="mb-panel-title">4% Up vs 4% Down</div>
+          <div class="mb-panel-title">4.5% Up vs 4.5% Down</div>
           <div class="mb-table-wrap">
-            <table class="mb-table">
+            <table class="mb-table mb-table-4pct" id="mb-4pct-table">
               <thead>
                 <tr>
+                  <th class="sortable" data-table="pct4" data-sort="mbi_ratio">4.5R</th>
                   <th class="sortable" data-table="pct4" data-sort="date">Date</th>
                   <th class="sortable" data-table="pct4" data-sort="pct_4up">Advance</th>
                   <th class="sortable" data-table="pct4" data-sort="pct_4down">Decline</th>

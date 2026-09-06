@@ -8,6 +8,7 @@
   --green: #3fb950;
   --red: #f85149;
   --amber: #d29922;
+  --orange: #f0883e;
   --mono: "SF Mono", "JetBrains Mono", "Cascadia Code", Consolas, monospace;
 }
 
@@ -483,6 +484,33 @@ main {
 .mb-tint-green { background: rgba(63,185,80,0.15); color: var(--green); font-weight: 600; }
 .mb-tint-amber { background: rgba(210,153,34,0.15); color: var(--amber); font-weight: 600; }
 .mb-tint-red { background: rgba(248,81,73,0.12); color: var(--red); font-weight: 600; }
+.mb-tint-orange { background: rgba(240,136,62,0.15); color: var(--orange); font-weight: 600; }
+
+.mb-panel-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.mb-panel-title-row .mb-panel-title { margin-bottom: 0; }
+.mb-toggle select {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  outline: none;
+}
+.mb-toggle select:focus { border-color: var(--green); }
+
+/* 4.5% Up vs Down table: fixed layout so the 4.5R and Date columns take only
+   the width their content needs, instead of splitting evenly with Advance/Decline. */
+.mb-table-4pct { table-layout: fixed; }
+.mb-table-4pct th:nth-child(1), .mb-table-4pct td:nth-child(1) { width: 64px; }
+.mb-table-4pct th:nth-child(2), .mb-table-4pct td:nth-child(2) { width: 100px; }
 .results-header {
   display: flex;
   align-items: center;

@@ -2,11 +2,17 @@ const BREADTH_URL = "data/market_breadth.json";
 const SCANNER_URL = "data/stock_scanner.json";
 
 let ROWS = [];
+let MA_MODE = "ema"; // toggled by the EMA/SMA dropdown; only affects the top-left panel's display fields
 const SORT = {
   ema: { key: "date", dir: "desc" },
   pct4: { key: "date", dir: "desc" },
   highslow: { key: "date", dir: "desc" },
 };
+
+// Field name for a given MA column under the current mode, e.g. maKey(10) -> "pct_above_10ema" or "pct_above_10sma".
+function maKey(period) {
+  return `pct_above_${period}${MA_MODE}`;
+}
 
 function formatDate(iso) {
   const d = new Date(iso + "T00:00:00");
@@ -25,6 +31,21 @@ function tintClass(v) {
   if (v >= 50) return "mb-tint-green";
   if (v >= 20) return "mb-tint-amber";
   return "mb-tint-red";
+}
+
+// MBI 4.5R color bands: <=50 red, 50<x<200 plain/white, 200<=x<400 green, >=400 orange.
+// mbi_ratio is already ceiling-rounded server-side, so a value never sits fractionally on a boundary.
+function mbiClass(v) {
+  if (v >= 400) return "mb-tint-orange";
+  if (v >= 200) return "mb-tint-green";
+  if (v > 50) return "";
+  return "mb-tint-red";
+}
+
+function mbiCell(r) {
+  if (r.mbi_uncapped) return `<td class="mb-tint-orange">&gt;400</td>`;
+  if (r.mbi_ratio === null || r.mbi_ratio === undefined) return `<td><span class="muted">n/a</span></td>`;
+  return `<td class="${mbiClass(r.mbi_ratio)}">${r.mbi_ratio}</td>`;
 }
 
 function numCell(v) {
@@ -47,8 +68,16 @@ function sortedRows(tableKey) {
   const arr = ROWS.slice();
   arr.sort((a, b) => {
     let va = a[key], vb = b[key];
-    if (key === "date") { va = a.date; vb = b.date; } // ISO strings sort correctly as-is
-    else { va = va ?? -Infinity; vb = vb ?? -Infinity; }
+    if (key === "date") {
+      va = a.date; vb = b.date; // ISO strings sort correctly as-is
+    } else if (key === "mbi_ratio") {
+      // uncapped (down-count 0, infinite ratio) sorts as the highest possible value;
+      // a true null (neither side had qualifying moves) sorts as the lowest.
+      va = a.mbi_uncapped ? Infinity : (va ?? -Infinity);
+      vb = b.mbi_uncapped ? Infinity : (vb ?? -Infinity);
+    } else {
+      va = va ?? -Infinity; vb = vb ?? -Infinity;
+    }
     const cmp = typeof va === "string" ? va.localeCompare(vb) : va - vb;
     return dir === "asc" ? cmp : -cmp;
   });
@@ -76,16 +105,17 @@ function renderTables() {
   document.getElementById("mb-ema-body").innerHTML = emaRows.map(r => `
     <tr>
       <td>${formatDate(r.date)}</td>
-      ${tintedCell(r.pct_above_10ema)}
-      ${tintedCell(r.pct_above_21ema)}
-      ${tintedCell(r.pct_above_50ema)}
-      ${tintedCell(r.pct_above_200ema)}
+      ${tintedCell(r[maKey(10)])}
+      ${tintedCell(r[maKey(21)])}
+      ${tintedCell(r[maKey(50)])}
+      ${tintedCell(r[maKey(200)])}
     </tr>
   `).join("");
 
   const pct4Rows = sortedRows("pct4");
   document.getElementById("mb-4pct-body").innerHTML = pct4Rows.map(r => `
     <tr>
+      ${mbiCell(r)}
       <td>${formatDate(r.date)}</td>
       <td class="mb-tint-green">${numCell(r.pct_4up)}</td>
       <td class="mb-tint-red">${numCell(r.pct_4down)}</td>
@@ -102,6 +132,26 @@ function renderTables() {
     </tr>
   `).join("");
 }
+
+// EMA/SMA toggle: relabels the top-left panel's column headers (10EMA -> 10SMA etc.),
+// repoints their data-sort attributes at the matching field, and remaps the active
+// sort key if it was currently pointed at one of those MA columns -- then re-renders.
+function applyMaMode() {
+  document.querySelectorAll('th[data-col]').forEach(th => {
+    const period = th.dataset.col;
+    const newKey = maKey(period);
+    if (SORT.ema.key === th.dataset.sort) SORT.ema.key = newKey;
+    th.dataset.sort = newKey;
+    th.textContent = `${period}${MA_MODE.toUpperCase()}`;
+  });
+  updateSortHeaders("ema");
+  renderTables();
+}
+
+document.getElementById("mb-ma-mode").addEventListener("change", (e) => {
+  MA_MODE = e.target.value;
+  applyMaMode();
+});
 
 document.querySelectorAll("th.sortable").forEach(th => {
   th.addEventListener("click", () => {
