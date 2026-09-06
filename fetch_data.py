@@ -19,7 +19,7 @@ import datetime as dt
 import requests
 import pandas as pd
 
-from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX, SMALLCAP_INDEX, CIRCUIT_BANDS_URL
+from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX, SMALLCAP_INDEX, CIRCUIT_BANDS_URL, EQUITY_MASTER_URL
 from db import get_conn, init_db
 
 HEADERS = {
@@ -240,121 +240,99 @@ def update_nifty500_industries():
 
 
 def update_listing_dates():
-    """Populates basic_industry_map.listing_date from NSE's own public IPO
-    record (api/public-past-issues) -- for the Scanner's 'listed in the
-    last N months' filter.
+    """Populates basic_industry_map.listing_date from NSE's own EQUITY_L.csv
+    -- for the Scanner's 'listed in the last N months' filter.
 
-    REPLACED the earlier EQUITY_L.csv-based version (its "DATE OF LISTING"
-    column) after a real discrepancy: that column reflects ANY new NSE
-    listing, which includes demerger/spin-off-created entities like TMCV
-    (Tata Motors Commercial Vehicles, Nov 2025) or VAML (Vedanta Aluminium
-    Metal, Jun 2026) -- decades-old businesses that got a fresh listing
-    date purely from a corporate restructuring, not an actual IPO. This
-    endpoint is NSE's own public-issues record: every entry has an
-    ipoStartDate/ipoEndDate/issuePrice, i.e. it went through an actual
-    subscription window -- demergers never do, so they correctly don't
-    appear here at all.
+    SECOND REVERSAL on the source, both by explicit request:
+    - v1 used EQUITY_L.csv's "DATE OF LISTING" -- included demergers
+      (TMCV, VAML) since it's just "when did this symbol first list",
+      which was initially treated as a bug and swapped out.
+    - v2 switched to NSE's public-past-issues (real IPO subscriptions
+      only) to exclude those demergers -- but that source doesn't carry
+      SME-board listings without SME explicitly added to its type filter,
+      and confirmed to be missing some real mainboard IPOs entirely
+      (Tata Capital's actual equity listing isn't in that endpoint at all).
+    - v3 (this one): back to EQUITY_L.csv, but with SME-board listings
+      excluded via the SERIES column -- demergers wanted back in,
+      SME-board specifically not wanted, both by explicit request. Same
+      EQ/BE/BZ vs SM/ST/SZ split already established in
+      update_circuit_bands() for the same reason (SME is a genuinely
+      different market segment, not a bug to route around).
 
-    Confirmed live (this sandbox can't reach nseindia.com itself): the
-    homepage priming request 403s, but this specific endpoint returns 200
-    anyway -- unlike quote-equity, which stayed hard-blocked even through
-    a real browser. So no session priming here, just a direct request.
-
-    CLEARS listing_date for every row first, then repopulates only from
-    this list -- a symbol previously marked via the old EQUITY_L.csv pass
-    (any demerger/spinoff) needs its stale value actually removed, not
-    just left untouched, or it would keep wrongly passing the filter.
-
-    KNOWN GAP, confirmed by hand: this endpoint doesn't reliably cover
-    every mainboard equity IPO -- e.g. Tata Capital's actual ~15,500cr
-    equity listing (Oct 2025) isn't in it at all, only unrelated debt/NCD
-    issues under that company name are. This is a real limitation of
-    NSE's own data here, not something fixable in this script -- verified
-    by hand-checking that it's genuinely absent, not just under a
-    different symbol."""
-    print("Refreshing listing dates from NSE's public IPO record...")
-    session = requests.Session()
-    session.headers.update({
-        "User-Agent": HEADERS["User-Agent"],
-        "Accept": "application/json, text/plain, */*",
-        "Referer": "https://www.nseindia.com/market-data/all-upcoming-issues-ipo",
-    })
-    try:
-        r = session.get("https://www.nseindia.com/api/public-past-issues", timeout=20)
-    except Exception as e:
-        print(f"  [warn] request failed: {e}")
-        return
+    Column names matched by fuzzy substring where reasonable (industry
+    fetches elsewhere in this file do the same) since I can't fetch/
+    verify NSE's live CSV from this sandbox's network -- defensive
+    against NSE using slightly different header text/casing/whitespace
+    than expected. Upserts only listing_date, same as every other write
+    to this table -- never touches sector/macro/basic_industry/etc."""
+    print("Refreshing listing dates from NSE's equity master...")
+    session = make_session()
+    r = session.get(EQUITY_MASTER_URL, timeout=20)
     if r.status_code != 200:
-        print(f"  [warn] public-past-issues not reachable ({r.status_code}) -- "
-              f"leaving existing listing_date data untouched.")
+        print(f"  [warn] equity master list not found ({r.status_code})")
         return
     try:
-        records = r.json()
-    except ValueError as e:
-        print(f"  [warn] couldn't parse response as JSON: {e}")
+        df = pd.read_csv(io.StringIO(r.text))
+    except Exception as e:
+        print(f"  [warn] couldn't parse equity master list: {e}")
         return
+    df.columns = [c.strip() for c in df.columns]
+    sym_col = next((c for c in df.columns if c.strip().lower() == "symbol"), None)
+    listing_col = next((c for c in df.columns if "listing" in c.lower()), None)
+    series_col = next((c for c in df.columns if c.strip().upper() == "SERIES"), None)
+    if not sym_col or not listing_col:
+        print(f"  [warn] couldn't find symbol/listing-date columns -- got {list(df.columns)}. "
+              f"NSE may have renamed the column; this needs a code fix, not a re-run.")
+        return
+    if not series_col:
+        print("  [warn] no SERIES column found -- can't exclude SME listings, "
+              "proceeding without that filter (will include SME if present).")
 
-    # This endpoint mixes ordinary equity IPOs with debt/NCD (bond) issues
-    # AND with InvIT/REIT trust units (IV/RR -- e.g. Cube Highways Trust,
-    # Bagmane Prime Office REIT) and SME-board IPOs. Confirmed by hand
-    # (debug_ipo_types.py) across all 1429 records: EQ (461, mainboard),
-    # BE (71, mainboard trade-to-trade) and SME (766 -- the MAJORITY of
-    # all records) are genuine equity listings and belong here. IV/RR are
-    # real securities but not ordinary stocks -- excluded on purpose, not
-    # just an oversight. Everything else (DEBT, N0, Z9, and ~20 more
-    # single/double-digit-count codes) is bond/NCD issuance, confirmed by
-    # sampling one example of every non-EQ/BE/SME type in the response.
-    EQUITY_SECURITY_TYPES = {"EQ", "BE", "SME"}
-
-    # symbol -> (parsed_date, iso_string) -- keep only the MOST RECENT
-    # listing per symbol. NSE reuses tickers after a company delists (e.g.
-    # a 2017 company and an unrelated Nov 2025 IPO both traded as "BETA");
-    # since our own table treats symbol as the unique key for whoever
-    # currently holds it, "most recent listing wins" is the correct
-    # resolution -- a naive per-row UPDATE in whatever order the API
-    # returns them could otherwise let a stale old date silently overwrite
-    # a correct new one.
-    best_by_symbol = {}
-    skipped_non_equity = 0
-    for rec in records:
-        symbol = (rec.get("symbol") or "").strip()
-        raw_date = rec.get("listingDate")
-        if not symbol or not raw_date or raw_date == "-":
-            continue  # "-" = not yet listed (still in the upcoming/open window)
-        if rec.get("securityType") not in EQUITY_SECURITY_TYPES:
-            skipped_non_equity += 1
+    rows = []
+    skipped_sme = 0
+    for _, row in df.iterrows():
+        symbol = str(row[sym_col]).strip() if pd.notna(row[sym_col]) else None
+        raw_date = row[listing_col]
+        if not symbol or pd.isna(raw_date):
             continue
+        if series_col and str(row[series_col]).strip().upper() not in ("EQ", "BE", "BZ"):
+            skipped_sme += 1
+            continue
+        # NSE's date format has varied historically (DD-MMM-YYYY vs
+        # DD-MM-YYYY) -- let pandas infer it per-value rather than
+        # hardcoding one format that might silently misparse the other.
         parsed = pd.to_datetime(raw_date, dayfirst=True, errors="coerce")
         if pd.isna(parsed):
             continue
-        if symbol not in best_by_symbol or parsed > best_by_symbol[symbol][0]:
-            best_by_symbol[symbol] = (parsed, parsed.date().isoformat())
-
-    rows = [(symbol, iso_date) for symbol, (_, iso_date) in best_by_symbol.items()]
-    print(f"  ({skipped_non_equity} non-equity records skipped)")
+        rows.append((symbol, parsed.date().isoformat()))
 
     if not rows:
-        print("  [warn] parsed zero valid IPO listing dates -- not touching "
-              "existing data, something's likely wrong with the response shape.")
+        print("  [warn] parsed zero valid listing dates -- not writing anything, "
+              "leaving existing data untouched.")
         return
 
     with get_conn() as conn:
-        # Clear first -- see docstring. Then only symbols both (a) already
-        # classified (basic_industry NOT NULL, same constraint as before)
-        # and (b) actually in this IPO record get a listing_date again.
+        # Clear first -- a symbol previously marked via the public-issues
+        # pass needs a clean slate too, in case the two sources ever
+        # disagree on the same symbol.
         conn.execute("UPDATE basic_industry_map SET listing_date = NULL")
-        known_symbols = {row[0] for row in conn.execute("SELECT symbol FROM basic_industry_map").fetchall()}
-        rows = [row for row in rows if row[0] in known_symbols]
+        # basic_industry is NOT NULL on this table -- a symbol that
+        # classify_via_screener.py hasn't classified yet doesn't have a
+        # row here at all, and inserting listing_date alone for it would
+        # violate that constraint. Skip those for now; this function
+        # re-runs daily, so they pick up their listing_date automatically
+        # once classified -- no separate backfill needed.
+        known_symbols = {r[0] for r in conn.execute("SELECT symbol FROM basic_industry_map").fetchall()}
+        rows = [r for r in rows if r[0] in known_symbols]
         if not rows:
-            print("  [warn] none of the parsed IPO symbols are classified yet -- "
+            print("  [warn] none of the parsed symbols are classified yet -- "
                   "listing_date cleared for everyone, nothing to repopulate this run.")
             return
         conn.executemany(
             "UPDATE basic_industry_map SET listing_date = ? WHERE symbol = ?",
             [(listing_date, symbol) for symbol, listing_date in rows],
         )
-    print(f"  {len(rows)} symbols with a genuine IPO listing date "
-          f"({len(records) - len(rows)} skipped -- not yet listed, unclassified, or unparseable)")
+    print(f"  {len(rows)} symbols with a listing date ({skipped_sme} SME-series rows excluded)")
 
 
 def update_index_prices():
