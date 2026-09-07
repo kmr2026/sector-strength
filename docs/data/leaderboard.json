@@ -45,10 +45,10 @@
     {
       "sector": "Private Bank",
       "index_name": "NIFTY PRIVATE BANK",
-      "score": 80,
+      "score": 77,
       "score_delta": {
         "available": true,
-        "delta": -10,
+        "delta": -13,
         "prev_score": 90,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -59,7 +59,7 @@
         86,
         90,
         90,
-        80
+        77
       ],
       "ema": {
         "available": true,
@@ -77,12 +77,12 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 60.0,
-        "pct_above_10ma_week_ago": 30.0,
-        "breadth_rising": true,
-        "pct_above_21ma": 40.0,
-        "pct_above_21ma_week_ago": 20.0,
-        "breadth_21_rising": true,
+        "pct_above_10ma": 50.0,
+        "pct_above_10ma_week_ago": 70.0,
+        "breadth_rising": false,
+        "pct_above_21ma": 50.0,
+        "pct_above_21ma_week_ago": 70.0,
+        "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 10,
         "low_sample": false
@@ -179,7 +179,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1273.0
+          "close": 1266.0
         },
         {
           "symbol": "IDFCFIRSTB",
@@ -187,7 +187,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 86.71
+          "close": 86.44
         },
         {
           "symbol": "KOTAKBANK",
@@ -195,7 +195,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 424.5
+          "close": 422.1
         },
         {
           "symbol": "RBLBANK",
@@ -203,15 +203,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 414.35
-        },
-        {
-          "symbol": "INDUSINDBK",
-          "name": "IndusInd Bank",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 1008.5
+          "close": 415.0
         },
         {
           "symbol": "YESBANK",
@@ -219,7 +211,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 22.5
+          "close": 22.42
+        },
+        {
+          "symbol": "ICICIBANK",
+          "name": "ICICI Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 1427.5
         },
         {
           "symbol": "BANDHANBNK",
@@ -227,7 +227,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 164.95
+          "close": 164.7
         },
         {
           "symbol": "FEDERALBNK",
@@ -235,7 +235,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 343.0
+          "close": 342.0
         },
         {
           "symbol": "HDFCBANK",
@@ -243,230 +243,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 712.1
+          "close": 710.5
         },
         {
-          "symbol": "ICICIBANK",
-          "name": "ICICI Bank",
+          "symbol": "INDUSINDBK",
+          "name": "IndusInd Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1423.2
-        }
-      ],
-      "last_date": "2026-09-04"
-    },
-    {
-      "sector": "Realty",
-      "index_name": "NIFTY REALTY",
-      "score": 76,
-      "score_delta": {
-        "available": true,
-        "delta": -13,
-        "prev_score": 89,
-        "prev_date": "2026-09-03",
-        "bullish_stack_changed": false,
-        "overheated_changed": false
-      },
-      "score_history": [
-        83,
-        73,
-        31,
-        54,
-        89,
-        76
-      ],
-      "ema": {
-        "available": true,
-        "price": 907.9,
-        "ema21": 903.34,
-        "above_21": true,
-        "ema21_rising": false,
-        "pct_above_21": 0.5,
-        "extended": false,
-        "ema50": 886.55,
-        "above_50": true,
-        "ema200": 855.27,
-        "above_200": true,
-        "bullish_stack": true
-      },
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 50.0,
-        "pct_above_10ma_week_ago": 30.0,
-        "breadth_rising": true,
-        "pct_above_21ma": 50.0,
-        "pct_above_21ma_week_ago": 40.0,
-        "breadth_21_rising": true,
-        "overheated": false,
-        "n_stocks": 10,
-        "low_sample": false
-      },
-      "rs": {
-        "available": true,
-        "rs_ratio": 0.038,
-        "rs_above_ema": true,
-        "rs_rising_1w": true,
-        "history": [
-          0.0326,
-          0.0335,
-          0.0341,
-          0.0338,
-          0.0339,
-          0.0338,
-          0.0338,
-          0.0338,
-          0.0343,
-          0.0343,
-          0.0342,
-          0.0348,
-          0.0358,
-          0.0361,
-          0.0367,
-          0.0371,
-          0.0366,
-          0.0367,
-          0.0378,
-          0.0388,
-          0.0387,
-          0.0382,
-          0.038,
-          0.0376,
-          0.0378,
-          0.0379,
-          0.0383,
-          0.0376,
-          0.0371,
-          0.0371,
-          0.0376,
-          0.0384,
-          0.0379,
-          0.037,
-          0.037,
-          0.0369,
-          0.0362,
-          0.0365,
-          0.036,
-          0.0361,
-          0.0365,
-          0.0363,
-          0.0364,
-          0.0368,
-          0.0368,
-          0.0374,
-          0.0371,
-          0.0372,
-          0.0375,
-          0.0376,
-          0.0379,
-          0.0377,
-          0.0376,
-          0.0378,
-          0.0376,
-          0.0375,
-          0.0371,
-          0.0373,
-          0.0384,
-          0.038
-        ]
-      },
-      "rs_rating": 62,
-      "rs_rating_delta": {
-        "available": false
-      },
-      "high52": {
-        "available": true,
-        "pct_within_52wk_high": 10.0,
-        "n_stocks": 10,
-        "band_pct": 5.0
-      },
-      "high52_delta": {
-        "available": true,
-        "delta": 0.0,
-        "prev_value": 10.0,
-        "prev_date": "2026-09-04",
-        "direction": "flat"
-      },
-      "stocks": [
-        {
-          "symbol": "ANANTRAJ",
-          "name": "Anant Raj",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 625.45
-        },
-        {
-          "symbol": "BRIGADE",
-          "name": "Brigade Enterpr.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 696.1
-        },
-        {
-          "symbol": "DLF",
-          "name": "DLF",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 681.9
-        },
-        {
-          "symbol": "OBEROIRLTY",
-          "name": "Oberoi Realty",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1875.6
-        },
-        {
-          "symbol": "PHOENIXLTD",
-          "name": "Phoenix Mills",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1942.0
-        },
-        {
-          "symbol": "ABREL",
-          "name": "A B Real Estate",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1373.6
-        },
-        {
-          "symbol": "GODREJPROP",
-          "name": "Godrej Propert.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1982.0
-        },
-        {
-          "symbol": "LODHA",
-          "name": "Lodha Developers",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1222.0
-        },
-        {
-          "symbol": "PRESTIGE",
-          "name": "Prestige Estates",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1587.0
-        },
-        {
-          "symbol": "SOBHA",
-          "name": "Sobha",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1263.8
+          "close": 998.0
         }
       ],
       "last_date": "2026-09-04"
@@ -474,10 +259,10 @@
     {
       "sector": "Defence",
       "index_name": "NIFTY INDIA DEFENCE",
-      "score": 69,
+      "score": 70,
       "score_delta": {
         "available": true,
-        "delta": 28,
+        "delta": 29,
         "prev_score": 41,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": true,
@@ -488,7 +273,7 @@
         45,
         46,
         41,
-        69
+        70
       ],
       "ema": {
         "available": true,
@@ -507,10 +292,10 @@
       "breadth": {
         "available": true,
         "pct_above_10ma": 47.4,
-        "pct_above_10ma_week_ago": 36.8,
+        "pct_above_10ma_week_ago": 31.6,
         "breadth_rising": true,
-        "pct_above_21ma": 42.1,
-        "pct_above_21ma_week_ago": 63.2,
+        "pct_above_21ma": 47.4,
+        "pct_above_21ma_week_ago": 47.4,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 19,
@@ -590,16 +375,16 @@
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 10.5,
+        "pct_within_52wk_high": 15.8,
         "n_stocks": 19,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
+        "delta": 5.3,
         "prev_value": 10.5,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "up"
       },
       "stocks": [
         {
@@ -608,7 +393,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 388.9
+          "close": 403.95
         },
         {
           "symbol": "ASTRAMICRO",
@@ -616,7 +401,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1729.0
+          "close": 1711.6
         },
         {
           "symbol": "AXISCADES",
@@ -624,7 +409,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1711.6
+          "close": 1778.0
         },
         {
           "symbol": "BEML",
@@ -632,15 +417,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 2057.8
-        },
-        {
-          "symbol": "DYNAMATECH",
-          "name": "Dynamatic Tech.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 11654.0
+          "close": 2097.2
         },
         {
           "symbol": "MTARTECH",
@@ -648,7 +425,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 7161.0
+          "close": 7519.0
+        },
+        {
+          "symbol": "PARAS",
+          "name": "Paras Defence",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 1489.4
         },
         {
           "symbol": "SOLARINDS",
@@ -656,7 +441,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 21445.0
+          "close": 21950.0
         },
         {
           "symbol": "HAL",
@@ -664,7 +449,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 4856.0
+          "close": 4855.2
         },
         {
           "symbol": "MIDHANI",
@@ -672,15 +457,23 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 418.8
+          "close": 419.9
         },
         {
-          "symbol": "PARAS",
-          "name": "Paras Defence",
+          "symbol": "COCHINSHIP",
+          "name": "Cochin Shipyard",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 1414.9
+          "close": 1506.4
+        },
+        {
+          "symbol": "DYNAMATECH",
+          "name": "Dynamatic Tech.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 11569.0
         },
         {
           "symbol": "AEQUS",
@@ -688,7 +481,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 242.18
+          "close": 233.86
         },
         {
           "symbol": "BDL",
@@ -696,7 +489,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1255.0
+          "close": 1241.7
         },
         {
           "symbol": "BEL",
@@ -704,7 +497,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 405.35
+          "close": 404.0
         },
         {
           "symbol": "BHARATFORG",
@@ -712,15 +505,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1956.0
-        },
-        {
-          "symbol": "COCHINSHIP",
-          "name": "Cochin Shipyard",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1499.1
+          "close": 1955.0
         },
         {
           "symbol": "DATAPATTNS",
@@ -728,7 +513,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4585.0
+          "close": 4590.8
         },
         {
           "symbol": "GRSE",
@@ -736,7 +521,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2533.2
+          "close": 2506.6
         },
         {
           "symbol": "MAZDOCK",
@@ -744,7 +529,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2475.0
+          "close": 2454.2
         },
         {
           "symbol": "ZENTEC",
@@ -752,262 +537,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1801.4
-        }
-      ],
-      "last_date": "2026-09-04"
-    },
-    {
-      "sector": "Metal",
-      "index_name": "NIFTY METAL",
-      "score": 67,
-      "score_delta": {
-        "available": true,
-        "delta": -6,
-        "prev_score": 73,
-        "prev_date": "2026-09-03",
-        "bullish_stack_changed": false,
-        "overheated_changed": false
-      },
-      "score_history": [
-        88,
-        76,
-        76,
-        48,
-        73,
-        67
-      ],
-      "ema": {
-        "available": true,
-        "price": 13317.45,
-        "ema21": 13176.49,
-        "above_21": true,
-        "ema21_rising": true,
-        "pct_above_21": 1.07,
-        "extended": false,
-        "ema50": 13009.75,
-        "above_50": true,
-        "ema200": 12181.26,
-        "above_200": true,
-        "bullish_stack": true
-      },
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 46.7,
-        "pct_above_10ma_week_ago": 73.3,
-        "breadth_rising": false,
-        "pct_above_21ma": 53.3,
-        "pct_above_21ma_week_ago": 66.7,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 15,
-        "low_sample": false
-      },
-      "rs": {
-        "available": true,
-        "rs_ratio": 0.5573,
-        "rs_above_ema": true,
-        "rs_rising_1w": false,
-        "history": [
-          0.5442,
-          0.5485,
-          0.537,
-          0.5402,
-          0.5383,
-          0.5422,
-          0.5431,
-          0.5318,
-          0.5253,
-          0.5174,
-          0.5239,
-          0.5246,
-          0.5163,
-          0.5172,
-          0.5191,
-          0.5208,
-          0.5157,
-          0.5221,
-          0.5218,
-          0.5242,
-          0.5205,
-          0.5271,
-          0.5207,
-          0.5191,
-          0.5111,
-          0.5175,
-          0.5219,
-          0.5235,
-          0.5224,
-          0.5218,
-          0.5199,
-          0.517,
-          0.5232,
-          0.5223,
-          0.5216,
-          0.5213,
-          0.5294,
-          0.5383,
-          0.5327,
-          0.5368,
-          0.538,
-          0.5353,
-          0.539,
-          0.5343,
-          0.5311,
-          0.5396,
-          0.5392,
-          0.5409,
-          0.539,
-          0.5432,
-          0.5525,
-          0.5495,
-          0.5594,
-          0.5573,
-          0.5595,
-          0.5479,
-          0.5483,
-          0.5502,
-          0.5519,
-          0.5573
-        ]
-      },
-      "rs_rating": 87,
-      "rs_rating_delta": {
-        "available": false
-      },
-      "high52": {
-        "available": true,
-        "pct_within_52wk_high": 26.7,
-        "n_stocks": 15,
-        "band_pct": 5.0
-      },
-      "high52_delta": {
-        "available": true,
-        "delta": 0.0,
-        "prev_value": 26.7,
-        "prev_date": "2026-09-04",
-        "direction": "flat"
-      },
-      "stocks": [
-        {
-          "symbol": "APLAPOLLO",
-          "name": "APL Apollo Tubes",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 2250.0
-        },
-        {
-          "symbol": "JSL",
-          "name": "Jindal Stain.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 737.85
-        },
-        {
-          "symbol": "JSWSTEEL",
-          "name": "JSW Steel",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1325.0
-        },
-        {
-          "symbol": "SAIL",
-          "name": "S A I L",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 196.8
-        },
-        {
-          "symbol": "TATASTEEL",
-          "name": "Tata Steel",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 188.79
-        },
-        {
-          "symbol": "WELCORP",
-          "name": "Welspun Corp",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 2590.6
-        },
-        {
-          "symbol": "LLOYDSME",
-          "name": "Lloyds Metals",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 1823.0
-        },
-        {
-          "symbol": "HINDZINC",
-          "name": "Hindustan Zinc",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 601.0
-        },
-        {
-          "symbol": "JINDALSTEL",
-          "name": "Jindal Steel",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 1165.0
-        },
-        {
-          "symbol": "ADANIENT",
-          "name": "Adani Enterp.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 2938.0
-        },
-        {
-          "symbol": "HINDALCO",
-          "name": "Hindalco Inds.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1011.0
-        },
-        {
-          "symbol": "HINDCOPPER",
-          "name": "Hindustan Copper",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 521.65
-        },
-        {
-          "symbol": "NATIONALUM",
-          "name": "Natl. Aluminium",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 374.1
-        },
-        {
-          "symbol": "NMDC",
-          "name": "NMDC",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 84.7
-        },
-        {
-          "symbol": "VEDL",
-          "name": "Vedanta",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 272.1
+          "close": 1794.6
         }
       ],
       "last_date": "2026-09-04"
@@ -1048,11 +578,11 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 30.8,
-        "pct_above_10ma_week_ago": 69.2,
+        "pct_above_10ma": 46.2,
+        "pct_above_10ma_week_ago": 53.8,
         "breadth_rising": false,
         "pct_above_21ma": 46.2,
-        "pct_above_21ma_week_ago": 46.2,
+        "pct_above_21ma_week_ago": 61.5,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 13,
@@ -1144,12 +674,28 @@
       },
       "stocks": [
         {
+          "symbol": "HFCL",
+          "name": "HFCL",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 243.01
+        },
+        {
           "symbol": "IDEA",
           "name": "Vodafone Idea",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 15.02
+          "close": 15.6
+        },
+        {
+          "symbol": "ROUTE",
+          "name": "Route Mobile",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 512.05
         },
         {
           "symbol": "STLTECH",
@@ -1157,7 +703,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 748.9
+          "close": 786.3
         },
         {
           "symbol": "TATACOMM",
@@ -1165,7 +711,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1756.1
+          "close": 1738.5
         },
         {
           "symbol": "TEJASNET",
@@ -1173,23 +719,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 614.15
-        },
-        {
-          "symbol": "HFCL",
-          "name": "HFCL",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 231.44
-        },
-        {
-          "symbol": "OPTIEMUS",
-          "name": "Optiemus Infra.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 569.3
+          "close": 593.6
         },
         {
           "symbol": "BHARTIARTL",
@@ -1197,7 +727,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1840.0
+          "close": 1854.0
         },
         {
           "symbol": "BHARTIHEXA",
@@ -1205,7 +735,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1495.4
+          "close": 1528.7
         },
         {
           "symbol": "INDUSTOWER",
@@ -1213,7 +743,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 376.8
+          "close": 376.45
         },
         {
           "symbol": "ITI",
@@ -1221,7 +751,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 272.5
+          "close": 270.6
+        },
+        {
+          "symbol": "OPTIEMUS",
+          "name": "Optiemus Infra.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 560.45
         },
         {
           "symbol": "RAILTEL",
@@ -1229,15 +767,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 271.05
-        },
-        {
-          "symbol": "ROUTE",
-          "name": "Route Mobile",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 501.55
+          "close": 270.05
         },
         {
           "symbol": "TTML",
@@ -1245,254 +775,477 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 37.74
+          "close": 37.35
         }
       ],
       "last_date": "2026-09-04"
     },
     {
-      "sector": "Bank",
-      "index_name": "NIFTY BANK",
-      "score": 53,
+      "sector": "Metal",
+      "index_name": "NIFTY METAL",
+      "score": 64,
       "score_delta": {
         "available": true,
-        "delta": -6,
-        "prev_score": 59,
+        "delta": -9,
+        "prev_score": 73,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
         "overheated_changed": false
       },
       "score_history": [
-        44,
-        94,
-        56,
-        49,
-        59,
-        53
+        88,
+        76,
+        76,
+        48,
+        73,
+        64
       ],
       "ema": {
         "available": true,
-        "price": 57369.65,
-        "ema21": 57505.01,
-        "above_21": false,
-        "ema21_rising": false,
-        "pct_above_21": -0.24,
+        "price": 13317.45,
+        "ema21": 13176.49,
+        "above_21": true,
+        "ema21_rising": true,
+        "pct_above_21": 1.07,
         "extended": false,
-        "ema50": 57317.12,
+        "ema50": 13009.75,
         "above_50": true,
-        "ema200": 57007.1,
+        "ema200": 12181.26,
         "above_200": true,
-        "bullish_stack": false
+        "bullish_stack": true
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 50.0,
-        "pct_above_10ma_week_ago": 28.6,
-        "breadth_rising": true,
-        "pct_above_21ma": 35.7,
-        "pct_above_21ma_week_ago": 21.4,
-        "breadth_21_rising": true,
+        "pct_above_10ma": 20.0,
+        "pct_above_10ma_week_ago": 46.7,
+        "breadth_rising": false,
+        "pct_above_21ma": 40.0,
+        "pct_above_21ma_week_ago": 53.3,
+        "breadth_21_rising": false,
         "overheated": false,
-        "n_stocks": 14,
+        "n_stocks": 15,
         "low_sample": false
       },
       "rs": {
         "available": true,
-        "rs_ratio": 2.4006,
+        "rs_ratio": 0.5573,
         "rs_above_ema": true,
-        "rs_rising_1w": true,
+        "rs_rising_1w": false,
         "history": [
-          2.4051,
-          2.3979,
-          2.3885,
-          2.3908,
-          2.3984,
-          2.4023,
-          2.4037,
-          2.4002,
-          2.4207,
-          2.4184,
-          2.4107,
-          2.4111,
-          2.4175,
-          2.4004,
-          2.3872,
-          2.386,
-          2.3854,
-          2.376,
-          2.3892,
-          2.3979,
-          2.401,
-          2.3891,
-          2.3987,
-          2.392,
-          2.4049,
-          2.3906,
-          2.3911,
-          2.3807,
-          2.3709,
-          2.3853,
-          2.379,
-          2.3663,
-          2.359,
-          2.3501,
-          2.3485,
-          2.3511,
-          2.3525,
-          2.3448,
-          2.3569,
-          2.3502,
-          2.3465,
-          2.3475,
-          2.3689,
-          2.3625,
-          2.3595,
-          2.3674,
-          2.3706,
-          2.3772,
-          2.3727,
-          2.3817,
-          2.3752,
-          2.3635,
-          2.387,
-          2.3872,
-          2.3783,
-          2.4096,
-          2.3865,
-          2.3907,
-          2.4035,
-          2.4006
+          0.5442,
+          0.5485,
+          0.537,
+          0.5402,
+          0.5383,
+          0.5422,
+          0.5431,
+          0.5318,
+          0.5253,
+          0.5174,
+          0.5239,
+          0.5246,
+          0.5163,
+          0.5172,
+          0.5191,
+          0.5208,
+          0.5157,
+          0.5221,
+          0.5218,
+          0.5242,
+          0.5205,
+          0.5271,
+          0.5207,
+          0.5191,
+          0.5111,
+          0.5175,
+          0.5219,
+          0.5235,
+          0.5224,
+          0.5218,
+          0.5199,
+          0.517,
+          0.5232,
+          0.5223,
+          0.5216,
+          0.5213,
+          0.5294,
+          0.5383,
+          0.5327,
+          0.5368,
+          0.538,
+          0.5353,
+          0.539,
+          0.5343,
+          0.5311,
+          0.5396,
+          0.5392,
+          0.5409,
+          0.539,
+          0.5432,
+          0.5525,
+          0.5495,
+          0.5594,
+          0.5573,
+          0.5595,
+          0.5479,
+          0.5483,
+          0.5502,
+          0.5519,
+          0.5573
         ]
       },
-      "rs_rating": 42,
+      "rs_rating": 83,
       "rs_rating_delta": {
         "available": false
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 14.3,
-        "n_stocks": 14,
+        "pct_within_52wk_high": 20.0,
+        "n_stocks": 15,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
-        "prev_value": 14.3,
+        "delta": -6.7,
+        "prev_value": 26.7,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "down"
       },
       "stocks": [
         {
-          "symbol": "AXISBANK",
-          "name": "Axis Bank",
+          "symbol": "APLAPOLLO",
+          "name": "APL Apollo Tubes",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1273.0
+          "close": 2215.0
         },
         {
-          "symbol": "IDFCFIRSTB",
-          "name": "IDFC First Bank",
+          "symbol": "JSL",
+          "name": "Jindal Stain.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 86.71
+          "close": 736.8
         },
         {
-          "symbol": "KOTAKBANK",
-          "name": "Kotak Mah. Bank",
+          "symbol": "WELCORP",
+          "name": "Welspun Corp",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 424.5
+          "close": 2597.9
         },
         {
-          "symbol": "PNB",
-          "name": "Punjab Natl.Bank",
+          "symbol": "HINDZINC",
+          "name": "Hindustan Zinc",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 589.15
+        },
+        {
+          "symbol": "JINDALSTEL",
+          "name": "Jindal Steel",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 1147.9
+        },
+        {
+          "symbol": "SAIL",
+          "name": "S A I L",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 187.9
+        },
+        {
+          "symbol": "ADANIENT",
+          "name": "Adani Enterp.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 2950.0
+        },
+        {
+          "symbol": "HINDALCO",
+          "name": "Hindalco Inds.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1006.0
+        },
+        {
+          "symbol": "HINDCOPPER",
+          "name": "Hindustan Copper",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 509.1
+        },
+        {
+          "symbol": "JSWSTEEL",
+          "name": "JSW Steel",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1302.0
+        },
+        {
+          "symbol": "LLOYDSME",
+          "name": "Lloyds Metals",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1803.0
+        },
+        {
+          "symbol": "NATIONALUM",
+          "name": "Natl. Aluminium",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 365.9
+        },
+        {
+          "symbol": "NMDC",
+          "name": "NMDC",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 83.85
+        },
+        {
+          "symbol": "TATASTEEL",
+          "name": "Tata Steel",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 185.61
+        },
+        {
+          "symbol": "VEDL",
+          "name": "Vedanta",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 268.0
+        }
+      ],
+      "last_date": "2026-09-04"
+    },
+    {
+      "sector": "Realty",
+      "index_name": "NIFTY REALTY",
+      "score": 64,
+      "score_delta": {
+        "available": true,
+        "delta": -25,
+        "prev_score": 89,
+        "prev_date": "2026-09-03",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
+      },
+      "score_history": [
+        83,
+        73,
+        31,
+        54,
+        89,
+        64
+      ],
+      "ema": {
+        "available": true,
+        "price": 907.9,
+        "ema21": 903.34,
+        "above_21": true,
+        "ema21_rising": false,
+        "pct_above_21": 0.5,
+        "extended": false,
+        "ema50": 886.55,
+        "above_50": true,
+        "ema200": 855.27,
+        "above_200": true,
+        "bullish_stack": true
+      },
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 30.0,
+        "pct_above_10ma_week_ago": 30.0,
+        "breadth_rising": false,
+        "pct_above_21ma": 20.0,
+        "pct_above_21ma_week_ago": 40.0,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 10,
+        "low_sample": false
+      },
+      "rs": {
+        "available": true,
+        "rs_ratio": 0.038,
+        "rs_above_ema": true,
+        "rs_rising_1w": true,
+        "history": [
+          0.0326,
+          0.0335,
+          0.0341,
+          0.0338,
+          0.0339,
+          0.0338,
+          0.0338,
+          0.0338,
+          0.0343,
+          0.0343,
+          0.0342,
+          0.0348,
+          0.0358,
+          0.0361,
+          0.0367,
+          0.0371,
+          0.0366,
+          0.0367,
+          0.0378,
+          0.0388,
+          0.0387,
+          0.0382,
+          0.038,
+          0.0376,
+          0.0378,
+          0.0379,
+          0.0383,
+          0.0376,
+          0.0371,
+          0.0371,
+          0.0376,
+          0.0384,
+          0.0379,
+          0.037,
+          0.037,
+          0.0369,
+          0.0362,
+          0.0365,
+          0.036,
+          0.0361,
+          0.0365,
+          0.0363,
+          0.0364,
+          0.0368,
+          0.0368,
+          0.0374,
+          0.0371,
+          0.0372,
+          0.0375,
+          0.0376,
+          0.0379,
+          0.0377,
+          0.0376,
+          0.0378,
+          0.0376,
+          0.0375,
+          0.0371,
+          0.0373,
+          0.0384,
+          0.038
+        ]
+      },
+      "rs_rating": 62,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 10,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": true,
+        "delta": -10.0,
+        "prev_value": 10.0,
+        "prev_date": "2026-09-04",
+        "direction": "down"
+      },
+      "stocks": [
+        {
+          "symbol": "ANANTRAJ",
+          "name": "Anant Raj",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 117.0
+          "close": 638.25
         },
         {
-          "symbol": "UNIONBANK",
-          "name": "Union Bank (I)",
+          "symbol": "BRIGADE",
+          "name": "Brigade Enterpr.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 187.22
+          "close": 679.05
         },
         {
-          "symbol": "INDUSINDBK",
-          "name": "IndusInd Bank",
+          "symbol": "ABREL",
+          "name": "A B Real Estate",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 1008.5
+          "close": 1377.8
         },
         {
-          "symbol": "YESBANK",
-          "name": "Yes Bank",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 22.5
-        },
-        {
-          "symbol": "AUBANK",
-          "name": "AU Small Finance",
+          "symbol": "DLF",
+          "name": "DLF",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1065.0
+          "close": 672.7
         },
         {
-          "symbol": "BANKBARODA",
-          "name": "Bank of Baroda",
+          "symbol": "GODREJPROP",
+          "name": "Godrej Propert.",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 239.0
+          "close": 1922.2
         },
         {
-          "symbol": "CANBK",
-          "name": "Canara Bank",
+          "symbol": "LODHA",
+          "name": "Lodha Developers",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 125.5
+          "close": 1200.0
         },
         {
-          "symbol": "FEDERALBNK",
-          "name": "Federal Bank",
+          "symbol": "OBEROIRLTY",
+          "name": "Oberoi Realty",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 343.0
+          "close": 1847.5
         },
         {
-          "symbol": "HDFCBANK",
-          "name": "HDFC Bank",
+          "symbol": "PHOENIXLTD",
+          "name": "Phoenix Mills",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 712.1
+          "close": 1905.0
         },
         {
-          "symbol": "ICICIBANK",
-          "name": "ICICI Bank",
+          "symbol": "PRESTIGE",
+          "name": "Prestige Estates",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1423.2
+          "close": 1550.0
         },
         {
-          "symbol": "SBIN",
-          "name": "SBI",
+          "symbol": "SOBHA",
+          "name": "Sobha",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1016.1
+          "close": 1250.1
         }
       ],
       "last_date": "2026-09-04"
@@ -1500,10 +1253,10 @@
     {
       "sector": "Pharma",
       "index_name": "NIFTY PHARMA",
-      "score": 47,
+      "score": 51,
       "score_delta": {
         "available": true,
-        "delta": -36,
+        "delta": -32,
         "prev_score": 83,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": true,
@@ -1515,7 +1268,7 @@
         91,
         83,
         83,
-        47
+        51
       ],
       "ema": {
         "available": true,
@@ -1533,11 +1286,11 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 35.0,
+        "pct_above_10ma": 40.0,
         "pct_above_10ma_week_ago": 60.0,
         "breadth_rising": false,
-        "pct_above_21ma": 40.0,
-        "pct_above_21ma_week_ago": 55.0,
+        "pct_above_21ma": 50.0,
+        "pct_above_21ma_week_ago": 65.0,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 20,
@@ -1611,22 +1364,22 @@
           1.108
         ]
       },
-      "rs_rating": 83,
+      "rs_rating": 87,
       "rs_rating_delta": {
         "available": false
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 40.0,
+        "pct_within_52wk_high": 55.0,
         "n_stocks": 20,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
+        "delta": 15.0,
         "prev_value": 40.0,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "up"
       },
       "stocks": [
         {
@@ -1635,7 +1388,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1653.1
+          "close": 1660.0
         },
         {
           "symbol": "DIVISLAB",
@@ -1643,7 +1396,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 9100.0
+          "close": 9315.0
         },
         {
           "symbol": "GLAND",
@@ -1651,7 +1404,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 2932.4
+          "close": 2974.3
         },
         {
           "symbol": "IPCALAB",
@@ -1659,7 +1412,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1965.3
+          "close": 1959.1
         },
         {
           "symbol": "PPLPHARMA",
@@ -1667,7 +1420,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 214.22
+          "close": 219.66
         },
         {
           "symbol": "SAILIFE",
@@ -1675,7 +1428,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1584.3
+          "close": 1579.6
         },
         {
           "symbol": "WOCKPHARMA",
@@ -1683,7 +1436,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 2088.7
+          "close": 2208.0
+        },
+        {
+          "symbol": "ZYDUSLIFE",
+          "name": "Zydus Lifesci.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 1156.9
         },
         {
           "symbol": "GLENMARK",
@@ -1691,7 +1452,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 2437.2
+          "close": 2451.9
+        },
+        {
+          "symbol": "LAURUSLABS",
+          "name": "Laurus Labs",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 1876.7
         },
         {
           "symbol": "ABBOTINDIA",
@@ -1699,7 +1468,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 26065.0
+          "close": 25940.0
         },
         {
           "symbol": "AJANTPHARM",
@@ -1707,7 +1476,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3464.8
+          "close": 3513.6
         },
         {
           "symbol": "ALKEM",
@@ -1715,7 +1484,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5190.0
+          "close": 5242.5
         },
         {
           "symbol": "BIOCON",
@@ -1723,7 +1492,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 397.4
+          "close": 391.4
         },
         {
           "symbol": "CIPLA",
@@ -1731,7 +1500,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1385.0
+          "close": 1395.0
         },
         {
           "symbol": "DRREDDY",
@@ -1739,15 +1508,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1151.0
-        },
-        {
-          "symbol": "LAURUSLABS",
-          "name": "Laurus Labs",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1840.0
+          "close": 1144.2
         },
         {
           "symbol": "LUPIN",
@@ -1755,7 +1516,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2110.0
+          "close": 2105.0
         },
         {
           "symbol": "MANKIND",
@@ -1763,7 +1524,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2327.9
+          "close": 2318.0
         },
         {
           "symbol": "SUNPHARMA",
@@ -1771,7 +1532,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1899.0
+          "close": 1895.0
         },
         {
           "symbol": "TORNTPHARM",
@@ -1779,501 +1540,198 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4857.0
-        },
-        {
-          "symbol": "ZYDUSLIFE",
-          "name": "Zydus Lifesci.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1120.0
+          "close": 4914.0
         }
       ],
       "last_date": "2026-09-04"
     },
     {
-      "sector": "Chemicals",
-      "index_name": "NIFTY CHEMICALS",
-      "score": 47,
+      "sector": "Bank",
+      "index_name": "NIFTY BANK",
+      "score": 48,
       "score_delta": {
         "available": true,
-        "delta": -29,
-        "prev_score": 76,
-        "prev_date": "2026-09-03",
-        "bullish_stack_changed": true,
-        "overheated_changed": false
-      },
-      "score_history": [
-        43,
-        27,
-        51,
-        41,
-        76,
-        47
-      ],
-      "ema": {
-        "available": true,
-        "price": 30101.8,
-        "ema21": 30251.54,
-        "above_21": false,
-        "ema21_rising": false,
-        "pct_above_21": -0.49,
-        "extended": false,
-        "ema50": 30079.25,
-        "above_50": true,
-        "ema200": 29383.11,
-        "above_200": true,
-        "bullish_stack": false
-      },
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 35.0,
-        "pct_above_10ma_week_ago": 40.0,
-        "breadth_rising": false,
-        "pct_above_21ma": 20.0,
-        "pct_above_21ma_week_ago": 40.0,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 20,
-        "low_sample": false
-      },
-      "rs": {
-        "available": true,
-        "rs_ratio": 1.2596,
-        "rs_above_ema": true,
-        "rs_rising_1w": true,
-        "history": [
-          1.2387,
-          1.238,
-          1.2354,
-          1.2305,
-          1.2335,
-          1.2429,
-          1.241,
-          1.2454,
-          1.2397,
-          1.2299,
-          1.2195,
-          1.2409,
-          1.227,
-          1.2355,
-          1.2373,
-          1.2371,
-          1.2275,
-          1.2205,
-          1.2246,
-          1.2319,
-          1.2267,
-          1.2317,
-          1.2415,
-          1.2593,
-          1.2438,
-          1.2581,
-          1.2795,
-          1.2769,
-          1.2598,
-          1.264,
-          1.268,
-          1.2527,
-          1.2513,
-          1.2332,
-          1.2343,
-          1.2335,
-          1.236,
-          1.2344,
-          1.2499,
-          1.2448,
-          1.2476,
-          1.246,
-          1.2457,
-          1.2634,
-          1.261,
-          1.2637,
-          1.2717,
-          1.2625,
-          1.2483,
-          1.2398,
-          1.2403,
-          1.2345,
-          1.2557,
-          1.262,
-          1.2488,
-          1.247,
-          1.25,
-          1.2567,
-          1.2701,
-          1.2596
-        ]
-      },
-      "rs_rating": 46,
-      "rs_rating_delta": {
-        "available": false
-      },
-      "high52": {
-        "available": true,
-        "pct_within_52wk_high": 20.0,
-        "n_stocks": 20,
-        "band_pct": 5.0
-      },
-      "high52_delta": {
-        "available": true,
-        "delta": 0.0,
-        "prev_value": 20.0,
-        "prev_date": "2026-09-04",
-        "direction": "flat"
-      },
-      "stocks": [
-        {
-          "symbol": "GNFC",
-          "name": "G N F C",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 596.7
-        },
-        {
-          "symbol": "NAVINFLUOR",
-          "name": "Navin Fluo.Intl.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 8557.5
-        },
-        {
-          "symbol": "SOLARINDS",
-          "name": "Solar Industries",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 21445.0
-        },
-        {
-          "symbol": "UPL",
-          "name": "UPL",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 582.15
-        },
-        {
-          "symbol": "COROMANDEL",
-          "name": "Coromandel Inter",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 1938.8
-        },
-        {
-          "symbol": "HSCL",
-          "name": "Himadri Special",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 671.05
-        },
-        {
-          "symbol": "PIIND",
-          "name": "P I Industries",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 2465.0
-        },
-        {
-          "symbol": "AARTIIND",
-          "name": "Aarti Industries",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 492.05
-        },
-        {
-          "symbol": "ATUL",
-          "name": "Atul",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 6386.0
-        },
-        {
-          "symbol": "BAYERCROP",
-          "name": "Bayer Crop Sci.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 3989.9
-        },
-        {
-          "symbol": "CHAMBLFERT",
-          "name": "Chambal Fert.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 419.05
-        },
-        {
-          "symbol": "DEEPAKNTR",
-          "name": "Deepak Nitrite",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1712.4
-        },
-        {
-          "symbol": "EIDPARRY",
-          "name": "EID Parry",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 781.35
-        },
-        {
-          "symbol": "FLUOROCHEM",
-          "name": "Gujarat Fluoroch",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 4554.0
-        },
-        {
-          "symbol": "LINDEINDIA",
-          "name": "Linde India",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 6346.0
-        },
-        {
-          "symbol": "PCBL",
-          "name": "PCBL Chemical",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 317.0
-        },
-        {
-          "symbol": "PIDILITIND",
-          "name": "Pidilite Inds.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1629.5
-        },
-        {
-          "symbol": "SRF",
-          "name": "SRF",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 2547.0
-        },
-        {
-          "symbol": "SUMICHEM",
-          "name": "Sumitomo Chemi.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 493.4
-        },
-        {
-          "symbol": "TATACHEM",
-          "name": "Tata Chemicals",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 625.1
-        }
-      ],
-      "last_date": "2026-09-04"
-    },
-    {
-      "sector": "PSU Bank",
-      "index_name": "NIFTY PSU BANK",
-      "score": 46,
-      "score_delta": {
-        "available": true,
-        "delta": -12,
-        "prev_score": 58,
+        "delta": -11,
+        "prev_score": 59,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
         "overheated_changed": false
       },
       "score_history": [
-        82,
-        82,
-        25,
-        38,
-        58,
-        46
+        44,
+        94,
+        56,
+        49,
+        59,
+        48
       ],
       "ema": {
         "available": true,
-        "price": 8514.85,
-        "ema21": 8574.13,
+        "price": 57369.65,
+        "ema21": 57505.01,
         "above_21": false,
         "ema21_rising": false,
-        "pct_above_21": -0.69,
+        "pct_above_21": -0.24,
         "extended": false,
-        "ema50": 8537.7,
-        "above_50": false,
-        "ema200": 8391.59,
+        "ema50": 57317.12,
+        "above_50": true,
+        "ema200": 57007.1,
         "above_200": true,
         "bullish_stack": false
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 58.3,
-        "pct_above_10ma_week_ago": 33.3,
-        "breadth_rising": true,
-        "pct_above_21ma": 50.0,
-        "pct_above_21ma_week_ago": 33.3,
-        "breadth_21_rising": true,
+        "pct_above_10ma": 28.6,
+        "pct_above_10ma_week_ago": 64.3,
+        "breadth_rising": false,
+        "pct_above_21ma": 35.7,
+        "pct_above_21ma_week_ago": 71.4,
+        "breadth_21_rising": false,
         "overheated": false,
-        "n_stocks": 12,
+        "n_stocks": 14,
         "low_sample": false
       },
       "rs": {
         "available": true,
-        "rs_ratio": 0.3563,
+        "rs_ratio": 2.4006,
         "rs_above_ema": true,
         "rs_rising_1w": true,
         "history": [
-          0.361,
-          0.3597,
-          0.357,
-          0.3618,
-          0.3629,
-          0.363,
-          0.3636,
-          0.3606,
-          0.3592,
-          0.359,
-          0.3572,
-          0.3559,
-          0.3573,
-          0.3532,
-          0.3464,
-          0.3411,
-          0.3401,
-          0.338,
-          0.3423,
-          0.3491,
-          0.3495,
-          0.3454,
-          0.3483,
-          0.3468,
-          0.3444,
-          0.3554,
-          0.353,
-          0.3493,
-          0.3476,
-          0.3511,
-          0.3486,
-          0.3454,
-          0.343,
-          0.3425,
-          0.3431,
-          0.3426,
-          0.3445,
-          0.3469,
-          0.3543,
-          0.3576,
-          0.3514,
-          0.3531,
-          0.3608,
-          0.3603,
-          0.3586,
-          0.3585,
-          0.3568,
-          0.3579,
-          0.3556,
-          0.3554,
-          0.3526,
-          0.3536,
-          0.3581,
-          0.3565,
-          0.3559,
-          0.3575,
-          0.3536,
-          0.3559,
-          0.3582,
-          0.3563
+          2.4051,
+          2.3979,
+          2.3885,
+          2.3908,
+          2.3984,
+          2.4023,
+          2.4037,
+          2.4002,
+          2.4207,
+          2.4184,
+          2.4107,
+          2.4111,
+          2.4175,
+          2.4004,
+          2.3872,
+          2.386,
+          2.3854,
+          2.376,
+          2.3892,
+          2.3979,
+          2.401,
+          2.3891,
+          2.3987,
+          2.392,
+          2.4049,
+          2.3906,
+          2.3911,
+          2.3807,
+          2.3709,
+          2.3853,
+          2.379,
+          2.3663,
+          2.359,
+          2.3501,
+          2.3485,
+          2.3511,
+          2.3525,
+          2.3448,
+          2.3569,
+          2.3502,
+          2.3465,
+          2.3475,
+          2.3689,
+          2.3625,
+          2.3595,
+          2.3674,
+          2.3706,
+          2.3772,
+          2.3727,
+          2.3817,
+          2.3752,
+          2.3635,
+          2.387,
+          2.3872,
+          2.3783,
+          2.4096,
+          2.3865,
+          2.3907,
+          2.4035,
+          2.4006
         ]
       },
-      "rs_rating": 21,
+      "rs_rating": 50,
       "rs_rating_delta": {
         "available": false
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 0.0,
-        "n_stocks": 12,
+        "pct_within_52wk_high": 14.3,
+        "n_stocks": 14,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
         "delta": 0.0,
-        "prev_value": 0.0,
+        "prev_value": 14.3,
         "prev_date": "2026-09-04",
         "direction": "flat"
       },
       "stocks": [
         {
-          "symbol": "BANKINDIA",
-          "name": "Bank of India",
+          "symbol": "AXISBANK",
+          "name": "Axis Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 145.0
+          "close": 1266.0
         },
         {
-          "symbol": "CENTRALBK",
-          "name": "Central Bank",
+          "symbol": "IDFCFIRSTB",
+          "name": "IDFC First Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 31.08
+          "close": 86.44
         },
         {
-          "symbol": "IOB",
-          "name": "I O B",
+          "symbol": "KOTAKBANK",
+          "name": "Kotak Mah. Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 33.55
+          "close": 422.1
         },
         {
-          "symbol": "MAHABANK",
-          "name": "Bank of Maha",
+          "symbol": "YESBANK",
+          "name": "Yes Bank",
           "has_data": true,
           "above_10ma": true,
-          "above_21ma": true,
-          "close": 85.95
+          "above_21ma": false,
+          "close": 22.42
         },
         {
-          "symbol": "PNB",
-          "name": "Punjab Natl.Bank",
+          "symbol": "ICICIBANK",
+          "name": "ICICI Bank",
           "has_data": true,
-          "above_10ma": true,
+          "above_10ma": false,
           "above_21ma": true,
-          "close": 117.0
+          "close": 1427.5
         },
         {
           "symbol": "UNIONBANK",
           "name": "Union Bank (I)",
           "has_data": true,
-          "above_10ma": true,
+          "above_10ma": false,
           "above_21ma": true,
-          "close": 187.22
+          "close": 186.04
         },
         {
-          "symbol": "PSB",
-          "name": "Pun. & Sind Bank",
+          "symbol": "AUBANK",
+          "name": "AU Small Finance",
           "has_data": true,
-          "above_10ma": true,
+          "above_10ma": false,
           "above_21ma": false,
-          "close": 23.23
+          "close": 1053.0
         },
         {
           "symbol": "BANKBARODA",
@@ -2281,7 +1739,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 239.0
+          "close": 237.0
         },
         {
           "symbol": "CANBK",
@@ -2289,15 +1747,39 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 125.5
+          "close": 124.0
         },
         {
-          "symbol": "INDIANB",
-          "name": "Indian Bank",
+          "symbol": "FEDERALBNK",
+          "name": "Federal Bank",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 879.7
+          "close": 342.0
+        },
+        {
+          "symbol": "HDFCBANK",
+          "name": "HDFC Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 710.5
+        },
+        {
+          "symbol": "INDUSINDBK",
+          "name": "IndusInd Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 998.0
+        },
+        {
+          "symbol": "PNB",
+          "name": "Punjab Natl.Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 115.6
         },
         {
           "symbol": "SBIN",
@@ -2305,15 +1787,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1016.1
-        },
-        {
-          "symbol": "UCOBANK",
-          "name": "UCO Bank",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 24.78
+          "close": 1005.9
         }
       ],
       "last_date": "2026-09-04"
@@ -2355,10 +1829,10 @@
       "breadth": {
         "available": true,
         "pct_above_10ma": 53.3,
-        "pct_above_10ma_week_ago": 26.7,
+        "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": true,
         "pct_above_21ma": 46.7,
-        "pct_above_21ma_week_ago": 20.0,
+        "pct_above_21ma_week_ago": 33.3,
         "breadth_21_rising": true,
         "overheated": false,
         "n_stocks": 15,
@@ -2456,7 +1930,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 284.5
+          "close": 285.35
         },
         {
           "symbol": "CASTROLIND",
@@ -2464,7 +1938,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 190.27
+          "close": 189.01
         },
         {
           "symbol": "CHENNPETRO",
@@ -2472,7 +1946,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1452.2
+          "close": 1430.2
+        },
+        {
+          "symbol": "GAIL",
+          "name": "GAIL (India)",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 176.0
         },
         {
           "symbol": "IGL",
@@ -2480,7 +1962,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 158.04
+          "close": 154.8
         },
         {
           "symbol": "OIL",
@@ -2488,15 +1970,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 488.3
-        },
-        {
-          "symbol": "RELIANCE",
-          "name": "Reliance Industries",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1322.0
+          "close": 487.0
         },
         {
           "symbol": "MGL",
@@ -2504,15 +1978,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 1096.6
+          "close": 1092.1
         },
         {
-          "symbol": "ONGC",
-          "name": "O N G C",
+          "symbol": "RELIANCE",
+          "name": "Reliance Industries",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 234.65
+          "close": 1309.5
         },
         {
           "symbol": "PETRONET",
@@ -2520,7 +1994,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 288.1
+          "close": 290.95
         },
         {
           "symbol": "AEGISLOG",
@@ -2528,7 +2002,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1270.2
+          "close": 1253.7
         },
         {
           "symbol": "ATGL",
@@ -2536,7 +2010,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 612.35
+          "close": 603.7
         },
         {
           "symbol": "BPCL",
@@ -2544,15 +2018,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 315.7
-        },
-        {
-          "symbol": "GAIL",
-          "name": "GAIL (India)",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 173.4
+          "close": 312.9
         },
         {
           "symbol": "HINDPETRO",
@@ -2560,7 +2026,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 356.5
+          "close": 356.9
         },
         {
           "symbol": "IOC",
@@ -2568,7 +2034,310 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 137.6
+          "close": 135.15
+        },
+        {
+          "symbol": "ONGC",
+          "name": "O N G C",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 233.7
+        }
+      ],
+      "last_date": "2026-09-04"
+    },
+    {
+      "sector": "Chemicals",
+      "index_name": "NIFTY CHEMICALS",
+      "score": 46,
+      "score_delta": {
+        "available": true,
+        "delta": -30,
+        "prev_score": 76,
+        "prev_date": "2026-09-03",
+        "bullish_stack_changed": true,
+        "overheated_changed": false
+      },
+      "score_history": [
+        43,
+        27,
+        51,
+        41,
+        76,
+        46
+      ],
+      "ema": {
+        "available": true,
+        "price": 30101.8,
+        "ema21": 30251.54,
+        "above_21": false,
+        "ema21_rising": false,
+        "pct_above_21": -0.49,
+        "extended": false,
+        "ema50": 30079.25,
+        "above_50": true,
+        "ema200": 29383.11,
+        "above_200": true,
+        "bullish_stack": false
+      },
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 25.0,
+        "pct_above_10ma_week_ago": 25.0,
+        "breadth_rising": false,
+        "pct_above_21ma": 20.0,
+        "pct_above_21ma_week_ago": 35.0,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 20,
+        "low_sample": false
+      },
+      "rs": {
+        "available": true,
+        "rs_ratio": 1.2596,
+        "rs_above_ema": true,
+        "rs_rising_1w": true,
+        "history": [
+          1.2387,
+          1.238,
+          1.2354,
+          1.2305,
+          1.2335,
+          1.2429,
+          1.241,
+          1.2454,
+          1.2397,
+          1.2299,
+          1.2195,
+          1.2409,
+          1.227,
+          1.2355,
+          1.2373,
+          1.2371,
+          1.2275,
+          1.2205,
+          1.2246,
+          1.2319,
+          1.2267,
+          1.2317,
+          1.2415,
+          1.2593,
+          1.2438,
+          1.2581,
+          1.2795,
+          1.2769,
+          1.2598,
+          1.264,
+          1.268,
+          1.2527,
+          1.2513,
+          1.2332,
+          1.2343,
+          1.2335,
+          1.236,
+          1.2344,
+          1.2499,
+          1.2448,
+          1.2476,
+          1.246,
+          1.2457,
+          1.2634,
+          1.261,
+          1.2637,
+          1.2717,
+          1.2625,
+          1.2483,
+          1.2398,
+          1.2403,
+          1.2345,
+          1.2557,
+          1.262,
+          1.2488,
+          1.247,
+          1.25,
+          1.2567,
+          1.2701,
+          1.2596
+        ]
+      },
+      "rs_rating": 46,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 15.0,
+        "n_stocks": 20,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": true,
+        "delta": -5.0,
+        "prev_value": 20.0,
+        "prev_date": "2026-09-04",
+        "direction": "down"
+      },
+      "stocks": [
+        {
+          "symbol": "GNFC",
+          "name": "G N F C",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 597.9
+        },
+        {
+          "symbol": "NAVINFLUOR",
+          "name": "Navin Fluo.Intl.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 8603.5
+        },
+        {
+          "symbol": "SOLARINDS",
+          "name": "Solar Industries",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 21950.0
+        },
+        {
+          "symbol": "COROMANDEL",
+          "name": "Coromandel Inter",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": false,
+          "close": 1974.6
+        },
+        {
+          "symbol": "HSCL",
+          "name": "Himadri Special",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": false,
+          "close": 672.65
+        },
+        {
+          "symbol": "UPL",
+          "name": "UPL",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 573.0
+        },
+        {
+          "symbol": "AARTIIND",
+          "name": "Aarti Industries",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 490.7
+        },
+        {
+          "symbol": "ATUL",
+          "name": "Atul",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 6312.5
+        },
+        {
+          "symbol": "BAYERCROP",
+          "name": "Bayer Crop Sci.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 3987.4
+        },
+        {
+          "symbol": "CHAMBLFERT",
+          "name": "Chambal Fert.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 418.05
+        },
+        {
+          "symbol": "DEEPAKNTR",
+          "name": "Deepak Nitrite",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1642.1
+        },
+        {
+          "symbol": "EIDPARRY",
+          "name": "EID Parry",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 777.7
+        },
+        {
+          "symbol": "FLUOROCHEM",
+          "name": "Gujarat Fluoroch",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 4530.5
+        },
+        {
+          "symbol": "LINDEINDIA",
+          "name": "Linde India",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 6372.5
+        },
+        {
+          "symbol": "PCBL",
+          "name": "PCBL Chemical",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 317.45
+        },
+        {
+          "symbol": "PIDILITIND",
+          "name": "Pidilite Inds.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1575.0
+        },
+        {
+          "symbol": "PIIND",
+          "name": "P I Industries",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 2430.0
+        },
+        {
+          "symbol": "SRF",
+          "name": "SRF",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 2546.0
+        },
+        {
+          "symbol": "SUMICHEM",
+          "name": "Sumitomo Chemi.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 487.9
+        },
+        {
+          "symbol": "TATACHEM",
+          "name": "Tata Chemicals",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 613.35
         }
       ],
       "last_date": "2026-09-04"
@@ -2576,10 +2345,10 @@
     {
       "sector": "Energy",
       "index_name": "NIFTY ENERGY",
-      "score": 43,
+      "score": 38,
       "score_delta": {
         "available": true,
-        "delta": -3,
+        "delta": -8,
         "prev_score": 46,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -2591,7 +2360,7 @@
         4,
         46,
         46,
-        43
+        38
       ],
       "ema": {
         "available": true,
@@ -2609,12 +2378,12 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 47.5,
-        "pct_above_10ma_week_ago": 25.0,
+        "pct_above_10ma": 40.0,
+        "pct_above_10ma_week_ago": 35.0,
         "breadth_rising": true,
-        "pct_above_21ma": 30.0,
-        "pct_above_21ma_week_ago": 20.0,
-        "breadth_21_rising": true,
+        "pct_above_21ma": 25.0,
+        "pct_above_21ma_week_ago": 25.0,
+        "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 40,
         "low_sample": false
@@ -2706,28 +2475,12 @@
       },
       "stocks": [
         {
-          "symbol": "ADANIPOWER",
-          "name": "Adani Power",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 207.2
-        },
-        {
-          "symbol": "BHEL",
-          "name": "B H E L",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 431.1
-        },
-        {
           "symbol": "CASTROLIND",
           "name": "Castrol India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 190.27
+          "close": 189.01
         },
         {
           "symbol": "CGPOWER",
@@ -2735,7 +2488,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 891.0
+          "close": 895.0
         },
         {
           "symbol": "COALINDIA",
@@ -2743,7 +2496,23 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 415.35
+          "close": 418.85
+        },
+        {
+          "symbol": "GAIL",
+          "name": "GAIL (India)",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 176.0
+        },
+        {
+          "symbol": "GVT&D",
+          "name": "GVT&D",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 4367.2
         },
         {
           "symbol": "IGL",
@@ -2751,7 +2520,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 158.04
+          "close": 154.8
         },
         {
           "symbol": "INOXWIND",
@@ -2759,7 +2528,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 74.4
+          "close": 75.6
         },
         {
           "symbol": "OIL",
@@ -2767,15 +2536,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 488.3
-        },
-        {
-          "symbol": "RELIANCE",
-          "name": "Reliance Industries",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1322.0
+          "close": 487.0
         },
         {
           "symbol": "TORNTPOWER",
@@ -2783,23 +2544,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1299.1
+          "close": 1275.7
         },
         {
-          "symbol": "ADANIGREEN",
-          "name": "Adani Green",
+          "symbol": "JPPOWER",
+          "name": "JP Power Ven.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 1301.3
-        },
-        {
-          "symbol": "JSWENERGY",
-          "name": "JSW Energy",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 539.85
+          "close": 16.79
         },
         {
           "symbol": "MGL",
@@ -2807,23 +2560,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 1096.6
-        },
-        {
-          "symbol": "NHPC",
-          "name": "NHPC Ltd",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 76.25
-        },
-        {
-          "symbol": "NLCINDIA",
-          "name": "NLC India",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 273.05
+          "close": 1092.1
         },
         {
           "symbol": "NTPC",
@@ -2831,15 +2568,23 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 332.5
+          "close": 332.0
         },
         {
-          "symbol": "ONGC",
-          "name": "O N G C",
+          "symbol": "POWERGRID",
+          "name": "Power Grid Corpn",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 234.65
+          "close": 266.45
+        },
+        {
+          "symbol": "RELIANCE",
+          "name": "Reliance Industries",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": false,
+          "close": 1309.5
         },
         {
           "symbol": "SJVN",
@@ -2847,7 +2592,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 65.23
+          "close": 65.56
         },
         {
           "symbol": "TATAPOWER",
@@ -2855,15 +2600,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 368.0
-        },
-        {
-          "symbol": "GVT&D",
-          "name": "GVT&D",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 4306.3
+          "close": 365.7
         },
         {
           "symbol": "PETRONET",
@@ -2871,7 +2608,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 288.1
+          "close": 290.95
         },
         {
           "symbol": "ABB",
@@ -2879,7 +2616,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 7410.0
+          "close": 7434.0
         },
         {
           "symbol": "ADANIENSOL",
@@ -2887,7 +2624,23 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1409.6
+          "close": 1390.4
+        },
+        {
+          "symbol": "ADANIGREEN",
+          "name": "Adani Green",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1288.0
+        },
+        {
+          "symbol": "ADANIPOWER",
+          "name": "Adani Power",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 204.49
         },
         {
           "symbol": "AEGISLOG",
@@ -2895,7 +2648,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1270.2
+          "close": 1253.7
         },
         {
           "symbol": "ATGL",
@@ -2903,7 +2656,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 612.35
+          "close": 603.7
+        },
+        {
+          "symbol": "BHEL",
+          "name": "B H E L",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 421.45
         },
         {
           "symbol": "BPCL",
@@ -2911,7 +2672,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 315.7
+          "close": 312.9
         },
         {
           "symbol": "CESC",
@@ -2919,7 +2680,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 146.5
+          "close": 145.44
         },
         {
           "symbol": "ENRIN",
@@ -2927,15 +2688,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3115.7
-        },
-        {
-          "symbol": "GAIL",
-          "name": "GAIL (India)",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 173.4
+          "close": 3121.9
         },
         {
           "symbol": "HINDPETRO",
@@ -2943,7 +2696,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 356.5
+          "close": 356.9
         },
         {
           "symbol": "IOC",
@@ -2951,15 +2704,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 137.6
+          "close": 135.15
         },
         {
-          "symbol": "JPPOWER",
-          "name": "JP Power Ven.",
+          "symbol": "JSWENERGY",
+          "name": "JSW Energy",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 16.29
+          "close": 530.0
         },
         {
           "symbol": "NAVA",
@@ -2967,7 +2720,23 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 560.2
+          "close": 556.25
+        },
+        {
+          "symbol": "NHPC",
+          "name": "NHPC Ltd",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 76.0
+        },
+        {
+          "symbol": "NLCINDIA",
+          "name": "NLC India",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 269.3
         },
         {
           "symbol": "NTPCGREEN",
@@ -2975,15 +2744,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 89.36
+          "close": 88.16
         },
         {
-          "symbol": "POWERGRID",
-          "name": "Power Grid Corpn",
+          "symbol": "ONGC",
+          "name": "O N G C",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 266.0
+          "close": 233.7
         },
         {
           "symbol": "POWERINDIA",
@@ -2991,7 +2760,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 31650.0
+          "close": 31775.0
         },
         {
           "symbol": "RPOWER",
@@ -2999,7 +2768,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 22.08
+          "close": 21.94
         },
         {
           "symbol": "SIEMENS",
@@ -3007,7 +2776,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3977.0
+          "close": 3927.0
         },
         {
           "symbol": "SUZLON",
@@ -3015,7 +2784,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 45.35
+          "close": 45.55
         },
         {
           "symbol": "THERMAX",
@@ -3023,7 +2792,238 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3637.6
+          "close": 3622.0
+        }
+      ],
+      "last_date": "2026-09-04"
+    },
+    {
+      "sector": "PSU Bank",
+      "index_name": "NIFTY PSU BANK",
+      "score": 37,
+      "score_delta": {
+        "available": true,
+        "delta": -21,
+        "prev_score": 58,
+        "prev_date": "2026-09-03",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
+      },
+      "score_history": [
+        82,
+        82,
+        25,
+        38,
+        58,
+        37
+      ],
+      "ema": {
+        "available": true,
+        "price": 8514.85,
+        "ema21": 8574.13,
+        "above_21": false,
+        "ema21_rising": false,
+        "pct_above_21": -0.69,
+        "extended": false,
+        "ema50": 8537.7,
+        "above_50": false,
+        "ema200": 8391.59,
+        "above_200": true,
+        "bullish_stack": false
+      },
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 25.0,
+        "pct_above_10ma_week_ago": 33.3,
+        "breadth_rising": false,
+        "pct_above_21ma": 25.0,
+        "pct_above_21ma_week_ago": 33.3,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 12,
+        "low_sample": false
+      },
+      "rs": {
+        "available": true,
+        "rs_ratio": 0.3563,
+        "rs_above_ema": true,
+        "rs_rising_1w": true,
+        "history": [
+          0.361,
+          0.3597,
+          0.357,
+          0.3618,
+          0.3629,
+          0.363,
+          0.3636,
+          0.3606,
+          0.3592,
+          0.359,
+          0.3572,
+          0.3559,
+          0.3573,
+          0.3532,
+          0.3464,
+          0.3411,
+          0.3401,
+          0.338,
+          0.3423,
+          0.3491,
+          0.3495,
+          0.3454,
+          0.3483,
+          0.3468,
+          0.3444,
+          0.3554,
+          0.353,
+          0.3493,
+          0.3476,
+          0.3511,
+          0.3486,
+          0.3454,
+          0.343,
+          0.3425,
+          0.3431,
+          0.3426,
+          0.3445,
+          0.3469,
+          0.3543,
+          0.3576,
+          0.3514,
+          0.3531,
+          0.3608,
+          0.3603,
+          0.3586,
+          0.3585,
+          0.3568,
+          0.3579,
+          0.3556,
+          0.3554,
+          0.3526,
+          0.3536,
+          0.3581,
+          0.3565,
+          0.3559,
+          0.3575,
+          0.3536,
+          0.3559,
+          0.3582,
+          0.3563
+        ]
+      },
+      "rs_rating": 21,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 0.0,
+        "n_stocks": 12,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": true,
+        "delta": 0.0,
+        "prev_value": 0.0,
+        "prev_date": "2026-09-04",
+        "direction": "flat"
+      },
+      "stocks": [
+        {
+          "symbol": "CENTRALBK",
+          "name": "Central Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 30.96
+        },
+        {
+          "symbol": "MAHABANK",
+          "name": "Bank of Maha",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 85.0
+        },
+        {
+          "symbol": "IOB",
+          "name": "I O B",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": false,
+          "close": 33.1
+        },
+        {
+          "symbol": "UNIONBANK",
+          "name": "Union Bank (I)",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 186.04
+        },
+        {
+          "symbol": "BANKBARODA",
+          "name": "Bank of Baroda",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 237.0
+        },
+        {
+          "symbol": "BANKINDIA",
+          "name": "Bank of India",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 142.02
+        },
+        {
+          "symbol": "CANBK",
+          "name": "Canara Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 124.0
+        },
+        {
+          "symbol": "INDIANB",
+          "name": "Indian Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 869.4
+        },
+        {
+          "symbol": "PNB",
+          "name": "Punjab Natl.Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 115.6
+        },
+        {
+          "symbol": "PSB",
+          "name": "Pun. & Sind Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 22.98
+        },
+        {
+          "symbol": "SBIN",
+          "name": "SBI",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1005.9
+        },
+        {
+          "symbol": "UCOBANK",
+          "name": "UCO Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 24.42
         }
       ],
       "last_date": "2026-09-04"
@@ -3031,10 +3031,10 @@
     {
       "sector": "Media",
       "index_name": "NIFTY MEDIA",
-      "score": 37,
+      "score": 34,
       "score_delta": {
         "available": true,
-        "delta": -4,
+        "delta": -7,
         "prev_score": 41,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -3046,7 +3046,7 @@
         29,
         16,
         41,
-        37
+        34
       ],
       "ema": {
         "available": true,
@@ -3064,11 +3064,11 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 50.0,
-        "pct_above_10ma_week_ago": 50.0,
-        "breadth_rising": false,
-        "pct_above_21ma": 30.0,
-        "pct_above_21ma_week_ago": 40.0,
+        "pct_above_10ma": 30.0,
+        "pct_above_10ma_week_ago": 20.0,
+        "breadth_rising": true,
+        "pct_above_21ma": 20.0,
+        "pct_above_21ma_week_ago": 20.0,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 10,
@@ -3148,16 +3148,16 @@
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 10.0,
+        "pct_within_52wk_high": 0.0,
         "n_stocks": 10,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
+        "delta": -10.0,
         "prev_value": 10.0,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "down"
       },
       "stocks": [
         {
@@ -3166,7 +3166,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 368.65
+          "close": 370.3
         },
         {
           "symbol": "PFOCUS",
@@ -3174,39 +3174,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 307.0
+          "close": 311.75
         },
         {
-          "symbol": "HATHWAY",
-          "name": "Hathway Cable",
+          "symbol": "SAREGAMA",
+          "name": "Saregama India",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 10.52
-        },
-        {
-          "symbol": "SUNTV",
-          "name": "Sun TV Network",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 470.9
-        },
-        {
-          "symbol": "TIPSMUSIC",
-          "name": "Tips Music",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 649.75
-        },
-        {
-          "symbol": "PVRINOX",
-          "name": "PVR Inox",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 1227.2
+          "close": 494.3
         },
         {
           "symbol": "DBCORP",
@@ -3214,7 +3190,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 195.65
+          "close": 195.24
+        },
+        {
+          "symbol": "HATHWAY",
+          "name": "Hathway Cable",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 10.38
         },
         {
           "symbol": "NETWORK18",
@@ -3222,15 +3206,31 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 28.38
+          "close": 27.64
         },
         {
-          "symbol": "SAREGAMA",
-          "name": "Saregama India",
+          "symbol": "PVRINOX",
+          "name": "PVR Inox",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 492.75
+          "close": 1156.5
+        },
+        {
+          "symbol": "SUNTV",
+          "name": "Sun TV Network",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 452.85
+        },
+        {
+          "symbol": "TIPSMUSIC",
+          "name": "Tips Music",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 643.7
         },
         {
           "symbol": "ZEEL",
@@ -3238,7 +3238,302 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 91.61
+          "close": 85.99
+        }
+      ],
+      "last_date": "2026-09-04"
+    },
+    {
+      "sector": "Healthcare",
+      "index_name": "NIFTY HEALTHCARE INDEX",
+      "score": 32,
+      "score_delta": {
+        "available": true,
+        "delta": -13,
+        "prev_score": 45,
+        "prev_date": "2026-09-03",
+        "bullish_stack_changed": false,
+        "overheated_changed": false
+      },
+      "score_history": [
+        91,
+        92,
+        84,
+        80,
+        45,
+        32
+      ],
+      "ema": {
+        "available": true,
+        "price": 16408.05,
+        "ema21": 16580.67,
+        "above_21": false,
+        "ema21_rising": true,
+        "pct_above_21": -1.04,
+        "extended": false,
+        "ema50": 16390.3,
+        "above_50": true,
+        "ema200": 15521.68,
+        "above_200": true,
+        "bullish_stack": false
+      },
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 25.0,
+        "pct_above_10ma_week_ago": 60.0,
+        "breadth_rising": false,
+        "pct_above_21ma": 35.0,
+        "pct_above_21ma_week_ago": 60.0,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 20,
+        "low_sample": false
+      },
+      "rs": {
+        "available": true,
+        "rs_ratio": 0.6866,
+        "rs_above_ema": false,
+        "rs_rising_1w": false,
+        "history": [
+          0.6583,
+          0.6493,
+          0.6433,
+          0.6395,
+          0.6436,
+          0.6525,
+          0.6569,
+          0.6682,
+          0.6642,
+          0.6636,
+          0.6729,
+          0.6763,
+          0.669,
+          0.6681,
+          0.6774,
+          0.6746,
+          0.6699,
+          0.6761,
+          0.6805,
+          0.6749,
+          0.6731,
+          0.6836,
+          0.6856,
+          0.6852,
+          0.6691,
+          0.6803,
+          0.6841,
+          0.6814,
+          0.6827,
+          0.6831,
+          0.6865,
+          0.6878,
+          0.6885,
+          0.6867,
+          0.6872,
+          0.6775,
+          0.6803,
+          0.6786,
+          0.6777,
+          0.68,
+          0.6773,
+          0.6826,
+          0.6807,
+          0.6797,
+          0.6774,
+          0.6764,
+          0.6816,
+          0.6816,
+          0.6795,
+          0.6772,
+          0.6779,
+          0.6821,
+          0.6852,
+          0.6935,
+          0.6949,
+          0.7035,
+          0.693,
+          0.6954,
+          0.6933,
+          0.6866
+        ]
+      },
+      "rs_rating": 66,
+      "rs_rating_delta": {
+        "available": false
+      },
+      "high52": {
+        "available": true,
+        "pct_within_52wk_high": 45.0,
+        "n_stocks": 20,
+        "band_pct": 5.0
+      },
+      "high52_delta": {
+        "available": true,
+        "delta": 15.0,
+        "prev_value": 30.0,
+        "prev_date": "2026-09-04",
+        "direction": "up"
+      },
+      "stocks": [
+        {
+          "symbol": "AUROPHARMA",
+          "name": "Aurobindo Pharma",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 1660.0
+        },
+        {
+          "symbol": "DIVISLAB",
+          "name": "Divi's Lab.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 9315.0
+        },
+        {
+          "symbol": "IPCALAB",
+          "name": "Ipca Labs.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 1959.1
+        },
+        {
+          "symbol": "PPLPHARMA",
+          "name": "Piramal Pharma",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 219.66
+        },
+        {
+          "symbol": "ZYDUSLIFE",
+          "name": "Zydus Lifesci.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 1156.9
+        },
+        {
+          "symbol": "GLENMARK",
+          "name": "Glenmark Pharma.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 2451.9
+        },
+        {
+          "symbol": "LAURUSLABS",
+          "name": "Laurus Labs",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 1876.7
+        },
+        {
+          "symbol": "ABBOTINDIA",
+          "name": "Abbott India",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 25940.0
+        },
+        {
+          "symbol": "ALKEM",
+          "name": "Alkem Lab",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 5242.5
+        },
+        {
+          "symbol": "APOLLOHOSP",
+          "name": "Apollo Hospitals",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 8760.0
+        },
+        {
+          "symbol": "BIOCON",
+          "name": "Biocon",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 391.4
+        },
+        {
+          "symbol": "CIPLA",
+          "name": "Cipla",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1395.0
+        },
+        {
+          "symbol": "DRREDDY",
+          "name": "Dr Reddy's Labs",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1144.2
+        },
+        {
+          "symbol": "FORTIS",
+          "name": "Fortis Health.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 910.0
+        },
+        {
+          "symbol": "LUPIN",
+          "name": "Lupin",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 2105.0
+        },
+        {
+          "symbol": "MANKIND",
+          "name": "Mankind Pharma",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 2318.0
+        },
+        {
+          "symbol": "MAXHEALTH",
+          "name": "Max Healthcare",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 992.0
+        },
+        {
+          "symbol": "SUNPHARMA",
+          "name": "Sun Pharma.Inds.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1895.0
+        },
+        {
+          "symbol": "SYNGENE",
+          "name": "Syngene Intl.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 389.3
+        },
+        {
+          "symbol": "TORNTPHARM",
+          "name": "Torrent Pharma.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 4914.0
         }
       ],
       "last_date": "2026-09-04"
@@ -3246,10 +3541,10 @@
     {
       "sector": "IT",
       "index_name": "NIFTY IT",
-      "score": 34,
+      "score": 31,
       "score_delta": {
         "available": true,
-        "delta": -29,
+        "delta": -32,
         "prev_score": 63,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -3261,7 +3556,7 @@
         73,
         63,
         63,
-        34
+        31
       ],
       "ema": {
         "available": true,
@@ -3279,10 +3574,10 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 30.0,
-        "pct_above_10ma_week_ago": 100.0,
+        "pct_above_10ma": 0.0,
+        "pct_above_10ma_week_ago": 90.0,
         "breadth_rising": false,
-        "pct_above_21ma": 30.0,
+        "pct_above_21ma": 10.0,
         "pct_above_21ma_week_ago": 60.0,
         "breadth_21_rising": false,
         "overheated": false,
@@ -3357,55 +3652,31 @@
           1.2844
         ]
       },
-      "rs_rating": 50,
+      "rs_rating": 42,
       "rs_rating_delta": {
         "available": false
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 20.0,
+        "pct_within_52wk_high": 10.0,
         "n_stocks": 10,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
+        "delta": -10.0,
         "prev_value": 20.0,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "down"
       },
       "stocks": [
         {
           "symbol": "COFORGE",
           "name": "Coforge",
           "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1972.8
-        },
-        {
-          "symbol": "OFSS",
-          "name": "Oracle Fin.Serv.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 12058.0
-        },
-        {
-          "symbol": "LTM",
-          "name": "LTM",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 4554.0
-        },
-        {
-          "symbol": "PERSISTENT",
-          "name": "Persistent Systems",
-          "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 5643.0
+          "close": 1935.0
         },
         {
           "symbol": "HCLTECH",
@@ -3413,7 +3684,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1293.4
+          "close": 1282.8
         },
         {
           "symbol": "INFY",
@@ -3421,7 +3692,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1130.0
+          "close": 1087.5
+        },
+        {
+          "symbol": "LTM",
+          "name": "LTM",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 4448.0
         },
         {
           "symbol": "MPHASIS",
@@ -3429,7 +3708,23 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2422.0
+          "close": 2369.1
+        },
+        {
+          "symbol": "OFSS",
+          "name": "Oracle Fin.Serv.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 11847.0
+        },
+        {
+          "symbol": "PERSISTENT",
+          "name": "Persistent Systems",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 5540.0
         },
         {
           "symbol": "TCS",
@@ -3437,7 +3732,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2304.0
+          "close": 2270.0
         },
         {
           "symbol": "TECHM",
@@ -3445,7 +3740,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1596.9
+          "close": 1564.0
         },
         {
           "symbol": "WIPRO",
@@ -3453,196 +3748,238 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 176.4
+          "close": 172.8
         }
       ],
       "last_date": "2026-09-04"
     },
     {
-      "sector": "Insurance",
-      "index_name": "NIFTY INSURANCE",
-      "score": 34,
+      "sector": "Financial Services",
+      "index_name": "NIFTY FINANCIAL SERVICES",
+      "score": 31,
       "score_delta": {
         "available": true,
-        "delta": 27,
-        "prev_score": 7,
+        "delta": 11,
+        "prev_score": 20,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
         "overheated_changed": false
       },
       "score_history": [
-        10,
+        31,
+        38,
+        14,
         5,
-        7,
-        7,
-        34
+        20,
+        31
       ],
       "ema": {
         "available": true,
-        "price": 1854.47,
-        "ema21": 1865.12,
+        "price": 26051.0,
+        "ema21": 26203.91,
         "above_21": false,
         "ema21_rising": false,
-        "pct_above_21": -0.57,
+        "pct_above_21": -0.58,
         "extended": false,
-        "ema50": 1885.83,
+        "ema50": 26262.32,
         "above_50": false,
-        "ema200": null,
-        "above_200": null,
+        "ema200": 26420.88,
+        "above_200": false,
         "bullish_stack": false
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 41.7,
-        "pct_above_10ma_week_ago": 41.7,
+        "pct_above_10ma": 30.0,
+        "pct_above_10ma_week_ago": 35.0,
         "breadth_rising": false,
-        "pct_above_21ma": 41.7,
-        "pct_above_21ma_week_ago": 50.0,
+        "pct_above_21ma": 30.0,
+        "pct_above_21ma_week_ago": 40.0,
         "breadth_21_rising": false,
         "overheated": false,
-        "n_stocks": 12,
+        "n_stocks": 20,
         "low_sample": false
       },
       "rs": {
         "available": true,
-        "rs_ratio": 0.0776,
+        "rs_ratio": 1.0901,
         "rs_above_ema": true,
         "rs_rising_1w": true,
         "history": [
-          0.0801,
-          0.0796,
-          0.0802,
-          0.0819,
-          0.0827,
-          0.0829,
-          0.0833,
-          0.0817,
-          0.0806,
-          0.0808,
-          0.0807,
-          0.0806,
-          0.0802,
-          0.0795,
-          0.0788,
-          0.08,
-          0.0802,
-          0.0806,
-          0.0817,
-          0.0815,
-          0.081,
-          0.082,
-          0.0797,
-          0.078,
-          0.0784,
-          0.0786,
-          0.0782,
-          0.079,
-          0.0797,
-          0.0793,
-          0.0795,
-          0.0786,
-          0.0779,
-          0.0777,
-          0.0777,
-          0.0767,
-          0.0772,
-          0.0764,
-          0.0762,
-          0.0762,
-          0.0764,
-          0.0767,
-          0.0765,
-          0.0766,
-          0.0772,
-          0.0774,
-          0.0773,
-          0.0774,
-          0.078,
-          0.0776,
-          0.0771,
-          0.0777,
-          0.0776,
-          0.0771,
-          0.0771,
-          0.0764,
-          0.0761,
-          0.0766,
-          0.0776
+          1.0982,
+          1.1015,
+          1.1023,
+          1.0963,
+          1.0999,
+          1.1007,
+          1.103,
+          1.1052,
+          1.113,
+          1.1128,
+          1.1108,
+          1.1127,
+          1.1163,
+          1.1111,
+          1.1073,
+          1.1049,
+          1.106,
+          1.1022,
+          1.1051,
+          1.1084,
+          1.1084,
+          1.1033,
+          1.1086,
+          1.1032,
+          1.1056,
+          1.0964,
+          1.0969,
+          1.0914,
+          1.0889,
+          1.0901,
+          1.0888,
+          1.085,
+          1.084,
+          1.0795,
+          1.0907,
+          1.0892,
+          1.0906,
+          1.0901,
+          1.0904,
+          1.0771,
+          1.0798,
+          1.0801,
+          1.0815,
+          1.0792,
+          1.0758,
+          1.0794,
+          1.0809,
+          1.0804,
+          1.0814,
+          1.0828,
+          1.0801,
+          1.0786,
+          1.09,
+          1.0909,
+          1.0873,
+          1.0919,
+          1.081,
+          1.0794,
+          1.0859,
+          1.0901
         ]
       },
-      "rs_rating": 13,
+      "rs_rating": 17,
       "rs_rating_delta": {
         "available": false
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 16.7,
-        "n_stocks": 12,
+        "pct_within_52wk_high": 10.0,
+        "n_stocks": 20,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
-        "prev_value": 16.7,
+        "delta": 5.0,
+        "prev_value": 5.0,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "up"
       },
       "stocks": [
         {
-          "symbol": "CANHLIFE",
-          "name": "Canara HSBC",
+          "symbol": "AXISBANK",
+          "name": "Axis Bank",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 157.23
+          "close": 1266.0
         },
         {
-          "symbol": "GICRE",
-          "name": "General Insuranc",
+          "symbol": "BSE",
+          "name": "BSE",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 358.45
+          "close": 3446.2
+        },
+        {
+          "symbol": "KOTAKBANK",
+          "name": "Kotak Mah. Bank",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 422.1
+        },
+        {
+          "symbol": "LICHSGFIN",
+          "name": "LIC Housing Fin.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 552.0
+        },
+        {
+          "symbol": "SBICARD",
+          "name": "SBI Cards",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 674.65
+        },
+        {
+          "symbol": "PFC",
+          "name": "Power Fin.Corpn.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": false,
+          "close": 353.1
+        },
+        {
+          "symbol": "ICICIBANK",
+          "name": "ICICI Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 1427.5
+        },
+        {
+          "symbol": "BAJAJFINSV",
+          "name": "Bajaj Finserv",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1938.6
+        },
+        {
+          "symbol": "BAJFINANCE",
+          "name": "Bajaj Finance",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1060.0
+        },
+        {
+          "symbol": "CHOLAFIN",
+          "name": "Cholaman.Inv.&Fn",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1848.2
+        },
+        {
+          "symbol": "HDFCBANK",
+          "name": "HDFC Bank",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 710.5
         },
         {
           "symbol": "HDFCLIFE",
           "name": "HDFC Life Insur.",
           "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 546.4
-        },
-        {
-          "symbol": "NIACL",
-          "name": "New India Assura",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 229.91
-        },
-        {
-          "symbol": "SBILIFE",
-          "name": "SBI Life Insuran",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 1775.0
-        },
-        {
-          "symbol": "LICI",
-          "name": "Life Insurance",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 415.35
-        },
-        {
-          "symbol": "GODIGIT",
-          "name": "Go Digit General",
-          "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 258.3
+          "close": 533.2
         },
         {
           "symbol": "ICICIGI",
@@ -3650,15 +3987,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1510.0
+          "close": 1493.4
         },
         {
-          "symbol": "ICICIPRULI",
-          "name": "ICICI Pru Life",
+          "symbol": "JIOFIN",
+          "name": "Jio Financial",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 494.55
+          "close": 234.4
         },
         {
           "symbol": "MFSL",
@@ -3666,23 +4003,47 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1548.4
+          "close": 1520.0
         },
         {
-          "symbol": "NIVABUPA",
-          "name": "Niva Bupa Health",
+          "symbol": "MUTHOOTFIN",
+          "name": "Muthoot Finance",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 80.11
+          "close": 2880.0
         },
         {
-          "symbol": "STARHEALTH",
-          "name": "Star Health Insu",
+          "symbol": "RECLTD",
+          "name": "REC Ltd",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 557.35
+          "close": 316.4
+        },
+        {
+          "symbol": "SBILIFE",
+          "name": "SBI Life Insuran",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1732.0
+        },
+        {
+          "symbol": "SBIN",
+          "name": "SBI",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1005.9
+        },
+        {
+          "symbol": "SHRIRAMFIN",
+          "name": "Shriram Finance",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1037.0
         }
       ],
       "last_date": "2026-09-04"
@@ -3722,11 +4083,11 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 40.0,
-        "pct_above_10ma_week_ago": 48.0,
+        "pct_above_10ma": 38.0,
+        "pct_above_10ma_week_ago": 42.0,
         "breadth_rising": false,
         "pct_above_21ma": 36.0,
-        "pct_above_21ma_week_ago": 48.0,
+        "pct_above_21ma_week_ago": 50.0,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 50,
@@ -3823,7 +4184,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 17421.0
+          "close": 17728.0
         },
         {
           "symbol": "APLAPOLLO",
@@ -3831,7 +4192,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 2250.0
+          "close": 2215.0
         },
         {
           "symbol": "ASTRAMICRO",
@@ -3839,7 +4200,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1729.0
+          "close": 1711.6
         },
         {
           "symbol": "BEML",
@@ -3847,23 +4208,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 2057.8
-        },
-        {
-          "symbol": "BHEL",
-          "name": "B H E L",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 431.1
-        },
-        {
-          "symbol": "CARBORUNIV",
-          "name": "Carborundum Uni.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1130.6
+          "close": 2097.2
         },
         {
           "symbol": "CGPOWER",
@@ -3871,7 +4216,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 891.0
+          "close": 895.0
         },
         {
           "symbol": "ELGIEQUIP",
@@ -3879,7 +4224,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 642.1
+          "close": 642.4
+        },
+        {
+          "symbol": "GVT&D",
+          "name": "GVT&D",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 4367.2
         },
         {
           "symbol": "HBLENGINE",
@@ -3887,7 +4240,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 695.75
+          "close": 703.9
         },
         {
           "symbol": "INOXWIND",
@@ -3895,7 +4248,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 74.4
+          "close": 75.6
         },
         {
           "symbol": "JYOTICNC",
@@ -3903,7 +4256,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1003.9
+          "close": 1020.65
         },
         {
           "symbol": "KIRLOSENG",
@@ -3911,7 +4264,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 2201.9
+          "close": 2174.8
         },
         {
           "symbol": "PTCIL",
@@ -3919,7 +4272,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 23830.0
+          "close": 23755.0
+        },
+        {
+          "symbol": "SUPREMEIND",
+          "name": "Supreme Inds.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 3598.0
         },
         {
           "symbol": "TITAGARH",
@@ -3927,7 +4288,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 871.85
+          "close": 896.45
         },
         {
           "symbol": "USHAMART",
@@ -3935,7 +4296,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 514.15
+          "close": 500.3
         },
         {
           "symbol": "VOLTAMP",
@@ -3943,7 +4304,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 11418.0
+          "close": 11067.0
         },
         {
           "symbol": "WELCORP",
@@ -3951,7 +4312,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 2590.6
+          "close": 2597.9
+        },
+        {
+          "symbol": "CARBORUNIV",
+          "name": "Carborundum Uni.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": false,
+          "close": 1104.0
         },
         {
           "symbol": "HAL",
@@ -3959,31 +4328,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 4856.0
+          "close": 4855.2
         },
         {
-          "symbol": "TRITURBINE",
-          "name": "Triveni Turbine",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 577.3
-        },
-        {
-          "symbol": "WAAREEENER",
-          "name": "Waaree Energies",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 2635.0
-        },
-        {
-          "symbol": "GVT&D",
-          "name": "GVT&D",
+          "symbol": "COCHINSHIP",
+          "name": "Cochin Shipyard",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 4306.3
+          "close": 1506.4
         },
         {
           "symbol": "ABB",
@@ -3991,7 +4344,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 7410.0
+          "close": 7434.0
         },
         {
           "symbol": "AIAENG",
@@ -3999,7 +4352,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4231.2
+          "close": 4224.0
         },
         {
           "symbol": "ASHOKLEY",
@@ -4007,7 +4360,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 169.0
+          "close": 170.0
         },
         {
           "symbol": "ASTRAL",
@@ -4015,7 +4368,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1492.9
+          "close": 1498.2
         },
         {
           "symbol": "BDL",
@@ -4023,7 +4376,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1255.0
+          "close": 1241.7
         },
         {
           "symbol": "BEL",
@@ -4031,15 +4384,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 405.35
+          "close": 404.0
         },
         {
-          "symbol": "COCHINSHIP",
-          "name": "Cochin Shipyard",
+          "symbol": "BHEL",
+          "name": "B H E L",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1499.1
+          "close": 421.45
         },
         {
           "symbol": "CUMMINSIND",
@@ -4047,7 +4400,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5035.0
+          "close": 5030.0
         },
         {
           "symbol": "DATAPATTNS",
@@ -4055,7 +4408,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4585.0
+          "close": 4590.8
         },
         {
           "symbol": "ENRIN",
@@ -4063,7 +4416,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3115.7
+          "close": 3121.9
         },
         {
           "symbol": "ESCORTS",
@@ -4071,7 +4424,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2968.8
+          "close": 2957.4
         },
         {
           "symbol": "FINCABLES",
@@ -4079,7 +4432,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1220.2
+          "close": 1227.0
         },
         {
           "symbol": "FINPIPE",
@@ -4087,7 +4440,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 158.63
+          "close": 157.16
         },
         {
           "symbol": "GRSE",
@@ -4095,7 +4448,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2533.2
+          "close": 2506.6
         },
         {
           "symbol": "HONAUT",
@@ -4103,7 +4456,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 35655.0
+          "close": 35565.0
         },
         {
           "symbol": "KAYNES",
@@ -4111,7 +4464,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3598.0
+          "close": 3604.0
         },
         {
           "symbol": "KEI",
@@ -4119,7 +4472,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4850.0
+          "close": 4704.0
         },
         {
           "symbol": "MAZDOCK",
@@ -4127,7 +4480,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2475.0
+          "close": 2454.2
         },
         {
           "symbol": "POLYCAB",
@@ -4135,7 +4488,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 8300.0
+          "close": 8261.0
         },
         {
           "symbol": "POWERINDIA",
@@ -4143,7 +4496,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 31650.0
+          "close": 31775.0
         },
         {
           "symbol": "PRAJIND",
@@ -4151,7 +4504,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 335.55
+          "close": 336.55
         },
         {
           "symbol": "PREMIERENE",
@@ -4159,7 +4512,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1002.0
+          "close": 990.0
         },
         {
           "symbol": "SIEMENS",
@@ -4167,15 +4520,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3977.0
-        },
-        {
-          "symbol": "SUPREMEIND",
-          "name": "Supreme Inds.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 3475.0
+          "close": 3927.0
         },
         {
           "symbol": "SUZLON",
@@ -4183,7 +4528,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 45.35
+          "close": 45.55
         },
         {
           "symbol": "TDPOWERSYS",
@@ -4191,7 +4536,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 740.1
+          "close": 734.15
         },
         {
           "symbol": "THERMAX",
@@ -4199,7 +4544,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3637.6
+          "close": 3622.0
         },
         {
           "symbol": "TIMKEN",
@@ -4207,7 +4552,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3125.3
+          "close": 3098.7
         },
         {
           "symbol": "TMCV",
@@ -4215,254 +4560,196 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 458.2
+          "close": 459.65
+        },
+        {
+          "symbol": "TRITURBINE",
+          "name": "Triveni Turbine",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 568.75
+        },
+        {
+          "symbol": "WAAREEENER",
+          "name": "Waaree Energies",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 2593.0
         }
       ],
       "last_date": "2026-09-04"
     },
     {
-      "sector": "Financial Services",
-      "index_name": "NIFTY FINANCIAL SERVICES",
-      "score": 30,
+      "sector": "Insurance",
+      "index_name": "NIFTY INSURANCE",
+      "score": 31,
       "score_delta": {
         "available": true,
-        "delta": 10,
-        "prev_score": 20,
+        "delta": 24,
+        "prev_score": 7,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
         "overheated_changed": false
       },
       "score_history": [
-        31,
-        38,
-        14,
+        10,
         5,
-        20,
-        30
+        7,
+        7,
+        31
       ],
       "ema": {
         "available": true,
-        "price": 26051.0,
-        "ema21": 26203.91,
+        "price": 1854.47,
+        "ema21": 1865.12,
         "above_21": false,
         "ema21_rising": false,
-        "pct_above_21": -0.58,
+        "pct_above_21": -0.57,
         "extended": false,
-        "ema50": 26262.32,
+        "ema50": 1885.83,
         "above_50": false,
-        "ema200": 26420.88,
-        "above_200": false,
+        "ema200": null,
+        "above_200": null,
         "bullish_stack": false
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 45.0,
-        "pct_above_10ma_week_ago": 35.0,
-        "breadth_rising": true,
-        "pct_above_21ma": 30.0,
-        "pct_above_21ma_week_ago": 30.0,
+        "pct_above_10ma": 8.3,
+        "pct_above_10ma_week_ago": 33.3,
+        "breadth_rising": false,
+        "pct_above_21ma": 16.7,
+        "pct_above_21ma_week_ago": 50.0,
         "breadth_21_rising": false,
         "overheated": false,
-        "n_stocks": 20,
+        "n_stocks": 12,
         "low_sample": false
       },
       "rs": {
         "available": true,
-        "rs_ratio": 1.0901,
+        "rs_ratio": 0.0776,
         "rs_above_ema": true,
         "rs_rising_1w": true,
         "history": [
-          1.0982,
-          1.1015,
-          1.1023,
-          1.0963,
-          1.0999,
-          1.1007,
-          1.103,
-          1.1052,
-          1.113,
-          1.1128,
-          1.1108,
-          1.1127,
-          1.1163,
-          1.1111,
-          1.1073,
-          1.1049,
-          1.106,
-          1.1022,
-          1.1051,
-          1.1084,
-          1.1084,
-          1.1033,
-          1.1086,
-          1.1032,
-          1.1056,
-          1.0964,
-          1.0969,
-          1.0914,
-          1.0889,
-          1.0901,
-          1.0888,
-          1.085,
-          1.084,
-          1.0795,
-          1.0907,
-          1.0892,
-          1.0906,
-          1.0901,
-          1.0904,
-          1.0771,
-          1.0798,
-          1.0801,
-          1.0815,
-          1.0792,
-          1.0758,
-          1.0794,
-          1.0809,
-          1.0804,
-          1.0814,
-          1.0828,
-          1.0801,
-          1.0786,
-          1.09,
-          1.0909,
-          1.0873,
-          1.0919,
-          1.081,
-          1.0794,
-          1.0859,
-          1.0901
+          0.0801,
+          0.0796,
+          0.0802,
+          0.0819,
+          0.0827,
+          0.0829,
+          0.0833,
+          0.0817,
+          0.0806,
+          0.0808,
+          0.0807,
+          0.0806,
+          0.0802,
+          0.0795,
+          0.0788,
+          0.08,
+          0.0802,
+          0.0806,
+          0.0817,
+          0.0815,
+          0.081,
+          0.082,
+          0.0797,
+          0.078,
+          0.0784,
+          0.0786,
+          0.0782,
+          0.079,
+          0.0797,
+          0.0793,
+          0.0795,
+          0.0786,
+          0.0779,
+          0.0777,
+          0.0777,
+          0.0767,
+          0.0772,
+          0.0764,
+          0.0762,
+          0.0762,
+          0.0764,
+          0.0767,
+          0.0765,
+          0.0766,
+          0.0772,
+          0.0774,
+          0.0773,
+          0.0774,
+          0.078,
+          0.0776,
+          0.0771,
+          0.0777,
+          0.0776,
+          0.0771,
+          0.0771,
+          0.0764,
+          0.0761,
+          0.0766,
+          0.0776
         ]
       },
-      "rs_rating": 17,
+      "rs_rating": 9,
       "rs_rating_delta": {
         "available": false
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 5.0,
-        "n_stocks": 20,
+        "pct_within_52wk_high": 16.7,
+        "n_stocks": 12,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
         "delta": 0.0,
-        "prev_value": 5.0,
+        "prev_value": 16.7,
         "prev_date": "2026-09-04",
         "direction": "flat"
       },
       "stocks": [
         {
-          "symbol": "AXISBANK",
-          "name": "Axis Bank",
+          "symbol": "NIACL",
+          "name": "New India Assura",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1273.0
+          "close": 231.2
         },
         {
-          "symbol": "BSE",
-          "name": "BSE",
+          "symbol": "CANHLIFE",
+          "name": "Canara HSBC",
           "has_data": true,
-          "above_10ma": true,
+          "above_10ma": false,
           "above_21ma": true,
-          "close": 3409.8
+          "close": 153.97
+        },
+        {
+          "symbol": "GICRE",
+          "name": "General Insuranc",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 349.8
+        },
+        {
+          "symbol": "GODIGIT",
+          "name": "Go Digit General",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 256.6
         },
         {
           "symbol": "HDFCLIFE",
           "name": "HDFC Life Insur.",
           "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 546.4
-        },
-        {
-          "symbol": "KOTAKBANK",
-          "name": "Kotak Mah. Bank",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 424.5
-        },
-        {
-          "symbol": "LICHSGFIN",
-          "name": "LIC Housing Fin.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 562.05
-        },
-        {
-          "symbol": "SBICARD",
-          "name": "SBI Cards",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 658.25
-        },
-        {
-          "symbol": "JIOFIN",
-          "name": "Jio Financial",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 239.5
-        },
-        {
-          "symbol": "PFC",
-          "name": "Power Fin.Corpn.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 355.6
-        },
-        {
-          "symbol": "SBILIFE",
-          "name": "SBI Life Insuran",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 1775.0
-        },
-        {
-          "symbol": "BAJAJFINSV",
-          "name": "Bajaj Finserv",
-          "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1970.0
-        },
-        {
-          "symbol": "BAJFINANCE",
-          "name": "Bajaj Finance",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1060.5
-        },
-        {
-          "symbol": "CHOLAFIN",
-          "name": "Cholaman.Inv.&Fn",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1839.0
-        },
-        {
-          "symbol": "HDFCBANK",
-          "name": "HDFC Bank",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 712.1
-        },
-        {
-          "symbol": "ICICIBANK",
-          "name": "ICICI Bank",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1423.2
+          "close": 533.2
         },
         {
           "symbol": "ICICIGI",
@@ -4470,7 +4757,23 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1510.0
+          "close": 1493.4
+        },
+        {
+          "symbol": "ICICIPRULI",
+          "name": "ICICI Pru Life",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 470.65
+        },
+        {
+          "symbol": "LICI",
+          "name": "Life Insurance",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 411.5
         },
         {
           "symbol": "MFSL",
@@ -4478,334 +4781,31 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1548.4
+          "close": 1520.0
         },
         {
-          "symbol": "MUTHOOTFIN",
-          "name": "Muthoot Finance",
+          "symbol": "NIVABUPA",
+          "name": "Niva Bupa Health",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2913.8
+          "close": 80.67
         },
         {
-          "symbol": "RECLTD",
-          "name": "REC Ltd",
+          "symbol": "SBILIFE",
+          "name": "SBI Life Insuran",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 318.7
+          "close": 1732.0
         },
         {
-          "symbol": "SBIN",
-          "name": "SBI",
+          "symbol": "STARHEALTH",
+          "name": "Star Health Insu",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1016.1
-        },
-        {
-          "symbol": "SHRIRAMFIN",
-          "name": "Shriram Finance",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1041.0
-        }
-      ],
-      "last_date": "2026-09-04"
-    },
-    {
-      "sector": "Healthcare",
-      "index_name": "NIFTY HEALTHCARE INDEX",
-      "score": 28,
-      "score_delta": {
-        "available": true,
-        "delta": -17,
-        "prev_score": 45,
-        "prev_date": "2026-09-03",
-        "bullish_stack_changed": false,
-        "overheated_changed": false
-      },
-      "score_history": [
-        91,
-        92,
-        84,
-        80,
-        45,
-        28
-      ],
-      "ema": {
-        "available": true,
-        "price": 16408.05,
-        "ema21": 16580.67,
-        "above_21": false,
-        "ema21_rising": true,
-        "pct_above_21": -1.04,
-        "extended": false,
-        "ema50": 16390.3,
-        "above_50": true,
-        "ema200": 15521.68,
-        "above_200": true,
-        "bullish_stack": false
-      },
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 20.0,
-        "pct_above_10ma_week_ago": 60.0,
-        "breadth_rising": false,
-        "pct_above_21ma": 25.0,
-        "pct_above_21ma_week_ago": 55.0,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 20,
-        "low_sample": false
-      },
-      "rs": {
-        "available": true,
-        "rs_ratio": 0.6866,
-        "rs_above_ema": false,
-        "rs_rising_1w": false,
-        "history": [
-          0.6583,
-          0.6493,
-          0.6433,
-          0.6395,
-          0.6436,
-          0.6525,
-          0.6569,
-          0.6682,
-          0.6642,
-          0.6636,
-          0.6729,
-          0.6763,
-          0.669,
-          0.6681,
-          0.6774,
-          0.6746,
-          0.6699,
-          0.6761,
-          0.6805,
-          0.6749,
-          0.6731,
-          0.6836,
-          0.6856,
-          0.6852,
-          0.6691,
-          0.6803,
-          0.6841,
-          0.6814,
-          0.6827,
-          0.6831,
-          0.6865,
-          0.6878,
-          0.6885,
-          0.6867,
-          0.6872,
-          0.6775,
-          0.6803,
-          0.6786,
-          0.6777,
-          0.68,
-          0.6773,
-          0.6826,
-          0.6807,
-          0.6797,
-          0.6774,
-          0.6764,
-          0.6816,
-          0.6816,
-          0.6795,
-          0.6772,
-          0.6779,
-          0.6821,
-          0.6852,
-          0.6935,
-          0.6949,
-          0.7035,
-          0.693,
-          0.6954,
-          0.6933,
-          0.6866
-        ]
-      },
-      "rs_rating": 66,
-      "rs_rating_delta": {
-        "available": false
-      },
-      "high52": {
-        "available": true,
-        "pct_within_52wk_high": 30.0,
-        "n_stocks": 20,
-        "band_pct": 5.0
-      },
-      "high52_delta": {
-        "available": true,
-        "delta": 0.0,
-        "prev_value": 30.0,
-        "prev_date": "2026-09-04",
-        "direction": "flat"
-      },
-      "stocks": [
-        {
-          "symbol": "AUROPHARMA",
-          "name": "Aurobindo Pharma",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1653.1
-        },
-        {
-          "symbol": "DIVISLAB",
-          "name": "Divi's Lab.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 9100.0
-        },
-        {
-          "symbol": "IPCALAB",
-          "name": "Ipca Labs.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 1965.3
-        },
-        {
-          "symbol": "PPLPHARMA",
-          "name": "Piramal Pharma",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 214.22
-        },
-        {
-          "symbol": "GLENMARK",
-          "name": "Glenmark Pharma.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 2437.2
-        },
-        {
-          "symbol": "ABBOTINDIA",
-          "name": "Abbott India",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 26065.0
-        },
-        {
-          "symbol": "ALKEM",
-          "name": "Alkem Lab",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 5190.0
-        },
-        {
-          "symbol": "APOLLOHOSP",
-          "name": "Apollo Hospitals",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 8650.0
-        },
-        {
-          "symbol": "BIOCON",
-          "name": "Biocon",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 397.4
-        },
-        {
-          "symbol": "CIPLA",
-          "name": "Cipla",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1385.0
-        },
-        {
-          "symbol": "DRREDDY",
-          "name": "Dr Reddy's Labs",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1151.0
-        },
-        {
-          "symbol": "FORTIS",
-          "name": "Fortis Health.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 905.0
-        },
-        {
-          "symbol": "LAURUSLABS",
-          "name": "Laurus Labs",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1840.0
-        },
-        {
-          "symbol": "LUPIN",
-          "name": "Lupin",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 2110.0
-        },
-        {
-          "symbol": "MANKIND",
-          "name": "Mankind Pharma",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 2327.9
-        },
-        {
-          "symbol": "MAXHEALTH",
-          "name": "Max Healthcare",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 984.8
-        },
-        {
-          "symbol": "SUNPHARMA",
-          "name": "Sun Pharma.Inds.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1899.0
-        },
-        {
-          "symbol": "SYNGENE",
-          "name": "Syngene Intl.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 395.6
-        },
-        {
-          "symbol": "TORNTPHARM",
-          "name": "Torrent Pharma.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 4857.0
-        },
-        {
-          "symbol": "ZYDUSLIFE",
-          "name": "Zydus Lifesci.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1120.0
+          "close": 565.95
         }
       ],
       "last_date": "2026-09-04"
@@ -4813,10 +4813,10 @@
     {
       "sector": "Consumer Durables",
       "index_name": "NIFTY CONSUMER DURABLES",
-      "score": 21,
+      "score": 22,
       "score_delta": {
         "available": true,
-        "delta": -22,
+        "delta": -21,
         "prev_score": 43,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -4828,7 +4828,7 @@
         33,
         48,
         43,
-        21
+        22
       ],
       "ema": {
         "available": true,
@@ -4850,7 +4850,7 @@
         "pct_above_10ma_week_ago": 46.2,
         "breadth_rising": false,
         "pct_above_21ma": 23.1,
-        "pct_above_21ma_week_ago": 53.8,
+        "pct_above_21ma_week_ago": 46.2,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 13,
@@ -4930,25 +4930,25 @@
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 15.4,
+        "pct_within_52wk_high": 23.1,
         "n_stocks": 13,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
+        "delta": 7.7,
         "prev_value": 15.4,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "up"
       },
       "stocks": [
         {
-          "symbol": "KAJARIACER",
-          "name": "Kajaria Ceramics",
+          "symbol": "BLUESTARCO",
+          "name": "Blue Star",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1239.6
+          "close": 1496.0
         },
         {
           "symbol": "WHIRLPOOL",
@@ -4956,7 +4956,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 815.95
+          "close": 815.35
         },
         {
           "symbol": "AMBER",
@@ -4964,7 +4964,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 7474.0
+          "close": 7439.0
         },
         {
           "symbol": "BATAINDIA",
@@ -4972,15 +4972,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 672.75
-        },
-        {
-          "symbol": "BLUESTARCO",
-          "name": "Blue Star",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 1484.0
+          "close": 669.45
         },
         {
           "symbol": "CROMPTON",
@@ -4988,7 +4980,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 232.4
+          "close": 231.02
         },
         {
           "symbol": "DIXON",
@@ -4996,7 +4988,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 14240.0
+          "close": 14180.0
         },
         {
           "symbol": "HAVELLS",
@@ -5004,7 +4996,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1154.0
+          "close": 1150.0
+        },
+        {
+          "symbol": "KAJARIACER",
+          "name": "Kajaria Ceramics",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1220.5
         },
         {
           "symbol": "KALYANKJIL",
@@ -5012,7 +5012,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 598.8
+          "close": 591.0
         },
         {
           "symbol": "LGEINDIA",
@@ -5020,7 +5020,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1640.7
+          "close": 1647.8
         },
         {
           "symbol": "PGEL",
@@ -5028,7 +5028,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 562.3
+          "close": 559.55
         },
         {
           "symbol": "TITAN",
@@ -5036,7 +5036,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5020.0
+          "close": 4995.0
         },
         {
           "symbol": "VOLTAS",
@@ -5044,7 +5044,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1170.0
+          "close": 1167.2
         }
       ],
       "last_date": "2026-09-04"
@@ -5052,10 +5052,10 @@
     {
       "sector": "Cement",
       "index_name": "NIFTY CEMENT",
-      "score": 19,
+      "score": 20,
       "score_delta": {
         "available": true,
-        "delta": 10,
+        "delta": 11,
         "prev_score": 9,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -5066,7 +5066,7 @@
         7,
         9,
         9,
-        19
+        20
       ],
       "ema": {
         "available": true,
@@ -5084,11 +5084,11 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 31.2,
-        "pct_above_10ma_week_ago": 31.2,
+        "pct_above_10ma": 18.8,
+        "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": false,
-        "pct_above_21ma": 18.8,
-        "pct_above_21ma_week_ago": 12.5,
+        "pct_above_21ma": 25.0,
+        "pct_above_21ma_week_ago": 18.8,
         "breadth_21_rising": true,
         "overheated": false,
         "n_stocks": 16,
@@ -5162,7 +5162,7 @@
           0.6131
         ]
       },
-      "rs_rating": 1,
+      "rs_rating": 5,
       "rs_rating_delta": {
         "available": false
       },
@@ -5181,20 +5181,12 @@
       },
       "stocks": [
         {
-          "symbol": "GRASIM",
-          "name": "Grasim Inds",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 3322.0
-        },
-        {
           "symbol": "NUVOCO",
           "name": "Nuvoco Vistas",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 352.15
+          "close": 345.1
         },
         {
           "symbol": "PRSMJOHNSN",
@@ -5202,23 +5194,23 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 111.12
-        },
-        {
-          "symbol": "BIRLACORPN",
-          "name": "Birla Corpn.",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 887.35
+          "close": 112.21
         },
         {
           "symbol": "STARCEMENT",
           "name": "Star Cement",
           "has_data": true,
           "above_10ma": true,
-          "above_21ma": false,
-          "close": 190.19
+          "above_21ma": true,
+          "close": 194.4
+        },
+        {
+          "symbol": "GRASIM",
+          "name": "Grasim Inds",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 3302.4
         },
         {
           "symbol": "ACC",
@@ -5226,7 +5218,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1283.8
+          "close": 1268.7
         },
         {
           "symbol": "AMBUJACEM",
@@ -5234,7 +5226,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 405.0
+          "close": 398.6
+        },
+        {
+          "symbol": "BIRLACORPN",
+          "name": "Birla Corpn.",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 868.15
         },
         {
           "symbol": "DALBHARAT",
@@ -5242,7 +5242,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1749.3
+          "close": 1713.9
         },
         {
           "symbol": "INDIACEM",
@@ -5250,7 +5250,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 362.5
+          "close": 356.1
         },
         {
           "symbol": "JKCEMENT",
@@ -5258,7 +5258,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5083.5
+          "close": 5047.0
         },
         {
           "symbol": "JKLAKSHMI",
@@ -5266,7 +5266,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 515.7
+          "close": 507.15
         },
         {
           "symbol": "JSWCEMENT",
@@ -5274,7 +5274,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 124.07
+          "close": 121.81
         },
         {
           "symbol": "ORIENTCEM",
@@ -5282,7 +5282,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 129.68
+          "close": 126.56
         },
         {
           "symbol": "RAMCOCEM",
@@ -5290,7 +5290,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 884.5
+          "close": 871.5
         },
         {
           "symbol": "SHREECEM",
@@ -5298,7 +5298,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 23855.0
+          "close": 23365.0
         },
         {
           "symbol": "ULTRACEMCO",
@@ -5306,7 +5306,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 11408.0
+          "close": 11175.0
         }
       ],
       "last_date": "2026-09-04"
@@ -5314,10 +5314,10 @@
     {
       "sector": "Power",
       "index_name": "NIFTY POWER",
-      "score": 18,
+      "score": 17,
       "score_delta": {
         "available": true,
-        "delta": 15,
+        "delta": 14,
         "prev_score": 3,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -5328,7 +5328,7 @@
         1,
         3,
         3,
-        18
+        17
       ],
       "ema": {
         "available": true,
@@ -5346,11 +5346,11 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 57.1,
-        "pct_above_10ma_week_ago": 33.3,
+        "pct_above_10ma": 38.1,
+        "pct_above_10ma_week_ago": 14.3,
         "breadth_rising": true,
-        "pct_above_21ma": 14.3,
-        "pct_above_21ma_week_ago": 9.5,
+        "pct_above_21ma": 9.5,
+        "pct_above_21ma_week_ago": 4.8,
         "breadth_21_rising": true,
         "overheated": false,
         "n_stocks": 21,
@@ -5423,7 +5423,7 @@
           0.357
         ]
       },
-      "rs_rating": 9,
+      "rs_rating": 13,
       "rs_rating_delta": {
         "available": false
       },
@@ -5447,15 +5447,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 418.0
-        },
-        {
-          "symbol": "ADANIPOWER",
-          "name": "Adani Power",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 207.2
+          "close": 413.15
         },
         {
           "symbol": "TORNTPOWER",
@@ -5463,15 +5455,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 1299.1
-        },
-        {
-          "symbol": "ADANIGREEN",
-          "name": "Adani Green",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 1301.3
+          "close": 1275.7
         },
         {
           "symbol": "GMRP&UI",
@@ -5479,31 +5463,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 95.3
+          "close": 93.57
         },
         {
-          "symbol": "JSWENERGY",
-          "name": "JSW Energy",
+          "symbol": "JPPOWER",
+          "name": "JP Power Ven.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 539.85
-        },
-        {
-          "symbol": "NHPC",
-          "name": "NHPC Ltd",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 76.25
-        },
-        {
-          "symbol": "NLCINDIA",
-          "name": "NLC India",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": false,
-          "close": 273.05
+          "close": 16.79
         },
         {
           "symbol": "NTPC",
@@ -5511,15 +5479,15 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 332.5
+          "close": 332.0
         },
         {
-          "symbol": "PTC",
-          "name": "PTC India",
+          "symbol": "POWERGRID",
+          "name": "Power Grid Corpn",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 156.29
+          "close": 266.45
         },
         {
           "symbol": "SJVN",
@@ -5527,7 +5495,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 65.23
+          "close": 65.56
         },
         {
           "symbol": "TATAPOWER",
@@ -5535,7 +5503,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 368.0
+          "close": 365.7
         },
         {
           "symbol": "ADANIENSOL",
@@ -5543,7 +5511,23 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1409.6
+          "close": 1390.4
+        },
+        {
+          "symbol": "ADANIGREEN",
+          "name": "Adani Green",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 1288.0
+        },
+        {
+          "symbol": "ADANIPOWER",
+          "name": "Adani Power",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 204.49
         },
         {
           "symbol": "CESC",
@@ -5551,15 +5535,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 146.5
+          "close": 145.44
         },
         {
-          "symbol": "JPPOWER",
-          "name": "JP Power Ven.",
+          "symbol": "JSWENERGY",
+          "name": "JSW Energy",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 16.29
+          "close": 530.0
         },
         {
           "symbol": "KPIGREEN",
@@ -5567,7 +5551,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 307.0
+          "close": 302.6
         },
         {
           "symbol": "NAVA",
@@ -5575,7 +5559,23 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 560.2
+          "close": 556.25
+        },
+        {
+          "symbol": "NHPC",
+          "name": "NHPC Ltd",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 76.0
+        },
+        {
+          "symbol": "NLCINDIA",
+          "name": "NLC India",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 269.3
         },
         {
           "symbol": "NTPCGREEN",
@@ -5583,15 +5583,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 89.36
+          "close": 88.16
         },
         {
-          "symbol": "POWERGRID",
-          "name": "Power Grid Corpn",
+          "symbol": "PTC",
+          "name": "PTC India",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 266.0
+          "close": 154.78
         },
         {
           "symbol": "RPOWER",
@@ -5599,7 +5599,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 22.08
+          "close": 21.94
         },
         {
           "symbol": "RTNPOWER",
@@ -5607,7 +5607,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 7.36
+          "close": 7.32
         }
       ],
       "last_date": "2026-09-04"
@@ -5615,10 +5615,10 @@
     {
       "sector": "NBFC",
       "index_name": "NIFTY NBFC",
-      "score": 16,
+      "score": 17,
       "score_delta": {
         "available": true,
-        "delta": -11,
+        "delta": -10,
         "prev_score": 27,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -5629,7 +5629,7 @@
         7,
         17,
         27,
-        16
+        17
       ],
       "ema": {
         "available": true,
@@ -5647,7 +5647,7 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 31.6,
+        "pct_above_10ma": 36.8,
         "pct_above_10ma_week_ago": 47.4,
         "breadth_rising": false,
         "pct_above_21ma": 42.1,
@@ -5730,16 +5730,16 @@
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 15.8,
+        "pct_within_52wk_high": 21.1,
         "n_stocks": 19,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
+        "delta": 5.3,
         "prev_value": 15.8,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "up"
       },
       "stocks": [
         {
@@ -5748,7 +5748,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 279.9
+          "close": 275.7
         },
         {
           "symbol": "FEDFINA",
@@ -5756,15 +5756,23 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 161.56
+          "close": 165.45
         },
         {
-          "symbol": "SBFC",
-          "name": "SBFC Finance",
+          "symbol": "IIFL",
+          "name": "IIFL Finance",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 100.08
+          "close": 654.05
+        },
+        {
+          "symbol": "PIRAMALFIN",
+          "name": "Piramal Finance.",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": true,
+          "close": 2261.0
         },
         {
           "symbol": "SBICARD",
@@ -5772,7 +5780,7 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 658.25
+          "close": 674.65
         },
         {
           "symbol": "SUNDARMFIN",
@@ -5780,31 +5788,31 @@
           "has_data": true,
           "above_10ma": true,
           "above_21ma": true,
-          "close": 4648.7
+          "close": 4708.3
+        },
+        {
+          "symbol": "HDBFS",
+          "name": "HDB FINANC SER",
+          "has_data": true,
+          "above_10ma": true,
+          "above_21ma": false,
+          "close": 685.05
+        },
+        {
+          "symbol": "SBFC",
+          "name": "SBFC Finance",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": true,
+          "close": 98.48
         },
         {
           "symbol": "TATACAP",
           "name": "Tata Capital",
           "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 375.05
-        },
-        {
-          "symbol": "IIFL",
-          "name": "IIFL Finance",
-          "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 651.15
-        },
-        {
-          "symbol": "PIRAMALFIN",
-          "name": "Piramal Finance.",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 2225.0
+          "close": 369.95
         },
         {
           "symbol": "AIIL",
@@ -5812,7 +5820,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 519.9
+          "close": 514.95
         },
         {
           "symbol": "BAJFINANCE",
@@ -5820,7 +5828,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1060.5
+          "close": 1060.0
         },
         {
           "symbol": "CHOLAFIN",
@@ -5828,7 +5836,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1839.0
+          "close": 1848.2
         },
         {
           "symbol": "FIVESTAR",
@@ -5836,15 +5844,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 523.05
-        },
-        {
-          "symbol": "HDBFS",
-          "name": "HDB FINANC SER",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 682.7
+          "close": 526.2
         },
         {
           "symbol": "LTF",
@@ -5852,7 +5852,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 314.0
+          "close": 312.5
         },
         {
           "symbol": "M&MFIN",
@@ -5860,7 +5860,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 373.65
+          "close": 372.35
         },
         {
           "symbol": "MANAPPURAM",
@@ -5868,7 +5868,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 339.7
+          "close": 325.6
         },
         {
           "symbol": "MUTHOOTFIN",
@@ -5876,7 +5876,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2913.8
+          "close": 2880.0
         },
         {
           "symbol": "POONAWALLA",
@@ -5884,7 +5884,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 468.45
+          "close": 459.15
         },
         {
           "symbol": "SHRIRAMFIN",
@@ -5892,7 +5892,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1041.0
+          "close": 1037.0
         }
       ],
       "last_date": "2026-09-04"
@@ -5900,10 +5900,10 @@
     {
       "sector": "Auto",
       "index_name": "NIFTY AUTO",
-      "score": 11,
+      "score": 12,
       "score_delta": {
         "available": true,
-        "delta": -2,
+        "delta": -1,
         "prev_score": 13,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -5915,7 +5915,7 @@
         25,
         13,
         13,
-        11
+        12
       ],
       "ema": {
         "available": true,
@@ -5934,10 +5934,10 @@
       "breadth": {
         "available": true,
         "pct_above_10ma": 0.0,
-        "pct_above_10ma_week_ago": 46.7,
+        "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": false,
         "pct_above_21ma": 6.7,
-        "pct_above_21ma_week_ago": 53.3,
+        "pct_above_21ma_week_ago": 46.7,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 15,
@@ -6017,25 +6017,25 @@
       },
       "high52": {
         "available": true,
-        "pct_within_52wk_high": 13.3,
+        "pct_within_52wk_high": 20.0,
         "n_stocks": 15,
         "band_pct": 5.0
       },
       "high52_delta": {
         "available": true,
-        "delta": 0.0,
+        "delta": 6.7,
         "prev_value": 13.3,
         "prev_date": "2026-09-04",
-        "direction": "flat"
+        "direction": "up"
       },
       "stocks": [
         {
-          "symbol": "BAJAJ-AUTO",
-          "name": "BAJAJ-AUTO",
+          "symbol": "BOSCHLTD",
+          "name": "Bosch",
           "has_data": true,
           "above_10ma": false,
           "above_21ma": true,
-          "close": 11919.0
+          "close": 48025.0
         },
         {
           "symbol": "ASHOKLEY",
@@ -6043,7 +6043,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 169.0
+          "close": 170.0
+        },
+        {
+          "symbol": "BAJAJ-AUTO",
+          "name": "BAJAJ-AUTO",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 11800.0
         },
         {
           "symbol": "BHARATFORG",
@@ -6051,15 +6059,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1956.0
-        },
-        {
-          "symbol": "BOSCHLTD",
-          "name": "Bosch",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": false,
-          "close": 46820.0
+          "close": 1955.0
         },
         {
           "symbol": "EICHERMOT",
@@ -6067,7 +6067,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 7630.5
+          "close": 7672.0
         },
         {
           "symbol": "EXIDEIND",
@@ -6075,7 +6075,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 424.35
+          "close": 425.75
         },
         {
           "symbol": "HEROMOTOCO",
@@ -6083,7 +6083,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5300.0
+          "close": 5270.0
         },
         {
           "symbol": "M&M",
@@ -6091,7 +6091,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3170.0
+          "close": 3160.0
         },
         {
           "symbol": "MARUTI",
@@ -6099,7 +6099,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 12694.0
+          "close": 12760.0
         },
         {
           "symbol": "MOTHERSON",
@@ -6107,7 +6107,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 160.7
+          "close": 162.0
         },
         {
           "symbol": "SONACOMS",
@@ -6115,7 +6115,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 789.0
+          "close": 788.0
         },
         {
           "symbol": "TIINDIA",
@@ -6123,7 +6123,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2698.0
+          "close": 2683.0
         },
         {
           "symbol": "TMPV",
@@ -6131,7 +6131,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 311.5
+          "close": 307.0
         },
         {
           "symbol": "TVSMOTOR",
@@ -6139,7 +6139,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4133.1
+          "close": 4132.0
         },
         {
           "symbol": "UNOMINDA",
@@ -6147,7 +6147,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1249.7
+          "close": 1241.7
         }
       ],
       "last_date": "2026-09-04"
@@ -6155,10 +6155,10 @@
     {
       "sector": "Consumption",
       "index_name": "NIFTY INDIA CONSUMPTION",
-      "score": 4,
+      "score": 2,
       "score_delta": {
         "available": true,
-        "delta": 0,
+        "delta": -2,
         "prev_score": 4,
         "prev_date": "2026-09-03",
         "bullish_stack_changed": false,
@@ -6170,7 +6170,7 @@
         13,
         4,
         4,
-        4
+        2
       ],
       "ema": {
         "available": true,
@@ -6188,10 +6188,10 @@
       },
       "breadth": {
         "available": true,
-        "pct_above_10ma": 10.0,
-        "pct_above_10ma_week_ago": 33.3,
+        "pct_above_10ma": 3.3,
+        "pct_above_10ma_week_ago": 36.7,
         "breadth_rising": false,
-        "pct_above_21ma": 13.3,
+        "pct_above_21ma": 0.0,
         "pct_above_21ma_week_ago": 30.0,
         "breadth_21_rising": false,
         "overheated": false,
@@ -6285,44 +6285,20 @@
       },
       "stocks": [
         {
-          "symbol": "ADANIPOWER",
-          "name": "Adani Power",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 207.2
-        },
-        {
-          "symbol": "DLF",
-          "name": "DLF",
-          "has_data": true,
-          "above_10ma": true,
-          "above_21ma": true,
-          "close": 681.9
-        },
-        {
           "symbol": "TATAPOWER",
           "name": "Tata Power Co.",
           "has_data": true,
           "above_10ma": true,
           "above_21ma": false,
-          "close": 368.0
+          "close": 365.7
         },
         {
-          "symbol": "BAJAJ-AUTO",
-          "name": "BAJAJ-AUTO",
+          "symbol": "ADANIPOWER",
+          "name": "Adani Power",
           "has_data": true,
           "above_10ma": false,
-          "above_21ma": true,
-          "close": 11919.0
-        },
-        {
-          "symbol": "ETERNAL",
-          "name": "Eternal",
-          "has_data": true,
-          "above_10ma": false,
-          "above_21ma": true,
-          "close": 322.75
+          "above_21ma": false,
+          "close": 204.49
         },
         {
           "symbol": "APOLLOHOSP",
@@ -6330,7 +6306,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 8650.0
+          "close": 8760.0
         },
         {
           "symbol": "ASIANPAINT",
@@ -6338,7 +6314,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2527.3
+          "close": 2500.9
+        },
+        {
+          "symbol": "BAJAJ-AUTO",
+          "name": "BAJAJ-AUTO",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 11800.0
         },
         {
           "symbol": "BHARTIARTL",
@@ -6346,7 +6330,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1840.0
+          "close": 1854.0
         },
         {
           "symbol": "BRITANNIA",
@@ -6354,7 +6338,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5101.5
+          "close": 5042.5
         },
         {
           "symbol": "DIXON",
@@ -6362,7 +6346,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 14240.0
+          "close": 14180.0
+        },
+        {
+          "symbol": "DLF",
+          "name": "DLF",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 672.7
         },
         {
           "symbol": "DMART",
@@ -6370,7 +6362,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3770.0
+          "close": 3710.0
         },
         {
           "symbol": "EICHERMOT",
@@ -6378,7 +6370,15 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 7630.5
+          "close": 7672.0
+        },
+        {
+          "symbol": "ETERNAL",
+          "name": "Eternal",
+          "has_data": true,
+          "above_10ma": false,
+          "above_21ma": false,
+          "close": 320.8
         },
         {
           "symbol": "GODREJCP",
@@ -6386,7 +6386,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 878.0
+          "close": 861.9
         },
         {
           "symbol": "HAVELLS",
@@ -6394,7 +6394,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1154.0
+          "close": 1150.0
         },
         {
           "symbol": "HEROMOTOCO",
@@ -6402,7 +6402,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5300.0
+          "close": 5270.0
         },
         {
           "symbol": "HINDUNILVR",
@@ -6410,7 +6410,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1973.4
+          "close": 1960.0
         },
         {
           "symbol": "INDHOTEL",
@@ -6418,7 +6418,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 720.0
+          "close": 716.2
         },
         {
           "symbol": "INDIGO",
@@ -6426,7 +6426,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4977.0
+          "close": 5001.0
         },
         {
           "symbol": "ITC",
@@ -6434,7 +6434,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 264.1
+          "close": 263.5
         },
         {
           "symbol": "M&M",
@@ -6442,7 +6442,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 3170.0
+          "close": 3160.0
         },
         {
           "symbol": "MARUTI",
@@ -6450,7 +6450,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 12694.0
+          "close": 12760.0
         },
         {
           "symbol": "MAXHEALTH",
@@ -6458,7 +6458,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 984.8
+          "close": 992.0
         },
         {
           "symbol": "NAUKRI",
@@ -6466,7 +6466,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1319.8
+          "close": 1302.5
         },
         {
           "symbol": "NESTLEIND",
@@ -6474,7 +6474,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1410.5
+          "close": 1398.0
         },
         {
           "symbol": "TATACONSUM",
@@ -6482,7 +6482,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1010.0
+          "close": 1015.0
         },
         {
           "symbol": "TITAN",
@@ -6490,7 +6490,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5020.0
+          "close": 4995.0
         },
         {
           "symbol": "TRENT",
@@ -6498,7 +6498,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 2853.0
+          "close": 2814.5
         },
         {
           "symbol": "TVSMOTOR",
@@ -6506,7 +6506,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4133.1
+          "close": 4132.0
         },
         {
           "symbol": "UNITDSPR",
@@ -6514,7 +6514,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1471.7
+          "close": 1440.0
         },
         {
           "symbol": "VBL",
@@ -6522,7 +6522,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 407.6
+          "close": 405.95
         }
       ],
       "last_date": "2026-09-04"
@@ -6564,7 +6564,7 @@
       "breadth": {
         "available": true,
         "pct_above_10ma": 0.0,
-        "pct_above_10ma_week_ago": 0.0,
+        "pct_above_10ma_week_ago": 13.3,
         "breadth_rising": false,
         "pct_above_21ma": 0.0,
         "pct_above_21ma_week_ago": 6.7,
@@ -6641,7 +6641,7 @@
           1.9204
         ]
       },
-      "rs_rating": 5,
+      "rs_rating": 1,
       "rs_rating_delta": {
         "available": false
       },
@@ -6665,7 +6665,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 5101.5
+          "close": 5042.5
         },
         {
           "symbol": "COLPAL",
@@ -6673,7 +6673,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1829.2
+          "close": 1813.5
         },
         {
           "symbol": "DABUR",
@@ -6681,7 +6681,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 380.9
+          "close": 375.5
         },
         {
           "symbol": "EMAMILTD",
@@ -6689,7 +6689,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 366.05
+          "close": 367.55
         },
         {
           "symbol": "GODREJCP",
@@ -6697,7 +6697,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 878.0
+          "close": 861.9
         },
         {
           "symbol": "HINDUNILVR",
@@ -6705,7 +6705,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1973.4
+          "close": 1960.0
         },
         {
           "symbol": "ITC",
@@ -6713,7 +6713,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 264.1
+          "close": 263.5
         },
         {
           "symbol": "MARICO",
@@ -6721,7 +6721,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 815.15
+          "close": 806.0
         },
         {
           "symbol": "NESTLEIND",
@@ -6729,7 +6729,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1410.5
+          "close": 1398.0
         },
         {
           "symbol": "PATANJALI",
@@ -6737,7 +6737,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 342.5
+          "close": 340.9
         },
         {
           "symbol": "RADICO",
@@ -6745,7 +6745,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 4494.0
+          "close": 4444.0
         },
         {
           "symbol": "TATACONSUM",
@@ -6753,7 +6753,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1010.0
+          "close": 1015.0
         },
         {
           "symbol": "UBL",
@@ -6761,7 +6761,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1279.4
+          "close": 1291.0
         },
         {
           "symbol": "UNITDSPR",
@@ -6769,7 +6769,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 1471.7
+          "close": 1440.0
         },
         {
           "symbol": "VBL",
@@ -6777,7 +6777,7 @@
           "has_data": true,
           "above_10ma": false,
           "above_21ma": false,
-          "close": 407.6
+          "close": 405.95
         }
       ],
       "last_date": "2026-09-04"
