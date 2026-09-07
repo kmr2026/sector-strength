@@ -3,14 +3,22 @@ name: Daily Data Update
 # being on, logged in, or even powered on.
 #
 # UPDATED: instead of one fixed-time run guessing when NSE has published,
-# this polls every 5 minutes for NSE's daily bhavcopy file to actually
-# be available, and runs the full pipeline the moment it shows up. The
-# original 6:30pm run is kept as an UNCONDITIONAL fallback -- it always
-# attempts the full pipeline regardless of the check (same behavior as
-# before this change), so if NSE is ever later than the poll window, you
-# still get today's update guaranteed. Weekends/holidays still fire and
-# just get the same graceful "[miss] ... holiday" handling fetch_data.py
-# already has -- harmless, a few wasted seconds those days.
+# this polls every 5 minutes for BOTH of NSE's daily files -- the stock
+# bhavcopy AND the index-close file -- to actually be available, and only
+# runs the full pipeline once BOTH are live. Checking bhavcopy alone was a
+# real bug: some days NSE publishes it before the index-close file, and a
+# gate that only checked bhavcopy would run the whole pipeline early,
+# permanently miss that day's sector/Nifty index prices (no retry once
+# the day's commit lands), and leave the Sectoral Indices tab stuck a day
+# behind every other tab. Now both must return 200 with a real body
+# before proceed=true.
+#
+# The original 6:30pm run is kept as an UNCONDITIONAL fallback -- it
+# always attempts the full pipeline regardless of the check (same
+# behavior as before this change), so if NSE is ever later than the poll
+# window, you still get today's update guaranteed. Weekends/holidays
+# still fire and just get the same graceful "[miss] ... holiday" handling
+# fetch_data.py already has -- harmless, a few wasted seconds those days.
 #
 # GitHub Actions cron is UTC:
 #   */5 11-12 * * 1-5  -> every 5 min, 11:00-12:55 UTC = 4:30pm-6:25pm IST (poll)
@@ -18,10 +26,11 @@ name: Daily Data Update
 #
 # Idempotency: every trigger (poll, fallback, or manual) first checks
 # today's date against the most recent commit message on this branch. If
-# today's update already went out (an earlier poll caught it), the run
-# exits in a couple seconds without re-running classification/fetch/
-# export/push -- this is what keeps 5-minute polling cheap. Only one poll
-# per day actually ends up running the full pipeline.
+# today's update already went out (an earlier poll caught it, once BOTH
+# files were ready), the run exits in a couple seconds without re-running
+# classification/fetch/export/push -- this is what keeps 5-minute polling
+# cheap. Only one poll per day actually ends up running the full
+# pipeline.
 #
 # Honest caveat, straight from GitHub's own docs: scheduled workflows can
 # be delayed during periods of high load across GitHub -- usually by a
@@ -65,21 +74,30 @@ jobs:
             exit 0
           fi
 
-          FNAME="sec_bhavdata_full_$(date -u +'%d%m%Y').csv"
-          URL="https://archives.nseindia.com/products/content/${FNAME}"
-          RESULT=$(curl -s -o /dev/null -w "%{http_code} %{size_download}" \
-            -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" \
-            -H "Accept: text/csv,application/csv,*/*" \
-            "$URL")
-          HTTP_CODE=$(echo "$RESULT" | cut -d' ' -f1)
-          BYTES=$(echo "$RESULT" | cut -d' ' -f2)
-          echo "NSE check for $FNAME: status=$HTTP_CODE, bytes=$BYTES"
+          DDMM=$(date -u +'%d%m%Y')
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 
-          if [ "$HTTP_CODE" = "200" ] && [ "$BYTES" -gt 0 ]; then
-            echo "Bhavcopy is live -- proceeding."
+          BHAV_FNAME="sec_bhavdata_full_${DDMM}.csv"
+          BHAV_URL="https://archives.nseindia.com/products/content/${BHAV_FNAME}"
+          BHAV_RESULT=$(curl -s -o /dev/null -w "%{http_code} %{size_download}" \
+            -A "$UA" -H "Accept: text/csv,application/csv,*/*" "$BHAV_URL")
+          BHAV_CODE=$(echo "$BHAV_RESULT" | cut -d' ' -f1)
+          BHAV_BYTES=$(echo "$BHAV_RESULT" | cut -d' ' -f2)
+          echo "NSE check for $BHAV_FNAME: status=$BHAV_CODE, bytes=$BHAV_BYTES"
+
+          IDX_FNAME="ind_close_all_${DDMM}.csv"
+          IDX_URL="https://archives.nseindia.com/content/indices/${IDX_FNAME}"
+          IDX_RESULT=$(curl -s -o /dev/null -w "%{http_code} %{size_download}" \
+            -A "$UA" -H "Accept: text/csv,application/csv,*/*" "$IDX_URL")
+          IDX_CODE=$(echo "$IDX_RESULT" | cut -d' ' -f1)
+          IDX_BYTES=$(echo "$IDX_RESULT" | cut -d' ' -f2)
+          echo "NSE check for $IDX_FNAME: status=$IDX_CODE, bytes=$IDX_BYTES"
+
+          if [ "$BHAV_CODE" = "200" ] && [ "$BHAV_BYTES" -gt 0 ] && [ "$IDX_CODE" = "200" ] && [ "$IDX_BYTES" -gt 0 ]; then
+            echo "Both bhavcopy and index-close files are live -- proceeding."
             echo "proceed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Not published yet -- will check again in 5 min (or fall back to 6:30pm)."
+            echo "Not both published yet (bhavcopy=$BHAV_CODE, index=$IDX_CODE) -- will check again in 5 min (or fall back to 6:30pm)."
             echo "proceed=false" >> "$GITHUB_OUTPUT"
           fi
 
