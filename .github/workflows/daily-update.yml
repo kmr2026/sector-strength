@@ -47,6 +47,11 @@ on:
         required: false
         type: boolean
         default: false
+      clear_dates:
+        description: "Space-separated YYYY-MM-DD date(s) to purge from the cached database before this run -- use to fix a date that got stored under the wrong label (e.g. a holiday that NSE served stale content for). Leave blank for a normal run."
+        required: false
+        type: string
+        default: ""
 permissions:
   contents: write   # needed to commit the regenerated data files back to the repo
 jobs:
@@ -125,6 +130,10 @@ jobs:
       - name: Install dependencies
         if: steps.gate.outputs.proceed == 'true'
         run: pip install pandas requests beautifulsoup4
+
+      - name: Clear bad date(s) from database
+        if: steps.gate.outputs.proceed == 'true' && github.event.inputs.clear_dates != ''
+        run: python clear_price_dates.py ${{ github.event.inputs.clear_dates }}
 
       - name: Classify basic industries
         if: steps.gate.outputs.proceed == 'true'

@@ -87,6 +87,53 @@ def _fetch_csv(session: requests.Session, url: str, timeout: int, label: str) ->
     return df
 
 
+def _validate_file_date(df: pd.DataFrame, expected_date: dt.date, label: str) -> bool:
+    """Cross-checks a fetched file's OWN date column against the date we
+    requested it for, before the caller stores anything under that date's
+    key.
+
+    Added after a real incident: on a trading holiday, NSE's archive
+    served a 200 with parseable CSV content for that day's bhavcopy URL,
+    which the old code accepted at face value and stored under the
+    REQUESTED date (`ds = date.isoformat()`) -- not anything read back out
+    of the file itself. That silently created a phantom trading day in
+    stock_prices, which then never got revisited (already-fetched dates
+    are skipped on future runs), corrupting EMA/breadth history and
+    making the 'as of' date on every stock-level tab (Industry Analytics/
+    Scanner/Market Breadth/Top Gainers) disagree with the Sectors tab,
+    whose date comes from the separate index_prices table.
+
+    Returns True only if the file's own date column genuinely contains
+    the requested date. If no date column can be found at all, this fails
+    OPEN (returns True) rather than turning every future schema change
+    into a mass outage -- but prints a warning either way so a silent
+    schema drift doesn't go unnoticed."""
+    date_col = next((c for c in df.columns if "date" in c.lower()), None)
+    if date_col is None:
+        print(f"  [warn] {label}: no date column found to cross-check against "
+              f"{expected_date.isoformat()} (columns: {list(df.columns)}) -- "
+              f"proceeding without this safety check.")
+        return True
+    parsed = pd.to_datetime(df[date_col], dayfirst=True, errors="coerce").dropna()
+    found = sorted({d for d in parsed.dt.date})
+    if expected_date in found:
+        return True
+    found_str = ", ".join(d.isoformat() for d in found) or "no parseable dates"
+    print(f"  [miss] {label}: status=200, parsed OK, but the file's own date "
+          f"column doesn't contain the requested date {expected_date.isoformat()} "
+          f"(found: {found_str}) -- likely a stale/cached NSE response (e.g. a "
+          f"holiday serving a previous day's file under today's URL). Treating "
+          f"as unavailable rather than storing it under the wrong date.")
+    return False
+
+
+def _log_fetch_event(conn, date: str, status: str, detail: str):
+    conn.execute(
+        "INSERT INTO fetch_log (run_at, date, status, detail) VALUES (?, ?, ?, ?)",
+        (dt.datetime.now().isoformat(), date, status, detail),
+    )
+
+
 def fetch_index_file(session: requests.Session, date: dt.date) -> pd.DataFrame | None:
     fname = f"ind_close_all_{date.strftime('%d%m%Y')}.csv"
     url = f"{NSE_BASE}/content/indices/{fname}"
@@ -388,6 +435,11 @@ def update_index_prices():
             if df is None:
                 missed += 1
                 continue
+            if not _validate_file_date(df, date, label=f"index {ds}"):
+                missed += 1
+                _log_fetch_event(conn, ds, "date_mismatch",
+                                  "index file content's own date didn't match the requested date -- rejected, not stored")
+                continue
             name_col = next((c for c in df.columns if "index" in c.lower() and "name" in c.lower()), None)
             close_col = next((c for c in df.columns if c.strip().lower() == "closing index value"), None)
             if not name_col or not close_col:
@@ -454,6 +506,11 @@ def update_stock_prices(refetch_days: int = 0):
             df = fetch_bhavcopy(session, date)
             if df is None:
                 missed += 1
+                continue
+            if not _validate_file_date(df, date, label=f"bhavcopy {ds}"):
+                missed += 1
+                _log_fetch_event(conn, ds, "date_mismatch",
+                                  "bhavcopy content's own date didn't match the requested date -- rejected, not stored")
                 continue
             sym_col = next((c for c in df.columns if c.strip().upper() == "SYMBOL"), None)
             close_col = next((c for c in df.columns if c.strip().upper() == "CLOSE_PRICE"), None)
@@ -564,6 +621,33 @@ def update_circuit_bands():
     print(f"  circuit bands: {len(rows)} symbols with an assigned band")
 
 
+def check_date_consistency():
+    """Compares the latest date in index_prices (what the Sectors tab's
+    'as of' date comes from) against the latest date in stock_prices (what
+    every other tab -- Industry Analytics/Scanner/Market Breadth/Top
+    Gainers -- comes from). These are fetched from two separate NSE files
+    independently, so a genuine same-day lag between them (NSE publishing
+    one before the other) is expected and self-corrects on the next
+    successful run -- this is a visibility/audit check, not a hard gate,
+    since blocking the whole export over an expected timing gap would mean
+    NO tab updates on days it happens, which is worse than the current
+    'Sectors is a few hours ahead' state. Logged to fetch_log either way so
+    there's a durable record of how often and how long these gaps last."""
+    with get_conn() as conn:
+        idx_max = conn.execute("SELECT MAX(date) FROM index_prices").fetchone()[0]
+        stock_max = conn.execute("SELECT MAX(date) FROM stock_prices").fetchone()[0]
+        if idx_max and stock_max and idx_max != stock_max:
+            msg = (f"index_prices is current through {idx_max}, stock_prices only "
+                   f"through {stock_max} -- Sectors tab will show a different "
+                   f"'as of' date than Industry Analytics/Scanner/Market Breadth/"
+                   f"Top Gainers until the next run catches stock_prices up.")
+            print(f"\n[NOTE] {msg}")
+            _log_fetch_event(conn, max(idx_max, stock_max), "date_mismatch_crosstable", msg)
+        else:
+            print(f"\nindex_prices and stock_prices both current through "
+                  f"{idx_max or stock_max or 'n/a'} -- consistent.")
+
+
 def run_daily_update(refetch_days: int = 0):
     init_db()
     with get_conn() as conn:
@@ -580,6 +664,7 @@ def run_daily_update(refetch_days: int = 0):
     update_index_prices()
     update_stock_prices(refetch_days=refetch_days)
     update_circuit_bands()
+    check_date_consistency()
     print("Done.")
 
 
