@@ -20,9 +20,18 @@ name: Daily Data Update
 # still fire and just get the same graceful "[miss] ... holiday" handling
 # fetch_data.py already has -- harmless, a few wasted seconds those days.
 #
+# UPDATED AGAIN: poll window extended and the fallback pushed later --
+# NSE's bhavcopy (the file every tab except Sectors depends on) doesn't
+# always land by 6:30pm IST; when it's late, the old 6:30pm-only fallback
+# meant the site sat on yesterday's stock-level data for a FULL EXTRA DAY
+# (nothing else was scheduled until tomorrow's poll). Now polling
+# continues to ~9:25pm IST and the unconditional fallback moved to 9:00pm
+# IST, so a late bhavcopy still gets picked up the same evening in the
+# large majority of cases.
+#
 # GitHub Actions cron is UTC:
-#   */5 11-12 * * 1-5  -> every 5 min, 11:00-12:55 UTC = 4:30pm-6:25pm IST (poll)
-#   0 13 * * 1-5        -> 13:00 UTC = 6:30pm IST (unconditional fallback, unchanged)
+#   */5 11-15 * * 1-5   -> every 5 min, 11:00-15:55 UTC = 4:30pm-9:25pm IST (poll)
+#   30 15 * * 1-5        -> 15:30 UTC = 9:00pm IST (unconditional fallback)
 #
 # Idempotency: every trigger (poll, fallback, or manual) first checks
 # today's date against the most recent commit message on this branch. If
@@ -38,8 +47,8 @@ name: Daily Data Update
 # to the minute either. Still far better than a hardcoded guess.
 on:
   schedule:
-    - cron: "*/5 11-12 * * 1-5"   # poll: 4:30pm-6:25pm IST, every 5 min
-    - cron: "0 13 * * 1-5"        # unconditional fallback: 6:30pm IST
+    - cron: "*/5 11-15 * * 1-5"   # poll: 4:30pm-9:25pm IST, every 5 min
+    - cron: "30 15 * * 1-5"       # unconditional fallback: 9:00pm IST
   workflow_dispatch:
     inputs:
       force_reclassify:
@@ -73,8 +82,8 @@ jobs:
             exit 0
           fi
 
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "0 13 * * 1-5" ]; then
-            echo "Manual run or 6:30pm fallback -- proceeding regardless of NSE publish status."
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "30 15 * * 1-5" ]; then
+            echo "Manual run or 9:00pm fallback -- proceeding regardless of NSE publish status."
             echo "proceed=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -102,7 +111,7 @@ jobs:
             echo "Both bhavcopy and index-close files are live -- proceeding."
             echo "proceed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "Not both published yet (bhavcopy=$BHAV_CODE, index=$IDX_CODE) -- will check again in 5 min (or fall back to 6:30pm)."
+            echo "Not both published yet (bhavcopy=$BHAV_CODE, index=$IDX_CODE) -- will check again in 5 min (or fall back to 9pm)."
             echo "proceed=false" >> "$GITHUB_OUTPUT"
           fi
 
