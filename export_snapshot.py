@@ -21,6 +21,7 @@ from pathlib import Path
 
 from compute import compute_all as compute_sectors
 from compute_basic_industry import compute_all_with_meta
+from compute_broad_sector import compute_all as compute_broad_sectors
 from compute_stock_scanner import compute_all as compute_stock_scanner
 from compute_market_breadth import compute_all as compute_market_breadth
 
@@ -39,6 +40,10 @@ def main():
     (DATA_DIR / "basic_industries.json").write_text(json.dumps(industries_result, indent=2, default=str))
     print(f"Wrote {len(industries_result['industries'])} basic industries to basic_industries.json "
           f"(source: {industries_result['classification_source']})")
+
+    broad_sectors = compute_broad_sectors()
+    (DATA_DIR / "sectors_broad.json").write_text(json.dumps({"sectors": broad_sectors}, indent=2, default=str))
+    print(f"Wrote {len(broad_sectors)} broad sectors to sectors_broad.json")
 
     scanner_result = compute_stock_scanner()
     # Enrich each stock with its OWN industry's 1W/1M/3M rank -- a join

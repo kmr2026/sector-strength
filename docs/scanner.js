@@ -8,6 +8,13 @@ const SCANNER_URL = "data/stock_scanner.json";
 // exactly, no fuzzy matching needed.
 const INDUSTRIES_URL = "data/basic_industries.json";
 let INDUSTRY_BREADTH_MAP = new Map(); // industry name -> breadth block
+
+// Same idea, for NSE's real Sector tier (Financial Services, Healthcare,
+// Consumer Discretionary...) -- Scan Summary's Sector mode groups by
+// this same `sector` field, so it now has something real to look up
+// too, instead of always showing n/a.
+const SECTORS_BROAD_URL = "data/sectors_broad.json";
+let SECTOR_BREADTH_MAP = new Map(); // sector name -> breadth block
 const FILTER_STORAGE_KEY = "scannerFilters";
 const PRESETS_STORAGE_KEY = "scannerPresets";
 
@@ -677,6 +684,7 @@ function renderScanSummary() {
   const isSector = SUMMARY_MODE === "sector";
   document.getElementById("summary-col-label").textContent = isSector ? "Sector" : "Basic Industry";
   document.getElementById("summary-col-pct").textContent = isSector ? "% of Sector" : "% of Industry";
+  document.getElementById("summary-col-breadth").textContent = isSector ? "Sector Breadth >10MA" : "Industry Breadth >10MA";
 
   const counts = new Map(); // category -> count among FILTERED
   FILTERED.forEach(s => {
@@ -744,27 +752,34 @@ function renderScanSummary() {
     // from the 24 index-based Sectoral Indices (Bank, IT, Pharma...) that
     // basic_industries.json/leaderboard.json don't cover -- so it never
     // gets a real lookup here, rather than silently showing a wrong number.
-    let breadthCellHtml = `<span class="muted" title="Not available in Sector mode -- this classification tier isn't tracked by the sector-strength dashboard">n/a</span>`;
+    // Basic Industry mode's `category` (s.basic_industry) and Sector
+    // mode's `category` (s.sector) each now have their own real,
+    // separately-computed breadth map -- basic_industries.json and
+    // sectors_broad.json respectively, both keyed by the exact same
+    // classification names basic_industry_map itself uses, so both
+    // lookups are exact matches, no fuzzy logic needed.
+    let breadthCellHtml = `<span class="muted">n/a</span>`;
     let trendCellHtml = `<span class="muted">–</span>`;
     let breadthSortVal = -1;
     let trendSortVal = -999;
-    if (!isSector) {
-      const b = INDUSTRY_BREADTH_MAP.get(category);
-      if (b && b.available) {
-        const sampleCls = b.low_sample ? "n-stocks low-sample" : "n-stocks";
-        const sampleTitle = b.low_sample ? `title="Only ${b.n_stocks} stocks in this industry -- read with more caution"` : "";
-        breadthCellHtml = `<span class="breadth-val">${b.pct_above_10ma}%</span> <span class="${sampleCls}" ${sampleTitle}>(${b.n_stocks})</span>`;
-        breadthSortVal = b.pct_above_10ma;
-        if (b.pct_above_10ma_week_ago !== null && b.pct_above_10ma_week_ago !== undefined) {
-          const diff = b.pct_above_10ma - b.pct_above_10ma_week_ago;
-          trendSortVal = diff;
-          if (diff > 1) trendCellHtml = `<span class="trend-up">▲ ${diff.toFixed(1)}pt</span>`;
-          else if (diff < -1) trendCellHtml = `<span class="trend-down">▼ ${Math.abs(diff).toFixed(1)}pt</span>`;
-          else trendCellHtml = `<span class="trend-flat">flat</span>`;
-        }
-      } else {
-        breadthCellHtml = `<span class="muted" title="No dashboard data for this industry (too few stocks with history, or a name that didn't match)">n/a</span>`;
+    const b = isSector ? SECTOR_BREADTH_MAP.get(category) : INDUSTRY_BREADTH_MAP.get(category);
+    if (b && b.available) {
+      const sampleCls = b.low_sample ? "n-stocks low-sample" : "n-stocks";
+      const sampleTitle = b.low_sample ? `title="Only ${b.n_stocks} stocks -- read with more caution"` : "";
+      breadthCellHtml = `<span class="breadth-val">${b.pct_above_10ma}%</span> <span class="${sampleCls}" ${sampleTitle}>(${b.n_stocks})</span>`;
+      breadthSortVal = b.pct_above_10ma;
+      if (b.pct_above_10ma_week_ago !== null && b.pct_above_10ma_week_ago !== undefined) {
+        const diff = b.pct_above_10ma - b.pct_above_10ma_week_ago;
+        trendSortVal = diff;
+        if (diff > 1) trendCellHtml = `<span class="trend-up">▲ ${diff.toFixed(1)}pt</span>`;
+        else if (diff < -1) trendCellHtml = `<span class="trend-down">▼ ${Math.abs(diff).toFixed(1)}pt</span>`;
+        else trendCellHtml = `<span class="trend-flat">flat</span>`;
       }
+    } else {
+      const reason = isSector
+        ? "No dashboard data for this sector (too few stocks with sector classification, or a name that didn't match)"
+        : "No dashboard data for this industry (too few stocks with history, or a name that didn't match)";
+      breadthCellHtml = `<span class="muted" title="${reason}">n/a</span>`;
     }
     return { category, count, pct, color, breadthCellHtml, trendCellHtml, breadthSortVal, trendSortVal };
   });
@@ -820,19 +835,27 @@ async function load() {
     loadFiltersFromStorage();
   }
   try {
-    const [scannerRes, industriesRes] = await Promise.all([
+    const [scannerRes, industriesRes, sectorsBroadRes] = await Promise.all([
       fetch(SCANNER_URL),
       fetch(INDUSTRIES_URL),
+      fetch(SECTORS_BROAD_URL),
     ]);
     ALL_STOCKS = await scannerRes.json();
-    // Best-effort: the Scan Summary's industry breadth columns just show
-    // "n/a" if this fails to load, everything else on the page still works.
+    // Best-effort: the Scan Summary's breadth columns just show "n/a" if
+    // either of these fails to load, everything else on the page still works.
     try {
       const industriesData = await industriesRes.json();
       const list = industriesData.industries || [];
       INDUSTRY_BREADTH_MAP = new Map(list.map(ind => [ind.industry, ind.breadth]));
     } catch (industriesErr) {
       INDUSTRY_BREADTH_MAP = new Map();
+    }
+    try {
+      const sectorsBroadData = await sectorsBroadRes.json();
+      const list = sectorsBroadData.sectors || [];
+      SECTOR_BREADTH_MAP = new Map(list.map(s => [s.sector, s.breadth]));
+    } catch (sectorsErr) {
+      SECTOR_BREADTH_MAP = new Map();
     }
     updateSortHeaderStyles();
     FILTERED = ALL_STOCKS.slice();
