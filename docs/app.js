@@ -9,14 +9,6 @@ let SORT_KEY = "score";
 let SORT_DIR = "desc"; // "asc" | "desc"
 let SEARCH_TERM = "";
 
-// Breadth floor -- All Industries tab only (see applyView). A thin
-// industry already gets an amber low-sample flag on its stock count
-// (breadthCell()); this actually removes it from the list instead of
-// just flagging it, so a fast-moving 10MA breadth delta from a 2-3
-// stock industry doesn't sit next to genuinely broad-based ones.
-let FLOOR_BREADTH = 40;
-let FLOOR_STOCKS = 10;
-
 function scoreClass(score) {
   if (score >= 65) return "score-high";
   if (score >= 40) return "score-mid";
@@ -172,33 +164,10 @@ function sortValue(row, key) {
   }
 }
 
-function passesFloor(row) {
-  if (CURRENT_VIEW !== "industries") return true;
-  const b = row.breadth;
-  if (!b || !b.available) return false; // can't confirm it clears the floor -- exclude, don't guess
-  if (FLOOR_BREADTH && b.pct_above_10ma < FLOOR_BREADTH) return false;
-  if (FLOOR_STOCKS && b.n_stocks < FLOOR_STOCKS) return false;
-  return true;
-}
-
 function filteredData() {
-  let arr = CURRENT_DATA;
-  if (SEARCH_TERM) {
-    const q = SEARCH_TERM.toLowerCase();
-    arr = arr.filter(row => rowName(row).toLowerCase().includes(q));
-  }
-  return arr.filter(passesFloor);
-}
-
-function updateFloorCount() {
-  const el = document.getElementById("industry-floor-count");
-  if (!el) return;
-  if (CURRENT_VIEW !== "industries") { el.textContent = ""; return; }
-  const searched = SEARCH_TERM
-    ? CURRENT_DATA.filter(row => rowName(row).toLowerCase().includes(SEARCH_TERM.toLowerCase()))
-    : CURRENT_DATA;
-  const shown = searched.filter(passesFloor).length;
-  el.textContent = `${shown} of ${searched.length} industries shown`;
+  if (!SEARCH_TERM) return CURRENT_DATA.slice();
+  const q = SEARCH_TERM.toLowerCase();
+  return CURRENT_DATA.filter(row => rowName(row).toLowerCase().includes(q));
 }
 
 function sortedData() {
@@ -269,17 +238,10 @@ function renderBoard(data) {
   tbody.innerHTML = "";
   document.getElementById("name-col-header").textContent =
     CURRENT_VIEW === "sectors" ? "Sectoral Index" : "Basic Industry";
-  updateFloorCount();
 
-  if (!data.length) {
+  if (!data.length && SEARCH_TERM) {
     const tr = document.createElement("tr");
-    let msg = `No matches for "${SEARCH_TERM}"`;
-    if (!SEARCH_TERM) {
-      msg = CURRENT_VIEW === "industries"
-        ? "No industries clear the current breadth/stock floor -- try lowering it"
-        : "No data";
-    }
-    tr.innerHTML = `<td colspan="11" class="no-results">${msg}</td>`;
+    tr.innerHTML = `<td colspan="11" class="no-results">No matches for "${SEARCH_TERM}"</td>`;
     tbody.appendChild(tr);
     return;
   }
@@ -535,7 +497,6 @@ function applyView(view, raw) {
     renderRegimeBanner("regime-banner-nifty", "Nifty 50", raw.regime);
     renderRegimeBanner("regime-banner-midsmall", "Mid/Smallcap 400", raw.regime_midsmall);
     renderRegimeBanner("regime-banner-smallcap", "Nifty Smallcap 250", raw.regime_smallcap);
-    document.getElementById("industry-floor-bar").classList.add("hidden");
     const sectors = raw.sectors || [];
     document.getElementById("sectors-tab").textContent = `Sectoral Indices (${sectors.length})`;
     renderLeadersRow("sectors", sectors);
@@ -550,7 +511,6 @@ function applyView(view, raw) {
     document.getElementById("regime-banner-midsmall").classList.add("hidden");
     document.getElementById("regime-banner-smallcap").classList.add("hidden");
     document.getElementById("leaders-row").classList.add("hidden");
-    document.getElementById("industry-floor-bar").classList.add("hidden");
     infoIcon.classList.add("hidden");
     document.getElementById("board").classList.add("hidden");
     document.getElementById("empty-state").classList.add("hidden");
@@ -564,7 +524,6 @@ function applyView(view, raw) {
   document.getElementById("regime-banner-midsmall").classList.add("hidden");
   document.getElementById("regime-banner-smallcap").classList.add("hidden");
   document.getElementById("leaders-row").classList.remove("hidden");
-  document.getElementById("industry-floor-bar").classList.remove("hidden");
   document.getElementById("analytics-board").classList.add("hidden");
   document.getElementById("board").classList.remove("hidden");
   infoIcon.classList.remove("hidden");
@@ -584,18 +543,6 @@ document.getElementById("search-box").addEventListener("input", (e) => {
   } else {
     renderBoard(sortedData());
   }
-});
-
-document.getElementById("floor-breadth-input").addEventListener("input", (e) => {
-  const v = parseFloat(e.target.value);
-  FLOOR_BREADTH = Number.isFinite(v) ? v : 0;
-  if (CURRENT_VIEW === "industries") renderBoard(sortedData());
-});
-
-document.getElementById("floor-stocks-input").addEventListener("input", (e) => {
-  const v = parseInt(e.target.value, 10);
-  FLOOR_STOCKS = Number.isFinite(v) ? v : 0;
-  if (CURRENT_VIEW === "industries") renderBoard(sortedData());
 });
 
 let ANALYTICS_DATA = [];
