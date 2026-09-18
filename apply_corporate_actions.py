@@ -48,9 +48,13 @@ IDEMPOTENCY
 ------------
 corporate_actions.applied tracks whether stock_prices has already been
 adjusted for a given (symbol, ex_date, action_type). Re-running this
-daily must never re-multiply the same action twice -- INSERT OR IGNORE
-on the primary key means an action already seen keeps its existing
-applied=1 and is never reprocessed.
+daily must never re-multiply the same action twice -- a row already
+marked applied=1 is skipped. But a row can legitimately be RESET to
+applied=0 by clear_price_dates.py or fetch_data.py's --refetch-days
+(both reset any action whose ex_date is after a re-fetched date, since
+the re-fetch just brought back raw, unadjusted NSE prices for that
+range) -- those are picked back up and reprocessed here, not skipped.
+
 
 DRY RUN BY DEFAULT
 --------------------
@@ -199,56 +203,117 @@ def main():
         # actions for stocks outside your universe.
         tracked_symbols = {row[0] for row in conn.execute("SELECT DISTINCT symbol FROM stock_prices")}
 
-        new_actions = []
+        # price_actions and shares_actions are tracked SEPARATELY and can
+        # diverge -- e.g. an action applied to prices under an older
+        # version of this script (before shares_adjusted existed) has
+        # applied=1 but shares_adjusted=0, and needs ONLY the shares side
+        # done. A reset action (clear_price_dates.py/--refetch-days set
+        # applied=0 back) needs ONLY the price side redone -- its shares
+        # were never reverted, so redoing that side would double-divide.
+        price_actions, shares_actions = [], []
         for symbol, ex_date, action_type, ratio_text, multiplier in parsed:
             if symbol not in tracked_symbols:
                 continue
             existing = conn.execute(
-                "SELECT applied FROM corporate_actions WHERE symbol=? AND ex_date=? AND action_type=?",
+                "SELECT applied, shares_adjusted FROM corporate_actions WHERE symbol=? AND ex_date=? AND action_type=?",
                 (symbol, ex_date, action_type),
             ).fetchone()
-            if existing is not None:
-                continue  # already seen (applied or not) -- never reprocess
-            new_actions.append((symbol, ex_date, action_type, ratio_text, multiplier))
+            applied = existing[0] if existing else 0
+            shares_adjusted = existing[1] if existing else 0
+            action = (symbol, ex_date, action_type, ratio_text, multiplier)
+            if applied != 1:
+                price_actions.append(action)
+            if shares_adjusted != 1:
+                shares_actions.append(action)
 
-        print(f"{len(new_actions)} NEW action(s) not yet in corporate_actions table "
+        print(f"{len(price_actions)} action(s) need price adjustment, "
+              f"{len(shares_actions)} need shares_outstanding adjustment "
               f"(out of {len(tracked_symbols)} tracked symbols):\n")
 
-        if not new_actions:
+        if not price_actions and not shares_actions:
             print("Nothing to do.")
             return
 
-        for symbol, ex_date, action_type, ratio_text, multiplier in new_actions:
+        for symbol, ex_date, action_type, ratio_text, multiplier in price_actions:
             affected = conn.execute(
                 "SELECT COUNT(*) FROM stock_prices WHERE symbol=? AND date<?",
                 (symbol, ex_date),
             ).fetchone()[0]
-            print(f"  {symbol:<15} {ex_date}  {action_type:<6}  '{ratio_text}'  "
+            print(f"  [price]  {symbol:<15} {ex_date}  {action_type:<6}  '{ratio_text}'  "
                   f"multiplier={multiplier:.6f}  rows_to_adjust={affected}")
+        for symbol, ex_date, action_type, ratio_text, multiplier in shares_actions:
+            print(f"  [shares] {symbol:<15} {ex_date}  {action_type:<6}  '{ratio_text}'  "
+                  f"multiplier={multiplier:.6f}")
 
         if dry_run:
             print("\n[DRY RUN] No changes made. Re-run with --apply to actually "
-                  "adjust stock_prices and record these as applied.")
+                  "adjust stock_prices/shares_outstanding and record these as applied.")
             return
 
         print("\nApplying...")
         now = dt.datetime.now().isoformat()
-        for symbol, ex_date, action_type, ratio_text, multiplier in new_actions:
-            conn.execute(
-                """UPDATE stock_prices
-                   SET close = close * ?, high = high * ?, low = low * ?
-                   WHERE symbol = ? AND date < ?""",
-                (multiplier, multiplier, multiplier, symbol, ex_date),
-            )
+
+        # Union of both lists, deduped by key, so the INSERT/UPSERT below
+        # only runs once per action even if it needs both sides done.
+        all_keys = {}
+        for a in price_actions + shares_actions:
+            all_keys[(a[0], a[1], a[2])] = a
+        price_keys = {(a[0], a[1], a[2]) for a in price_actions}
+        shares_keys = {(a[0], a[1], a[2]) for a in shares_actions}
+
+        for key, (symbol, ex_date, action_type, ratio_text, multiplier) in all_keys.items():
+            did_price = key in price_keys
+            did_shares = key in shares_keys
+
+            if did_price:
+                conn.execute(
+                    """UPDATE stock_prices
+                       SET close = close * ?, high = high * ?, low = low * ?
+                       WHERE symbol = ? AND date < ?""",
+                    (multiplier, multiplier, multiplier, symbol, ex_date),
+                )
+            if did_shares:
+                # Divide by the multiplier that shrank the price, so
+                # market_cap_cr = shares_outstanding x close stays correct
+                # immediately, instead of silently understating market cap
+                # until the next classify_via_screener.py --force run
+                # (up to a month per the workflow's own cadence).
+                conn.execute(
+                    """UPDATE basic_industry_map
+                       SET shares_outstanding = shares_outstanding / ?
+                       WHERE symbol = ? AND shares_outstanding IS NOT NULL""",
+                    (multiplier, symbol),
+                )
+
+            # ON CONFLICT instead of plain INSERT -- a reset row (applied=0)
+            # may already exist at this primary key. applied/shares_adjusted
+            # are set based on what was ACTUALLY done this run (did_price/
+            # did_shares), not unconditionally to 1 -- e.g. a fresh new
+            # action does both and both flags become 1; an action that only
+            # needed its shares side redone leaves applied untouched at
+            # whatever it already correctly was.
             conn.execute(
                 """INSERT INTO corporate_actions
-                   (symbol, ex_date, action_type, ratio_text, adjustment_multiplier, applied, fetched_at)
-                   VALUES (?, ?, ?, ?, ?, 1, ?)""",
-                (symbol, ex_date, action_type, ratio_text, multiplier, now),
+                   (symbol, ex_date, action_type, ratio_text, adjustment_multiplier, applied, shares_adjusted, fetched_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                   ON CONFLICT(symbol, ex_date, action_type) DO UPDATE SET
+                     ratio_text=excluded.ratio_text,
+                     adjustment_multiplier=excluded.adjustment_multiplier,
+                     applied=CASE WHEN ? THEN 1 ELSE corporate_actions.applied END,
+                     shares_adjusted=CASE WHEN ? THEN 1 ELSE corporate_actions.shares_adjusted END,
+                     fetched_at=excluded.fetched_at""",
+                (symbol, ex_date, action_type, ratio_text, multiplier,
+                 1 if did_price else 0, 1 if did_shares else 0, now,
+                 did_price, did_shares),
             )
-            print(f"  [applied] {symbol} {ex_date} {action_type} x{multiplier:.6f}")
+            tags = []
+            if did_price:
+                tags.append("price")
+            if did_shares:
+                tags.append("shares")
+            print(f"  [applied: {'+'.join(tags)}] {symbol} {ex_date} {action_type} x{multiplier:.6f}")
 
-        print(f"\nDone. {len(new_actions)} action(s) applied to {DB_PATH}.")
+        print(f"\nDone. {len(all_keys)} action(s) processed against {DB_PATH}.")
 
 
 if __name__ == "__main__":

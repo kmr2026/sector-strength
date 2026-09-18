@@ -104,6 +104,16 @@ CREATE TABLE IF NOT EXISTS metric_history (
 -- keeps the daily run idempotent: re-fetching the same action on a later
 -- day must never multiply stock_prices a second time. ratio_text is the
 -- raw NSE subject line, kept for audit/debugging, not parsed again later.
+--
+-- 'applied' can be legitimately RESET to 0 (by clear_price_dates.py or
+-- fetch_data.py --refetch-days) when a re-fetch overwrites stock_prices
+-- with raw NSE data again, so the adjustment needs reapplying. 'shares_
+-- adjusted' is deliberately a SEPARATE flag, not reset alongside applied:
+-- basic_industry_map.shares_outstanding is never reverted by a price
+-- re-fetch (it lives in a different table, untouched by fetch_data.py),
+-- so re-dividing it every time 'applied' gets reset would double (or
+-- triple...) the share-count correction each cycle. Once genuinely
+-- adjusted, shares_adjusted stays 1 forever for that action.
 CREATE TABLE IF NOT EXISTS corporate_actions (
     symbol TEXT NOT NULL,
     ex_date TEXT NOT NULL,
@@ -111,6 +121,7 @@ CREATE TABLE IF NOT EXISTS corporate_actions (
     ratio_text TEXT NOT NULL,
     adjustment_multiplier REAL NOT NULL,
     applied INTEGER NOT NULL DEFAULT 0,
+    shares_adjusted INTEGER NOT NULL DEFAULT 0,
     fetched_at TEXT,
     PRIMARY KEY (symbol, ex_date, action_type)
 );
@@ -177,6 +188,16 @@ def init_db():
         # that window as "recently listed" too.
         try:
             conn.execute("ALTER TABLE basic_industry_map ADD COLUMN listing_date TEXT")
+        except sqlite3.OperationalError:
+            pass  # column already exists
+        # shares_adjusted -- corporate_actions already existed in prior
+        # deployments without this column (added after discovering the
+        # double-adjustment bug: re-processing a reset 'applied' action
+        # was dividing shares_outstanding a second time, since nothing
+        # else reverts that table the way a price re-fetch reverts
+        # stock_prices). See corporate_actions' own schema comment above.
+        try:
+            conn.execute("ALTER TABLE corporate_actions ADD COLUMN shares_adjusted INTEGER NOT NULL DEFAULT 0")
         except sqlite3.OperationalError:
             pass  # column already exists
 

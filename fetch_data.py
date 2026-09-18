@@ -568,6 +568,22 @@ def update_stock_prices(refetch_days: int = 0):
                 got += 1
                 total_rows += len(rows)
             time.sleep(0.3)
+        # Same corporate-actions safety net as clear_price_dates.py: any
+        # date this run re-fetched (refetch_cutoff onward) just got
+        # overwritten with RAW, unadjusted NSE prices. Any action whose
+        # ex_date falls after refetch_cutoff had potentially adjusted some
+        # of those now-overwritten dates -- reset it so
+        # apply_corporate_actions.py (which runs right after this in the
+        # daily pipeline) picks it back up instead of skipping it as
+        # already-applied.
+        if refetch_cutoff:
+            reset = conn.execute(
+                "UPDATE corporate_actions SET applied = 0 WHERE ex_date > ? AND applied = 1",
+                (refetch_cutoff,),
+            ).rowcount
+            if reset:
+                print(f"  --refetch-days touched dates from {refetch_cutoff} onward -- "
+                      f"reset {reset} corporate action(s) back to applied=0 for reprocessing.")
     print(f"  bhavcopy files parsed: {got}, missed/holidays: {missed}, rows stored: {total_rows}")
 
 

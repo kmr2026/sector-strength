@@ -7,9 +7,10 @@ This is what makes free static hosting (GitHub Pages) possible: the site
 itself has no backend -- it just reads these JSON files, which you refresh
 once a day.
 
-Run this right after fetch_data.py, every day:
+Run this right after fetch_data.py AND apply_corporate_actions.py, every day:
 
     python fetch_data.py
+    python apply_corporate_actions.py --apply
     python export_snapshot.py
     git add -A
     git commit -m "daily sector data update"
