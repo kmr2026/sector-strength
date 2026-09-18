@@ -1,4 +1,13 @@
 const SCANNER_URL = "data/stock_scanner.json";
+// Industry-level breadth (>10MA, and its trend vs a week ago) -- the same
+// numbers shown on the All Industries dashboard tab, computed from the
+// FULL industry (every stock in it), not just whatever subset of it your
+// scan filters happened to catch. Keyed by industry name, which comes
+// from the same basic_industry_map source table compute_stock_scanner.py
+// reads its own `basic_industry` field from -- so the names line up
+// exactly, no fuzzy matching needed.
+const INDUSTRIES_URL = "data/basic_industries.json";
+let INDUSTRY_BREADTH_MAP = new Map(); // industry name -> breadth block
 const FILTER_STORAGE_KEY = "scannerFilters";
 const PRESETS_STORAGE_KEY = "scannerPresets";
 
@@ -728,10 +737,48 @@ function renderScanSummary() {
 
   const rows = tableRows.map(({ category, count, pct }) => {
     const color = colorMap.get(category) || SUMMARY_OTHER_COLOR;
-    return `<tr><td><span class="swatch" style="background:${color}"></span>${category}</td><td>${count}</td><td>${pct.toFixed(1)}%</td></tr>`;
+    // Only Basic Industry mode's `category` (s.basic_industry) shares its
+    // source table with basic_industries.json's `industry` field, so the
+    // lookup is an exact match there. Sector mode's `category` (s.sector)
+    // is NSE's Macro-Economic Sector tier, a DIFFERENT classification
+    // from the 24 index-based Sectoral Indices (Bank, IT, Pharma...) that
+    // basic_industries.json/leaderboard.json don't cover -- so it never
+    // gets a real lookup here, rather than silently showing a wrong number.
+    let breadthCellHtml = `<span class="muted" title="Not available in Sector mode -- this classification tier isn't tracked by the sector-strength dashboard">n/a</span>`;
+    let trendCellHtml = `<span class="muted">–</span>`;
+    let breadthSortVal = -1;
+    let trendSortVal = -999;
+    if (!isSector) {
+      const b = INDUSTRY_BREADTH_MAP.get(category);
+      if (b && b.available) {
+        const sampleCls = b.low_sample ? "n-stocks low-sample" : "n-stocks";
+        const sampleTitle = b.low_sample ? `title="Only ${b.n_stocks} stocks in this industry -- read with more caution"` : "";
+        breadthCellHtml = `<span class="breadth-val">${b.pct_above_10ma}%</span> <span class="${sampleCls}" ${sampleTitle}>(${b.n_stocks})</span>`;
+        breadthSortVal = b.pct_above_10ma;
+        if (b.pct_above_10ma_week_ago !== null && b.pct_above_10ma_week_ago !== undefined) {
+          const diff = b.pct_above_10ma - b.pct_above_10ma_week_ago;
+          trendSortVal = diff;
+          if (diff > 1) trendCellHtml = `<span class="trend-up">▲ ${diff.toFixed(1)}pt</span>`;
+          else if (diff < -1) trendCellHtml = `<span class="trend-down">▼ ${Math.abs(diff).toFixed(1)}pt</span>`;
+          else trendCellHtml = `<span class="trend-flat">flat</span>`;
+        }
+      } else {
+        breadthCellHtml = `<span class="muted" title="No dashboard data for this industry (too few stocks with history, or a name that didn't match)">n/a</span>`;
+      }
+    }
+    return { category, count, pct, color, breadthCellHtml, trendCellHtml, breadthSortVal, trendSortVal };
   });
-  document.getElementById("summary-table-body").innerHTML =
-    rows.length ? rows.join("") : `<tr><td colspan="3" class="muted">No stocks match the current filters</td></tr>`;
+  if (SUMMARY_SORT_KEY === "breadth" || SUMMARY_SORT_KEY === "breadthTrend") {
+    rows.sort((a, b) => {
+      const cmp = SUMMARY_SORT_KEY === "breadth"
+        ? a.breadthSortVal - b.breadthSortVal
+        : a.trendSortVal - b.trendSortVal;
+      return SUMMARY_SORT_DIR === "asc" ? cmp : -cmp;
+    });
+  }
+  document.getElementById("summary-table-body").innerHTML = rows.length
+    ? rows.map(r => `<tr><td><span class="swatch" style="background:${r.color}"></span>${r.category}</td><td>${r.count}</td><td>${r.pct.toFixed(1)}%</td><td>${r.breadthCellHtml}</td><td>${r.trendCellHtml}</td></tr>`).join("")
+    : `<tr><td colspan="5" class="muted">No stocks match the current filters</td></tr>`;
 
   updateSummarySortHeaderStyles();
 }
@@ -773,8 +820,20 @@ async function load() {
     loadFiltersFromStorage();
   }
   try {
-    const res = await fetch(SCANNER_URL);
-    ALL_STOCKS = await res.json();
+    const [scannerRes, industriesRes] = await Promise.all([
+      fetch(SCANNER_URL),
+      fetch(INDUSTRIES_URL),
+    ]);
+    ALL_STOCKS = await scannerRes.json();
+    // Best-effort: the Scan Summary's industry breadth columns just show
+    // "n/a" if this fails to load, everything else on the page still works.
+    try {
+      const industriesData = await industriesRes.json();
+      const list = industriesData.industries || [];
+      INDUSTRY_BREADTH_MAP = new Map(list.map(ind => [ind.industry, ind.breadth]));
+    } catch (industriesErr) {
+      INDUSTRY_BREADTH_MAP = new Map();
+    }
     updateSortHeaderStyles();
     FILTERED = ALL_STOCKS.slice();
     applyFilters();
