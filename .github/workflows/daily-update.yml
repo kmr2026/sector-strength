@@ -33,13 +33,24 @@ name: Daily Data Update
 #   */5 11-15 * * 1-5   -> every 5 min, 11:00-15:55 UTC = 4:30pm-9:25pm IST (poll)
 #   30 15 * * 1-5        -> 15:30 UTC = 9:00pm IST (unconditional fallback)
 #
-# Idempotency: every trigger (poll, fallback, or manual) first checks
-# today's date against the most recent commit message on this branch. If
-# today's update already went out (an earlier poll caught it, once BOTH
-# files were ready), the run exits in a couple seconds without re-running
-# classification/fetch/export/push -- this is what keeps 5-minute polling
-# cheap. Only one poll per day actually ends up running the full
-# pipeline.
+# Idempotency: SCHEDULED triggers (the 5-minute poll and the 9pm
+# fallback) first check today's date against the most recent commit
+# message on this branch -- if an earlier poll already caught today's
+# update, the run exits in a couple seconds without re-running
+# classification/fetch/export/push. This is what keeps 5-minute polling
+# cheap. Only one scheduled run per day actually ends up running the
+# full pipeline.
+#
+# MANUAL (workflow_dispatch) runs are DIFFERENT on purpose: they always
+# proceed, regardless of what today's commit history already says. This
+# was a real bug -- a manual "Force full re-classification" run
+# triggered after that day's automated commit already landed (e.g. to
+# retry classification failures from a screener.in outage) used to get
+# silently skipped by the same-day check, with no way to actually run
+# it again until the UTC date rolled over. A person clicking "Run
+# workflow" has already decided they want it to run right now; the
+# same-day guard exists to stop the unattended poll from re-running
+# itself, not to second-guess a deliberate manual trigger.
 #
 # Honest caveat, straight from GitHub's own docs: scheduled workflows can
 # be delayed during periods of high load across GitHub -- usually by a
@@ -73,6 +84,12 @@ jobs:
       - name: Check whether to run today's update
         id: gate
         run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "Manual run -- always proceeds, regardless of today's commit history or NSE publish status."
+            echo "proceed=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           TODAY=$(date -u +'%Y-%m-%d')
           LAST_MSG=$(git log -1 --pretty=%s 2>/dev/null || echo "")
 
@@ -82,8 +99,8 @@ jobs:
             exit 0
           fi
 
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event.schedule }}" = "30 15 * * 1-5" ]; then
-            echo "Manual run or 9:00pm fallback -- proceeding regardless of NSE publish status."
+          if [ "${{ github.event.schedule }}" = "30 15 * * 1-5" ]; then
+            echo "9:00pm fallback -- proceeding regardless of NSE publish status."
             echo "proceed=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
