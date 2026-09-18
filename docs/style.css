@@ -258,6 +258,31 @@ main {
   justify-content: flex-end;
   gap: 8px;
 }
+
+/* Breadth floor bar -- All Industries tab only. Reuses .filter-field's
+   input styling but stays compact and inline (unlike the Scanner's
+   full-width filter-row), and sits directly under the search box. */
+.industry-floor-bar {
+  max-width: 1100px;
+  margin: 10px auto 0;
+  align-items: flex-end;
+  gap: 14px;
+}
+.industry-floor-field {
+  flex: 0 0 auto;
+  min-width: 0;
+  width: 150px;
+}
+.industry-floor-field input {
+  border-color: var(--border);
+}
+.industry-floor-field input:focus { border-color: var(--green); }
+.industry-floor-count {
+  color: var(--muted);
+  font-size: 12px;
+  padding-bottom: 8px;
+  margin-left: auto;
+}
 .tg-layout {
   display: flex;
   gap: 16px;
