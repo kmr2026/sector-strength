@@ -96,6 +96,24 @@ CREATE TABLE IF NOT EXISTS metric_history (
     value REAL,
     PRIMARY KEY (metric, key, date)
 );
+
+-- Every bonus/split NSE has announced for a symbol, with the multiplier
+-- already computed (see apply_corporate_actions.py for the bonus A:B and
+-- split face-value-change formulas). 'applied' tracks whether
+-- stock_prices has already been back-adjusted for this specific action --
+-- keeps the daily run idempotent: re-fetching the same action on a later
+-- day must never multiply stock_prices a second time. ratio_text is the
+-- raw NSE subject line, kept for audit/debugging, not parsed again later.
+CREATE TABLE IF NOT EXISTS corporate_actions (
+    symbol TEXT NOT NULL,
+    ex_date TEXT NOT NULL,
+    action_type TEXT NOT NULL,
+    ratio_text TEXT NOT NULL,
+    adjustment_multiplier REAL NOT NULL,
+    applied INTEGER NOT NULL DEFAULT 0,
+    fetched_at TEXT,
+    PRIMARY KEY (symbol, ex_date, action_type)
+);
 """
 
 
