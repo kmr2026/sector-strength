@@ -155,7 +155,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.gate.outputs.proceed == 'true'
-        run: pip install pandas requests beautifulsoup4
+        run: pip install pandas requests beautifulsoup4 curl_cffi
 
       - name: Clear bad date(s) from database
         if: steps.gate.outputs.proceed == 'true' && github.event.inputs.clear_dates != ''
@@ -174,6 +174,16 @@ jobs:
       - name: Fetch data
         if: steps.gate.outputs.proceed == 'true'
         run: python fetch_data.py
+
+      # Must run AFTER fetch_data.py (needs today's prices already in
+      # stock_prices to know what to back-adjust) and BEFORE export_snapshot.py
+      # (so the exported EMA/breadth/RS numbers reflect adjusted prices, not
+      # raw ones). --apply is required here -- without it this only prints a
+      # dry-run preview and never touches the DB, which would silently
+      # defeat the whole point of running it on a schedule.
+      - name: Apply corporate actions (bonus/split back-adjustment)
+        if: steps.gate.outputs.proceed == 'true'
+        run: python apply_corporate_actions.py --apply
 
       - name: Export snapshot
         if: steps.gate.outputs.proceed == 'true'
