@@ -28,7 +28,7 @@ let SORT_DIR = "desc";
 const FILTER_FIELD_IDS = [
   "f-ema-21", "f-ema-50", "f-ema-200",
   "f-high-max", "f-low-min",
-  "f-price-min", "f-turnover-min",
+  "f-price-min", "f-turnover-min", "f-rs-min",
   "f-mcap-min", "f-mcap-max",
   "f-return-period", "f-return-min", "f-return-max",
   "f-circuit-enable",
@@ -237,6 +237,7 @@ function readFilters() {
     lowMin: num("f-low-min"),
     priceMin: num("f-price-min"),
     turnoverMin: num("f-turnover-min"),
+    rsMin: num("f-rs-min"),
     mcapMin: num("f-mcap-min"), mcapMax: num("f-mcap-max"),
     returnEnable: document.getElementById("f-return-enable").checked,
     returnPeriod: document.getElementById("f-return-period").value,
@@ -268,6 +269,10 @@ function applyFilters() {
     if (f.lowMin !== null && !(s.pct_from_52wk_low !== null && s.pct_from_52wk_low !== undefined && s.pct_from_52wk_low >= f.lowMin)) return false;
     if (f.priceMin !== null && !(s.close !== null && s.close !== undefined && s.close >= f.priceMin)) return false;
     if (f.turnoverMin !== null && !(s.avg_turnover_cr_30d >= f.turnoverMin)) return false;
+    // RS Rating (at least) -- a stock without a full year of history has
+    // rs_rating = null and is excluded whenever this is set (no rating,
+    // no evidence it qualifies).
+    if (f.rsMin !== null && !(s.rs_rating !== null && s.rs_rating !== undefined && s.rs_rating >= f.rsMin)) return false;
     if (!inRange(s.market_cap_cr, f.mcapMin, f.mcapMax)) return false;
     // Return Range% -- only applies at all if its own checkbox is
     // checked, not just because a min/max happens to be typed in (those

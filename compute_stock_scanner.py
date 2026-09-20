@@ -18,7 +18,7 @@ RS Rating.
 """
 import pandas as pd
 from db import get_conn
-from scoring import ema_block, universe_raw_rs_scores, rs_ratings_from_raw, pct_return
+from scoring import ema_block, universe_raw_rs_scores, rs_ratings_from_raw, pct_return, active_symbols
 
 
 def _stock_52wk_block(series: pd.Series) -> dict:
@@ -102,24 +102,13 @@ def compute_all() -> list[dict]:
             return []
         df["date"] = pd.to_datetime(df["date"])
 
-        # A symbol whose price data stopped updating a while ago (delisted,
-        # suspended, renamed -- NSE just silently stops including it in the
-        # daily bhavcopy) still sits in stock_prices with its last real
-        # date frozen in the past. Left in, its 52wk-high/low, EMA, and
-        # turnover all get computed off that stale "last" row as if it
-        # were current -- producing exactly the kind of nonsense numbers
-        # (hundreds-of-percent-from-low, huge turnover) that don't
-        # actually reflect anything tradeable today. A stock genuinely
-        # trading has a last date within a few sessions of the most
-        # recent date anywhere in the table; anything older than that
-        # (10 calendar days -- enough slack for a long weekend/holiday
-        # run without falsely dropping active stocks) is excluded here,
-        # once, rather than silently poisoning every metric downstream.
-        global_max_date = df["date"].max()
-        stale_cutoff = global_max_date - pd.Timedelta(days=10)
-        last_date_by_symbol = df.groupby("symbol")["date"].max()
-        active_symbols = set(last_date_by_symbol[last_date_by_symbol >= stale_cutoff].index)
-        df = df[df["symbol"].isin(active_symbols)]
+        # Drop stale symbols (delisted/suspended/renamed -- NSE just stops
+        # including them in the daily bhavcopy, leaving their last real
+        # date frozen in the past). Left in, their 52wk-high/low, EMA and
+        # turnover would be computed off that stale "last" row as if
+        # current. Same rule (scoring.active_symbols) also keeps them out
+        # of the RS Rating ranking pool below.
+        df = df[df["symbol"].isin(active_symbols(df))]
 
         meta = get_symbol_metadata(conn)
         circuit_bands = get_circuit_bands(conn)

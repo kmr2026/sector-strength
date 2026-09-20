@@ -419,8 +419,31 @@ def stock_raw_rs_score(series: pd.Series) -> float | None:
     return 0.4 * p3 + 0.2 * p6 + 0.2 * p9 + 0.2 * p12
 
 
+STALE_SYMBOL_DAYS = 10
+
+
+def active_symbols(df: pd.DataFrame) -> set:
+    """Symbols still actually trading: last price date within
+    STALE_SYMBOL_DAYS calendar days of the newest date anywhere in df
+    (df needs 'symbol' and a datetime 'date' column).
+
+    A delisted/suspended/renamed stock silently drops out of NSE's daily
+    bhavcopy but its old rows stay in stock_prices, frozen at its last
+    real date. This is the single definition of "stale" -- shared by the
+    stock scanner and every RS Rating ranking so a dead stock can neither
+    show up as a scanner row nor take a slot in the percentile pool
+    (which would shift every live stock's rating). 10 days leaves enough
+    slack for a long weekend/holiday run without dropping live stocks."""
+    if df.empty:
+        return set()
+    cutoff = df["date"].max() - pd.Timedelta(days=STALE_SYMBOL_DAYS)
+    last_date_by_symbol = df.groupby("symbol")["date"].max()
+    return set(last_date_by_symbol[last_date_by_symbol >= cutoff].index)
+
+
 def universe_raw_rs_scores(conn) -> dict:
-    """Raw RS score for every symbol in stock_prices with enough history,
+    """Raw RS score for every ACTIVE symbol in stock_prices with enough
+    history (stale/delisted symbols are excluded -- see active_symbols()),
     computed once per run and shared across every sector/industry group
     rather than re-querying per group -- this is the single most
     expensive step RS Rating adds, so it only happens once."""
@@ -428,6 +451,7 @@ def universe_raw_rs_scores(conn) -> dict:
     if df.empty:
         return {}
     df["date"] = pd.to_datetime(df["date"])
+    df = df[df["symbol"].isin(active_symbols(df))]
     scores = {}
     for symbol, g in df.groupby("symbol"):
         s = g.set_index("date")["close"].sort_index()
