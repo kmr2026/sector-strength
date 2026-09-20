@@ -59,10 +59,14 @@ function applyFilterState(state) {
       cb.checked = state.circuitBands.includes(cb.value);
     });
   }
-  syncCircuitBandToggle();
-  syncReturnRangeToggle();
-  syncEmaDropdownLabel();
-  syncCircuitDropdownLabel();
+  // The Return Range is now "on" whenever a min or max is set, so a saved
+  // state that had it switched off must not keep stale numbers around
+  // (they'd silently switch it back on).
+  if ("f-return-enable" in state && !state["f-return-enable"]) {
+    document.getElementById("f-return-min").value = "";
+    document.getElementById("f-return-max").value = "";
+  }
+  refreshFilterUI();
 }
 
 function saveFiltersToStorage() {
@@ -255,50 +259,54 @@ function inRange(val, min, max) {
   return true;
 }
 
+// True if one stock passes every active filter. Shared by applyFilters()
+// (which builds the table) and the modal's live "N stocks match" counter.
+function passesFilters(s, f) {
+  // A checked EMA box only excludes a stock that EXPLICITLY sits below
+  // that EMA -- a young stock without enough history for it yet
+  // (above_21/50/200 is null, not false) passes through instead of
+  // being wrongly treated as failing the check.
+  if (f.ema21 && s.ema && s.ema.available && s.ema.above_21 === false) return false;
+  if (f.ema50 && s.ema && s.ema.available && s.ema.above_50 === false) return false;
+  if (f.ema200 && s.ema && s.ema.available && s.ema.above_200 === false) return false;
+  if (f.highMax !== null && !(s.pct_from_52wk_high !== null && s.pct_from_52wk_high !== undefined && s.pct_from_52wk_high <= f.highMax)) return false;
+  if (f.lowMin !== null && !(s.pct_from_52wk_low !== null && s.pct_from_52wk_low !== undefined && s.pct_from_52wk_low >= f.lowMin)) return false;
+  if (f.priceMin !== null && !(s.close !== null && s.close !== undefined && s.close >= f.priceMin)) return false;
+  if (f.turnoverMin !== null && !(s.avg_turnover_cr_30d >= f.turnoverMin)) return false;
+  // RS Rating (at least) -- a stock without a full year of history has
+  // rs_rating = null and is excluded whenever this is set (no rating,
+  // no evidence it qualifies).
+  if (f.rsMin !== null && !(s.rs_rating !== null && s.rs_rating !== undefined && s.rs_rating >= f.rsMin)) return false;
+  if (!inRange(s.market_cap_cr, f.mcapMin, f.mcapMax)) return false;
+  // Return Range% -- only applies at all if its own checkbox is
+  // checked, not just because a min/max happens to be typed in (those
+  // boxes stay disabled until the checkbox is on, but this guards it
+  // explicitly regardless).
+  if (f.returnEnable && !inRange(s[f.returnPeriod], f.returnMin, f.returnMax)) return false;
+  // Exclude Circuit Stocks -- excludes by the stock's currently
+  // ASSIGNED band (2/5/10%), not by whether it's actually locked at
+  // that limit today. A stock with no assigned band (F&O-eligible) is
+  // never excluded by this filter, regardless of which boxes are checked.
+  if (f.circuitEnable && f.circuitBands.length && s.circuit_band !== null && s.circuit_band !== undefined
+      && f.circuitBands.includes(s.circuit_band)) return false;
+  // Listed Within Last (months) -- a stock with no known listing_date
+  // (not yet backfilled, or genuinely unavailable) is excluded rather
+  // than passed through: unlike the EMA checks above, where "no data
+  // yet" is expected for a young stock and shouldn't count against it,
+  // here an unknown listing date means we can't confirm the stock
+  // actually qualifies, so it doesn't get the benefit of the doubt.
+  if (f.listingMonths !== null) {
+    if (!s.listing_date) return false;
+    const cutoff = new Date();
+    cutoff.setMonth(cutoff.getMonth() - f.listingMonths);
+    if (new Date(s.listing_date) < cutoff) return false;
+  }
+  return true;
+}
+
 function applyFilters() {
   const f = readFilters();
-  FILTERED = ALL_STOCKS.filter(s => {
-    // A checked EMA box only excludes a stock that EXPLICITLY sits below
-    // that EMA -- a young stock without enough history for it yet
-    // (above_21/50/200 is null, not false) passes through instead of
-    // being wrongly treated as failing the check.
-    if (f.ema21 && s.ema && s.ema.available && s.ema.above_21 === false) return false;
-    if (f.ema50 && s.ema && s.ema.available && s.ema.above_50 === false) return false;
-    if (f.ema200 && s.ema && s.ema.available && s.ema.above_200 === false) return false;
-    if (f.highMax !== null && !(s.pct_from_52wk_high !== null && s.pct_from_52wk_high !== undefined && s.pct_from_52wk_high <= f.highMax)) return false;
-    if (f.lowMin !== null && !(s.pct_from_52wk_low !== null && s.pct_from_52wk_low !== undefined && s.pct_from_52wk_low >= f.lowMin)) return false;
-    if (f.priceMin !== null && !(s.close !== null && s.close !== undefined && s.close >= f.priceMin)) return false;
-    if (f.turnoverMin !== null && !(s.avg_turnover_cr_30d >= f.turnoverMin)) return false;
-    // RS Rating (at least) -- a stock without a full year of history has
-    // rs_rating = null and is excluded whenever this is set (no rating,
-    // no evidence it qualifies).
-    if (f.rsMin !== null && !(s.rs_rating !== null && s.rs_rating !== undefined && s.rs_rating >= f.rsMin)) return false;
-    if (!inRange(s.market_cap_cr, f.mcapMin, f.mcapMax)) return false;
-    // Return Range% -- only applies at all if its own checkbox is
-    // checked, not just because a min/max happens to be typed in (those
-    // boxes stay disabled until the checkbox is on, but this guards it
-    // explicitly regardless).
-    if (f.returnEnable && !inRange(s[f.returnPeriod], f.returnMin, f.returnMax)) return false;
-    // Exclude Circuit Stocks -- excludes by the stock's currently
-    // ASSIGNED band (2/5/10%), not by whether it's actually locked at
-    // that limit today. A stock with no assigned band (F&O-eligible) is
-    // never excluded by this filter, regardless of which boxes are checked.
-    if (f.circuitEnable && f.circuitBands.length && s.circuit_band !== null && s.circuit_band !== undefined
-        && f.circuitBands.includes(s.circuit_band)) return false;
-    // Listed Within Last (months) -- a stock with no known listing_date
-    // (not yet backfilled, or genuinely unavailable) is excluded rather
-    // than passed through: unlike the EMA checks above, where "no data
-    // yet" is expected for a young stock and shouldn't count against it,
-    // here an unknown listing date means we can't confirm the stock
-    // actually qualifies, so it doesn't get the benefit of the doubt.
-    if (f.listingMonths !== null) {
-      if (!s.listing_date) return false;
-      const cutoff = new Date();
-      cutoff.setMonth(cutoff.getMonth() - f.listingMonths);
-      if (new Date(s.listing_date) < cutoff) return false;
-    }
-    return true;
-  });
+  FILTERED = ALL_STOCKS.filter(s => passesFilters(s, f));
   if (SEARCH_TERM) {
     const q = SEARCH_TERM.toLowerCase();
     FILTERED = FILTERED.filter(s =>
@@ -568,14 +576,12 @@ document.getElementById("close-filters").addEventListener("click", () => {
   // applied, rather than leaving half-typed values sitting in the form
   // for next time the modal opens.
   loadFiltersFromStorage();
-  syncCircuitBandToggle();
-  syncReturnRangeToggle();
-  syncEmaDropdownLabel();
-  syncCircuitDropdownLabel();
+  refreshFilterUI();
   document.getElementById("filter-modal-overlay").classList.add("hidden");
 });
 document.getElementById("open-filters").addEventListener("click", () => {
   document.getElementById("filter-modal-overlay").classList.remove("hidden");
+  refreshFilterUI();
 });
 document.getElementById("f-reset").addEventListener("click", () => {
   document.querySelectorAll(".filter-field-g input").forEach(el => {
@@ -583,10 +589,7 @@ document.getElementById("f-reset").addEventListener("click", () => {
     else el.value = "";
   });
   document.getElementById("f-return-period").value = "return_1m";
-  syncCircuitBandToggle();
-  syncReturnRangeToggle();
-  syncEmaDropdownLabel();
-  syncCircuitDropdownLabel();
+  refreshFilterUI();
   try { localStorage.removeItem(FILTER_STORAGE_KEY); } catch (err) {}
   applyFilters();
 });
@@ -595,40 +598,227 @@ document.getElementById("search-box").addEventListener("input", (e) => {
   applyFilters();
 });
 
-function syncCircuitBandToggle() {
-  const enabled = document.getElementById("f-circuit-enable").checked;
-  document.querySelectorAll(".f-circuit-band").forEach(cb => { cb.disabled = !enabled; });
-}
-document.getElementById("f-circuit-enable").addEventListener("change", syncCircuitBandToggle);
+// ---------------------------------------------------------------------
+// Filters modal UI. Every filter is optional: an empty field (or nothing
+// toggled) means "not applied". The controls below are just a nicer skin
+// over the same real inputs/checkboxes the rest of this file reads, so
+// saved presets and applyFilters() are unchanged.
+// ---------------------------------------------------------------------
 
-function syncReturnRangeToggle() {
-  const enabled = document.getElementById("f-return-enable").checked;
-  document.getElementById("f-return-period").disabled = !enabled;
-  document.getElementById("f-return-min").disabled = !enabled;
-  document.getElementById("f-return-max").disabled = !enabled;
-}
-document.getElementById("f-return-enable").addEventListener("change", syncReturnRangeToggle);
+// Return-range slider scale: evenly spaced stops, so 10% vs 25% is as easy
+// to grab as 100% vs 500%. Dragging a handle to its end = no min / no max.
+const RR_STOPS = [-50, 0, 10, 25, 50, 100, 200, 500];
 
-function syncEmaDropdownLabel() {
-  const selected = [];
-  if (document.getElementById("f-ema-21").checked) selected.push("21");
-  if (document.getElementById("f-ema-50").checked) selected.push("50");
-  if (document.getElementById("f-ema-200").checked) selected.push("200");
-  document.querySelector('#ema-dropdown .dropdown-trigger').textContent =
-    selected.length ? `${selected.join(", ")} EMA` : "Any EMA";
+function rrValueToPos(v) {
+  const last = RR_STOPS.length - 1;
+  if (v <= RR_STOPS[0]) return 0;
+  if (v >= RR_STOPS[last]) return 100;
+  for (let i = 0; i < last; i++) {
+    if (v <= RR_STOPS[i + 1]) {
+      return ((i + (v - RR_STOPS[i]) / (RR_STOPS[i + 1] - RR_STOPS[i])) / last) * 100;
+    }
+  }
+  return 100;
 }
-["f-ema-21", "f-ema-50", "f-ema-200"].forEach(id => {
-  document.getElementById(id).addEventListener("change", syncEmaDropdownLabel);
-});
 
-function syncCircuitDropdownLabel() {
-  const selected = [...document.querySelectorAll(".f-circuit-band:checked")].map(cb => cb.value);
-  document.querySelector('#circuit-dropdown .dropdown-trigger').textContent =
-    selected.length ? `${selected.join("%, ")}% Circuit` : "Select band(s)";
+function rrPosToValue(pos) {
+  const last = RR_STOPS.length - 1;
+  const x = (pos / 100) * last;
+  const i = Math.min(Math.floor(x), last - 1);
+  const v = RR_STOPS[i] + (x - i) * (RR_STOPS[i + 1] - RR_STOPS[i]);
+  const a = Math.abs(v);
+  const step = a < 10 ? 1 : a < 100 ? 5 : 10;
+  return Math.round(v / step) * step;
 }
-document.querySelectorAll(".f-circuit-band").forEach(cb => {
-  cb.addEventListener("change", syncCircuitDropdownLabel);
-});
+
+function sameNum(a, b) {
+  if (a === "" || b === "" || a === undefined || b === undefined) return (a || "") === (b || "");
+  return parseFloat(a) === parseFloat(b);
+}
+
+function fieldIsActive(field) {
+  const kind = field.dataset.filter;
+  if (kind === "return") return document.getElementById("f-return-enable").checked;
+  if (kind === "circuit") return document.getElementById("f-circuit-enable").checked;
+  return [...field.querySelectorAll("input")].some(el =>
+    el.type === "checkbox" ? el.checked : el.value !== ""
+  );
+}
+
+function rrPos(id, emptyPos) {
+  const v = document.getElementById(id).value;
+  return v === "" ? emptyPos : rrValueToPos(parseFloat(v));
+}
+
+function refreshFilterUI() {
+  const $ = id => document.getElementById(id);
+
+  // Return range is on whenever a min or max is present.
+  const rMin = $("f-return-min").value, rMax = $("f-return-max").value;
+  $("f-return-enable").checked = rMin !== "" || rMax !== "";
+
+  // Band chips only work while the master switch is on.
+  const circuitOn = $("f-circuit-enable").checked;
+  document.querySelectorAll(".f-circuit-band").forEach(cb => { cb.disabled = !circuitOn; });
+
+  // Which filters are active.
+  let active = 0;
+  document.querySelectorAll("#filter-modal-overlay .filter-field-g[data-filter]").forEach(field => {
+    const on = fieldIsActive(field);
+    field.classList.toggle("is-active", on);
+    if (on) active++;
+  });
+  $("f-active-count").textContent = active ? `${active} active` : "No filters active";
+
+  // Quick-fill chips (RS rating, market cap min): highlighted when they match the box.
+  document.querySelectorAll("[data-fill-target]").forEach(btn => {
+    const input = $(btn.dataset.fillTarget);
+    btn.classList.toggle("on", input.value !== "" && sameNum(input.value, btn.dataset.fillValue));
+  });
+
+  // Return-range chips + period tabs.
+  document.querySelectorAll("[data-rr]").forEach(btn => {
+    btn.classList.toggle("on", sameNum(rMin, btn.dataset.rrMin) && sameNum(rMax, btn.dataset.rrMax));
+  });
+  const period = $("f-return-period").value;
+  document.querySelectorAll("[data-period]").forEach(btn => {
+    btn.classList.toggle("on", btn.dataset.period === period);
+  });
+
+  // Return-range track: handles + fill follow the two boxes.
+  const minPos = rrPos("f-return-min", 0), maxPos = rrPos("f-return-max", 100);
+  const lo = Math.min(minPos, maxPos), hi = Math.max(minPos, maxPos);
+  const fill = $("rr-fill");
+  fill.style.left = lo + "%";
+  fill.style.width = (hi - lo) + "%";
+  const idle = rMin === "" && rMax === "";
+  fill.classList.toggle("dim", idle);
+  $("rr-h-min").style.left = minPos + "%";
+  $("rr-h-max").style.left = maxPos + "%";
+  $("rr-h-min").classList.toggle("dim", idle);
+  $("rr-h-max").classList.toggle("dim", idle);
+  $("rr-h-min").setAttribute("aria-valuetext", rMin === "" ? "No minimum" : `${rMin}%`);
+  $("rr-h-max").setAttribute("aria-valuetext", rMax === "" ? "No maximum" : `${rMax}%`);
+
+  // 52-week visual.
+  const hi52 = $("f-high-max").value, lo52 = $("f-low-min").value;
+  $("fp-zone").style.width = hi52 === "" ? "0%" : Math.max(0, Math.min(100, parseFloat(hi52))) + "%";
+  $("fp-high-text").textContent = hi52 === "" ? "Any distance from high" : `within ${hi52}% of high`;
+  $("fp-low-text").textContent = lo52 === "" ? "Any distance from low" : `at least ${lo52}% above low`;
+
+  // Live match count (what Apply would show, ignoring the search box).
+  if (ALL_STOCKS.length) {
+    const f = readFilters();
+    let n = 0;
+    for (const s of ALL_STOCKS) if (passesFilters(s, f)) n++;
+    $("f-match-count").textContent = n.toLocaleString();
+    $("f-match-total").textContent = ALL_STOCKS.length.toLocaleString();
+  }
+}
+
+function fireInput(el) {
+  el.dispatchEvent(new Event("input", { bubbles: true }));
+}
+
+(function initFilterModalUI() {
+  const overlay = document.getElementById("filter-modal-overlay");
+  overlay.addEventListener("input", refreshFilterUI);
+  overlay.addEventListener("change", refreshFilterUI);
+
+  // Small x on each simple field, shown only while it is active.
+  overlay.querySelectorAll(".filter-field-g[data-filter] .field-head").forEach(head => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "field-clear";
+    btn.title = "Clear this filter";
+    btn.setAttribute("aria-label", "Clear this filter");
+    btn.textContent = "\u00d7";
+    btn.addEventListener("click", () => {
+      head.closest(".filter-field-g").querySelectorAll("input").forEach(el => {
+        if (el.type === "checkbox") el.checked = false;
+        else el.value = "";
+      });
+      refreshFilterUI();
+    });
+    head.appendChild(btn);
+  });
+
+  // RS rating / market cap quick chips: click to fill, click again to clear.
+  overlay.querySelectorAll("[data-fill-target]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const input = document.getElementById(btn.dataset.fillTarget);
+      input.value = sameNum(input.value, btn.dataset.fillValue) && input.value !== "" ? "" : btn.dataset.fillValue;
+      fireInput(input);
+    });
+  });
+
+  // Return range presets ("Any" clears both boxes).
+  overlay.querySelectorAll("[data-rr]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.getElementById("f-return-min").value = btn.dataset.rrMin ?? "";
+      document.getElementById("f-return-max").value = btn.dataset.rrMax ?? "";
+      fireInput(document.getElementById("f-return-min"));
+    });
+  });
+
+  // Return period tabs drive the (hidden) select the rest of the file reads.
+  overlay.querySelectorAll("[data-period]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const sel = document.getElementById("f-return-period");
+      sel.value = btn.dataset.period;
+      sel.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+  });
+
+  // Draggable dual-handle track. The number boxes stay the source of truth.
+  const track = document.getElementById("rr-track");
+  const hMin = document.getElementById("rr-h-min");
+  const hMax = document.getElementById("rr-h-max");
+  const minEl = document.getElementById("f-return-min");
+  const maxEl = document.getElementById("f-return-max");
+  let dragging = null;
+
+  function setFromPos(which, pos) {
+    pos = Math.max(0, Math.min(100, pos));
+    let el, open;
+    if (which === "min") {
+      pos = Math.min(pos, rrPos("f-return-max", 100));
+      el = minEl; open = pos <= 0.4;
+    } else {
+      pos = Math.max(pos, rrPos("f-return-min", 0));
+      el = maxEl; open = pos >= 99.6;
+    }
+    el.value = open ? "" : String(rrPosToValue(pos));
+    fireInput(el);
+  }
+  function pctFromEvent(e) {
+    const r = track.getBoundingClientRect();
+    return r.width ? ((e.clientX - r.left) / r.width) * 100 : 0;
+  }
+  track.addEventListener("pointerdown", (e) => {
+    const p = pctFromEvent(e);
+    const dMin = Math.abs(p - rrPos("f-return-min", 0)), dMax = Math.abs(p - rrPos("f-return-max", 100));
+    if (e.target === hMin) dragging = "min";
+    else if (e.target === hMax) dragging = "max";
+    else dragging = dMin < dMax ? "min" : dMax < dMin ? "max" : (p < rrPos("f-return-min", 0) ? "min" : "max");
+    try { track.setPointerCapture(e.pointerId); } catch (err) {}
+    (dragging === "min" ? hMin : hMax).focus();
+    setFromPos(dragging, p);
+    e.preventDefault();
+  });
+  track.addEventListener("pointermove", (e) => {
+    if (dragging) setFromPos(dragging, pctFromEvent(e));
+  });
+  ["pointerup", "pointercancel"].forEach(t => track.addEventListener(t, () => { dragging = null; }));
+  [[hMin, "min", "f-return-min", 0], [hMax, "max", "f-return-max", 100]].forEach(([h, which, id, empty]) => {
+    h.addEventListener("keydown", (e) => {
+      const dir = (e.key === "ArrowRight" || e.key === "ArrowUp") ? 1 : (e.key === "ArrowLeft" || e.key === "ArrowDown") ? -1 : 0;
+      if (!dir) return;
+      e.preventDefault();
+      setFromPos(which, rrPos(id, empty) + dir * 2);
+    });
+  });
+})();
 
 // Dropdown open/close -- clicking a trigger opens its own options panel
 // (closing any other open one first); clicking anywhere truly outside a
@@ -865,6 +1055,7 @@ async function load() {
     updateSortHeaderStyles();
     FILTERED = ALL_STOCKS.slice();
     applyFilters();
+    refreshFilterUI();
     const dates = ALL_STOCKS.map(s => s.last_date).filter(Boolean);
     document.getElementById("asof").textContent = dates.length ? `as of ${dates.sort().pop()}` : "";
   } catch (err) {

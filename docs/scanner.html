@@ -79,83 +79,190 @@
 
   <!-- Filters modal -- closes ONLY via Apply or the X, never by clicking the backdrop, so an accidental click can't lose your filter setup. -->
   <div class="detail-panel hidden" id="filter-modal-overlay">
-    <div class="detail-inner modal-box-wide">
-      <button class="close-btn" id="close-filters">&times;</button>
-      <h2>Filters</h2>
-      <div class="preset-bar">
-        <div class="dropdown-select" id="preset-dropdown">
-          <div class="dropdown-trigger" data-target="preset-options">Load scanner...</div>
-          <div class="dropdown-options" id="preset-options"></div>
+    <div class="detail-inner modal-box-filters">
+      <button class="close-btn" id="close-filters" aria-label="Close filters">&times;</button>
+
+      <div class="fm-head">
+        <div>
+          <h2>Filters</h2>
+          <div class="fm-sub" id="f-active-count">No filters active</div>
         </div>
-        <button class="tab" id="f-save-preset">Save</button>
-      </div>
-      <div class="filter-grid">
-        <div class="filter-field-g">
-          <label>Price Above EMA</label>
-          <div class="dropdown-select" id="ema-dropdown">
-            <div class="dropdown-trigger" data-target="ema-options">Any EMA</div>
-            <div class="dropdown-options" id="ema-options">
-              <label class="filter-checkbox"><input type="checkbox" id="f-ema-21" /> 21 EMA</label>
-              <label class="filter-checkbox"><input type="checkbox" id="f-ema-50" /> 50 EMA</label>
-              <label class="filter-checkbox"><input type="checkbox" id="f-ema-200" /> 200 EMA</label>
-            </div>
+        <div class="preset-bar">
+          <div class="dropdown-select" id="preset-dropdown">
+            <div class="dropdown-trigger" data-target="preset-options">Load scanner...</div>
+            <div class="dropdown-options" id="preset-options"></div>
           </div>
-        </div>
-        <div class="filter-field-g">
-          <label>% From 52wk High (within)</label>
-          <input type="number" id="f-high-max" placeholder="20" />
-        </div>
-        <div class="filter-field-g">
-          <label>% From 52wk Low (at least)</label>
-          <input type="number" id="f-low-min" placeholder="50" />
-        </div>
-        <div class="filter-field-g">
-          <label>Avg Price x Volume 30d (Cr) &gt;=</label>
-          <input type="number" id="f-turnover-min" placeholder="5" />
-        </div>
-        <div class="filter-field-g">
-          <label>Market Cap Range (Cr)</label>
-          <div class="range-inputs"><input type="number" id="f-mcap-min" placeholder="500" /> <span>-</span> <input type="number" id="f-mcap-max" placeholder="5000000" /></div>
-        </div>
-        <div class="filter-field-g">
-          <label>RS Rating (at least)</label>
-          <input type="number" id="f-rs-min" min="1" max="99" placeholder="80" />
-        </div>
-        <div class="filter-field-g">
-          <label>Stock Price (at least)</label>
-          <input type="number" id="f-price-min" placeholder="20" />
-        </div>
-        <div class="filter-field-g">
-          <label class="filter-checkbox"><input type="checkbox" id="f-return-enable" /> Return Range%</label>
-          <select id="f-return-period" disabled>
-            <option value="return_1d">1 Day</option>
-            <option value="return_1w">1 Week</option>
-            <option value="return_1m" selected>1 Month</option>
-            <option value="return_3m">3 Month</option>
-            <option value="return_6m">6 Month</option>
-            <option value="return_1y">1 Year</option>
-          </select>
-          <div class="range-inputs" style="margin-top:6px;"><input type="number" id="f-return-min" placeholder="-10" disabled /> <span>-</span> <input type="number" id="f-return-max" placeholder="1200" disabled /></div>
-        </div>
-        <div class="filter-field-g">
-          <label class="filter-checkbox"><input type="checkbox" id="f-circuit-enable" /> Exclude Circuit Stocks</label>
-          <div class="dropdown-select" id="circuit-dropdown">
-            <div class="dropdown-trigger" data-target="circuit-options">Select band(s)</div>
-            <div class="dropdown-options" id="circuit-options">
-              <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="2" disabled /> 2% Circuit</label>
-              <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="5" disabled /> 5% Circuit</label>
-              <label class="filter-checkbox"><input type="checkbox" class="f-circuit-band" value="10" disabled /> 10% Circuit</label>
-            </div>
-          </div>
-        </div>
-        <div class="filter-field-g">
-          <label>Listed Within Last (months)</label>
-          <input type="number" id="f-listing-months" placeholder="12" />
+          <button class="tab" id="f-save-preset">Save</button>
         </div>
       </div>
-      <div class="filter-actions">
-        <button id="f-reset" class="tab">Reset</button>
-        <button id="f-apply" class="tab active">Apply</button>
+
+      <div class="fm-body">
+        <p class="fm-hint">Leave a filter empty and it is not applied.</p>
+        <div class="filter-grid">
+
+          <!-- Trend & strength -->
+          <section class="filter-card">
+            <h3 class="fc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg> Trend &amp; strength</h3>
+            <div class="filter-field-g" data-filter="ema">
+              <div class="field-head"><label>Price above EMA</label></div>
+              <div class="seg seg-3">
+                <label class="seg-btn"><input type="checkbox" id="f-ema-21" /><span>21</span></label>
+                <label class="seg-btn"><input type="checkbox" id="f-ema-50" /><span>50</span></label>
+                <label class="seg-btn"><input type="checkbox" id="f-ema-200" /><span>200</span></label>
+              </div>
+            </div>
+            <div class="filter-field-g" data-filter="rs">
+              <div class="field-head"><label for="f-rs-min">RS rating &middot; at least</label></div>
+              <input type="number" id="f-rs-min" min="1" max="99" placeholder="Any" />
+              <div class="quick-chips">
+                <button type="button" class="chip" data-fill-target="f-rs-min" data-fill-value="70">70</button>
+                <button type="button" class="chip" data-fill-target="f-rs-min" data-fill-value="80">80</button>
+                <button type="button" class="chip" data-fill-target="f-rs-min" data-fill-value="90">90</button>
+                <button type="button" class="chip" data-fill-target="f-rs-min" data-fill-value="95">95</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- 52-week position -->
+          <section class="filter-card">
+            <h3 class="fc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20V4"/><path d="M3 20h18"/><polyline points="7 15 11 10 14 13 20 6"/></svg> 52-week position</h3>
+            <div class="fp-viz" aria-hidden="true">
+              <div class="fp-texts"><span id="fp-low-text">Any distance from low</span><span id="fp-high-text" class="fp-high">Any distance from high</span></div>
+              <div class="fp-bar"><div class="fp-zone" id="fp-zone"></div></div>
+              <div class="fp-ends"><span>52W low</span><span>52W high</span></div>
+            </div>
+            <div class="fp-fields">
+              <div class="filter-field-g" data-filter="high">
+                <div class="field-head"><label for="f-high-max">From 52wk high &middot; within</label></div>
+                <div class="inp-wrap"><input type="number" id="f-high-max" placeholder="Any" /><span class="sfx">%</span></div>
+              </div>
+              <div class="filter-field-g" data-filter="low">
+                <div class="field-head"><label for="f-low-min">From 52wk low &middot; at least</label></div>
+                <div class="inp-wrap"><input type="number" id="f-low-min" placeholder="Any" /><span class="sfx">%</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Return range -->
+          <section class="filter-card fc-wide">
+            <div class="filter-field-g rr" data-filter="return">
+              <div class="fc-title-row">
+                <h3 class="fc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 12 7 12 10 5 14 19 17 12 21 12"/></svg> Return range</h3>
+                <div class="seg seg-period" role="group" aria-label="Return period">
+                  <button type="button" class="seg-b" data-period="return_1d">1D</button>
+                  <button type="button" class="seg-b" data-period="return_1w">1W</button>
+                  <button type="button" class="seg-b" data-period="return_1m">1M</button>
+                  <button type="button" class="seg-b" data-period="return_3m">3M</button>
+                  <button type="button" class="seg-b" data-period="return_6m">6M</button>
+                  <button type="button" class="seg-b" data-period="return_1y">1Y</button>
+                </div>
+              </div>
+              <div class="quick-chips">
+                <button type="button" class="chip" data-rr="any">Any</button>
+                <button type="button" class="chip" data-rr data-rr-min="0">Positive</button>
+                <button type="button" class="chip" data-rr data-rr-min="10" data-rr-max="50">10&ndash;50%</button>
+                <button type="button" class="chip" data-rr data-rr-min="25" data-rr-max="100">25&ndash;100%</button>
+                <button type="button" class="chip" data-rr data-rr-min="50" data-rr-max="200">50&ndash;200%</button>
+                <button type="button" class="chip" data-rr data-rr-min="100">100%+</button>
+              </div>
+              <div class="rr-row">
+                <div class="rr-end">
+                  <label for="f-return-min">Min</label>
+                  <div class="inp-wrap"><input type="number" id="f-return-min" placeholder="No min" /><span class="sfx">%</span></div>
+                </div>
+                <div class="rr-track" id="rr-track" aria-hidden="true">
+                  <div class="rr-line"></div>
+                  <div class="rr-fill" id="rr-fill"></div>
+            <span class="rr-tick" style="left:0%">-50</span>
+            <span class="rr-tick" style="left:14.2857%">0</span>
+            <span class="rr-tick" style="left:28.5714%">10</span>
+            <span class="rr-tick" style="left:42.8571%">25</span>
+            <span class="rr-tick" style="left:57.1429%">50</span>
+            <span class="rr-tick" style="left:71.4286%">100</span>
+            <span class="rr-tick" style="left:85.7143%">200</span>
+            <span class="rr-tick" style="left:100%">500+</span>
+                  <div class="rr-h" id="rr-h-min" tabindex="0" role="slider" aria-label="Minimum return"></div>
+                  <div class="rr-h" id="rr-h-max" tabindex="0" role="slider" aria-label="Maximum return"></div>
+                </div>
+                <div class="rr-end">
+                  <label for="f-return-max">Max</label>
+                  <div class="inp-wrap"><input type="number" id="f-return-max" placeholder="No max" /><span class="sfx">%</span></div>
+                </div>
+              </div>
+              <!-- Derived state, not user-facing: the range applies whenever a min or max is set. Kept as a real field so saved presets stay compatible. -->
+              <input type="checkbox" id="f-return-enable" hidden />
+              <select id="f-return-period" hidden>
+                <option value="return_1d">1 Day</option>
+                <option value="return_1w">1 Week</option>
+                <option value="return_1m" selected>1 Month</option>
+                <option value="return_3m">3 Month</option>
+                <option value="return_6m">6 Month</option>
+                <option value="return_1y">1 Year</option>
+              </select>
+            </div>
+          </section>
+
+          <!-- Size & liquidity -->
+          <section class="filter-card">
+            <h3 class="fc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 3 3 8 12 13 21 8 12 3"/><polyline points="3 13 12 18 21 13"/></svg> Size &amp; liquidity</h3>
+            <div class="filter-field-g" data-filter="mcap">
+              <div class="field-head"><label>Market cap (Cr)</label></div>
+              <div class="quick-chips">
+                <button type="button" class="chip" data-fill-target="f-mcap-min" data-fill-value="500">500+</button>
+                <button type="button" class="chip" data-fill-target="f-mcap-min" data-fill-value="2000">2K+</button>
+                <button type="button" class="chip" data-fill-target="f-mcap-min" data-fill-value="10000">10K+</button>
+                <button type="button" class="chip" data-fill-target="f-mcap-min" data-fill-value="50000">50K+</button>
+              </div>
+              <div class="range-inputs"><input type="number" id="f-mcap-min" placeholder="No min" aria-label="Market cap minimum" /> <span>&ndash;</span> <input type="number" id="f-mcap-max" placeholder="No max" aria-label="Market cap maximum" /></div>
+            </div>
+            <div class="fp-fields">
+              <div class="filter-field-g" data-filter="turnover">
+                <div class="field-head"><label for="f-turnover-min">Avg turnover 30d &ge;</label></div>
+                <div class="inp-wrap"><input type="number" id="f-turnover-min" placeholder="Any" /><span class="sfx">Cr</span></div>
+              </div>
+              <div class="filter-field-g" data-filter="price">
+                <div class="field-head"><label for="f-price-min">Stock price &ge;</label></div>
+                <div class="inp-wrap"><input type="number" id="f-price-min" placeholder="Any" /><span class="sfx">&#8377;</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Exclusions & listing -->
+          <section class="filter-card">
+            <h3 class="fc-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line x1="5.6" y1="5.6" x2="18.4" y2="18.4"/></svg> Exclusions &amp; listing</h3>
+            <div class="filter-field-g" data-filter="circuit">
+              <div class="switch-row">
+                <div>
+                  <div class="sw-title">Exclude circuit stocks</div>
+                  <div class="sw-sub">Skips stocks assigned to the bands you pick</div>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="f-circuit-enable" aria-label="Exclude circuit stocks" />
+                  <span class="sw-track" aria-hidden="true"></span>
+                </label>
+              </div>
+              <div class="seg seg-3 seg-bands">
+                <label class="seg-btn"><input type="checkbox" class="f-circuit-band" value="2" disabled /><span>2%</span></label>
+                <label class="seg-btn"><input type="checkbox" class="f-circuit-band" value="5" disabled /><span>5%</span></label>
+                <label class="seg-btn"><input type="checkbox" class="f-circuit-band" value="10" disabled /><span>10%</span></label>
+              </div>
+            </div>
+            <div class="fc-divider"></div>
+            <div class="filter-field-g" data-filter="listing">
+              <div class="field-head"><label for="f-listing-months">Listed within last (months)</label></div>
+              <div class="inp-wrap"><input type="number" id="f-listing-months" placeholder="Any" /><span class="sfx">mo</span></div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+
+      <div class="fm-foot">
+        <div class="fm-count"><span id="f-match-count">&ndash;</span><span class="fm-count-of">of <span id="f-match-total">&ndash;</span> stocks match</span></div>
+        <div class="filter-actions">
+          <button id="f-reset" class="tab">Reset</button>
+          <button id="f-apply" class="tab active">Apply filters</button>
+        </div>
       </div>
     </div>
   </div>
