@@ -422,9 +422,20 @@ def update_index_prices():
             print(f"  new index(es) with no history yet: {brand_new} -- doing a full backfill this run")
             existing_dates = set()
         else:
+            # A date counts as "already fetched" only if EVERY wanted index
+            # has a row for it. Previously ANY row for the date was enough,
+            # so if NSE's index-close file was incomplete when first
+            # fetched (some indices missing), those indices never got that
+            # date back -- the date was skipped forever. Only recent dates
+            # are re-checked (older gaps are left alone to keep runs fast);
+            # re-fetching is harmless because the insert below replaces.
+            recheck_from = (dt.date.today() - dt.timedelta(days=10)).isoformat()
+            ph = ",".join("?" * len(wanted))
             existing_dates = {
                 row[0] for row in conn.execute(
-                    "SELECT DISTINCT date FROM index_prices"
+                    f"SELECT date FROM index_prices WHERE sector IN ({ph}) "
+                    f"GROUP BY date HAVING COUNT(DISTINCT sector) >= ? OR date < ?",
+                    (*wanted, len(wanted), recheck_from),
                 ).fetchall()
             }
         for date in trading_days_back(INDEX_HISTORY_DAYS):
