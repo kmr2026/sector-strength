@@ -547,8 +547,14 @@ def metric_delta_block(conn, metric: str, key: str, date: str | None, value, min
         return {"available": False}
     import datetime as _dt
     cutoff = (_dt.date.fromisoformat(date) - _dt.timedelta(days=min_days_back)).isoformat()
+    # min_days_back=0 means "the previous recorded day", so it must be
+    # STRICTLY before today's date. With <= it matched the row saved by an
+    # earlier run for the same data date (e.g. a re-run on a holiday) and
+    # compared the value to itself, showing a false 0 / "flat". Matches
+    # score_delta_block(), which already uses a strict <.
+    op = "<" if min_days_back == 0 else "<="
     row = conn.execute(
-        "SELECT date, value FROM metric_history WHERE metric = ? AND key = ? AND date <= ? ORDER BY date DESC LIMIT 1",
+        f"SELECT date, value FROM metric_history WHERE metric = ? AND key = ? AND date {op} ? ORDER BY date DESC LIMIT 1",
         (metric, key, cutoff),
     ).fetchone()
     conn.execute(
