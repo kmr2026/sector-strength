@@ -5,30 +5,14 @@
       "n_stocks_total": 42,
       "breadth": {
         "available": true,
-        "pct_above_10ma": 25.6,
-        "pct_above_10ma_week_ago": 25.6,
+        "pct_above_10ma": 28.2,
+        "pct_above_10ma_week_ago": 59.0,
         "breadth_rising": false,
-        "pct_above_21ma": 17.9,
-        "pct_above_21ma_week_ago": 20.5,
+        "pct_above_21ma": 20.5,
+        "pct_above_21ma_week_ago": 25.6,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 39,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Information Technology",
-      "n_stocks_total": 176,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 19.1,
-        "pct_above_10ma_week_ago": 48.9,
-        "breadth_rising": false,
-        "pct_above_21ma": 19.1,
-        "pct_above_21ma_week_ago": 39.0,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 141,
         "low_sample": false
       }
     },
@@ -37,11 +21,11 @@
       "n_stocks_total": 50,
       "breadth": {
         "available": true,
-        "pct_above_10ma": 15.6,
-        "pct_above_10ma_week_ago": 42.2,
+        "pct_above_10ma": 26.7,
+        "pct_above_10ma_week_ago": 37.8,
         "breadth_rising": false,
-        "pct_above_21ma": 13.3,
-        "pct_above_21ma_week_ago": 31.1,
+        "pct_above_21ma": 26.7,
+        "pct_above_21ma_week_ago": 26.7,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 45,
@@ -49,18 +33,34 @@
       }
     },
     {
-      "sector": "Media, Entertainment & Publication",
-      "n_stocks_total": 82,
+      "sector": "Information Technology",
+      "n_stocks_total": 176,
       "breadth": {
         "available": true,
-        "pct_above_10ma": 14.0,
-        "pct_above_10ma_week_ago": 49.1,
+        "pct_above_10ma": 22.7,
+        "pct_above_10ma_week_ago": 62.4,
         "breadth_rising": false,
-        "pct_above_21ma": 14.0,
-        "pct_above_21ma_week_ago": 33.3,
+        "pct_above_21ma": 20.6,
+        "pct_above_21ma_week_ago": 47.5,
         "breadth_21_rising": false,
         "overheated": false,
-        "n_stocks": 57,
+        "n_stocks": 141,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Healthcare",
+      "n_stocks_total": 219,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 20.3,
+        "pct_above_10ma_week_ago": 29.7,
+        "breadth_rising": false,
+        "pct_above_21ma": 11.0,
+        "pct_above_21ma_week_ago": 19.8,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 182,
         "low_sample": false
       }
     },
@@ -69,14 +69,142 @@
       "n_stocks_total": 30,
       "breadth": {
         "available": true,
-        "pct_above_10ma": 12.0,
-        "pct_above_10ma_week_ago": 36.0,
+        "pct_above_10ma": 16.0,
+        "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": false,
-        "pct_above_21ma": 16.0,
-        "pct_above_21ma_week_ago": 32.0,
+        "pct_above_21ma": 20.0,
+        "pct_above_21ma_week_ago": 36.0,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 25,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Media, Entertainment & Publication",
+      "n_stocks_total": 82,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 15.8,
+        "pct_above_10ma_week_ago": 54.4,
+        "breadth_rising": false,
+        "pct_above_21ma": 15.8,
+        "pct_above_21ma_week_ago": 43.9,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 57,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Consumer Services",
+      "n_stocks_total": 166,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 13.9,
+        "pct_above_10ma_week_ago": 46.7,
+        "breadth_rising": false,
+        "pct_above_21ma": 13.9,
+        "pct_above_21ma_week_ago": 35.8,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 137,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Services",
+      "n_stocks_total": 226,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 13.3,
+        "pct_above_10ma_week_ago": 52.4,
+        "breadth_rising": false,
+        "pct_above_21ma": 12.6,
+        "pct_above_21ma_week_ago": 32.9,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 143,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Automobile and Auto Components",
+      "n_stocks_total": 151,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 12.6,
+        "pct_above_10ma_week_ago": 47.2,
+        "breadth_rising": false,
+        "pct_above_21ma": 11.0,
+        "pct_above_21ma_week_ago": 29.1,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 127,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Realty",
+      "n_stocks_total": 107,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 12.6,
+        "pct_above_10ma_week_ago": 38.9,
+        "breadth_rising": false,
+        "pct_above_21ma": 12.6,
+        "pct_above_21ma_week_ago": 22.1,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 95,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Financial Services",
+      "n_stocks_total": 305,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 11.5,
+        "pct_above_10ma_week_ago": 51.2,
+        "breadth_rising": false,
+        "pct_above_21ma": 10.8,
+        "pct_above_21ma_week_ago": 35.3,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 295,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Metals & Mining",
+      "n_stocks_total": 70,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 11.3,
+        "pct_above_10ma_week_ago": 43.5,
+        "breadth_rising": false,
+        "pct_above_21ma": 6.5,
+        "pct_above_21ma_week_ago": 30.6,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 62,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Textiles",
+      "n_stocks_total": 177,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 10.7,
+        "pct_above_10ma_week_ago": 46.0,
+        "breadth_rising": false,
+        "pct_above_21ma": 14.0,
+        "pct_above_21ma_week_ago": 37.3,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 150,
         "low_sample": false
       }
     },
@@ -86,141 +214,13 @@
       "breadth": {
         "available": true,
         "pct_above_10ma": 9.8,
-        "pct_above_10ma_week_ago": 43.1,
+        "pct_above_10ma_week_ago": 58.2,
         "breadth_rising": false,
-        "pct_above_21ma": 16.3,
-        "pct_above_21ma_week_ago": 32.7,
+        "pct_above_21ma": 14.4,
+        "pct_above_21ma_week_ago": 40.5,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 153,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Realty",
-      "n_stocks_total": 107,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 9.5,
-        "pct_above_10ma_week_ago": 37.9,
-        "breadth_rising": false,
-        "pct_above_21ma": 7.4,
-        "pct_above_21ma_week_ago": 21.1,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 95,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Healthcare",
-      "n_stocks_total": 219,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 8.2,
-        "pct_above_10ma_week_ago": 19.8,
-        "breadth_rising": false,
-        "pct_above_21ma": 4.9,
-        "pct_above_21ma_week_ago": 16.5,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 182,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Financial Services",
-      "n_stocks_total": 305,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 8.1,
-        "pct_above_10ma_week_ago": 45.4,
-        "breadth_rising": false,
-        "pct_above_21ma": 10.2,
-        "pct_above_21ma_week_ago": 30.8,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 295,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Consumer Services",
-      "n_stocks_total": 166,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 7.3,
-        "pct_above_10ma_week_ago": 38.0,
-        "breadth_rising": false,
-        "pct_above_21ma": 5.8,
-        "pct_above_21ma_week_ago": 25.5,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 137,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Textiles",
-      "n_stocks_total": 177,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 7.3,
-        "pct_above_10ma_week_ago": 43.3,
-        "breadth_rising": false,
-        "pct_above_21ma": 10.0,
-        "pct_above_21ma_week_ago": 32.7,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 150,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Services",
-      "n_stocks_total": 226,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 7.0,
-        "pct_above_10ma_week_ago": 47.6,
-        "breadth_rising": false,
-        "pct_above_21ma": 7.7,
-        "pct_above_21ma_week_ago": 32.2,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 143,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Fast Moving Consumer Goods",
-      "n_stocks_total": 219,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 6.1,
-        "pct_above_10ma_week_ago": 57.0,
-        "breadth_rising": false,
-        "pct_above_21ma": 6.7,
-        "pct_above_21ma_week_ago": 40.2,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 179,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Automobile and Auto Components",
-      "n_stocks_total": 151,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 5.5,
-        "pct_above_10ma_week_ago": 34.6,
-        "breadth_rising": false,
-        "pct_above_21ma": 5.5,
-        "pct_above_21ma_week_ago": 22.0,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 127,
         "low_sample": false
       }
     },
@@ -229,46 +229,14 @@
       "n_stocks_total": 213,
       "breadth": {
         "available": true,
-        "pct_above_10ma": 4.9,
-        "pct_above_10ma_week_ago": 36.6,
+        "pct_above_10ma": 9.3,
+        "pct_above_10ma_week_ago": 43.2,
         "breadth_rising": false,
-        "pct_above_21ma": 6.6,
-        "pct_above_21ma_week_ago": 30.1,
+        "pct_above_21ma": 4.4,
+        "pct_above_21ma_week_ago": 30.6,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 183,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Metals & Mining",
-      "n_stocks_total": 70,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 4.8,
-        "pct_above_10ma_week_ago": 33.9,
-        "breadth_rising": false,
-        "pct_above_21ma": 4.8,
-        "pct_above_21ma_week_ago": 25.8,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 62,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Capital Goods",
-      "n_stocks_total": 546,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 4.4,
-        "pct_above_10ma_week_ago": 29.9,
-        "breadth_rising": false,
-        "pct_above_21ma": 6.1,
-        "pct_above_21ma_week_ago": 28.2,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 411,
         "low_sample": false
       }
     },
@@ -277,14 +245,62 @@
       "n_stocks_total": 30,
       "breadth": {
         "available": true,
-        "pct_above_10ma": 3.8,
-        "pct_above_10ma_week_ago": 50.0,
+        "pct_above_10ma": 7.7,
+        "pct_above_10ma_week_ago": 53.8,
         "breadth_rising": false,
         "pct_above_21ma": 3.8,
-        "pct_above_21ma_week_ago": 34.6,
+        "pct_above_21ma_week_ago": 38.5,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 26,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Capital Goods",
+      "n_stocks_total": 546,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 6.1,
+        "pct_above_10ma_week_ago": 33.8,
+        "breadth_rising": false,
+        "pct_above_21ma": 7.3,
+        "pct_above_21ma_week_ago": 30.7,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 411,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Fast Moving Consumer Goods",
+      "n_stocks_total": 219,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 5.6,
+        "pct_above_10ma_week_ago": 53.6,
+        "breadth_rising": false,
+        "pct_above_21ma": 6.1,
+        "pct_above_21ma_week_ago": 39.7,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 179,
+        "low_sample": false
+      }
+    },
+    {
+      "sector": "Construction",
+      "n_stocks_total": 130,
+      "breadth": {
+        "available": true,
+        "pct_above_10ma": 5.3,
+        "pct_above_10ma_week_ago": 44.2,
+        "breadth_rising": false,
+        "pct_above_21ma": 4.2,
+        "pct_above_21ma_week_ago": 29.5,
+        "breadth_21_rising": false,
+        "overheated": false,
+        "n_stocks": 95,
         "low_sample": false
       }
     },
@@ -294,29 +310,13 @@
       "breadth": {
         "available": true,
         "pct_above_10ma": 2.9,
-        "pct_above_10ma_week_ago": 45.7,
+        "pct_above_10ma_week_ago": 40.0,
         "breadth_rising": false,
         "pct_above_21ma": 0.0,
-        "pct_above_21ma_week_ago": 17.1,
+        "pct_above_21ma_week_ago": 11.4,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 35,
-        "low_sample": false
-      }
-    },
-    {
-      "sector": "Construction",
-      "n_stocks_total": 130,
-      "breadth": {
-        "available": true,
-        "pct_above_10ma": 2.1,
-        "pct_above_10ma_week_ago": 41.1,
-        "breadth_rising": false,
-        "pct_above_21ma": 5.3,
-        "pct_above_21ma_week_ago": 30.5,
-        "breadth_21_rising": false,
-        "overheated": false,
-        "n_stocks": 95,
         "low_sample": false
       }
     },
@@ -326,10 +326,10 @@
       "breadth": {
         "available": true,
         "pct_above_10ma": 0.0,
-        "pct_above_10ma_week_ago": 85.7,
+        "pct_above_10ma_week_ago": 71.4,
         "breadth_rising": false,
         "pct_above_21ma": 0.0,
-        "pct_above_21ma_week_ago": 28.6,
+        "pct_above_21ma_week_ago": 42.9,
         "breadth_21_rising": false,
         "overheated": false,
         "n_stocks": 7,
@@ -342,9 +342,9 @@
       "breadth": {
         "available": true,
         "pct_above_10ma": 0.0,
-        "pct_above_10ma_week_ago": 33.3,
+        "pct_above_10ma_week_ago": 25.0,
         "breadth_rising": false,
-        "pct_above_21ma": 0.0,
+        "pct_above_21ma": 8.3,
         "pct_above_21ma_week_ago": 16.7,
         "breadth_21_rising": false,
         "overheated": false,
