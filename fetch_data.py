@@ -22,6 +22,9 @@ import pandas as pd
 from config import NSE_BASE, SECTORS, INDEX_HISTORY_DAYS, STOCK_HISTORY_DAYS, TOTAL_MARKET_URL, NIFTY500_INDUSTRY_URL, MIDSMALL_INDEX, SMALLCAP_INDEX, CIRCUIT_BANDS_URL
 from db import get_conn, init_db
 
+# Extra dates to fetch even if weekend/holiday-looking; set via --dates=YYYY-MM-DD,...
+MANUAL_DATES: set = set()
+
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -53,7 +56,8 @@ def trading_days_back(n: int):
     d = dt.date.today()
     days = []
     while len(days) < n:
-        if d.weekday() < 5:  # Mon-Fri
+        # Mon-Fri, plus any dates passed manually via --dates= (e.g. Muhurat)
+        if d.weekday() < 5 or d in MANUAL_DATES:
             days.append(d)
         d -= dt.timedelta(days=1)
     return days
@@ -440,7 +444,7 @@ def update_index_prices():
             }
         for date in trading_days_back(INDEX_HISTORY_DAYS):
             ds = date.isoformat()
-            if ds in existing_dates:
+            if ds in existing_dates and date not in MANUAL_DATES:
                 continue
             df = fetch_index_file(session, date)
             if df is None:
@@ -512,7 +516,7 @@ def update_stock_prices(refetch_days: int = 0):
         got, missed, total_rows = 0, 0, 0
         for date in trading_days_back(STOCK_HISTORY_DAYS):
             ds = date.isoformat()
-            if ds in existing_dates and not (refetch_cutoff and ds >= refetch_cutoff):
+            if ds in existing_dates and date not in MANUAL_DATES and not (refetch_cutoff and ds >= refetch_cutoff):
                 continue
             df = fetch_bhavcopy(session, date)
             if df is None:
@@ -701,4 +705,6 @@ if __name__ == "__main__":
     for arg in sys.argv[1:]:
         if arg.startswith("--refetch-days="):
             refetch_days = int(arg.split("=", 1)[1])
+        elif arg.startswith("--dates="):
+            MANUAL_DATES.update(dt.date.fromisoformat(x.strip()) for x in arg.split("=", 1)[1].split(",") if x.strip())
     run_daily_update(refetch_days=refetch_days)
