@@ -1,5 +1,23 @@
 [
   {
+    "date": "2026-11-18",
+    "pct_above_10ema": 40.52,
+    "pct_above_21ema": 46.2,
+    "pct_above_50ema": 40.75,
+    "pct_above_200ema": 39.13,
+    "pct_above_10sma": 36.4,
+    "pct_above_21sma": 56.35,
+    "pct_above_50sma": 40.18,
+    "pct_above_200sma": 43.58,
+    "pct_4up": 2.28,
+    "pct_4down": 3.56,
+    "mbi_ratio": 65,
+    "mbi_uncapped": false,
+    "new_highs": 66,
+    "new_lows": 109,
+    "net_new_highs": -43
+  },
+  {
     "date": "2026-11-17",
     "pct_above_10ema": 51.48,
     "pct_above_21ema": 52.81,
@@ -4660,23 +4678,5 @@
     "new_highs": 115,
     "new_lows": 251,
     "net_new_highs": -136
-  },
-  {
-    "date": "2025-11-13",
-    "pct_above_10ema": 41.42,
-    "pct_above_21ema": 39.49,
-    "pct_above_50ema": 39.72,
-    "pct_above_200ema": null,
-    "pct_above_10sma": 40.85,
-    "pct_above_21sma": 39.18,
-    "pct_above_50sma": 40.27,
-    "pct_above_200sma": null,
-    "pct_4up": 3.49,
-    "pct_4down": 2.59,
-    "mbi_ratio": 135,
-    "mbi_uncapped": false,
-    "new_highs": 93,
-    "new_lows": 253,
-    "net_new_highs": -160
   }
 ]
